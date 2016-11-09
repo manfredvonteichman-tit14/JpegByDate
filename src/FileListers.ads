@@ -1,5 +1,6 @@
 -- Verwendete Packages
 with Filters;
+with Parameters;
 
 -- FileLister Interface
 package FileListers is
@@ -11,7 +12,7 @@ package FileListers is
    type FileLister is abstract tagged limited null record; -- quasi interface
 
    -- Interfacefunktionen
-   function create(path: String; filter: access Filters.Filter'Class) return access FileLister is abstract;
+   function create(params: access Parameters.Parameter; filter: access Filters.Filter'Class) return access FileLister is abstract;
    procedure destroy(This: access FileLister) is abstract;
    function hasNext(This: access FileLister) return Boolean is abstract;
    function next(This: access FileLister) return String is abstract;

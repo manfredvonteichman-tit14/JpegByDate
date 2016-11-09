@@ -1,6 +1,7 @@
 -- Verwendete Packages
 with Filters;
 with FileListers;
+with Parameters;
 with Ada.Directories;
 with Ada.Strings.Unbounded;
 
@@ -11,7 +12,7 @@ package FilesystemListers is
    type FilesystemLister is new FileListers.FileLister with private;
 
    -- Konstruktor
-   overriding function create(path: String; filter: access Filters.Filter'Class) return access FilesystemLister;
+   overriding function create(params: access Parameters.Parameter; filter: access Filters.Filter'Class) return access FilesystemLister;
    -- Destruktor
    overriding procedure destroy(This: access FilesystemLister);
 
@@ -32,6 +33,8 @@ private
          -- Vorbereitung der Verzeichnissuche
          FilesystemSearch: Ada.Directories.Search_Type;
          filter: access Filters.Filter := null; -- extern
+         minFileSize: Natural;
+         maxFileSize: Natural;
       end record;
 
    -- Initialisierungsfunktion

@@ -28,6 +28,14 @@ package body Parameters is
    begin
       This.all.datePattern := datePattern;
    end setDatePattern;
+   procedure setMinFileSize(This: access Parameter; minFileSize: Natural) is
+   begin
+      This.all.minFileSize := minFileSize;
+   end setMinFileSize;
+   procedure setMaxFileSize(This: access Parameter; maxFileSize: Natural) is
+   begin
+      This.all.maxFileSize := maxFileSize;
+   end setMaxFileSize;
 
    -- Werte abfragen
    function getPath(This: access Parameter) return String is
@@ -38,5 +46,13 @@ package body Parameters is
    begin
       return This.all.datePattern;
    end getDatePattern;
+   function getMinFileSize(This: access Parameter) return Natural is
+   begin
+      return This.all.minFileSize;
+   end getMinFileSize;
+   function getMaxFileSize(This: access Parameter) return Natural is
+   begin
+      return This.all.maxFileSize;
+   end getMaxFileSize;
 
 end Parameters;

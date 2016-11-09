@@ -9,11 +9,11 @@ package Globals is
    regexPatternFiletype: constant String := ".*\.(jpg|jpeg|jpe|jfif)$";
    defaultDate: constant String := "....:..:.."; -- beliebiges Datum (Regex Pattern)
    defaultPath: constant String := "."; -- aktuelles Ausfuehrungsverzeichnis
+   minFileSize: constant Natural := Natural'First;
+   maxFileSize: constant Natural := Natural'Last;
 
    -- Kommandozeilenparameter
-   package params is
-      date: constant String := "-d";
-   end params;
+   CommandLine: constant String := "d: -minSize= -maxSize=";
 
    -- EXIF-Tags
    package exif is

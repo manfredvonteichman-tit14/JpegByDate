@@ -18,11 +18,13 @@ procedure Main is
    output: access Outputs.Output'Class := ConsoleOutputs.create;
 begin
    -- Eingabe verarbeiten
-   input.parse;
+   input.parse(output);
    output.display("DEBUG OUTPUT - DatePattern: " & input.getParams.getDatePattern);
+   output.display("DEBUG OUTPUT - minFileSize: " & Natural'Image(input.getParams.getMinFileSize));
+   output.display("DEBUG OUTPUT - maxFileSize: " & Natural'Image(input.getParams.getMaxFileSize));
 
    -- Dateien Auflisten und Filtern vorbereiten
-   files := FilesystemListers.create(input.getParams.getPath, filter);
+   files := FilesystemListers.create(input.getParams, filter);
 
    -- Dateien verarbeiten und anzeigen
    handler := FileHandlers.create(files, input.getParams);

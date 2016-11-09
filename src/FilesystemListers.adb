@@ -5,10 +5,12 @@ with Ada.Unchecked_Deallocation;
 package body FilesystemListers is
 
    -- Konstruktor
-   function create(path: String; filter: access Filters.Filter'Class) return access FilesystemLister is
+   function create(params: access Parameters.Parameter; filter: access Filters.Filter'Class) return access FilesystemLister is
       lister: access FilesystemLister := new FilesystemLister;
    begin
-      lister.init(path, filter);
+      lister.all.minFileSize := params.getMinFileSize;
+      lister.all.maxFileSize := params.getMaxFileSize;
+      lister.init(params.getPath, filter);
       return lister;
    end create;
 
@@ -64,6 +66,7 @@ package body FilesystemListers is
    -- Intene Suche nach nächster Datei
    procedure parseNext(This: access FilesystemLister) is
       EntryItem: Ada.Directories.Directory_Entry_Type;
+      filesize: Natural;
    begin
       -- Nur durchführen, wenn beim letzten mal noch Matches gefunden wurden
       if This.all.hasNextMatch then
@@ -71,11 +74,14 @@ package body FilesystemListers is
          while Ada.Directories.More_Entries(Search => This.all.FilesystemSearch) loop
             -- Nächsten Eintrag auslesen
             Ada.Directories.Get_Next_Entry(Search => This.all.FilesystemSearch, Directory_Entry => EntryItem);
-            --Ada.Text_IO.Put_Line(Ada.Directories.Full_Name(EntryItem));
 
-            -- Filtern des Eintrages mit einer Regular-Expression
-            if This.all.filter.apply(Ada.Directories.Full_Name(EntryItem)) then -- Non dispatching Call auf Filter -> Es wird zwangsläufig die Methode der abstrakten Klasse aufgerufen
-               -- Wenn Dateiendung korrekt -> in Liste aufnehmen
+            -- Dateigröße auslesen
+            filesize := Natural'Val(Ada.Directories.Size(Ada.Directories.Full_Name(EntryItem)));
+
+            -- Filtern des Eintrages nach Dateigröße und mit einer Regular-Expression
+            if This.all.minFileSize <= filesize and This.all.maxFileSize >= filesize and
+              This.all.filter.apply(Ada.Directories.Full_Name(EntryItem)) then -- Non dispatching Call auf Filter -> Es wird zwangsläufig die Methode der abstrakten Klasse aufgerufen
+               -- Wenn Filter korrekt -> in Liste aufnehmen
                This.all.nextMatch := Ada.Strings.Unbounded.To_Unbounded_String(Ada.Directories.Full_Name(EntryItem));
                This.all.hasNextMatch := True;
                return; -- Abbrechen bei nächstem Match

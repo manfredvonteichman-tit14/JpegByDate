@@ -1,6 +1,7 @@
 -- Verwendete Packages
 with Inputs;
 with Parameters;
+with Outputs;
 
 -- Package für Eingabemodul
 package CommandlineParsers is
@@ -13,8 +14,8 @@ package CommandlineParsers is
    -- Destruktor
    overriding procedure destroy(This: access CommandlineParser);
 
-   -- Eingabewerte verarbeiten
-   overriding procedure parse(This: access CommandlineParser);
+   -- Eingabewerte verarbeiten mit optionaler Fehlerausgabe
+   overriding procedure parse(This: access CommandlineParser; error_log: access Outputs.Output'Class);
 
    -- Getter Funktionen
    overriding function getParams(This: access CommandlineParser) return access Parameters.Parameter;
