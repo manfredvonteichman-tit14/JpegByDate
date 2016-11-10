@@ -1,4 +1,6 @@
 -- Verwendete Packages
+with EXIFParsers;
+with Pictures.TiffPictures;
 with Ada.Unchecked_Deallocation;
 
 -- Package für JpegPicture  als Childpackage von Picture

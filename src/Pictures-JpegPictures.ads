@@ -1,6 +1,6 @@
 -- Verwendete Packages
 with Pictures;
-with Pictures.TiffPictures;
+limited with Pictures.TiffPictures;
 with Ada.Strings.Unbounded;
 
 -- Package für JpegPicture als Childpackage von Picture

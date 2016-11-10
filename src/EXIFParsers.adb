@@ -1,6 +1,5 @@
 -- Verwendete Packages
 with Globals;
-with Pictures;
 with Pictures.TiffPictures;
 with Ada.Unchecked_Deallocation;
 

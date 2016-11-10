@@ -1,5 +1,5 @@
 -- Verwendete Packages
-with EXIFParsers;
+limited with EXIFParsers;
 with Ada.Strings.Unbounded;
 
 -- Picture Interface
