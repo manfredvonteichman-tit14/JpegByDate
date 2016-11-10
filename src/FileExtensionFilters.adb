@@ -2,7 +2,7 @@
 with Ada.Unchecked_Deallocation;
 
 -- Package für Filtermodul
-package body Filters.FileExtensionFilters is
+package body FileExtensionFilters is
 
    -- Konstruktor
    function create return access FileExtensionFilter is
@@ -11,14 +11,14 @@ package body Filters.FileExtensionFilters is
    end create;
 
    -- Destruktor
-   procedure destroy(This: access FileExtensionFilter) is
+   procedure destroy(This: access FileExtensionFilter; destroy_chain: Boolean := False) is
       type type_access is access all FileExtensionFilter;
       procedure Free is new Ada.Unchecked_Deallocation(FileExtensionFilter, type_access);
       obj: type_access := type_access(This);
    begin
       -- externe Variablen in diesem Fall doch löschen
-      if This.all.next /= null then
-         This.all.next.destroy;
+      if destroy_chain = True and This.getNext /= null then
+         This.getNext.destroy(destroy_chain);
       end if;
       Free(obj);
    end;
@@ -29,4 +29,4 @@ package body Filters.FileExtensionFilters is
       return Boolean'(GNAT.Regpat.Match(compiledFiletypeRegex, str));
    end applyThis;
 
-end Filters.FileExtensionFilters;
+end FileExtensionFilters;

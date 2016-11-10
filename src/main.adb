@@ -1,8 +1,8 @@
 -- Verwendete Packages
 with Inputs;
 with CommandlineParsers;
-with Filters;
-with Filters.FileExtensionFilters;
+with FileFilters;
+with FileExtensionFilters;
 with FileListers;
 with FilesystemListers;
 with FileHandlers;
@@ -12,7 +12,7 @@ with ConsoleOutputs;
 -- Hauptfunktion
 procedure Main is
    input: access Inputs.Input'Class := CommandlineParsers.create;
-   filter: access Filters.Filter'Class := Filters.FileExtensionFilters.create;
+   filter: access FileFilters.Filter'Class := FileExtensionFilters.create;
    files: access FileListers.FileLister'Class;
    handler: access FileHandlers.FileHandler;
    output: access Outputs.Output'Class := ConsoleOutputs.create;
@@ -32,7 +32,7 @@ begin
 
    -- Aufräumen
    input.destroy;
-   filter.destroy;
+   filter.destroy(True);
    files.destroy;
    handler.destroy;
    output.destroy;

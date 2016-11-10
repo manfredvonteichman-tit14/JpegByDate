@@ -5,7 +5,7 @@ with Ada.Unchecked_Deallocation;
 package body FilesystemListers is
 
    -- Konstruktor
-   function create(params: access Parameters.Parameter; filter: access Filters.Filter'Class) return access FilesystemLister is
+   function create(params: access Parameters.Parameter; filter: access FileFilters.Filter'Class) return access FilesystemLister is
       lister: access FilesystemLister := new FilesystemLister;
    begin
       lister.all.minFileSize := params.getMinFileSize;
@@ -49,7 +49,7 @@ package body FilesystemListers is
    end next;
 
    -- Initialisierungsfunktion
-   procedure init(This: access FilesystemLister; path: String; filter: access Filters.Filter'Class) is
+   procedure init(This: access FilesystemLister; path: String; filter: access FileFilters.Filter'Class) is
       dFilter: constant Ada.Directories.Filter_Type := (Ada.Directories.Ordinary_File => True,
                                                         Ada.Directories.Special_File  => False,
                                                         Ada.Directories.Directory     => False);
