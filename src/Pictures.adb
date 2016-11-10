@@ -7,31 +7,22 @@ package body Pictures is
    -- Bild erstellen
    function create(name: String; buffer: Ada.Strings.Unbounded.Unbounded_String) return access Picture'Class is
    begin
-
-      -- SPEKULATIVE METHODE (Anlegen, bei Fehler Exception abfangen und nächsten Typ probieren)
-
       -- Jpeg Test
       declare
       begin
+         -- Versuchen Bild anzulegen
          return JpegPictures.create(name, buffer); -- indirekter Call auf isJpeg()
+
+      -- Unknown_Format ignorieren, Datei ist kein JPEG -> nächstes Format versuchen
+      -- Illegal_Format wird durchgelassen, Datei ist JPEG, enthält aber Fehler -> nächstes Format unnötig
       exception
-         when E: others =>
+         -- Unbekanntes Bildformat
+         when E: Unknown_Format =>
             null;
       end;
 
       -- Kein bekannter Typ
       raise Unknown_Format with "File does not match any supported picture format!";
-
-      -- ALTERNATIVE METHODE (Erst Testen, dann anlegen)
-
---      -- Buffer nach Magic Number durchsuchen
---      if JpegPictures.isJpeg(buffer) then
---         -- Bild ist Jpeg-Datei
---         return JpegPictures.create(name, buffer); -- indirekt wird hierdurch isJpeg() zweimal aufgerufen
---      else
---         -- Bilddatei ist kein bekannter Typ
---         raise Unknown_Format with "File does not match any supported picture format!";
---      end if;
 
    end create;
 

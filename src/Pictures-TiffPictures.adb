@@ -27,7 +27,7 @@ package body Pictures.TiffPictures is
          -- Mindestgröße überprüfen
          if Ada.Strings.Unbounded.Length(buffer) < 8 then
             -- keine EXIF Daten in zu kleinem Bild
-            return picture;
+            raise Illegal_Format with "Filesize is too small!";
          end if;
 
          -- Offset für IFD0 aus Pointer erstellen
@@ -79,6 +79,12 @@ package body Pictures.TiffPictures is
                exception
                   -- Falls keine EXIF Informationen vorhanden
                   -- KEINE AKTION -> Bild wird ohne EXIF erstellt
+
+                  -- Ungültiges EXIF-Format
+                  when E: Illegal_Format =>
+                     null;
+
+                  -- Sonstiges Problem
                   when E: others =>
                      null;
                end;

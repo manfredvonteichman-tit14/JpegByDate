@@ -10,58 +10,64 @@ package body Pictures.JpegPictures is
       -- https://www.media.mit.edu/pia/Research/deepview/exif.html
 
       picture: access JpegPicture := new JpegPicture;
+      tiff: access TiffPictures.TiffPicture := null;
+      I: Integer := 3; -- Start nach SOI
+      part_length: Integer;
    begin
       if isJpeg(buffer) then
          -- Buffer beinhaltet Jpeg Datei
          picture.all.name := Ada.Strings.Unbounded.To_Unbounded_String(name);
          picture.all.binary := buffer;
 
-         -- EXIF Format suchen
-         declare
-            tiff: access TiffPictures.TiffPicture := null;
-            I: Integer := 3; -- Start nach SOI
-            part_length: Integer;
-         begin
-            -- EXIF/TIFF suchen
-            picture.all.tiff_sublayer := null;
-            while I+3 <= Ada.Strings.Unbounded.Length(buffer) loop
-               -- Segmentlänge
-               part_length := Character'Pos(Ada.Strings.Unbounded.Element(buffer, I+2)) * 16#100# + Character'Pos(Ada.Strings.Unbounded.Element(buffer, I+3));
+         -- EXIF/TIFF suchen
+         picture.all.tiff_sublayer := null;
+         while I+3 <= Ada.Strings.Unbounded.Length(buffer) loop
+            -- Segmentlänge
+            part_length := Character'Pos(Ada.Strings.Unbounded.Element(buffer, I+2)) * 16#100# + Character'Pos(Ada.Strings.Unbounded.Element(buffer, I+3));
 
-               -- Segment überprüfen
-               if I+2+part_length > Ada.Strings.Unbounded.Length(buffer) then
-                  raise Illegal_Format with "JPEG tag size reaches over EOI!";
-               end if;
+            -- Segment überprüfen
+            if I+2+part_length > Ada.Strings.Unbounded.Length(buffer) then
+               raise Illegal_Format with "JPEG tag size reaches over EOI!";
+            end if;
 
-               -- Segment-Tag abfragen
-               if Ada.Strings.Unbounded.Element(buffer, I) = Character'Val(16#FF#) and
-                 Ada.Strings.Unbounded.Element(buffer, I+1) = Character'Val(16#E1#) then
-                  -- EXIF Header überprüfen
-                  if part_length >= 8 and
-                    Ada.Strings.Unbounded.Element(buffer, I+4) = Character'Val(16#45#) and
-                    Ada.Strings.Unbounded.Element(buffer, I+5) = Character'Val(16#78#) and
-                    Ada.Strings.Unbounded.Element(buffer, I+6) = Character'Val(16#69#) and
-                    Ada.Strings.Unbounded.Element(buffer, I+7) = Character'Val(16#66#) and
-                    Ada.Strings.Unbounded.Element(buffer, I+8) = Character'Val(16#00#) and
-                    Ada.Strings.Unbounded.Element(buffer, I+9) = Character'Val(16#00#) then
-                     -- Tiff Bild aus Unterbereich anlegen
+            -- Segment-Tag (EXIF/TIFF) abfragen
+            if Ada.Strings.Unbounded.Element(buffer, I) = Character'Val(16#FF#) and
+              Ada.Strings.Unbounded.Element(buffer, I+1) = Character'Val(16#E1#) then
+               -- EXIF Header überprüfen
+               if part_length >= 8 and
+                 Ada.Strings.Unbounded.Element(buffer, I+4) = Character'Val(16#45#) and
+                 Ada.Strings.Unbounded.Element(buffer, I+5) = Character'Val(16#78#) and
+                 Ada.Strings.Unbounded.Element(buffer, I+6) = Character'Val(16#69#) and
+                 Ada.Strings.Unbounded.Element(buffer, I+7) = Character'Val(16#66#) and
+                 Ada.Strings.Unbounded.Element(buffer, I+8) = Character'Val(16#00#) and
+                 Ada.Strings.Unbounded.Element(buffer, I+9) = Character'Val(16#00#) then
+                  -- Tiff Bild aus Unterbereich anlegen
+                  declare
+                  begin
                      tiff := TiffPictures.create(name, Ada.Strings.Unbounded.To_Unbounded_String(Ada.Strings.Unbounded.Slice(buffer, I+4+6, I+part_length+1)));
                      picture.all.tiff_sublayer := tiff;
-                  end if;
-
-                  -- Neues Bild zurückgeben
-                  return picture;
+                  exception
+                     -- Unknown_Format im TIFF Feld bedeutet Illegal_Format für JPEG
+                     -- Alle anderen Exceptions werden durchgelassen
+                     when E: Unknown_Format =>
+                        raise Illegal_Format with "JPEG EXIF/TIFF part contains errors!";
+                  end;
                end if;
 
-               -- nächstes Segment überprüfen
-               I := I + part_length + 2;
-            end loop;
+               -- Neues Bild zurückgeben
+               return picture;
+            end if;
 
-         exception
-            -- Falls JPEG kein EXIF/TIFF beinhaltet
-            when E: others =>
-               picture.all.tiff_sublayer := null;
-         end;
+            -- Segment-Tag (SOS) abfragen
+            if Ada.Strings.Unbounded.Element(buffer, I) = Character'Val(16#FF#) and
+              Ada.Strings.Unbounded.Element(buffer, I+1) = Character'Val(16#DA#) then
+               -- Start of Scan gefunden -> ab hier nur noch Pixeldaten
+               return picture;
+            end if;
+
+            -- nächstes Segment überprüfen
+            I := I + part_length + 2;
+         end loop;
 
          -- Neues Bild zurückgeben
          return picture;

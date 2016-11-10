@@ -51,8 +51,8 @@ package body FilesystemListers is
    -- Initialisierungsfunktion
    procedure init(This: access FilesystemLister; path: String; filter: access Filters.Filter'Class) is
       dFilter: constant Ada.Directories.Filter_Type := (Ada.Directories.Ordinary_File => True,
-                                                       Ada.Directories.Special_File  => False,
-                                                       Ada.Directories.Directory     => False);
+                                                        Ada.Directories.Special_File  => False,
+                                                        Ada.Directories.Directory     => False);
    begin
       -- Verzeichnis Durchsuchen initialisieren
       Ada.Directories.Start_Search(Search    => This.all.FilesystemSearch,
@@ -61,6 +61,23 @@ package body FilesystemListers is
                                    Filter    => dFilter);
       This.all.filter := filter;
       This.parseNext;
+
+   -- Fehlerbehandlung
+   exception
+      -- Fehler bei Verzeichnisname
+      when E: Ada.Directories.Name_Error =>
+         This.all.nextMatch := Ada.Strings.Unbounded.Null_Unbounded_String;
+         This.all.hasNextMatch := False;
+
+      -- Fehler bei Verwendung des Verzeichnisses (Berechtigungen)
+      when E: Ada.Directories.Use_Error =>
+         This.all.nextMatch := Ada.Strings.Unbounded.Null_Unbounded_String;
+         This.all.hasNextMatch := False;
+
+      -- Alle anderen Fehler
+      when E: others =>
+         This.all.nextMatch := Ada.Strings.Unbounded.Null_Unbounded_String;
+         This.all.hasNextMatch := False;
    end init;
 
    -- Intene Suche nach nächster Datei
@@ -92,6 +109,28 @@ package body FilesystemListers is
          This.all.nextMatch := Ada.Strings.Unbounded.Null_Unbounded_String;
          This.all.hasNextMatch := False;
       end if;
+
+   -- Fehlerbehandlung -> weitere Suche abbrechen
+   exception
+      -- Fehler bei Abfrage weiterer Verzeichniseinträge
+      when E: Ada.Directories.Status_Error =>
+         This.all.nextMatch := Ada.Strings.Unbounded.Null_Unbounded_String;
+         This.all.hasNextMatch := False;
+
+      -- Fehler bei Verzeichnisname
+      when E: Ada.Directories.Name_Error =>
+         This.all.nextMatch := Ada.Strings.Unbounded.Null_Unbounded_String;
+         This.all.hasNextMatch := False;
+
+      -- Fehler bei Verwendung des Verzeichnisses (Berechtigungen)
+      when E: Ada.Directories.Use_Error =>
+         This.all.nextMatch := Ada.Strings.Unbounded.Null_Unbounded_String;
+         This.all.hasNextMatch := False;
+
+      -- Alle anderen Fehler
+      when E: others =>
+         This.all.nextMatch := Ada.Strings.Unbounded.Null_Unbounded_String;
+         This.all.hasNextMatch := False;
    end parseNext;
 
 end FilesystemListers;

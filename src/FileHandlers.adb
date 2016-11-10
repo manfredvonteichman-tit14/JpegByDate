@@ -2,7 +2,7 @@
 with Pictures;
 with Ada.Directories;
 with Ada.Direct_IO;
-with Ada.Exceptions;
+with Ada.IO_Exceptions;
 with Ada.Strings.Unbounded;
 with Ada.Unchecked_Deallocation;
 with GNAT.Regpat;
@@ -71,8 +71,16 @@ package body FileHandlers is
                -- Bei Problemen mit der Bilderstellung oder Verarbeitung
                -- KEINE FEHLERAUSGABE bei kaputtem Bild
                -- Nur Forderung nach Anzeige der Bildernamen mit entsprechenden EXIF Informationen
+
+               -- Datei besitzt unbekanntes Format
                when E: Pictures.Unknown_Format =>
                   null;
+
+               -- Bekanntes Dateiformat enthält Fehler
+               when E: Pictures.Illegal_Format =>
+                  null;
+
+               -- Sonstige Fehler
                when E: others =>
                   null;
             end;
@@ -116,8 +124,29 @@ package body FileHandlers is
          return Integer(size);
       end;
 
+   -- Fehlerbehandlung -> im Fehlerfall Dateigröße -1 zurückgeben
    exception
-      -- Im Fehlerfall Dateigröße -1 zurückgeben
+      -- Fehler bei Abfrage weiterer Verzeichniseinträge
+      when E: Ada.IO_Exceptions.Status_Error =>
+         return -1;
+
+      -- Fehler bei Dateioptionen
+      when E: Ada.IO_Exceptions.Mode_Error =>
+         return -1;
+
+      -- Fehler bei Verzeichnisname
+      when E: Ada.IO_Exceptions.Name_Error => -- entspricht auch Ada.Directories.Name_Error
+         return -1;
+
+      -- Fehler bei Verwendung des Verzeichnisses (Berechtigungen)
+      when E: Ada.IO_Exceptions.Use_Error =>
+         return -1;
+
+      -- Fehler bei Dateisystem IO
+      when E: Ada.IO_Exceptions.Device_Error =>
+         return -1;
+
+      -- Alle anderen Fehler
       when E: others =>
          return -1;
    end readFile;
