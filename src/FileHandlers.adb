@@ -6,7 +6,6 @@ with Ada.Direct_IO;
 with Ada.IO_Exceptions;
 with Ada.Strings.Unbounded;
 with Ada.Unchecked_Deallocation;
-with GNAT.Regpat;
 
 -- Package für FileHandler
 package body FileHandlers is
@@ -15,11 +14,11 @@ package body FileHandlers is
    function readFile(name: String; buffer: out Ada.Strings.Unbounded.Unbounded_String) return Integer;
 
    -- Konstruktor
-   function create(files: access FileListers.FileLister'Class; params: access Parameters.Parameter) return access FileHandler is
+   function create(files: access FileListers.FileLister'Class; filter: access EXIFFilters.Filter'Class) return access FileHandler is
       handler: access FileHandler := new FileHandler;
    begin
       handler.all.files := files;
-      handler.all.params := params;
+      handler.all.filter := filter;
       return handler;
    end create;
 
@@ -57,15 +56,11 @@ package body FileHandlers is
 
                -- Bildnamen und Pfad anzeigen wenn Bedingungen erfüllt werden
                if picture.hasEXIF then
-                  declare
-                     date: String := picture.getEXIF.getDateTimeOriginal;
-                  begin
-                     -- Regex Match des EXIF Datums mit dem Parameter-Date-Pattern
-                     if Boolean'(GNAT.Regpat.Match(Expression => This.all.params.getDatePattern, Data => date(date'First..date'First+9))) then
+                     -- EXIF Filter anwenden
+                     if This.all.filter.apply(EXIFParsers.EXIFParser_Access(picture.getEXIF)) then
                         output.display(picture.getName);
                         output.display("DEBUG OUTPUT - DateTimeOriginal: " & picture.getEXIF.getDateTimeOriginal);
                      end if;
-                  end;
                end if;
 
             exception

@@ -6,6 +6,7 @@ package EXIFParsers is
 
    -- Typ anlegen
    type EXIFParser is tagged private;
+   type EXIFParser_Access is access all EXIFParser; -- nicht verwenden, nur für EXIFFilter notwendig
 
    -- Konstruktor (binary ist EXIF SubIFD Directory Entries)
    function create(binary: String; tiff_parent: access Pictures.TiffPictures.TiffPicture) return access EXIFParser;
