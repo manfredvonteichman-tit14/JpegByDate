@@ -1,6 +1,5 @@
 -- Verwendete Packages
 with Ada.Unchecked_Deallocation;
-with GNAT.Regpat;
 
 -- Package für Filtermodul
 package body DateRangeFilters is

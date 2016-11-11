@@ -60,6 +60,8 @@ package body FileHandlers is
                      if This.all.filter.apply(EXIFParsers.EXIFParser_Access(picture.getEXIF)) then
                         output.display(picture.getName);
                         output.display("DEBUG OUTPUT - DateTimeOriginal: " & picture.getEXIF.getDateTimeOriginal);
+                        output.display("DEBUG OUTPUT - ExifImageWidth: " & Integer'Image(picture.getEXIF.getExifImageWidth));
+                        output.display("DEBUG OUTPUT - ExifImageHeight: " & Integer'Image(picture.getEXIF.getExifImageHeight));
                      end if;
                end if;
 

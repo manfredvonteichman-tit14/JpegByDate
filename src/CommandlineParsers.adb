@@ -102,6 +102,18 @@ package body CommandlineParsers is
                   else
                      raise Constraint_Error with "Invalid time-range format!";
                   end if;
+               elsif GNAT.Command_Line.Full_Switch = "-minWidth" then
+                  -- Minimalbreite
+                  This.all.parameters.setMinWidth(Natural'Value(GNAT.Command_Line.Parameter));
+               elsif GNAT.Command_Line.Full_Switch = "-maxWidth" then
+                  -- Maximalbreite
+                  This.all.parameters.setMaxWidth(Natural'Value(GNAT.Command_Line.Parameter));
+               elsif GNAT.Command_Line.Full_Switch = "-minHeight" then
+                  -- Minimalbreite
+                  This.all.parameters.setMinHeight(Natural'Value(GNAT.Command_Line.Parameter));
+               elsif GNAT.Command_Line.Full_Switch = "-maxHeight" then
+                  -- Maximalbreite
+                  This.all.parameters.setMaxHeight(Natural'Value(GNAT.Command_Line.Parameter));
                end if;
             when others =>
                exit;

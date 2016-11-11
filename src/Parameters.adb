@@ -44,7 +44,6 @@ package body Parameters is
    begin
       This.all.dateRangeFinish := finishDate;
    end setDateRangeFinish;
-
    procedure setTimePattern(This: access Parameter; timePattern: String) is
    begin
       This.all.timePattern := timePattern;
@@ -57,6 +56,22 @@ package body Parameters is
    begin
       This.all.timeRangeFinish := finishTime;
    end setTimeRangeFinish;
+   procedure setMinWidth(This: access Parameter; minWidth: Natural) is
+   begin
+      This.all.minWidth := minWidth;
+   end setMinWidth;
+   procedure setMaxWidth(This: access Parameter; maxWidth: Natural) is
+   begin
+      This.all.maxWidth := maxWidth;
+   end setMaxWidth;
+   procedure setMinHeight(This: access Parameter; minHeight: Natural) is
+   begin
+      This.all.minHeight := minHeight;
+   end setMinHeight;
+   procedure setMaxHeight(This: access Parameter; maxHeight: Natural) is
+   begin
+      This.all.maxHeight := maxHeight;
+   end setMaxHeight;
 
    -- Werte abfragen
    function getPath(This: access Parameter) return String is
@@ -95,5 +110,21 @@ package body Parameters is
    begin
       return This.all.timeRangeFinish;
    end getTimeRangeFinish;
+   function getMinWidth(This: access Parameter) return Natural is
+   begin
+      return This.all.minWidth;
+   end getMinWidth;
+   function getMaxWidth(This: access Parameter) return Natural is
+   begin
+      return This.all.maxWidth;
+   end getMaxWidth;
+   function getMinHeight(This: access Parameter) return Natural is
+   begin
+      return This.all.minHeight;
+   end getMinHeight;
+   function getMaxHeight(This: access Parameter) return Natural is
+   begin
+      return This.all.maxHeight;
+   end getMaxHeight;
 
 end Parameters;

@@ -11,7 +11,7 @@ package body EXIFParsers is
       parser: access EXIFParser := new EXIFParser;
    begin
       -- Dateigröße überprüfen
-      if (binary'Length mod 12) = 0 then
+      if (binary'Length mod Globals.exif.directory_length) = 0 then
          parser.all.exif := new String'(binary);
          parser.all.parent := tiff_parent;
          return parser;
@@ -55,11 +55,51 @@ package body EXIFParsers is
          end if;
 
          -- Nächstes Directory
-         I := I + 12;
+         I := I + Globals.exif.directory_length;
       end loop;
 
       -- Nichts gefunden
-      return "";
+      raise TagNotFound with "DateTimeOriginal not present!";
    end getDateTimeOriginal;
+   function getExifImageWidth(This: access EXIFParser) return Integer is
+      I: Integer := 0; -- Start am ersten Directory
+   begin
+      -- EXIF SubIFD durchsuchen
+      while I <= This.all.exif'Length loop
+         -- DateTimeOriginal Tag gefunden
+         if This.all.parent.createInt(This.all.exif(This.all.exif'First+I+0), This.all.exif(This.all.exif'First+I+1)) = Globals.exif.ExifImageWidth and
+           This.all.parent.createInt(This.all.exif(This.all.exif'First+I+2), This.all.exif(This.all.exif'First+I+3)) in Globals.exif.ExifImageWidth_Type and
+           This.all.parent.createInt(This.all.exif(This.all.exif'First+I+4), This.all.exif(This.all.exif'First+I+5), This.all.exif(This.all.exif'First+I+6), This.all.exif(This.all.exif'First+I+7)) = Globals.exif.ExifImageWidth_Length then
+            -- Integer auslesen und zurück geben
+            return This.all.parent.createInt(This.all.exif(This.all.exif'First+I+8), This.all.exif(This.all.exif'First+I+9), This.all.exif(This.all.exif'First+I+10), This.all.exif(This.all.exif'First+I+11));
+         end if;
+
+         -- Nächstes Directory
+         I := I + Globals.exif.directory_length;
+      end loop;
+
+      -- Nichts gefunden
+      raise TagNotFound with "ExifImageWidth not present!";
+   end getExifImageWidth;
+   function getExifImageHeight(This: access EXIFParser) return Integer is
+      I: Integer := 0; -- Start am ersten Directory
+   begin
+      -- EXIF SubIFD durchsuchen
+      while I <= This.all.exif'Length loop
+         -- DateTimeOriginal Tag gefunden
+         if This.all.parent.createInt(This.all.exif(This.all.exif'First+I+0), This.all.exif(This.all.exif'First+I+1)) = Globals.exif.ExifImageHeight and
+           This.all.parent.createInt(This.all.exif(This.all.exif'First+I+2), This.all.exif(This.all.exif'First+I+3)) in Globals.exif.ExifImageHeight_Type and
+           This.all.parent.createInt(This.all.exif(This.all.exif'First+I+4), This.all.exif(This.all.exif'First+I+5), This.all.exif(This.all.exif'First+I+6), This.all.exif(This.all.exif'First+I+7)) = Globals.exif.ExifImageHeight_Length then
+            -- Integer auslesen und zurück geben
+            return This.all.parent.createInt(This.all.exif(This.all.exif'First+I+8), This.all.exif(This.all.exif'First+I+9), This.all.exif(This.all.exif'First+I+10), This.all.exif(This.all.exif'First+I+11));
+         end if;
+
+         -- Nächstes Directory
+         I := I + Globals.exif.directory_length;
+      end loop;
+
+      -- Nichts gefunden
+      raise TagNotFound with "ExifImageHeight not present!";
+   end getExifImageHeight;
 
 end EXIFParsers;

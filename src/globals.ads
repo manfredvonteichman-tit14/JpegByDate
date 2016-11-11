@@ -19,18 +19,29 @@ package Globals is
    defaultTime: constant String := "..:..:.."; -- beliebige Uhrzeit (Regex Pattern)
    defaultStartTime: constant String := "00:00:00";
    defaultFinishTime: constant String := "23:59:59";
+   minWidth: constant Natural := Natural'First;
+   maxWidth: constant Natural := Natural'Last;
+   minHeight: constant Natural := Natural'First;
+   maxHeight: constant Natural := Natural'Last;
 
    -- Kommandozeilenparameter
-   CommandLine: constant String := "d: t: -minSize= -maxSize= -startDate= -finDate= -startTime= -finTime=";
+   CommandLine: constant String := "d: t: -minSize= -maxSize= -startDate= -finDate= -startTime= -finTime= -minWidth= -maxWidth= -minHeight= -maxHeight=";
 
    -- EXIF-Tags
    package exif is
+      directory_length: constant Integer := 12;
       tag: constant Integer := 16#8769#;
       tag_Type: constant Integer := 4;
       tag_Length: constant Integer := 1;
       DateTimeOriginal: constant Integer := 16#9003#;
       DateTimeOriginal_Type: constant Integer := 2;
       DateTimeOriginal_Length: constant Integer := 20;
+      ExifImageWidth: constant Integer := 16#A002#;
+      subtype ExifImageWidth_Type is Integer range 3..4;
+      ExifImageWidth_Length: constant Integer := 1;
+      ExifImageHeight: constant Integer := 16#A003#;
+      subtype ExifImageHeight_Type is Integer range 3..4;
+      ExifImageHeight_Length: constant Integer := 1;
    end exif;
 
 end Globals;

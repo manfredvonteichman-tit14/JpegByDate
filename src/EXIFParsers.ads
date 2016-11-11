@@ -15,6 +15,11 @@ package EXIFParsers is
 
    -- Getterfunktionen
    function getDateTimeOriginal(This: access EXIFParser) return String;
+   function getExifImageWidth(This: access EXIFParser) return Integer; -- Unzuverlässiger Wert im EXIF gespeichert
+   function getExifImageHeight(This: access EXIFParser) return Integer; -- Unzuverlässiger Wert im EXIF gespeichert
+
+   -- Exceptions
+   TagNotFound: exception; -- EXIF-Tag existiert nicht
 
 private
    -- Objektvariablen
