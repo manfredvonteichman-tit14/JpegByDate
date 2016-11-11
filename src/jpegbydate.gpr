@@ -5,7 +5,7 @@ project JpegByDate is
    for Source_Files use ("CommandlineParsers.adb", "CommandlineParsers.ads", "ConsoleOutputs.adb", "ConsoleOutputs.ads", "DatePatternFilters.adb", "DatePatternFilters.ads", "DateRangeFilters.adb", "DateRangeFilters.ads", "EXIFFilters.ads", 
       "EXIFParsers.adb", "EXIFParsers.ads", "FileExtensionFilters.adb", "FileExtensionFilters.ads", "FileFilters.ads", "FileHandlers.adb", "FileHandlers.ads", "FileListers.ads", "FilesystemListers.adb", "FilesystemListers.ads", "Filters.adb", 
       "Filters.ads", "globals.ads", "Inputs.ads", "main.adb", "Outputs.ads", "Parameters.adb", "Parameters.ads", "Pictures-JpegPictures.adb", "Pictures-JpegPictures.ads", "Pictures-TiffPictures.adb", "Pictures-TiffPictures.ads", "Pictures.adb", 
-      "Pictures.ads");
+      "Pictures.ads", "TimePatternFilters.adb", "TimePatternFilters.ads", "TimeRangeFilters.adb", "TimeRangeFilters.ads");
 
    package Ide is
       for Vcs_Kind use "Git";

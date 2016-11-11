@@ -18,17 +18,22 @@ package Parameters is
    procedure setDatePattern(This: access Parameter; datePattern: String);
    procedure setMinFileSize(This: access Parameter; minFileSize: Natural);
    procedure setMaxFileSize(This: access Parameter; maxFileSize: Natural);
-   procedure setDateRange(This: access Parameter; dateRange: String);
+   procedure setDateRangeStart(This: access Parameter; startDate: String);
+   procedure setDateRangeFinish(This: access Parameter; finishDate: String);
+   procedure setTimePattern(This: access Parameter; timePattern: String);
+   procedure setTimeRangeStart(This: access Parameter; startTime: String);
+   procedure setTimeRangeFinish(This: access Parameter; finishTime: String);
 
    -- Werte abfragen
    function getPath(This: access Parameter) return String;
    function getDatePattern(This: access Parameter) return String;
    function getMinFileSize(This: access Parameter) return Natural;
    function getMaxFileSize(This: access Parameter) return Natural;
-   function getDateRange(This: access Parameter) return String;
-
-   -- Flags abfragen
-   function flagDateRange(This: access Parameter) return Boolean;
+   function getDateRangeStart(This: access Parameter) return String;
+   function getDateRangeFinish(This: access Parameter) return String;
+   function getTimePattern(This: access Parameter) return String;
+   function getTimeRangeStart(This: access Parameter) return String;
+   function getTimeRangeFinish(This: access Parameter) return String;
 
 private
    -- Objektvariablen
@@ -39,10 +44,11 @@ private
          datePattern: String(1..10) := Globals.defaultDate;
          minFileSize: Natural := Globals.minFileSize;
          maxFileSize: Natural := Globals.maxFileSize;
-
-         -- optionale Parameter -> Flag signalisiert ob gesetzt wurde
-         dateRange: String(1..21);
-         dateRange_Flag: Boolean := False;
+         dateRangeStart: String(1..10) := Globals.defaultStartDate;
+         dateRangeFinish: String(1..10) := Globals.defaultFinishDate;
+         timePattern: String(1..8) := Globals.defaultTime;
+         timeRangeStart: String(1..8) := Globals.defaultStartTime;
+         timeRangeFinish: String(1..8) := Globals.defaultFinishTime;
       end record;
 
 end Parameters;

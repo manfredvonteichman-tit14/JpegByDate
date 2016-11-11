@@ -1,5 +1,6 @@
 -- Verwendete Packages
 with Ada.Unchecked_Deallocation;
+with GNAT.Regpat;
 
 -- Package für Filtermodul
 package body DateRangeFilters is
@@ -34,15 +35,16 @@ package body DateRangeFilters is
    overriding function applyThis(This: access DateRangeFilter; exif: EXIFParsers.EXIFParser_Access) return Boolean is
       exif_tmp: access EXIFParsers.EXIFParser := exif;
       date: String := exif_tmp.getDateTimeOriginal;
-      dateRange: String := This.all.params.getDateRange;
+      startDate: String := This.all.params.getDateRangeStart;
+      finishDate: String := This.all.params.getDateRangeFinish;
       value: Integer;
       start: Integer;
       finish: Integer;
    begin
       -- Magic -> Primitive Umrechnung von Datum in Integer zum einfacheren Vergleich
       value := Integer'Value(date(date'First..date'First+3)) * 10000 + Integer'Value(date(date'First+5..date'First+6)) * 100 + Integer'Value(date(date'First+8..date'First+9));
-      start := Integer'Value(dateRange(dateRange'First..dateRange'First+3)) * 10000 + Integer'Value(dateRange(dateRange'First+5..dateRange'First+6)) * 100 + Integer'Value(dateRange(dateRange'First+8..dateRange'First+9));
-      finish := Integer'Value(dateRange(dateRange'First+11..dateRange'First+14)) * 10000 + Integer'Value(dateRange(dateRange'First+16..dateRange'First+17)) * 100 + Integer'Value(dateRange(dateRange'First+19..dateRange'First+20));
+      start := Integer'Value(startDate(startDate'First..startDate'First+3)) * 10000 + Integer'Value(startDate(startDate'First+5..startDate'First+6)) * 100 + Integer'Value(startDate(startDate'First+8..startDate'First+9));
+      finish := Integer'Value(finishDate(finishDate'First..finishDate'First+3)) * 10000 + Integer'Value(finishDate(finishDate'First+5..finishDate'First+6)) * 100 + Integer'Value(finishDate(finishDate'First+8..finishDate'First+9));
 
       -- Vergleich der Datumswerte
       if value >= start and value <= finish then

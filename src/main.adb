@@ -1,6 +1,6 @@
 -- Verwendete Packages
-with Inputs;
 with CommandlineParsers;
+with ConsoleOutputs;
 with DatePatternFilters;
 with DateRangeFilters;
 with EXIFFilters;
@@ -9,8 +9,10 @@ with FileExtensionFilters;
 with FileListers;
 with FilesystemListers;
 with FileHandlers;
+with Inputs;
 with Outputs;
-with ConsoleOutputs;
+with TimePatternFilters;
+with TimeRangeFilters;
 
 -- Hauptfunktion
 procedure Main is
@@ -24,14 +26,19 @@ begin
    -- Eingabe verarbeiten
    input.parse(output);
    output.display("DEBUG OUTPUT - DatePattern: " & input.getParams.getDatePattern);
+   output.display("DEBUG OUTPUT - DateRangeStart: " & input.getParams.getDateRangeStart);
+   output.display("DEBUG OUTPUT - DateRangeFinish: " & input.getParams.getDateRangeFinish);
    output.display("DEBUG OUTPUT - minFileSize: " & Natural'Image(input.getParams.getMinFileSize));
    output.display("DEBUG OUTPUT - maxFileSize: " & Natural'Image(input.getParams.getMaxFileSize));
+   output.display("DEBUG OUTPUT - TimePattern: " & input.getParams.getTimePattern);
+   output.display("DEBUG OUTPUT - TimeRangeStart: " & input.getParams.getTimeRangeStart);
+   output.display("DEBUG OUTPUT - TimeRangeFinish: " & input.getParams.getTimeRangeFinish);
 
    -- EXIF Filter anlegen nach Eingabeparametern
    efilter := DatePatternFilters.createP(input.getParams);
-   if input.getParams.flagDateRange = True then
-      efilter.addNew(DateRangeFilters.createP(input.getParams));
-   end if;
+   efilter.addNew(DateRangeFilters.createP(input.getParams));
+   efilter.addNew(TimePatternFilters.createP(input.getParams));
+   efilter.addNew(TimeRangeFilters.createP(input.getParams));
 
    -- Dateien Auflisten und Filtern vorbereiten
    files := FilesystemListers.create(input.getParams, ffilter);

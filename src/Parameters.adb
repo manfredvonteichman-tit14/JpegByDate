@@ -36,11 +36,27 @@ package body Parameters is
    begin
       This.all.maxFileSize := maxFileSize;
    end setMaxFileSize;
-   procedure setDateRange(This: access Parameter; dateRange: String) is
+   procedure setDateRangeStart(This: access Parameter; startDate: String) is
    begin
-      This.all.dateRange := dateRange;
-      This.all.dateRange_Flag := True;
-   end setDateRange;
+      This.all.dateRangeStart := startDate;
+   end setDateRangeStart;
+   procedure setDateRangeFinish(This: access Parameter; finishDate: String) is
+   begin
+      This.all.dateRangeFinish := finishDate;
+   end setDateRangeFinish;
+
+   procedure setTimePattern(This: access Parameter; timePattern: String) is
+   begin
+      This.all.timePattern := timePattern;
+   end setTimePattern;
+   procedure setTimeRangeStart(This: access Parameter; startTime: String) is
+   begin
+      This.all.timeRangeStart := startTime;
+   end setTimeRangeStart;
+   procedure setTimeRangeFinish(This: access Parameter; finishTime: String) is
+   begin
+      This.all.timeRangeFinish := finishTime;
+   end setTimeRangeFinish;
 
    -- Werte abfragen
    function getPath(This: access Parameter) return String is
@@ -59,15 +75,25 @@ package body Parameters is
    begin
       return This.all.maxFileSize;
    end getMaxFileSize;
-   function getDateRange(This: access Parameter) return String is
+   function getDateRangeStart(This: access Parameter) return String is
    begin
-      return This.all.dateRange;
-   end getDateRange;
-
-   -- Flags abfragen
-   function flagDateRange(This: access Parameter) return Boolean is
+      return This.all.dateRangeStart;
+   end getDateRangeStart;
+   function getDateRangeFinish(This: access Parameter) return String is
    begin
-      return This.all.dateRange_Flag;
-   end flagDateRange;
+      return This.all.dateRangeFinish;
+   end getDateRangeFinish;
+   function getTimePattern(This: access Parameter) return String is
+   begin
+      return This.all.timePattern;
+   end getTimePattern;
+   function getTimeRangeStart(This: access Parameter) return String is
+   begin
+      return This.all.timeRangeStart;
+   end getTimeRangeStart;
+   function getTimeRangeFinish(This: access Parameter) return String is
+   begin
+      return This.all.timeRangeFinish;
+   end getTimeRangeFinish;
 
 end Parameters;

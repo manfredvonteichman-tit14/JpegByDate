@@ -54,6 +54,16 @@ package body CommandlineParsers is
                else
                   raise Constraint_Error with "Invalid date format!";
                end if;
+            when 't' =>
+               -- Prüfen ob die eingegebene Zeit dem richtigen Format entspricht
+               -- 22:??:01
+               if Boolean'(GNAT.Regpat.Match(Expression => Globals.regexPatternTimeWithWildcards, Data => GNAT.Command_Line.Parameter)) then
+                  -- Ersetze die Fragezeichen (CLI-Wildcards) mit Punkten (Regex-Wildcards)
+                  -- und hinterlege dieses Pattern in Parameters
+                  This.all.parameters.setTimePattern(Ada.Strings.Fixed.Translate(GNAT.Command_Line.Parameter, Ada.Strings.Maps.To_Mapping(From => "?", To => ".")));
+               else
+                  raise Constraint_Error with "Invalid time format!";
+               end if;
             when '-' =>
                -- Lange Switches
                if GNAT.Command_Line.Full_Switch = "-minSize" then
@@ -62,13 +72,35 @@ package body CommandlineParsers is
                elsif GNAT.Command_Line.Full_Switch = "-maxSize" then
                   -- Maximum-Dateigröße
                   This.all.parameters.setMaxFileSize(Natural'Value(GNAT.Command_Line.Parameter));
-               elsif GNAT.Command_Line.Full_Switch = "-dateRange" then
+               elsif GNAT.Command_Line.Full_Switch = "-startDate" then
                   -- Regulärer Ausdruck für ISO Date Pattern Bereich
-                  -- Prüfen ob das eingegebene Datum einem Datumsbereich entspricht
+                  -- Prüfen ob das eingegebene Datum einem Datum entspricht
                   if Boolean'(GNAT.Regpat.Match(Expression => Globals.regexPatternDateRange, Data => GNAT.Command_Line.Parameter)) then
-                     This.all.parameters.setDateRange(GNAT.Command_Line.Parameter);
+                     This.all.parameters.setDateRangeStart(GNAT.Command_Line.Parameter);
                   else
                      raise Constraint_Error with "Invalid date-range format!";
+                  end if;
+               elsif GNAT.Command_Line.Full_Switch = "-finDate" then
+                  -- Regulärer Ausdruck für ISO Date Pattern Bereich
+                  -- Prüfen ob das eingegebene Datum einem Datum entspricht
+                  if Boolean'(GNAT.Regpat.Match(Expression => Globals.regexPatternDateRange, Data => GNAT.Command_Line.Parameter)) then
+                     This.all.parameters.setDateRangeFinish(GNAT.Command_Line.Parameter);
+                  else
+                     raise Constraint_Error with "Invalid date-range format!";
+                  end if;
+               elsif GNAT.Command_Line.Full_Switch = "-startTime" then
+                  -- Prüfen ob die eingegebene Zeit dem richtigen Format entspricht
+                  if Boolean'(GNAT.Regpat.Match(Expression => Globals.regexPatternTimeRange, Data => GNAT.Command_Line.Parameter)) then
+                     This.all.parameters.setTimeRangeStart(GNAT.Command_Line.Parameter);
+                  else
+                     raise Constraint_Error with "Invalid time-range format!";
+                  end if;
+               elsif GNAT.Command_Line.Full_Switch = "-finTime" then
+                  -- Prüfen ob die eingegebene Zeit dem richtigen Format entspricht
+                  if Boolean'(GNAT.Regpat.Match(Expression => Globals.regexPatternTimeRange, Data => GNAT.Command_Line.Parameter)) then
+                     This.all.parameters.setTimeRangeFinish(GNAT.Command_Line.Parameter);
+                  else
+                     raise Constraint_Error with "Invalid time-range format!";
                   end if;
                end if;
             when others =>

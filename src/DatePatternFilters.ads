@@ -3,7 +3,6 @@ with Globals;
 with EXIFFilters;
 with EXIFParsers;
 with Parameters;
-with GNAT.Regpat;
 
 -- Package für Filtermodul
 package DatePatternFilters is
