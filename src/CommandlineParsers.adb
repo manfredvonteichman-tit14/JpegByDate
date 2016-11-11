@@ -33,9 +33,6 @@ package body CommandlineParsers is
    -- Kommandozeile verarbeiten
    procedure parse(This: access CommandlineParser; error_log: access Outputs.Output'Class) is
    begin
-      -- Pfad bestimmen
-      This.all.parameters.setPath(Globals.defaultPath);
-
       -- Alle Parameter durcharbeiten
       loop
          declare

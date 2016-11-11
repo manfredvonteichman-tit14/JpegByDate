@@ -33,11 +33,30 @@ package body TimePatternFilters is
 
    -- private Funktionen
    overriding function applyThis(This: access TimePatternFilter; exif: EXIFParsers.EXIFParser_Access) return Boolean is
-      exif_tmp: access EXIFParsers.EXIFParser := exif;
-      time: String := exif_tmp.getDateTimeOriginal;
    begin
-      -- Regex Match des EXIF Datums mit dem Parameter-Date-Pattern
-      return Boolean'(GNAT.Regpat.Match(Expression => This.all.params.getTimePattern, Data => time(time'First+11..time'First+18)));
+      -- Shortcut falls Standardwert verwendet wird
+      if This.all.params.flagTimePattern = False then
+         return True;
+      end if;
+
+      -- Eigentlicher Filter
+      declare
+         exif_tmp: access EXIFParsers.EXIFParser := exif;
+         time: String := exif_tmp.getDateTimeOriginal;
+      begin
+         -- Regex Match des EXIF Datums mit dem Parameter-Date-Pattern
+         return Boolean'(GNAT.Regpat.Match(Expression => This.all.params.getTimePattern, Data => time(time'First+11..time'First+18)));
+
+      -- Fehler behandeln
+      exception
+         -- EXIF-Tag existiert nicht
+         when E: EXIFParsers.TagNotFound =>
+            return False;
+
+         -- Alle anderen Fehler
+         when E: others =>
+            return False;
+      end;
    end applyThis;
 
 end TimePatternFilters;

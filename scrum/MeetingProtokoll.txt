@@ -54,3 +54,6 @@ Sprint Planning Meeting (Sprint 3)
 	- Erstellung des Sprint Backlogs (siehe backlog_20161107.png)
 	- GNATTest zum Testen von JpegByDate
 	- Verwendung von Metriken zur Softwaremessung
+
+2016-11-11
+"Daily Scrum"

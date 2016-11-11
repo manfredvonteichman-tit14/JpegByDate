@@ -33,11 +33,30 @@ package body DatePatternFilters is
 
    -- private Funktionen
    overriding function applyThis(This: access DatePatternFilter; exif: EXIFParsers.EXIFParser_Access) return Boolean is
-      exif_tmp: access EXIFParsers.EXIFParser := exif;
-      date: String := exif_tmp.getDateTimeOriginal;
    begin
-      -- Regex Match des EXIF Datums mit dem Parameter-Date-Pattern
-      return Boolean'(GNAT.Regpat.Match(Expression => This.all.params.getDatePattern, Data => date(date'First..date'First+9)));
+      -- Shortcut falls Standardwert verwendet wird
+      if This.all.params.flagDatePattern = False then
+         return True;
+      end if;
+
+      -- Eigentlicher Filter
+      declare
+         exif_tmp: access EXIFParsers.EXIFParser := exif;
+         date: String := exif_tmp.getDateTimeOriginal;
+      begin
+         -- Regex Match des EXIF Datums mit dem Parameter-Date-Pattern
+         return Boolean'(GNAT.Regpat.Match(Expression => This.all.params.getDatePattern, Data => date(date'First..date'First+9)));
+
+      -- Fehler behandeln
+      exception
+         -- EXIF-Tag existiert nicht
+         when E: EXIFParsers.TagNotFound =>
+            return False;
+
+         -- Alle anderen Fehler
+         when E: others =>
+            return False;
+      end;
    end applyThis;
 
 end DatePatternFilters;

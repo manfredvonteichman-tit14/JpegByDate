@@ -12,6 +12,7 @@ project JpegByDate is
    end Ide;
 
    package Compiler is
+      for Default_Switches ("ada") use ("-O3");
    end Compiler;
 
    package Builder is

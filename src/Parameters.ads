@@ -43,12 +43,21 @@ package Parameters is
    function getMinHeight(This: access Parameter) return Natural;
    function getMaxHeight(This: access Parameter) return Natural;
 
+   -- Flags abfragen
+   function flagPath(This: access Parameter) return Boolean;
+   function flagFileSize(This: access Parameter) return Boolean;
+   function flagDatePattern(This: access Parameter) return Boolean;
+   function flagDateRange(This: access Parameter) return Boolean;
+   function flagTimePattern(This: access Parameter) return Boolean;
+   function flagTimeRange(This: access Parameter) return Boolean;
+   function flagImageSize(This: access Parameter) return Boolean;
+
 private
    -- Objektvariablen
    type Parameter is tagged
       record
          -- Vorinitialisiert, werden immer verwendet
-         path: Ada.Strings.Unbounded.Unbounded_String;
+         path: Ada.Strings.Unbounded.Unbounded_String := Ada.Strings.Unbounded.To_Unbounded_String(Globals.defaultPath);
          datePattern: String(1..10) := Globals.defaultDate;
          minFileSize: Natural := Globals.minFileSize;
          maxFileSize: Natural := Globals.maxFileSize;
@@ -61,6 +70,15 @@ private
          maxWidth: Natural := Globals.maxWidth;
          minHeight: Natural := Globals.minHeight;
          maxHeight: Natural := Globals.maxHeight;
+
+         -- Für Filter default Werte
+         Flag_path: Boolean := False;
+         Flag_fileSize: Boolean := False;
+         Flag_datePattern: Boolean := False;
+         Flag_dateRange: Boolean := False;
+         Flag_timePattern: Boolean := False;
+         Flag_timeRange: Boolean := False;
+         Flag_imageSize: Boolean := False;
       end record;
 
 end Parameters;

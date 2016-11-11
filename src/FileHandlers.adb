@@ -54,7 +54,7 @@ package body FileHandlers is
                -- Bild erstellen
                picture := Pictures.create(Ada.Strings.Unbounded.To_String(str), buffer);
 
-               -- Bildnamen und Pfad anzeigen wenn Bedingungen erfüllt werden
+               -- Bildnamen und Pfad anzeigen wenn Bedingungen erfüllt werden und EXIF Informationen vorhanden sind
                if picture.hasEXIF then
                      -- EXIF Filter anwenden
                      if This.all.filter.apply(EXIFParsers.EXIFParser_Access(picture.getEXIF)) then
@@ -118,7 +118,7 @@ package body FileHandlers is
          File_String_IO.open(file, File_String_IO.In_File, name);
          File_String_IO.Read(file, buf);
          File_String_IO.Close(file);
-         Ada.Strings.Unbounded.Append(buffer, buf);
+         buffer := Ada.Strings.Unbounded.To_Unbounded_String(buf);
          return Integer(size);
       end;
 
