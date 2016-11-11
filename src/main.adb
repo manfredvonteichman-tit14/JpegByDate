@@ -2,6 +2,7 @@
 with Inputs;
 with CommandlineParsers;
 with DatePatternFilters;
+with DateRangeFilters;
 with EXIFFilters;
 with FileFilters;
 with FileExtensionFilters;
@@ -26,8 +27,11 @@ begin
    output.display("DEBUG OUTPUT - minFileSize: " & Natural'Image(input.getParams.getMinFileSize));
    output.display("DEBUG OUTPUT - maxFileSize: " & Natural'Image(input.getParams.getMaxFileSize));
 
-   -- EXIF Filter anlegen
+   -- EXIF Filter anlegen nach Eingabeparametern
    efilter := DatePatternFilters.createP(input.getParams);
+   if input.getParams.flagDateRange = True then
+      efilter.addNew(DateRangeFilters.createP(input.getParams));
+   end if;
 
    -- Dateien Auflisten und Filtern vorbereiten
    files := FilesystemListers.create(input.getParams, ffilter);

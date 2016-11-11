@@ -5,7 +5,8 @@
 package Globals is
 
    -- Konstanten Definition
-   regexPatternDateWithWildcards: constant String := "[0-9?]{4}-[0-9?]{2}-[0-9?]{2}";
+   regexPatternDateWithWildcards: constant String := "[0-9?]{4}-[0-9?]{2}-[0-9?]{2}$";
+   regexPatternDateRange: constant String := "[0-9]{4}-[0-9]{2}-[0-9]{2}_[0-9]{4}-[0-9]{2}-[0-9]{2}$";
    regexPatternFiletype: constant String := ".*\.(jpg|jpeg|jpe|jfif)$";
    defaultDate: constant String := "....:..:.."; -- beliebiges Datum (Regex Pattern)
    defaultPath: constant String := "."; -- aktuelles Ausfuehrungsverzeichnis
@@ -13,7 +14,7 @@ package Globals is
    maxFileSize: constant Natural := Natural'Last;
 
    -- Kommandozeilenparameter
-   CommandLine: constant String := "d: -minSize= -maxSize=";
+   CommandLine: constant String := "d: -minSize= -maxSize= -dateRange=";
 
    -- EXIF-Tags
    package exif is

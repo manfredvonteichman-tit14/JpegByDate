@@ -36,6 +36,11 @@ package body Parameters is
    begin
       This.all.maxFileSize := maxFileSize;
    end setMaxFileSize;
+   procedure setDateRange(This: access Parameter; dateRange: String) is
+   begin
+      This.all.dateRange := dateRange;
+      This.all.dateRange_Flag := True;
+   end setDateRange;
 
    -- Werte abfragen
    function getPath(This: access Parameter) return String is
@@ -54,5 +59,15 @@ package body Parameters is
    begin
       return This.all.maxFileSize;
    end getMaxFileSize;
+   function getDateRange(This: access Parameter) return String is
+   begin
+      return This.all.dateRange;
+   end getDateRange;
+
+   -- Flags abfragen
+   function flagDateRange(This: access Parameter) return Boolean is
+   begin
+      return This.all.dateRange_Flag;
+   end flagDateRange;
 
 end Parameters;

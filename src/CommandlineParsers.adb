@@ -44,8 +44,8 @@ package body CommandlineParsers is
             case GNAT.Command_Line.Getopt(Globals.CommandLine) is
             -- Schöner wäre es die Parameter als Konstanten zu definieren, ist aber nciht ohne weiteres möglich
             when 'd' =>
-               -- Regulaerer Ausdruck fuer ISO Date Pattern Matching
-               -- Pruefen ob das eingegebene Datum einem Datum mit Wildcards der Form
+               -- Regulärer Ausdruck für ISO Date Pattern Matching
+               -- Prüfen ob das eingegebene Datum einem Datum mit Wildcards der Form
                -- 2016-01-?? entspricht.
                if Boolean'(GNAT.Regpat.Match(Expression => Globals.regexPatternDateWithWildcards, Data => GNAT.Command_Line.Parameter)) then
                   -- Ersetze die Fragezeichen (CLI-Wildcards) mit Punkten (Regex-Wildcards) und Bindestriche durch Doppelpunkte (EXIF Trennzeichen)
@@ -62,6 +62,14 @@ package body CommandlineParsers is
                elsif GNAT.Command_Line.Full_Switch = "-maxSize" then
                   -- Maximum-Dateigröße
                   This.all.parameters.setMaxFileSize(Natural'Value(GNAT.Command_Line.Parameter));
+               elsif GNAT.Command_Line.Full_Switch = "-dateRange" then
+                  -- Regulärer Ausdruck für ISO Date Pattern Bereich
+                  -- Prüfen ob das eingegebene Datum einem Datumsbereich entspricht
+                  if Boolean'(GNAT.Regpat.Match(Expression => Globals.regexPatternDateRange, Data => GNAT.Command_Line.Parameter)) then
+                     This.all.parameters.setDateRange(GNAT.Command_Line.Parameter);
+                  else
+                     raise Constraint_Error with "Invalid date-range format!";
+                  end if;
                end if;
             when others =>
                exit;
