@@ -12,6 +12,7 @@ package Globals is
    regexPatternFiletype: constant String := ".*\.(jpg|jpeg|jpe|jfif)$";
    defaultDate: constant String := "....:..:.."; -- beliebiges Datum (Regex Pattern)
    defaultPath: constant String := "."; -- aktuelles Ausfuehrungsverzeichnis
+   pathRecursionEnabled: constant Boolean := False;
    minFileSize: constant Natural := Natural'First;
    maxFileSize: constant Natural := Natural'Last;
    defaultStartDate: constant String := "0000-01-01";

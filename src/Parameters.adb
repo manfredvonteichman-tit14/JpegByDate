@@ -25,6 +25,11 @@ package body Parameters is
       This.all.path := Ada.Strings.Unbounded.To_Unbounded_String(path);
       This.all.Flag_path := True;
    end setPath;
+   procedure setPathRecursion(This: access Parameter; recursive: Boolean) is
+   begin
+      This.all.pathRecursion := recursive;
+      This.all.Flag_pathRecursion := True;
+   end setPathRecursion;
    procedure setDatePattern(This: access Parameter; datePattern: String) is
    begin
       This.all.datePattern := datePattern;
@@ -91,6 +96,10 @@ package body Parameters is
    begin
       return Ada.Strings.Unbounded.To_String(This.all.path);
    end getPath;
+   function getPathRecursion(This: access Parameter) return Boolean is
+   begin
+      return This.all.pathRecursion;
+   end getPathRecursion;
    function getDatePattern(This: access Parameter) return String is
    begin
       return This.all.datePattern;
@@ -145,6 +154,10 @@ package body Parameters is
    begin
       return This.all.Flag_path;
    end flagPath;
+   function flagPathRecursion(This: access Parameter) return Boolean is
+   begin
+      return This.all.Flag_pathRecursion;
+   end flagPathRecursion;
    function flagFileSize(This: access Parameter) return Boolean is
    begin
       return This.all.Flag_fileSize;

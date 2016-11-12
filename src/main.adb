@@ -26,6 +26,8 @@ procedure Main is
 begin
    -- Eingabe verarbeiten
    input.parse(output);
+   output.display("DEBUG OUTPUT - Path: " & input.getParams.getPath);
+   output.display("DEBUG OUTPUT - PathRecursionEnabled: " & Boolean'Image(input.getParams.getPathRecursion));
    output.display("DEBUG OUTPUT - DatePattern: " & input.getParams.getDatePattern);
    output.display("DEBUG OUTPUT - DateRangeStart: " & input.getParams.getDateRangeStart);
    output.display("DEBUG OUTPUT - DateRangeFinish: " & input.getParams.getDateRangeFinish);

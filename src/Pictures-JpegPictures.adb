@@ -130,6 +130,7 @@ package body Pictures.JpegPictures is
       elsif Ada.Strings.Unbounded.Element(buffer, Ada.Strings.Unbounded.Length(buffer) - 1) /= Character'Val(16#FF#) or
         Ada.Strings.Unbounded.Element(buffer, Ada.Strings.Unbounded.Length(buffer) - 0) /= Character'Val(16#D9#) then
          -- Dateiende entspricht nicht JFIF EOI
+         --> Möglicherweise problematisch, FFD9 muss nicht am Dateiende sein...
          return False;
       elsif Ada.Strings.Unbounded.Element(buffer, 3) = Character'Val(16#FF#) and
         Ada.Strings.Unbounded.Element(buffer, 4) = Character'Val(16#DB#) then

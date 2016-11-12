@@ -6,11 +6,14 @@ package body FilesystemListers is
 
    -- Konstruktor
    function create(params: access Parameters.Parameter; filter: access FileFilters.Filter'Class) return access FilesystemLister is
+   begin
+      return create(params, params.getPath, filter);
+   end create;
+   function create(params: access Parameters.Parameter; path: String; filter: access FileFilters.Filter'Class) return access FilesystemLister is
       lister: access FilesystemLister := new FilesystemLister;
    begin
-      lister.all.minFileSize := params.getMinFileSize;
-      lister.all.maxFileSize := params.getMaxFileSize;
-      lister.init(params.getPath, filter);
+      lister.all.params := params;
+      lister.init(path, filter);
       return lister;
    end create;
 
@@ -20,6 +23,11 @@ package body FilesystemListers is
       procedure Free is new Ada.Unchecked_Deallocation(FilesystemLister, type_access);
       obj: type_access := type_access(This);
    begin
+      -- interne Variablen löschen
+      if This.all.subLister /= null then
+         This.all.subLister.destroy;
+      end if;
+
       -- Suche beenden
       Ada.Directories.End_Search(Search => This.all.FilesystemSearch);
 
@@ -37,7 +45,7 @@ package body FilesystemListers is
    function next(This: access FilesystemLister) return String is
       next_str: Ada.Strings.Unbounded.Unbounded_String;
    begin
-      if This.all.hasNextMatch then
+      if This.all.hasNextMatch = True then
          -- Wenn es ein weiteres Element gibt, dieses zurück geben
          next_str := This.all.nextMatch;
          This.parseNext;
@@ -50,15 +58,17 @@ package body FilesystemListers is
 
    -- Initialisierungsfunktion
    procedure init(This: access FilesystemLister; path: String; filter: access FileFilters.Filter'Class) is
-      dFilter: constant Ada.Directories.Filter_Type := (Ada.Directories.Ordinary_File => True,
-                                                        Ada.Directories.Special_File  => False,
-                                                        Ada.Directories.Directory     => False);
+      dFilter: Ada.Directories.Filter_Type;
    begin
+      -- Filter anlegen
+      if This.all.params.getPathRecursion = True then
+         dFilter := (Ada.Directories.Ordinary_File => True, Ada.Directories.Special_File => False, Ada.Directories.Directory => True);
+      else
+         dFilter := (Ada.Directories.Ordinary_File => True, Ada.Directories.Special_File => False, Ada.Directories.Directory => False);
+      end if;
+
       -- Verzeichnis Durchsuchen initialisieren
-      Ada.Directories.Start_Search(Search    => This.all.FilesystemSearch,
-                                   Directory => path,
-                                   Pattern   => "",
-                                   Filter    => dFilter);
+      Ada.Directories.Start_Search(Search => This.all.FilesystemSearch, Directory => path, Pattern => "", Filter => dFilter);
       This.all.filter := filter;
       This.parseNext;
 
@@ -86,23 +96,64 @@ package body FilesystemListers is
       filesize: Natural;
    begin
       -- Nur durchführen, wenn beim letzten mal noch Matches gefunden wurden
-      if This.all.hasNextMatch then
+      if This.all.hasNextMatch = True then
+         -- Zunächst Unterverzeichnisse abfragen
+         if This.all.subLister /= null then
+            -- Aktuelle Verarbeitung im Unterverzeichnis
+            if This.all.subLister.hasNext = True then
+               -- Eintrag aus Unterverzeeichnis kopieren
+               This.all.nextMatch := Ada.Strings.Unbounded.To_Unbounded_String(This.all.subLister.next);
+               This.all.hasNextMatch := True;
+               return; -- Abbrechen bei neuem Match aus Unterverzeichnis
+            else
+               -- Unterverzeichnis ist fertig
+               This.all.subLister.destroy;
+               This.all.subLister := null;
+            end if;
+         end if;
+
          -- Directory durchsuchen
          while Ada.Directories.More_Entries(Search => This.all.FilesystemSearch) loop
             -- Nächsten Eintrag auslesen
             Ada.Directories.Get_Next_Entry(Search => This.all.FilesystemSearch, Directory_Entry => EntryItem);
 
-            -- Dateigröße auslesen
-            filesize := Natural'Val(Ada.Directories.Size(Ada.Directories.Full_Name(EntryItem)));
+            -- Typ überprüfen
+            declare
+               -- Notwendig für Vergleich von Ada.Directories.File_Kind
+               use type Ada.Directories.File_Kind;
+            begin
+               if Ada.Directories.Kind(EntryItem) = Ada.Directories.Directory then
+                  -- Spezialverzeichnisse überprüfen
+                  if Ada.Directories.Simple_Name(EntryItem) /= "." and Ada.Directories.Simple_Name(EntryItem) /= ".." then
+                     -- Unterverzeichnis anlegen
+                     This.all.subLister := create(This.all.params, Ada.Directories.Full_Name(EntryItem), This.all.filter);
 
-            -- Filtern des Eintrages nach Dateigröße und mit einer Regular-Expression
-            if This.all.minFileSize <= filesize and This.all.maxFileSize >= filesize and
-              This.all.filter.apply(Ada.Directories.Full_Name(EntryItem)) then -- Non dispatching Call auf Filter -> Es wird zwangsläufig die Methode der abstrakten Klasse aufgerufen
-               -- Wenn Filter korrekt -> in Liste aufnehmen
-               This.all.nextMatch := Ada.Strings.Unbounded.To_Unbounded_String(Ada.Directories.Full_Name(EntryItem));
-               This.all.hasNextMatch := True;
-               return; -- Abbrechen bei nächstem Match
-            end if;
+                     -- Unterverzeichnis durchsuchen
+                     if This.all.subLister.hasNext = True then
+                        -- Eintrag aus Unterverzeeichnis kopieren
+                        This.all.nextMatch := Ada.Strings.Unbounded.To_Unbounded_String(This.all.subLister.next);
+                        This.all.hasNextMatch := True;
+                        return; -- Abbrechen bei neuem Match aus Unterverzeichnis
+                     else
+                        -- War wohl nix -> Unterverzeichnis enthält keine gesuchten Dateien
+                        This.all.subLister.destroy;
+                        This.all.subLister := null;
+                     end if;
+                  end if;
+               else
+                  -- Dateigröße auslesen
+                  filesize := Natural'Val(Ada.Directories.Size(Ada.Directories.Full_Name(EntryItem)));
+
+                  -- Filtern des Eintrages nach Dateigröße und mit einer Regular-Expression
+                  if This.all.params.getMinFileSize <= filesize and This.all.params.getMaxFileSize >= filesize and
+                    This.all.filter.apply(Ada.Directories.Full_Name(EntryItem)) then -- Non dispatching Call auf Filter -> Es wird zwangsläufig die Methode der abstrakten Klasse aufgerufen
+                                                                                  -- Wenn Filter korrekt -> in Liste aufnehmen
+                     This.all.nextMatch := Ada.Strings.Unbounded.To_Unbounded_String(Ada.Directories.Full_Name(EntryItem));
+                     This.all.hasNextMatch := True;
+                     return; -- Abbrechen bei nächstem Match
+                  end if;
+               end if;
+            end;
          end loop;
 
          -- Keinen weiteren Eintrag gefunden

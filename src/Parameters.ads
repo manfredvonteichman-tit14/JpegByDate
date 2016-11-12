@@ -15,6 +15,7 @@ package Parameters is
 
    -- Werte setzen
    procedure setPath(This: access Parameter; path: String);
+   procedure setPathRecursion(This: access Parameter; recursive: Boolean);
    procedure setDatePattern(This: access Parameter; datePattern: String);
    procedure setMinFileSize(This: access Parameter; minFileSize: Natural);
    procedure setMaxFileSize(This: access Parameter; maxFileSize: Natural);
@@ -30,6 +31,7 @@ package Parameters is
 
    -- Werte abfragen
    function getPath(This: access Parameter) return String;
+   function getPathRecursion(This: access Parameter) return Boolean;
    function getDatePattern(This: access Parameter) return String;
    function getMinFileSize(This: access Parameter) return Natural;
    function getMaxFileSize(This: access Parameter) return Natural;
@@ -45,6 +47,7 @@ package Parameters is
 
    -- Flags abfragen
    function flagPath(This: access Parameter) return Boolean;
+   function flagPathRecursion(This: access Parameter) return Boolean;
    function flagFileSize(This: access Parameter) return Boolean;
    function flagDatePattern(This: access Parameter) return Boolean;
    function flagDateRange(This: access Parameter) return Boolean;
@@ -58,6 +61,7 @@ private
       record
          -- Vorinitialisiert, werden immer verwendet
          path: Ada.Strings.Unbounded.Unbounded_String := Ada.Strings.Unbounded.To_Unbounded_String(Globals.defaultPath);
+         pathRecursion: Boolean := Globals.pathRecursionEnabled;
          datePattern: String(1..10) := Globals.defaultDate;
          minFileSize: Natural := Globals.minFileSize;
          maxFileSize: Natural := Globals.maxFileSize;
@@ -73,6 +77,7 @@ private
 
          -- Für Filter default Werte
          Flag_path: Boolean := False;
+         Flag_pathRecursion: Boolean := False;
          Flag_fileSize: Boolean := False;
          Flag_datePattern: Boolean := False;
          Flag_dateRange: Boolean := False;
