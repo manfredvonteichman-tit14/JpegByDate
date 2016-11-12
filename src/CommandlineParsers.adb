@@ -61,6 +61,9 @@ package body CommandlineParsers is
                else
                   raise Constraint_Error with "Invalid time format!";
                end if;
+            when 'r' =>
+               -- Rekursiven Durchlauf aktivieren
+               This.all.parameters.setPathRecursion(True);
             when '-' =>
                -- Lange Switches
                if GNAT.Command_Line.Full_Switch = "-minSize" then
