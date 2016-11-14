@@ -3,9 +3,10 @@ project JpegByDate is
    for Object_Dir use "./../bin";
    for Main use ("main.adb");
    for Source_Files use ("CommandlineParsers.adb", "CommandlineParsers.ads", "ConsoleOutputs.adb", "ConsoleOutputs.ads", "DatePatternFilters.adb", "DatePatternFilters.ads", "DateRangeFilters.adb", "DateRangeFilters.ads", "EXIFFilters.ads", 
-      "EXIFParsers.adb", "EXIFParsers.ads", "FileExtensionFilters.adb", "FileExtensionFilters.ads", "FileFilters.ads", "FileHandlers.adb", "FileHandlers.ads", "FileListers.ads", "FilesystemListers.adb", "FilesystemListers.ads", "Filters.adb", 
-      "Filters.ads", "globals.ads", "ImageSizeFilters.adb", "ImageSizeFilters.ads", "Inputs.ads", "main.adb", "Outputs.ads", "Parameters.adb", "Parameters.ads", "Pictures-JpegPictures.adb", "Pictures-JpegPictures.ads", 
-      "Pictures-TiffPictures.adb", "Pictures-TiffPictures.ads", "Pictures.adb", "Pictures.ads", "TimePatternFilters.adb", "TimePatternFilters.ads", "TimeRangeFilters.adb", "TimeRangeFilters.ads");
+      "EXIFParsers.adb", "EXIFParsers.ads", "FileExtensionFilters.adb", "FileExtensionFilters.ads", "FileFilters.ads", "FileHandlers.adb", "FileHandlers.ads", "FileListers.ads", "FileNameFilters.adb", "FileNameFilters.ads", 
+      "FilesystemListers.adb", "FilesystemListers.ads", "Filters.adb", "Filters.ads", "globals.ads", "ImageSizeFilters.adb", "ImageSizeFilters.ads", "Inputs.ads", "main.adb", "Outputs.ads", "Parameters.adb", "Parameters.ads", 
+      "Pictures-JpegPictures.adb", "Pictures-JpegPictures.ads", "Pictures-TiffPictures.adb", "Pictures-TiffPictures.ads", "Pictures.adb", "Pictures.ads", "TimePatternFilters.adb", "TimePatternFilters.ads", "TimeRangeFilters.adb", 
+      "TimeRangeFilters.ads");
 
    package Ide is
       for Vcs_Kind use "Git";

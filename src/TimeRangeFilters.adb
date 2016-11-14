@@ -5,17 +5,12 @@ with Ada.Unchecked_Deallocation;
 package body TimeRangeFilters is
 
    -- Konstruktor
-   function create return access TimeRangeFilter is
-   begin
-      raise Constraint_Error with "Missing Parameters!";
-      return null;
-   end create;
-   function createP(params: access Parameters.Parameter) return access TimeRangeFilter is
+   function create(params: access Parameters.Parameter) return access TimeRangeFilter is
       filter: access TimeRangeFilter := new TimeRangeFilter;
    begin
       filter.all.params := params;
       return filter;
-   end createP;
+   end create;
 
    -- Destruktor
    procedure destroy(This: access TimeRangeFilter; destroy_chain: Boolean := False) is

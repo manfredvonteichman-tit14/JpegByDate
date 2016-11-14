@@ -6,17 +6,12 @@ with GNAT.Regpat;
 package body ImageSizeFilters is
 
    -- Konstruktor
-   function create return access ImageSizeFilter is
-   begin
-      raise Constraint_Error with "Missing Parameters!";
-      return null;
-   end create;
-   function createP(params: access Parameters.Parameter) return access ImageSizeFilter is
+   function create(params: access Parameters.Parameter) return access ImageSizeFilter is
       filter: access ImageSizeFilter := new ImageSizeFilter;
    begin
       filter.all.params := params;
       return filter;
-   end createP;
+   end create;
 
    -- Destruktor
    procedure destroy(This: access ImageSizeFilter; destroy_chain: Boolean := False) is

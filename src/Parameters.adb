@@ -30,6 +30,16 @@ package body Parameters is
       This.all.pathRecursion := recursive;
       This.all.Flag_pathRecursion := True;
    end setPathRecursion;
+   procedure setFilePattern(This: access Parameter; pattern: String) is
+   begin
+      This.all.filePattern := Ada.Strings.Unbounded.To_Unbounded_String(pattern);
+      This.all.Flag_filePattern := True;
+   end setFilePattern;
+   procedure setFileExtensionPattern(This: access Parameter; pattern: String) is
+   begin
+      This.all.fileExtensionPattern := Ada.Strings.Unbounded.To_Unbounded_String(pattern);
+      This.all.Flag_fileExtensionPattern := True;
+   end setFileExtensionPattern;
    procedure setDatePattern(This: access Parameter; datePattern: String) is
    begin
       This.all.datePattern := datePattern;
@@ -100,6 +110,14 @@ package body Parameters is
    begin
       return This.all.pathRecursion;
    end getPathRecursion;
+   function getFilePattern(This: access Parameter) return String is
+   begin
+      return Ada.Strings.Unbounded.To_String(This.all.filePattern);
+   end getFilePattern;
+   function getFileExtensionPattern(This: access Parameter) return String is
+   begin
+      return Ada.Strings.Unbounded.To_String(This.all.fileExtensionPattern);
+   end getFileExtensionPattern;
    function getDatePattern(This: access Parameter) return String is
    begin
       return This.all.datePattern;
@@ -158,6 +176,14 @@ package body Parameters is
    begin
       return This.all.Flag_pathRecursion;
    end flagPathRecursion;
+   function flagFilePattern(This: access Parameter) return Boolean is
+   begin
+      return This.all.Flag_filePattern;
+   end flagFilePattern;
+   function flagFileExtensionPattern(This: access Parameter) return Boolean is
+   begin
+      return This.all.Flag_fileExtensionPattern;
+   end flagFileExtensionPattern;
    function flagFileSize(This: access Parameter) return Boolean is
    begin
       return This.all.Flag_fileSize;

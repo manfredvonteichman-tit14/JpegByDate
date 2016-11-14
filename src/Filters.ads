@@ -1,5 +1,5 @@
 -- Verwendete Packages
---> NONE
+with Parameters;
 
 -- Filter Interface
 generic
@@ -10,7 +10,7 @@ package Filters is
    type Filter is abstract tagged private;
 
    -- Interfacefunktionen
-   function create return access Filter is abstract;
+   function create(params: access Parameters.Parameter) return access Filter is abstract;
    procedure destroy(This: access Filter; destroy_chain: Boolean := False) is abstract;
 
    -- Filter anwenden

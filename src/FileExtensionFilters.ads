@@ -1,16 +1,15 @@
 -- Verwendete Packages
-with Globals;
 with FileFilters;
-with GNAT.Regpat;
+with Parameters;
 
 -- Package für Filtermodul
 package FileExtensionFilters is
 
    -- Typ anlegen
-   type FileExtensionFilter is new FileFilters.Filter with null record;
+   type FileExtensionFilter is new FileFilters.Filter with private;
 
    -- Konstruktor
-   overriding function create return access FileExtensionFilter;
+   overriding function create(params: access Parameters.Parameter) return access FileExtensionFilter;
    -- Destruktor
    overriding procedure destroy(This: access FileExtensionFilter; destroy_chain: Boolean := False);
 
@@ -18,7 +17,10 @@ package FileExtensionFilters is
    overriding function applyThis(This: access FileExtensionFilter; str: String) return Boolean;
 
 private
-   -- Regex vorbereiten fuer Dateiendungen
-   compiledFiletypeRegex: constant GNAT.Regpat.Pattern_Matcher := GNAT.Regpat.Compile(Globals.regexPatternFiletype);
+   -- Objektvariablen
+   type FileExtensionFilter is new FileFilters.Filter with
+      record
+         params: access Parameters.Parameter := null; -- extern
+      end record;
 
 end FileExtensionFilters;

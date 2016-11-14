@@ -1,13 +1,16 @@
 -- Verwendete Packages
 with Ada.Unchecked_Deallocation;
+with GNAT.Regpat;
 
 -- Package für Filtermodul
 package body FileExtensionFilters is
 
    -- Konstruktor
-   function create return access FileExtensionFilter is
+   function create(params: access Parameters.Parameter) return access FileExtensionFilter is
+      filter: access FileExtensionFilter := new FileExtensionFilter;
    begin
-      return new FileExtensionFilter;
+      filter.all.params := params;
+      return filter;
    end create;
 
    -- Destruktor
@@ -26,7 +29,7 @@ package body FileExtensionFilters is
    -- private Funktionen
    overriding function applyThis(This: access FileExtensionFilter; str: String) return Boolean is
    begin
-      return Boolean'(GNAT.Regpat.Match(compiledFiletypeRegex, str));
+      return Boolean'(GNAT.Regpat.Match(Expression => This.all.params.getFileExtensionPattern, Data => str));
    end applyThis;
 
 end FileExtensionFilters;

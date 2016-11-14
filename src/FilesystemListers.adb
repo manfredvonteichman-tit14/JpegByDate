@@ -146,7 +146,7 @@ package body FilesystemListers is
 
                   -- Filtern des Eintrages nach Dateigröße und mit einer Regular-Expression
                   if This.all.params.getMinFileSize <= filesize and This.all.params.getMaxFileSize >= filesize and
-                    This.all.filter.apply(Ada.Directories.Full_Name(EntryItem)) then -- Non dispatching Call auf Filter -> Es wird zwangsläufig die Methode der abstrakten Klasse aufgerufen
+                    This.all.filter.apply(Ada.Directories.Simple_Name(EntryItem)) then -- Non dispatching Call auf Filter -> Es wird zwangsläufig die Methode der abstrakten Klasse aufgerufen
                                                                                   -- Wenn Filter korrekt -> in Liste aufnehmen
                      This.all.nextMatch := Ada.Strings.Unbounded.To_Unbounded_String(Ada.Directories.Full_Name(EntryItem));
                      This.all.hasNextMatch := True;

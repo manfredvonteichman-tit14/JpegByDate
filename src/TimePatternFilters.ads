@@ -11,8 +11,7 @@ package TimePatternFilters is
    type TimePatternFilter is new EXIFFilters.Filter with private;
 
    -- Konstruktor
-   overriding function create return access TimePatternFilter; -- DO NOT CALL
-   not overriding function createP(params: access Parameters.Parameter) return access TimePatternFilter;
+   overriding function create(params: access Parameters.Parameter) return access TimePatternFilter;
    -- Destruktor
    overriding procedure destroy(This: access TimePatternFilter; destroy_chain: Boolean := False);
 
@@ -23,7 +22,7 @@ private
    -- Objektvariablen
    type TimePatternFilter is new EXIFFilters.Filter with
       record
-         params: access Parameters.Parameter; -- extern
+         params: access Parameters.Parameter := null; -- extern
       end record;
 
 end TimePatternFilters;

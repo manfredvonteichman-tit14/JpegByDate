@@ -11,8 +11,7 @@ package TimeRangeFilters is
    type TimeRangeFilter is new EXIFFilters.Filter with private;
 
    -- Konstruktor
-   overriding function create return access TimeRangeFilter; -- DO NOT CALL
-   not overriding function createP(params: access Parameters.Parameter) return access TimeRangeFilter;
+   overriding function create(params: access Parameters.Parameter) return access TimeRangeFilter;
    -- Destruktor
    overriding procedure destroy(This: access TimeRangeFilter; destroy_chain: Boolean := False);
 
@@ -23,7 +22,7 @@ private
    -- Objektvariablen
    type TimeRangeFilter is new EXIFFilters.Filter with
       record
-         params: access Parameters.Parameter; -- extern
+         params: access Parameters.Parameter := null; -- extern
       end record;
 
 end TimeRangeFilters;

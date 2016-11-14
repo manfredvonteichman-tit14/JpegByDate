@@ -7,6 +7,7 @@ with EXIFFilters;
 with FileFilters;
 with FileExtensionFilters;
 with FileListers;
+with FileNameFilters;
 with FilesystemListers;
 with FileHandlers;
 with ImageSizeFilters;
@@ -19,7 +20,7 @@ with TimeRangeFilters;
 procedure Main is
    input: access Inputs.Input'Class := CommandlineParsers.create;
    efilter: access EXIFFilters.Filter'Class := null;
-   ffilter: access FileFilters.Filter'Class := FileExtensionFilters.create;
+   ffilter: access FileFilters.Filter'Class := null;
    files: access FileListers.FileLister'Class;
    handler: access FileHandlers.FileHandler;
    output: access Outputs.Output'Class := ConsoleOutputs.create;
@@ -28,6 +29,7 @@ begin
    input.parse(output);
    output.display("DEBUG OUTPUT - Path: " & input.getParams.getPath);
    output.display("DEBUG OUTPUT - PathRecursionEnabled: " & Boolean'Image(input.getParams.getPathRecursion));
+   output.display("DEBUG OUTPUT - FileNamePattern: " & input.getParams.getFilePattern);
    output.display("DEBUG OUTPUT - DatePattern: " & input.getParams.getDatePattern);
    output.display("DEBUG OUTPUT - DateRangeStart: " & input.getParams.getDateRangeStart);
    output.display("DEBUG OUTPUT - DateRangeFinish: " & input.getParams.getDateRangeFinish);
@@ -41,12 +43,16 @@ begin
    output.display("DEBUG OUTPUT - minHeight: " & Natural'Image(input.getParams.getMinHeight));
    output.display("DEBUG OUTPUT - maxHeight: " & Natural'Image(input.getParams.getMaxHeight));
 
+   -- Dateinamenfilter anlegen
+   ffilter := FileExtensionFilters.create(input.getParams);
+   ffilter.addNew(FileNameFilters.create(input.getParams));
+
    -- EXIF Filter anlegen nach Eingabeparametern
-   efilter := DatePatternFilters.createP(input.getParams);
-   efilter.addNew(DateRangeFilters.createP(input.getParams));
-   efilter.addNew(TimePatternFilters.createP(input.getParams));
-   efilter.addNew(TimeRangeFilters.createP(input.getParams));
-   efilter.addNew(ImageSizeFilters.createP(input.getParams));
+   efilter := DatePatternFilters.create(input.getParams);
+   efilter.addNew(DateRangeFilters.create(input.getParams));
+   efilter.addNew(TimePatternFilters.create(input.getParams));
+   efilter.addNew(TimeRangeFilters.create(input.getParams));
+   efilter.addNew(ImageSizeFilters.create(input.getParams));
 
    -- Dateien Auflisten und Filtern vorbereiten
    files := FilesystemListers.create(input.getParams, ffilter);

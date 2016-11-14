@@ -11,8 +11,7 @@ package ImageSizeFilters is
    type ImageSizeFilter is new EXIFFilters.Filter with private;
 
    -- Konstruktor
-   overriding function create return access ImageSizeFilter; -- DO NOT CALL
-   not overriding function createP(params: access Parameters.Parameter) return access ImageSizeFilter;
+   overriding function create(params: access Parameters.Parameter) return access ImageSizeFilter;
    -- Destruktor
    overriding procedure destroy(This: access ImageSizeFilter; destroy_chain: Boolean := False);
 
@@ -23,7 +22,7 @@ private
    -- Objektvariablen
    type ImageSizeFilter is new EXIFFilters.Filter with
       record
-         params: access Parameters.Parameter; -- extern
+         params: access Parameters.Parameter := null; -- extern
       end record;
 
 end ImageSizeFilters;

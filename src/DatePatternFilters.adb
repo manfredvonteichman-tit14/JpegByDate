@@ -6,17 +6,12 @@ with GNAT.Regpat;
 package body DatePatternFilters is
 
    -- Konstruktor
-   function create return access DatePatternFilter is
-   begin
-      raise Constraint_Error with "Missing Parameters!";
-      return null;
-   end create;
-   function createP(params: access Parameters.Parameter) return access DatePatternFilter is
+   function create(params: access Parameters.Parameter) return access DatePatternFilter is
       filter: access DatePatternFilter := new DatePatternFilter;
    begin
       filter.all.params := params;
       return filter;
-   end createP;
+   end create;
 
    -- Destruktor
    procedure destroy(This: access DatePatternFilter; destroy_chain: Boolean := False) is

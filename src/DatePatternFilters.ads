@@ -11,8 +11,7 @@ package DatePatternFilters is
    type DatePatternFilter is new EXIFFilters.Filter with private;
 
    -- Konstruktor
-   overriding function create return access DatePatternFilter; -- DO NOT CALL
-   not overriding function createP(params: access Parameters.Parameter) return access DatePatternFilter;
+   overriding function create(params: access Parameters.Parameter) return access DatePatternFilter;
    -- Destruktor
    overriding procedure destroy(This: access DatePatternFilter; destroy_chain: Boolean := False);
 
@@ -23,7 +22,7 @@ private
    -- Objektvariablen
    type DatePatternFilter is new EXIFFilters.Filter with
       record
-         params: access Parameters.Parameter; -- extern
+         params: access Parameters.Parameter := null; -- extern
       end record;
 
 end DatePatternFilters;

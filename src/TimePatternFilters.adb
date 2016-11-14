@@ -6,17 +6,12 @@ with GNAT.Regpat;
 package body TimePatternFilters is
 
    -- Konstruktor
-   function create return access TimePatternFilter is
-   begin
-      raise Constraint_Error with "Missing Parameters!";
-      return null;
-   end create;
-   function createP(params: access Parameters.Parameter) return access TimePatternFilter is
+   function create(params: access Parameters.Parameter) return access TimePatternFilter is
       filter: access TimePatternFilter := new TimePatternFilter;
    begin
       filter.all.params := params;
       return filter;
-   end createP;
+   end create;
 
    -- Destruktor
    procedure destroy(This: access TimePatternFilter; destroy_chain: Boolean := False) is
