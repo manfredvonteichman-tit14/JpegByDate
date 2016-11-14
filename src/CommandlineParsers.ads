@@ -20,6 +20,13 @@ package CommandlineParsers is
    -- Getter Funktionen
    overriding function getParams(This: access CommandlineParser) return access Parameters.Parameter;
 
+   -- EXTERNE KONFIGURATION
+   -- Argument an GNAT exportieren um Vorverarbeitung der Kommandozeile einzuschränken
+   -- Argument Expansion soll nicht durchgeführt werden, d.h. ? und * werden nicht automatisch auf mehrere Dateinamen erweitert
+   -- https://gcc.gnu.org/onlinedocs/gnat_ugn/Disabling-Command-Line-Argument-Expansion.html
+   Do_Argv_Expansion: Integer := 0;
+   pragma Export(C, Do_Argv_Expansion, "__gnat_do_argv_expansion");
+
 private
    -- Objektvariablen
    type CommandlineParser is new Inputs.Input with

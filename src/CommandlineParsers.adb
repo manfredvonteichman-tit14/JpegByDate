@@ -2,6 +2,7 @@
 with Globals;
 with Ada.Strings.Fixed;
 with Ada.Strings.Maps;
+with Ada.Strings.Unbounded;
 with Ada.Unchecked_Deallocation;
 with GNAT.Command_Line;
 with GNAT.Regpat;
@@ -39,7 +40,7 @@ package body CommandlineParsers is
          begin
             -- Verwende UNIX getopts Funktion
             case GNAT.Command_Line.Getopt(Globals.CommandLine) is
-            -- Schöner wäre es die Parameter als Konstanten zu definieren, ist aber nciht ohne weiteres möglich
+            -- Schöner wäre es die Parameter als Konstanten zu definieren, ist aber nicht ohne weiteres möglich
             when 'd' =>
                -- Regulärer Ausdruck für ISO Date Pattern Matching
                -- Prüfen ob das eingegebene Datum einem Datum mit Wildcards der Form
@@ -51,6 +52,67 @@ package body CommandlineParsers is
                else
                   raise Constraint_Error with "Invalid date format!";
                end if;
+            when 'f' =>
+               -- Dateinamen Pattern abspeichern
+               declare
+                  input: String := GNAT.Command_Line.Parameter;
+                  I: Integer := input'First;
+                  -- Ausgabestring mit Zeilenanfang initialisieren
+                  output: Ada.Strings.Unbounded.Unbounded_String := Ada.Strings.Unbounded.To_Unbounded_String("^");
+               begin
+                  -- Regex aufbauen
+                  for I in input'Range loop
+                     -- Spezielle Platzhalter verarbeiten
+                     if input(I) = '.' then
+                        Ada.Strings.Unbounded.Append(output, "\.");
+                     elsif input(I) = '?' then
+                        Ada.Strings.Unbounded.Append(output, ".");
+                     elsif input(I) = '*' then
+                        Ada.Strings.Unbounded.Append(output, ".*");
+                     -- Regex spezifische Zeichen escapen
+                     elsif input(I) = '(' then
+                        Ada.Strings.Unbounded.Append(output, "\(");
+                     elsif input(I) = ')' then
+                        Ada.Strings.Unbounded.Append(output, "\)");
+                     elsif input(I) = '[' then
+                        Ada.Strings.Unbounded.Append(output, "\[");
+                     elsif input(I) = ']' then
+                        Ada.Strings.Unbounded.Append(output, "\]");
+                     elsif input(I) = '{' then
+                        Ada.Strings.Unbounded.Append(output, "\{");
+                     elsif input(I) = '}' then
+                        Ada.Strings.Unbounded.Append(output, "\}");
+                     elsif input(I) = '\' then
+                        Ada.Strings.Unbounded.Append(output, "\\");
+                     elsif input(I) = '^' then
+                        Ada.Strings.Unbounded.Append(output, "\^");
+                     elsif input(I) = '$' then
+                        Ada.Strings.Unbounded.Append(output, "\$");
+                     elsif input(I) = '+' then
+                        Ada.Strings.Unbounded.Append(output, "\+");
+                     elsif input(I) = '-' then
+                        Ada.Strings.Unbounded.Append(output, "\-");
+                     elsif input(I) = '?' then
+                        Ada.Strings.Unbounded.Append(output, "\?");
+                     elsif input(I) = '&' then
+                        Ada.Strings.Unbounded.Append(output, "\&");
+                     elsif input(I) = '<' then
+                        Ada.Strings.Unbounded.Append(output, "\<");
+                     elsif input(I) = '>' then
+                        Ada.Strings.Unbounded.Append(output, "\>");
+                     elsif input(I) = '|' then
+                        Ada.Strings.Unbounded.Append(output, "\|");
+                     -- Keine spezielle Vearbeitung -> Character kopieren
+                     else
+                        Ada.Strings.Unbounded.Append(output, input(I));
+                     end if;
+                  end loop;
+                  -- Zeilenende hinzufügen
+                  Ada.Strings.Unbounded.Append(output, "$");
+
+                  -- Pattern abspeichern
+                  This.all.parameters.setFilePattern(Ada.Strings.Unbounded.To_String(output));
+               end;
             when 't' =>
                -- Prüfen ob die eingegebene Zeit dem richtigen Format entspricht
                -- 22:??:01
@@ -114,6 +176,9 @@ package body CommandlineParsers is
                elsif GNAT.Command_Line.Full_Switch = "-maxHeight" then
                   -- Maximalbreite
                   This.all.parameters.setMaxHeight(Natural'Value(GNAT.Command_Line.Parameter));
+               elsif GNAT.Command_Line.Full_Switch = "-fileRegex" then
+                  -- Vollständige Regex für Dateinamensfilter
+                  This.all.parameters.setFilePattern(GNAT.Command_Line.Parameter);
                end if;
             when others =>
                exit;
