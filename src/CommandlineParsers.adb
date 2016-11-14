@@ -113,6 +113,12 @@ package body CommandlineParsers is
                   -- Pattern abspeichern
                   This.all.parameters.setFilePattern(Ada.Strings.Unbounded.To_String(output));
                end;
+            when 'p' =>
+               -- Suchort auswählen und speichern
+               This.all.parameters.setPath(GNAT.Command_Line.Parameter);
+            when 'r' =>
+               -- Rekursiven Durchlauf aktivieren
+               This.all.parameters.setPathRecursion(True);
             when 't' =>
                -- Prüfen ob die eingegebene Zeit dem richtigen Format entspricht
                -- 22:??:01
@@ -123,9 +129,6 @@ package body CommandlineParsers is
                else
                   raise Constraint_Error with "Invalid time format!";
                end if;
-            when 'r' =>
-               -- Rekursiven Durchlauf aktivieren
-               This.all.parameters.setPathRecursion(True);
             when '-' =>
                -- Lange Switches
                if GNAT.Command_Line.Full_Switch = "-minSize" then

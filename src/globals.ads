@@ -27,7 +27,7 @@ package Globals is
    maxHeight: constant Natural := Natural'Last;
 
    -- Kommandozeilenparameter
-   CommandLine: constant String := "d: f: t: r -minSize= -maxSize= -startDate= -finDate= -startTime= -finTime= -minWidth= -maxWidth= -minHeight= -maxHeight= -fileRegex=";
+   CommandLine: constant String := "d: f: p: r t: -minSize= -maxSize= -startDate= -finDate= -startTime= -finTime= -minWidth= -maxWidth= -minHeight= -maxHeight= -fileRegex=";
 
    -- EXIF-Tags
    package exif is
