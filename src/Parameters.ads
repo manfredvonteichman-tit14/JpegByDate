@@ -18,6 +18,7 @@ package Parameters is
    procedure setPathRecursion(This: access Parameter; recursive: Boolean);
    procedure setFilePattern(This: access Parameter; pattern: String);
    procedure setFileExtensionPattern(This: access Parameter; pattern: String);
+   procedure setFullName(This: access Parameter; fullName: Boolean);
    procedure setDatePattern(This: access Parameter; datePattern: String);
    procedure setMinFileSize(This: access Parameter; minFileSize: Natural);
    procedure setMaxFileSize(This: access Parameter; maxFileSize: Natural);
@@ -36,6 +37,7 @@ package Parameters is
    function getPathRecursion(This: access Parameter) return Boolean;
    function getFilePattern(This: access Parameter) return String;
    function getFileExtensionPattern(This: access Parameter) return String;
+   function getFullName(This: access Parameter) return Boolean;
    function getDatePattern(This: access Parameter) return String;
    function getMinFileSize(This: access Parameter) return Natural;
    function getMaxFileSize(This: access Parameter) return Natural;
@@ -54,6 +56,7 @@ package Parameters is
    function flagPathRecursion(This: access Parameter) return Boolean;
    function flagFilePattern(This: access Parameter) return Boolean;
    function flagFileExtensionPattern(This: access Parameter) return Boolean;
+   function flagFullName(This: access Parameter) return Boolean;
    function flagFileSize(This: access Parameter) return Boolean;
    function flagDatePattern(This: access Parameter) return Boolean;
    function flagDateRange(This: access Parameter) return Boolean;
@@ -70,6 +73,7 @@ private
          pathRecursion: Boolean := Globals.pathRecursionEnabled;
          filePattern: Ada.Strings.Unbounded.Unbounded_String := Ada.Strings.Unbounded.To_Unbounded_String(Globals.filePattern);
          fileExtensionPattern: Ada.Strings.Unbounded.Unbounded_String := Ada.Strings.Unbounded.To_Unbounded_String(Globals.regexPatternFiletype);
+         fullName: Boolean := Globals.defaultName;
          datePattern: String(1..10) := Globals.defaultDate;
          minFileSize: Natural := Globals.minFileSize;
          maxFileSize: Natural := Globals.maxFileSize;
@@ -88,6 +92,7 @@ private
          Flag_pathRecursion: Boolean := False;
          Flag_filePattern: Boolean := False;
          Flag_fileExtensionPattern: Boolean := False;
+         Flag_fullName: Boolean := False;
          Flag_fileSize: Boolean := False;
          Flag_datePattern: Boolean := False;
          Flag_dateRange: Boolean := False;

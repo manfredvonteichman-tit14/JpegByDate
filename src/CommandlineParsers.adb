@@ -41,6 +41,9 @@ package body CommandlineParsers is
             -- Verwende UNIX getopts Funktion
             case GNAT.Command_Line.Getopt(Globals.CommandLine) is
             -- Schöner wäre es die Parameter als Konstanten zu definieren, ist aber nicht ohne weiteres möglich
+            when 'c' =>
+               -- Vollständige Pfadanzeige
+               This.all.parameters.setFullName(True);
             when 'd' =>
                -- Regulärer Ausdruck für ISO Date Pattern Matching
                -- Prüfen ob das eingegebene Datum einem Datum mit Wildcards der Form

@@ -1,11 +1,14 @@
 -- Verwendete Packages
 with EXIFParsers;
+with Globals;
 with Pictures;
 with Ada.Directories;
 with Ada.Direct_IO;
 with Ada.IO_Exceptions;
+with Ada.Strings.Fixed;
 with Ada.Strings.Unbounded;
 with Ada.Unchecked_Deallocation;
+with GNAT.Regpat;
 
 -- Package für FileHandler
 package body FileHandlers is
@@ -14,11 +17,12 @@ package body FileHandlers is
    function readFile(name: String; buffer: out Ada.Strings.Unbounded.Unbounded_String) return Integer;
 
    -- Konstruktor
-   function create(files: access FileListers.FileLister'Class; filter: access EXIFFilters.Filter'Class) return access FileHandler is
+   function create(files: access FileListers.FileLister'Class; filter: access EXIFFilters.Filter'Class; params: access Parameters.Parameter) return access FileHandler is
       handler: access FileHandler := new FileHandler;
    begin
       handler.all.files := files;
       handler.all.filter := filter;
+      handler.all.params := params;
       return handler;
    end create;
 
@@ -57,12 +61,28 @@ package body FileHandlers is
                -- Bildnamen und Pfad anzeigen wenn Bedingungen erfüllt werden und EXIF Informationen vorhanden sind
                if picture.hasEXIF then
                      -- EXIF Filter anwenden
-                     if This.all.filter.apply(EXIFParsers.EXIFParser_Access(picture.getEXIF)) then
+                  if This.all.filter.apply(EXIFParsers.EXIFParser_Access(picture.getEXIF)) then
+                     if This.all.params.getFullName then
+                        -- Name mit vollständigem Pfad ausgeben
                         output.display(picture.getName);
-                        output.display("DEBUG OUTPUT - DateTimeOriginal: " & picture.getEXIF.getDateTimeOriginal);
-                        output.display("DEBUG OUTPUT - ExifImageWidth: " & Integer'Image(picture.getEXIF.getExifImageWidth));
-                        output.display("DEBUG OUTPUT - ExifImageHeight: " & Integer'Image(picture.getEXIF.getExifImageHeight));
+                     else
+                        -- Nur Name ausgeben
+                        declare
+                           name: String := picture.getName;
+                           pos: Natural := GNAT.Regpat.Match(Expression => Globals.regexPatternSimpleName, Data => name);
+                        begin
+                           if pos >= name'First then
+                              output.display(Ada.Strings.Fixed.Replace_Slice(name, name'First, pos-1, ""));
+                           else
+                              -- Im Fehlerfall alles ausgeben
+                              output.display(name);
+                           end if;
+                        end;
                      end if;
+                     output.display("DEBUG OUTPUT - DateTimeOriginal: " & picture.getEXIF.getDateTimeOriginal);
+                     output.display("DEBUG OUTPUT - ExifImageWidth: " & Integer'Image(picture.getEXIF.getExifImageWidth));
+                     output.display("DEBUG OUTPUT - ExifImageHeight: " & Integer'Image(picture.getEXIF.getExifImageHeight));
+                  end if;
                end if;
 
             exception

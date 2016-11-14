@@ -10,10 +10,12 @@ package Globals is
    regexPatternTimeWithWildcards: constant String := "^[0-9?]{2}:[0-9?]{2}:[0-9?]{2}$";
    regexPatternTimeRange: constant String := "^[0-9]{2}:[0-9]{2}:[0-9]{2}$";
    regexPatternFiletype: constant String := ".*\.(jpg|jpeg|jpe|jfif)$";
+   regexPatternSimpleName: constant String := "[^\\/]*$"; -- Dateinamen mit Backslash für Windows und Forwardslash für Linux
    defaultDate: constant String := "....:..:.."; -- beliebiges Datum (Regex Pattern)
    defaultPath: constant String := "."; -- aktuelles Ausfuehrungsverzeichnis
    pathRecursionEnabled: constant Boolean := False;
    filePattern: constant String := ".*";
+   defaultName: constant Boolean := False;
    minFileSize: constant Natural := Natural'First;
    maxFileSize: constant Natural := Natural'Last;
    defaultStartDate: constant String := "0000-01-01";
@@ -27,7 +29,7 @@ package Globals is
    maxHeight: constant Natural := Natural'Last;
 
    -- Kommandozeilenparameter
-   CommandLine: constant String := "d: f: p: r t: -minSize= -maxSize= -startDate= -finDate= -startTime= -finTime= -minWidth= -maxWidth= -minHeight= -maxHeight= -fileRegex=";
+   CommandLine: constant String := "c d: f: p: r t: -minSize= -maxSize= -startDate= -finDate= -startTime= -finTime= -minWidth= -maxWidth= -minHeight= -maxHeight= -fileRegex=";
 
    -- EXIF-Tags
    package exif is

@@ -29,6 +29,7 @@ begin
    input.parse(output);
    output.display("DEBUG OUTPUT - Path: " & input.getParams.getPath);
    output.display("DEBUG OUTPUT - PathRecursionEnabled: " & Boolean'Image(input.getParams.getPathRecursion));
+   output.display("DEBUG OUTPUT - FullFileName: " & Boolean'Image(input.getParams.getFullName));
    output.display("DEBUG OUTPUT - FileNamePattern: " & input.getParams.getFilePattern);
    output.display("DEBUG OUTPUT - DatePattern: " & input.getParams.getDatePattern);
    output.display("DEBUG OUTPUT - DateRangeStart: " & input.getParams.getDateRangeStart);
@@ -58,7 +59,7 @@ begin
    files := FilesystemListers.create(input.getParams, ffilter);
 
    -- Dateien verarbeiten und anzeigen
-   handler := FileHandlers.create(files, efilter);
+   handler := FileHandlers.create(files, efilter, input.getParams);
    handler.exec(output);
 
    -- Aufräumen

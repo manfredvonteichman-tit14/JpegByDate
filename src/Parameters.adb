@@ -40,6 +40,11 @@ package body Parameters is
       This.all.fileExtensionPattern := Ada.Strings.Unbounded.To_Unbounded_String(pattern);
       This.all.Flag_fileExtensionPattern := True;
    end setFileExtensionPattern;
+   procedure setFullName(This: access Parameter; fullName: Boolean) is
+   begin
+      This.all.fullName := fullName;
+      This.all.Flag_fullName := True;
+   end setFullName;
    procedure setDatePattern(This: access Parameter; datePattern: String) is
    begin
       This.all.datePattern := datePattern;
@@ -118,6 +123,10 @@ package body Parameters is
    begin
       return Ada.Strings.Unbounded.To_String(This.all.fileExtensionPattern);
    end getFileExtensionPattern;
+   function getFullName(This: access Parameter) return Boolean is
+   begin
+      return This.all.fullName;
+   end getFullName;
    function getDatePattern(This: access Parameter) return String is
    begin
       return This.all.datePattern;
@@ -184,6 +193,10 @@ package body Parameters is
    begin
       return This.all.Flag_fileExtensionPattern;
    end flagFileExtensionPattern;
+   function flagFullName(This: access Parameter) return Boolean is
+   begin
+      return This.all.Flag_fullName;
+   end flagFullName;
    function flagFileSize(This: access Parameter) return Boolean is
    begin
       return This.all.Flag_fileSize;
