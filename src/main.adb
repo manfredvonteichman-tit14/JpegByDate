@@ -21,8 +21,8 @@ procedure Main is
    input: access Inputs.Input'Class := CommandlineParsers.create;
    efilter: access EXIFFilters.Filter'Class := null;
    ffilter: access FileFilters.Filter'Class := null;
-   files: access FileListers.FileLister'Class;
-   handler: access FileHandlers.FileHandler;
+   files: access FileListers.FileLister'Class := null;
+   handler: access FileHandlers.FileHandler := null;
    output: access Outputs.Output'Class := ConsoleOutputs.create;
 begin
    -- Eingabe verarbeiten
@@ -43,6 +43,11 @@ begin
    output.display("DEBUG OUTPUT - maxWidth: " & Natural'Image(input.getParams.getMaxWidth));
    output.display("DEBUG OUTPUT - minHeight: " & Natural'Image(input.getParams.getMinHeight));
    output.display("DEBUG OUTPUT - maxHeight: " & Natural'Image(input.getParams.getMaxHeight));
+
+   -- Hilfe anzeigen
+   if input.getParams.flagHelp then
+      output.display(input.getParams.getHelp);
+   end if;
 
    -- Dateinamenfilter anlegen
    ffilter := FileExtensionFilters.create(input.getParams);

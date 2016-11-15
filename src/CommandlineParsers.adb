@@ -116,6 +116,9 @@ package body CommandlineParsers is
                   -- Pattern abspeichern
                   This.all.parameters.setFilePattern(Ada.Strings.Unbounded.To_String(output));
                end;
+            when 'h' =>
+               -- Hilfeausgabe aktivieren
+               This.all.parameters.setHelp(True);
             when 'p' =>
                -- Suchort auswählen und speichern
                This.all.parameters.setPath(GNAT.Command_Line.Parameter);

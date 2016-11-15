@@ -105,6 +105,10 @@ package body Parameters is
       This.all.maxHeight := maxHeight;
       This.all.Flag_imageSize := True;
    end setMaxHeight;
+   procedure setHelp(This: access Parameter; enable: Boolean) is
+   begin
+      This.all.Flag_help := enable;
+   end setHelp;
 
    -- Werte abfragen
    function getPath(This: access Parameter) return String is
@@ -175,6 +179,10 @@ package body Parameters is
    begin
       return This.all.maxHeight;
    end getMaxHeight;
+   function getHelp(This: access Parameter) return String is
+   begin
+      return Globals.help_string;
+   end getHelp;
 
    -- Flags abfragen
    function flagPath(This: access Parameter) return Boolean is
@@ -221,5 +229,9 @@ package body Parameters is
    begin
       return This.all.Flag_imageSize;
    end flagImageSize;
+   function flagHelp(This: access Parameter) return Boolean is
+   begin
+      return This.all.Flag_help;
+   end flagHelp;
 
 end Parameters;

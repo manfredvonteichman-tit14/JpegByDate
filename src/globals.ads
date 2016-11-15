@@ -28,8 +28,57 @@ package Globals is
    minHeight: constant Natural := Natural'First;
    maxHeight: constant Natural := Natural'Last;
 
+   -- Hilfetext
+   help_string: constant String :=
+     "JpegByDate is a program to display and filter pictures by EXIF information" & ASCII.LF & ASCII.LF &
+     "Command line switch description:" & ASCII.LF &
+     "-c" & ASCII.LF &
+     "    Display full path and name instead of just the simple name" & ASCII.LF &
+     "-d YYYY-MM-DD" & ASCII.LF &
+     "    Set the date to filter the pictures" & ASCII.LF &
+     "    Allowed are digits and ? as a wildcard" & ASCII.LF &
+     "-f filepattern" & ASCII.LF &
+     "    Specify a pattern to filter filenames" & ASCII.LF &
+     "    Use charcters or * (general wildcard) or ? (single character wildcard)" & ASCII.LF &
+     "-h" & ASCII.LF &
+     "    Display this help text" & ASCII.LF &
+     "-p path" & ASCII.LF &
+     "    Specifiy a path to search for pictures (absolute or relative)" & ASCII.LF &
+     "-r" & ASCII.LF &
+     "    Enable recursive directory search" & ASCII.LF &
+     "-t HH:MM:SS" & ASCII.LF &
+     "    Set the time to filter the pictures" & ASCII.LF &
+     "    Allowed are digits and ? as a wildcard" & ASCII.LF &
+     "--minSize=number" & ASCII.LF &
+     "    Specify the minimum picture filesize" & ASCII.LF &
+     "--maxSize=number" & ASCII.LF &
+     "    Specify the maximum picture filesize" & ASCII.LF &
+     "--minWidth=number" & ASCII.LF &
+     "    Specify the minimum picture width" & ASCII.LF &
+     "--maxWidth=number" & ASCII.LF &
+     "    Specify the maximum picture width" & ASCII.LF &
+     "--minHeight=number" & ASCII.LF &
+     "    Specify the minimum picture height" & ASCII.LF &
+     "--maxHeight=number" & ASCII.LF &
+     "    Specify the maximum picture height" & ASCII.LF &
+     "--startDate=YYYY-MM-DD" & ASCII.LF &
+     "    Set the starting date to filter the pictures" & ASCII.LF &
+     "    Allowed are only digits" & ASCII.LF &
+     "--finDate=YYYY-MM-DD" & ASCII.LF &
+     "    Set the finishing date to filter the pictures" & ASCII.LF &
+     "    Allowed are only digits" & ASCII.LF &
+     "--startTime=HH:MM:SS" & ASCII.LF &
+     "    Set the starting time to filter the pictures" & ASCII.LF &
+     "    Allowed are only digits" & ASCII.LF &
+     "--finTime=HH:MM:SS" & ASCII.LF &
+     "    Set the finishing time to filter the pictures" & ASCII.LF &
+     "    Allowed are only digits" & ASCII.LF &
+     "--fileRegex=regex" & ASCII.LF &
+     "    Specify a pattern to filter filenames" & ASCII.LF &
+     "    Use standard regular expression syntax to set the filter" & ASCII.LF & ASCII.LF;
+
    -- Kommandozeilenparameter
-   CommandLine: constant String := "c d: f: p: r t: -minSize= -maxSize= -startDate= -finDate= -startTime= -finTime= -minWidth= -maxWidth= -minHeight= -maxHeight= -fileRegex=";
+   CommandLine: constant String := "c d: f: h p: r t: -minSize= -maxSize= -startDate= -finDate= -startTime= -finTime= -minWidth= -maxWidth= -minHeight= -maxHeight= -fileRegex=";
 
    -- EXIF-Tags
    package exif is

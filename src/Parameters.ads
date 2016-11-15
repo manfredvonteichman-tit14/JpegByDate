@@ -31,6 +31,7 @@ package Parameters is
    procedure setMaxWidth(This: access Parameter; maxWidth: Natural);
    procedure setMinHeight(This: access Parameter; minHeight: Natural);
    procedure setMaxHeight(This: access Parameter; maxHeight: Natural);
+   procedure setHelp(This: access Parameter; enable: Boolean);
 
    -- Werte abfragen
    function getPath(This: access Parameter) return String;
@@ -50,6 +51,7 @@ package Parameters is
    function getMaxWidth(This: access Parameter) return Natural;
    function getMinHeight(This: access Parameter) return Natural;
    function getMaxHeight(This: access Parameter) return Natural;
+   function getHelp(This: access Parameter) return String;
 
    -- Flags abfragen
    function flagPath(This: access Parameter) return Boolean;
@@ -63,6 +65,7 @@ package Parameters is
    function flagTimePattern(This: access Parameter) return Boolean;
    function flagTimeRange(This: access Parameter) return Boolean;
    function flagImageSize(This: access Parameter) return Boolean;
+   function flagHelp(This: access Parameter) return Boolean;
 
 private
    -- Objektvariablen
@@ -99,6 +102,7 @@ private
          Flag_timePattern: Boolean := False;
          Flag_timeRange: Boolean := False;
          Flag_imageSize: Boolean := False;
+         Flag_help: Boolean := False;
       end record;
 
 end Parameters;
