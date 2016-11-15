@@ -9,7 +9,7 @@ package Globals is
    regexPatternDateRange: constant String := "^[0-9]{4}-[0-9]{2}-[0-9]{2}$";
    regexPatternTimeWithWildcards: constant String := "^[0-9?]{2}:[0-9?]{2}:[0-9?]{2}$";
    regexPatternTimeRange: constant String := "^[0-9]{2}:[0-9]{2}:[0-9]{2}$";
-   regexPatternFiletype: constant String := ".*\.(jpg|jpeg|jpe|jfif|tif|tiff)$";
+   regexPatternFiletype: constant String := ".*\.([Jj][Pp][Gg]|[Jj][Pp][Ee][Gg]|[Jj][Pp][Ee]|[Jj][Ff][Ii][Ff]|[Tt][Ii][Ff]|[Tt][Ii][Ff][Ff])$"; -- case insensitive
    regexPatternSimpleName: constant String := "[^\\/]*$"; -- Dateinamen mit Backslash für Windows und Forwardslash für Linux
    defaultDate: constant String := "....:..:.."; -- beliebiges Datum (Regex Pattern)
    defaultPath: constant String := "."; -- aktuelles Ausfuehrungsverzeichnis

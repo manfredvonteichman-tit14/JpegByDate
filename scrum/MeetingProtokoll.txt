@@ -57,3 +57,12 @@ Sprint Planning Meeting (Sprint 3)
 
 2016-11-11
 "Daily Scrum"
+
+2016-11-14
+"Daily Scrum"
+
+2016-11-15
+Sprint Review
+	- Fortschritt: Sprint 3 erfolgreich (Änderungswünsche erfolgreich umgesetzt, Programmierung allgemein vor Zeitplan)
+	- Probleme bei verschiedenen EXIF Implementationen, nicht alle Dateien entsprechen der Spezifikation (Rücksprache mit Kunden über weiteres Vorgehen notwendig)
+	- Problematik Tests (aktuell nur Konzepte vorhanden -> zukünftig mehr Konzentration auf Testen)

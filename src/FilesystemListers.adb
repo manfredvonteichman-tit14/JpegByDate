@@ -93,7 +93,6 @@ package body FilesystemListers is
    -- Intene Suche nach nächster Datei
    procedure parseNext(This: access FilesystemLister) is
       EntryItem: Ada.Directories.Directory_Entry_Type;
-      filesize: Natural;
    begin
       -- Nur durchführen, wenn beim letzten mal noch Matches gefunden wurden
       if This.all.hasNextMatch = True then
@@ -141,18 +140,15 @@ package body FilesystemListers is
                      end if;
                   end if;
                else
-                  -- Dateigröße auslesen
-                  filesize := Natural'Val(Ada.Directories.Size(Ada.Directories.Full_Name(EntryItem)));
-
                   -- Filtern des Eintrages nach Dateigröße und mit einer Regular-Expression
-                  if This.all.params.getMinFileSize <= filesize and This.all.params.getMaxFileSize >= filesize and
-                    This.all.filter.apply(Ada.Directories.Simple_Name(EntryItem)) then -- Non dispatching Call auf Filter -> Es wird zwangsläufig die Methode der abstrakten Klasse aufgerufen
-                                                                                  -- Wenn Filter korrekt -> in Liste aufnehmen
+                  if This.all.filter.apply(Ada.Directories.Full_Name(EntryItem)) then -- Non dispatching Call auf Filter -> Es wird zwangsläufig die Methode der abstrakten Klasse aufgerufen
+                     -- Wenn Filter korrekt -> in Liste aufnehmen
                      This.all.nextMatch := Ada.Strings.Unbounded.To_Unbounded_String(Ada.Directories.Full_Name(EntryItem));
                      This.all.hasNextMatch := True;
                      return; -- Abbrechen bei nächstem Match
                   end if;
                end if;
+
             end;
          end loop;
 

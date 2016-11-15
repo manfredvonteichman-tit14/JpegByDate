@@ -1,4 +1,6 @@
 -- Verwendete Packages
+with Globals;
+with Ada.Strings.Fixed;
 with Ada.Unchecked_Deallocation;
 with GNAT.Regpat;
 
@@ -28,6 +30,8 @@ package body FileNameFilters is
 
    -- private Funktionen
    overriding function applyThis(This: access FileNameFilter; str: String) return Boolean is
+      -- Dateinamen in gesamten Pfad finden
+      pos: Natural := GNAT.Regpat.Match(Expression => Globals.regexPatternSimpleName, Data => str);
    begin
       -- Shortcut falls Standardwert verwendet wird
       if This.all.params.flagFilePattern = False then
@@ -35,8 +39,11 @@ package body FileNameFilters is
       end if;
 
       -- Regex Match des Dateinamens mit Pattern
-      return Boolean'(GNAT.Regpat.Match(Expression => This.all.params.getFilePattern, Data => str));
-
+      if pos <= str'First then
+         return False;
+      else
+         return Boolean'(GNAT.Regpat.Match(Expression => This.all.params.getFilePattern, Data => Ada.Strings.Fixed.Replace_Slice(str, str'First, pos-1, "")));
+      end if;
    end applyThis;
 
 end FileNameFilters;

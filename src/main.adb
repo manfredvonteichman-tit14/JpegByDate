@@ -8,6 +8,7 @@ with FileFilters;
 with FileExtensionFilters;
 with FileListers;
 with FileNameFilters;
+with FileSizeFilters;
 with FilesystemListers;
 with FileHandlers;
 with ImageSizeFilters;
@@ -52,6 +53,7 @@ begin
    -- Dateinamenfilter anlegen
    ffilter := FileExtensionFilters.create(input.getParams);
    ffilter.addNew(FileNameFilters.create(input.getParams));
+   ffilter.addNew(FileSizeFilters.create(input.getParams));
 
    -- EXIF Filter anlegen nach Eingabeparametern
    efilter := DatePatternFilters.create(input.getParams);
