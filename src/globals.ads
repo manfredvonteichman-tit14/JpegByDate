@@ -9,7 +9,7 @@ package Globals is
    regexPatternDateRange: constant String := "^[0-9]{4}-[0-9]{2}-[0-9]{2}$";
    regexPatternTimeWithWildcards: constant String := "^[0-9?]{2}:[0-9?]{2}:[0-9?]{2}$";
    regexPatternTimeRange: constant String := "^[0-9]{2}:[0-9]{2}:[0-9]{2}$";
-   regexPatternFiletype: constant String := ".*\.(jpg|jpeg|jpe|jfif)$";
+   regexPatternFiletype: constant String := ".*\.(jpg|jpeg|jpe|jfif|tif|tiff)$";
    regexPatternSimpleName: constant String := "[^\\/]*$"; -- Dateinamen mit Backslash für Windows und Forwardslash für Linux
    defaultDate: constant String := "....:..:.."; -- beliebiges Datum (Regex Pattern)
    defaultPath: constant String := "."; -- aktuelles Ausfuehrungsverzeichnis
@@ -30,7 +30,8 @@ package Globals is
 
    -- Hilfetext
    help_string: constant String :=
-     "JpegByDate is a program to display and filter pictures by EXIF information" & ASCII.LF & ASCII.LF &
+     "JpegByDate is a program to display and filter pictures by EXIF information" & ASCII.LF &
+     "By running the program without parameters all files containing EXIF information will be displayed. Otherwise all files matching the filter will be displayed." & ASCII.LF & ASCII.LF &
      "Command line switch description:" & ASCII.LF &
      "-c" & ASCII.LF &
      "    Display full path and name instead of just the simple name" & ASCII.LF &

@@ -39,14 +39,14 @@ package body Pictures.TiffPictures is
          end if;
 
          -- Länge von IFD0 berechnen
-         part_length := picture.createInt(Ada.Strings.Unbounded.Element(buffer, I+0), Ada.Strings.Unbounded.Element(buffer, I+1)) * 12 + 2 + 4;
+         part_length := picture.createInt(Ada.Strings.Unbounded.Element(buffer, I+0), Ada.Strings.Unbounded.Element(buffer, I+1)) * Globals.exif.directory_length + 2 + 4; -- 2 Byte Länge + 4 Byte Ptr zu nächstem IFD
          if Ada.Strings.Unbounded.Length(buffer) < I+part_length-1 then
             -- Bilddatei zu klein...
             raise Illegal_Format with "EOF reached before end of IFD0!";
          end if;
 
          -- Start am ersten Directory
-         eos := I + part_length;
+         eos := I + part_length - 4; -- 4 Byte zu nächstem IFD abziehen
          I := I + 2;
 
          -- IFD0 durchsuchen
@@ -95,8 +95,32 @@ package body Pictures.TiffPictures is
             end if;
 
             -- Nächstes Directory
-            I := I + 12;
+            I := I + Globals.exif.directory_length;
          end loop;
+
+         -- Kein EXIF SubIFD Tag gefunden
+         -- HACK -> Setze IFD0 in EXIFParser, eventuell sind Tags hier vorhanden...
+         declare
+            exif_tmp: access EXIFParsers.EXIFParser := null;
+         begin
+            -- IFD0 Index neu berechnen
+            I := picture.createInt(Ada.Strings.Unbounded.Element(buffer, 5), Ada.Strings.Unbounded.Element(buffer, 6), Ada.Strings.Unbounded.Element(buffer, 7), Ada.Strings.Unbounded.Element(buffer, 8)) + 1; -- 0-Index wäre schöner...
+
+            -- EXIF Parser anlegen mit IFD0
+            exif_tmp := EXIFParsers.create(Ada.Strings.Unbounded.Slice(buffer, I+2, eos-1), picture);
+            picture.exif := exif_tmp;
+         exception
+            -- Falls keine EXIF Informationen vorhanden
+            -- KEINE AKTION -> Bild wird ohne EXIF erstellt
+
+            -- Ungültiges EXIF-Format
+            when E: Illegal_Format =>
+               null;
+
+            -- Sonstiges Problem
+            when E: others =>
+               null;
+         end;
 
          -- Neues Bild zurückgeben
          return picture;

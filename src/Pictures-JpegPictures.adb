@@ -46,7 +46,7 @@ package body Pictures.JpegPictures is
                   -- Tiff Bild aus Unterbereich anlegen
                   declare
                   begin
-                     tiff := TiffPictures.create(name, Ada.Strings.Unbounded.To_Unbounded_String(Ada.Strings.Unbounded.Slice(buffer, I+4+6, I+part_length+1)));
+                     tiff := TiffPictures.create(name, Ada.Strings.Unbounded.To_Unbounded_String(Ada.Strings.Unbounded.Slice(buffer, I+4+6, I+part_length+1))); -- 4 Byte JPEG-Tag + 6 Byte TIFF MagicNumber in Jpeg
                      picture.all.tiff_sublayer := tiff;
                   exception
                      -- Unknown_Format im TIFF Feld bedeutet Illegal_Format für JPEG

@@ -64,17 +64,17 @@ package body TimeRangeFilters is
                return False;
             end if;
          end if;
-
-      -- Fehler behandeln
-      exception
-         -- EXIF-Tag existiert nicht
-         when E: EXIFParsers.TagNotFound =>
-            return False;
-
-         -- Alle anderen Fehler
-         when E: others =>
-            return False;
       end;
+
+   -- Fehler behandeln
+   exception
+      -- EXIF-Tag existiert nicht
+      when E: EXIFParsers.TagNotFound =>
+         return False;
+
+      -- Alle anderen Fehler
+      when E: others =>
+         return False;
    end applyThis;
 
 end TimeRangeFilters;

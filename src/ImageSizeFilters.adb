@@ -47,17 +47,17 @@ package body ImageSizeFilters is
          else
             return False;
          end if;
-
-      -- Fehler behandeln
-      exception
-         -- EXIF-Tag existiert nicht
-         when E: EXIFParsers.TagNotFound =>
-            return False;
-
-         -- Alle anderen Fehler
-         when E: others =>
-            return False;
       end;
+
+   -- Fehler behandeln
+   exception
+      -- EXIF-Tag existiert nicht
+      when E: EXIFParsers.TagNotFound =>
+         return False;
+
+      -- Alle anderen Fehler
+      when E: others =>
+         return False;
    end applyThis;
 
 end ImageSizeFilters;

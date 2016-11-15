@@ -79,9 +79,18 @@ package body FileHandlers is
                            end if;
                         end;
                      end if;
-                     output.display("DEBUG OUTPUT - DateTimeOriginal: " & picture.getEXIF.getDateTimeOriginal);
-                     output.display("DEBUG OUTPUT - ExifImageWidth: " & Integer'Image(picture.getEXIF.getExifImageWidth));
-                     output.display("DEBUG OUTPUT - ExifImageHeight: " & Integer'Image(picture.getEXIF.getExifImageHeight));
+
+                     -- Debug Ausgabe
+                     declare
+                     begin
+                        output.display("DEBUG OUTPUT - DateTimeOriginal: " & picture.getEXIF.getDateTimeOriginal);
+                        output.display("DEBUG OUTPUT - ExifImageWidth: " & Integer'Image(picture.getEXIF.getExifImageWidth));
+                        output.display("DEBUG OUTPUT - ExifImageHeight: " & Integer'Image(picture.getEXIF.getExifImageHeight));
+                     exception
+                        when E: EXIFParsers.TagNotFound =>
+                           output.display("DEBUG OUTPUT - EXCEPTION IN EXIF");
+                     end;
+
                   end if;
                end if;
 

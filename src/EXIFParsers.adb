@@ -44,7 +44,7 @@ package body EXIFParsers is
       ptr: Integer;
    begin
       -- EXIF SubIFD durchsuchen
-      while I <= This.all.exif'Length loop
+      while I < This.all.exif'Length loop
          -- DateTimeOriginal Tag gefunden
          if This.all.parent.createInt(This.all.exif(This.all.exif'First+I+0), This.all.exif(This.all.exif'First+I+1)) = Globals.exif.DateTimeOriginal and
            This.all.parent.createInt(This.all.exif(This.all.exif'First+I+2), This.all.exif(This.all.exif'First+I+3)) = Globals.exif.DateTimeOriginal_Type and
@@ -65,7 +65,7 @@ package body EXIFParsers is
       I: Integer := 0; -- Start am ersten Directory
    begin
       -- EXIF SubIFD durchsuchen
-      while I <= This.all.exif'Length loop
+      while I < This.all.exif'Length loop
          -- DateTimeOriginal Tag gefunden
          if This.all.parent.createInt(This.all.exif(This.all.exif'First+I+0), This.all.exif(This.all.exif'First+I+1)) = Globals.exif.ExifImageWidth and
            This.all.parent.createInt(This.all.exif(This.all.exif'First+I+2), This.all.exif(This.all.exif'First+I+3)) in Globals.exif.ExifImageWidth_Type and
@@ -85,7 +85,7 @@ package body EXIFParsers is
       I: Integer := 0; -- Start am ersten Directory
    begin
       -- EXIF SubIFD durchsuchen
-      while I <= This.all.exif'Length loop
+      while I < This.all.exif'Length loop
          -- DateTimeOriginal Tag gefunden
          if This.all.parent.createInt(This.all.exif(This.all.exif'First+I+0), This.all.exif(This.all.exif'First+I+1)) = Globals.exif.ExifImageHeight and
            This.all.parent.createInt(This.all.exif(This.all.exif'First+I+2), This.all.exif(This.all.exif'First+I+3)) in Globals.exif.ExifImageHeight_Type and

@@ -41,17 +41,17 @@ package body DatePatternFilters is
       begin
          -- Regex Match des EXIF Datums mit dem Parameter-Date-Pattern
          return Boolean'(GNAT.Regpat.Match(Expression => This.all.params.getDatePattern, Data => date(date'First..date'First+9)));
-
-      -- Fehler behandeln
-      exception
-         -- EXIF-Tag existiert nicht
-         when E: EXIFParsers.TagNotFound =>
-            return False;
-
-         -- Alle anderen Fehler
-         when E: others =>
-            return False;
       end;
+
+   -- Fehler behandeln
+   exception
+      -- EXIF-Tag existiert nicht
+      when E: EXIFParsers.TagNotFound =>
+         return False;
+
+      -- Alle anderen Fehler
+      when E: others =>
+         return False;
    end applyThis;
 
 end DatePatternFilters;

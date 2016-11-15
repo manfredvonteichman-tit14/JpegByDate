@@ -1,5 +1,6 @@
 -- Verwendete Packages
 with Pictures.JpegPictures;
+with Pictures.TiffPictures;
 
 -- Package für Picturemodul
 package body Pictures is
@@ -15,6 +16,20 @@ package body Pictures is
 
       -- Unknown_Format ignorieren, Datei ist kein JPEG -> nächstes Format versuchen
       -- Illegal_Format wird durchgelassen, Datei ist JPEG, enthält aber Fehler -> nächstes Format unnötig
+      exception
+         -- Unbekanntes Bildformat
+         when E: Unknown_Format =>
+            null;
+      end;
+
+      -- Tiff Test
+      declare
+      begin
+         -- Versuchen Bild anzulegen
+         return TiffPictures.create(name, buffer); -- indirekter Call auf isTiff()
+
+      -- Unknown_Format ignorieren, Datei ist kein TIFF -> nächstes Format versuchen
+      -- Illegal_Format wird durchgelassen, Datei ist TIFF, enthält aber Fehler -> nächstes Format unnötig
       exception
          -- Unbekanntes Bildformat
          when E: Unknown_Format =>
