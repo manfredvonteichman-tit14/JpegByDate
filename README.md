@@ -1,4 +1,4 @@
-# JpegByDate
+a# JpegByDate
 
 ## Was ist JpegByDate?
 JpegByDate sucht auf der Festplatte nach Fotos, die an einem bestimmten Datum aufgenommen wurden.
@@ -14,5 +14,11 @@ JpegByDate sucht auf der Festplatte nach Fotos, die an einem bestimmten Datum au
 ###Beta Release
 
 * Veröffentlichungsdatum: 2016-11-16
+* Status: Veröffentlicht
+* Link: [Release folder](../../tree/master/release/release2016-11-16)
+
+###Final Release
+
+* Veröffentlichungsdatum: 2016-12-07
 * Status: In Bearbeitung
 * Link: ~~Release folder~~
