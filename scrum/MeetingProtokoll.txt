@@ -66,3 +66,10 @@ Sprint Review
 	- Fortschritt: Sprint 3 erfolgreich (Änderungswünsche erfolgreich umgesetzt, Programmierung allgemein vor Zeitplan)
 	- Probleme bei verschiedenen EXIF Implementationen, nicht alle Dateien entsprechen der Spezifikation (Rücksprache mit Kunden über weiteres Vorgehen notwendig)
 	- Problematik Tests (aktuell nur Konzepte vorhanden -> zukünftig mehr Konzentration auf Testen)
+
+2016-11-16
+Sprint Planning Meeting (Sprint 4)
+	- Erstellung des Sprint Backlogs (siehe backlog_20161116.png)
+	- Erstellung und Dokumentation GNATTest
+	- Metriken im Wiki festhalten
+	- Wiki Eintrag - Lessons Learned (EXIF width/height, Aufwand agile Prozesse)
