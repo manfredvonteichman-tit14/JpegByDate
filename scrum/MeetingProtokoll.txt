@@ -73,3 +73,6 @@ Sprint Planning Meeting (Sprint 4)
 	- Erstellung und Dokumentation GNATTest
 	- Metriken im Wiki festhalten
 	- Wiki Eintrag - Lessons Learned (EXIF width/height, Aufwand agile Prozesse)
+
+2016-11-22
+"Daily" Scrum
