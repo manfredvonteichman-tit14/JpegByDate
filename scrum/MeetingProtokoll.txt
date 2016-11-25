@@ -76,3 +76,13 @@ Sprint Planning Meeting (Sprint 4)
 
 2016-11-22
 "Daily" Scrum
+
+2016-11-25
+"Daily" Scrum
+Sprint Review
+	- Kein Fortschritt gemacht -> Ziele für Sprint 4 wurden nicht erfüllt!
+	- Problematik: Andere Projekte die aktuell höhere Priorität hatten
+Sprint Planning Meeting (Sprint 5)
+	- Erstellung des Sprint Backlogs (siehe backlog_20161125.png) Auswahl nach Priorität
+	- Vollständige UML Doku & teilweise NaturalDocs
+	- Fertigstellung von Tests und Metriken
