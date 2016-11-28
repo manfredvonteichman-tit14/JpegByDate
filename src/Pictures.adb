@@ -41,6 +41,12 @@ package body Pictures is
 
    end create;
 
+   -- Name und Pfad des Bildes setzen
+   procedure setName(This: access Picture; name: String) is
+   begin
+      This.all.name := Ada.Strings.Unbounded.To_Unbounded_String(name);
+   end setName;
+
    -- Name und Pfad des Bildes zurückgeben
    function getName(This: access Picture) return String is
    begin

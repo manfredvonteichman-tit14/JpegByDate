@@ -44,6 +44,7 @@ begin
    output.display("DEBUG OUTPUT - maxWidth: " & Natural'Image(input.getParams.getMaxWidth));
    output.display("DEBUG OUTPUT - minHeight: " & Natural'Image(input.getParams.getMinHeight));
    output.display("DEBUG OUTPUT - maxHeight: " & Natural'Image(input.getParams.getMaxHeight));
+   output.display("DEBUG OUTPUT - RenameFiles: " & Boolean'Image(input.getParams.getRename));
 
    -- Hilfe anzeigen
    if input.getParams.flagHelp then

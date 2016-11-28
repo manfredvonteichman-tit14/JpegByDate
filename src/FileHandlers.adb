@@ -4,8 +4,10 @@ with Globals;
 with Pictures;
 with Ada.Directories;
 with Ada.Direct_IO;
+with Ada.Exceptions;
 with Ada.IO_Exceptions;
 with Ada.Strings.Fixed;
+with Ada.Strings.Maps;
 with Ada.Strings.Unbounded;
 with Ada.Unchecked_Deallocation;
 with GNAT.Regpat;
@@ -14,6 +16,8 @@ with GNAT.Regpat;
 package body FileHandlers is
 
    -- Anmeldung privater Funktionen
+   function getDisplayName(This: access FileHandler; full_name: String) return String;
+   function renamePicture(This: access FileHandler; picture: access Pictures.Picture'Class) return String;
    function readFile(name: String; buffer: out Ada.Strings.Unbounded.Unbounded_String) return Integer;
 
    -- Konstruktor
@@ -60,24 +64,32 @@ package body FileHandlers is
 
                -- Bildnamen und Pfad anzeigen wenn Bedingungen erfüllt werden und EXIF Informationen vorhanden sind
                if picture.hasEXIF then
-                     -- EXIF Filter anwenden
+                  -- EXIF Filter anwenden
                   if This.all.filter.apply(EXIFParsers.EXIFParser_Access(picture.getEXIF)) then
-                     if This.all.params.getFullName then
-                        -- Name mit vollständigem Pfad ausgeben
-                        output.display(picture.getName);
+                     -- Datei umbenennen?
+                     if This.all.params.getRename then
+                        -- Alten Namen ausgeben
+                        output.display("OLD: " & This.getDisplayName(picture.getName));
+
+                        -- Bild umbenennen
+                        declare
+                        begin
+                           -- Neuen Namen ausgeben
+                           output.display("NEW: " & This.getDisplayName(This.renamePicture(picture)));
+
+                        exception
+                           -- Fehler beim Umbenennen
+                           when E: Ada.IO_Exceptions.Name_Error =>
+                              output.display("UNABLE TO RENAME FILE... skipping.");
+                              output.display(Ada.Exceptions.Exception_Message(E));
+
+                           -- Sonstiger Fehler beim Umbenennen
+                           when E: others =>
+                              output.display("UNKNOWN ERROR TRYING TO RENAME FILE... skipping.");
+                        end;
                      else
                         -- Nur Name ausgeben
-                        declare
-                           name: String := picture.getName;
-                           pos: Natural := GNAT.Regpat.Match(Expression => Globals.regexPatternSimpleName, Data => name);
-                        begin
-                           if pos >= name'First then
-                              output.display(Ada.Strings.Fixed.Replace_Slice(name, name'First, pos-1, ""));
-                           else
-                              -- Im Fehlerfall alles ausgeben
-                              output.display(name);
-                           end if;
-                        end;
+                        output.display(This.getDisplayName(picture.getName));
                      end if;
 
                      -- Debug Ausgabe
@@ -92,6 +104,11 @@ package body FileHandlers is
                      end;
 
                   end if;
+               else
+                  -- Keine EXIF Informationen in Bild vorhanden
+                  -- KEINE AUSGABE in diesem Fall
+                  -- Nur Forderung nach Anzeige der Bildernamen mit entsprechenden EXIF Informationen
+                  null;
                end if;
 
             exception
@@ -130,6 +147,87 @@ package body FileHandlers is
    end exec;
 
    -- VOLL PRIVATE FUNKTIONEN
+
+   -- Dateinamen zur Anzeige
+   function getDisplayName(This: access FileHandler; full_name: String) return String is
+   begin
+      if This.all.params.getFullName then
+         -- Name mit vollständigem Pfad zurück geben
+         return full_name;
+      else
+         -- Nur Name zurück geben
+         declare
+            pos: Natural := GNAT.Regpat.Match(Expression => Globals.regexPatternSimpleName, Data => full_name);
+         begin
+            if pos >= full_name'First then
+               return Ada.Strings.Fixed.Replace_Slice(full_name, full_name'First, pos-1, "");
+            else
+               -- Im Fehlerfall alles ausgeben
+               return full_name;
+            end if;
+         end;
+      end if;
+   end;
+
+   -- Bild umbenennen
+   function renamePicture(This: access FileHandler; picture: access Pictures.Picture'Class) return String is
+      new_name: Ada.Strings.Unbounded.Unbounded_String;
+   begin
+      -- Neuen Namen erstellen und umbenennen
+      declare
+         old_name: String := picture.getName;
+         pos: Natural := GNAT.Regpat.Match(Expression => Globals.regexPatternSimpleName, Data => old_name);
+      begin
+         -- Pfad ausschneiden
+         if pos >= old_name'First then
+            new_name := Ada.Strings.Unbounded.To_Unbounded_String(Ada.Strings.Fixed.Replace_Slice(old_name, pos, old_name'Last, ""));
+         else
+            -- Im Fehlerfall
+            raise Ada.IO_Exceptions.Name_Error with "Unable to extract file path";
+         end if;
+
+         -- Datum auslesen und an Pfad anfügen
+         declare
+            date: String := Ada.Strings.Fixed.Translate(Ada.Strings.Fixed.Translate(picture.getEXIF.getDateTimeOriginal, Ada.Strings.Maps.To_Mapping(From => ":", To => "-")), Ada.Strings.Maps.To_Mapping(From => " ", To => "-"));
+         begin
+            Ada.Strings.Unbounded.Append(new_name, Ada.Strings.Unbounded.To_Unbounded_String(date(date'First..date'Last-1)));
+         end;
+
+         -- Dateiendung anfügen
+         pos := GNAT.Regpat.Match(Expression => Globals.regexPatternFileExtension, Data => old_name);
+         if pos >= old_name'First then
+            Ada.Strings.Unbounded.Append(new_name, Ada.Strings.Unbounded.To_Unbounded_String("." & Ada.Strings.Fixed.Replace_Slice(old_name, old_name'First, pos-1, "")));
+         else
+            -- Im Fehlerfall
+            raise Ada.IO_Exceptions.Name_Error with "Unable to extract file extension!";
+         end if;
+
+         -- Datei umbenennen
+         picture.setName(Ada.Strings.Unbounded.To_String(new_name));
+         Ada.Directories.Rename(old_name, picture.getName);
+
+      -- Fehler behandeln
+      exception
+         -- EXIF-Tag existiert nicht
+         when E: EXIFParsers.TagNotFound =>
+            raise Ada.IO_Exceptions.Name_Error with "Unable to rename picture! No EXIF date available.";
+
+         -- Fehler am Dateinamen
+         when E: Ada.IO_Exceptions.Name_Error =>
+            raise Ada.IO_Exceptions.Name_Error with "Unable to rename picture! Invalid filename.";
+
+         -- Fehler beim Umbenennen (Möglichwerweise existiert neuer Name bereits
+         when E: Ada.IO_Exceptions.Use_Error =>
+            raise Ada.IO_Exceptions.Name_Error with "Unable to rename picture! New filename might already be in use.";
+
+         -- Alle anderen Fehler
+         when E: others =>
+            raise Ada.IO_Exceptions.Name_Error with "Unknown error renaming picture!";
+      end;
+
+      -- Neuen Namen zurückgeben
+      return picture.getName;
+   end;
 
    -- Datei einlesen
    -- Rückgabe -1 bei fehlender oder leerer Datei

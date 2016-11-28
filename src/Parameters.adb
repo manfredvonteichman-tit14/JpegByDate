@@ -109,6 +109,11 @@ package body Parameters is
    begin
       This.all.Flag_help := enable;
    end setHelp;
+   procedure setRename(This: access Parameter; enable: Boolean) is
+   begin
+      This.all.rename := enable;
+      This.all.Flag_rename := True;
+   end setRename;
 
    -- Werte abfragen
    function getPath(This: access Parameter) return String is
@@ -183,6 +188,10 @@ package body Parameters is
    begin
       return Globals.help_string;
    end getHelp;
+   function getRename(This: access Parameter) return Boolean is
+   begin
+      return This.all.rename;
+   end getRename;
 
    -- Flags abfragen
    function flagPath(This: access Parameter) return Boolean is
@@ -233,5 +242,9 @@ package body Parameters is
    begin
       return This.all.Flag_help;
    end flagHelp;
+   function flagRename(This: access Parameter) return Boolean is
+   begin
+      return This.all.Flag_rename;
+   end flagRename;
 
 end Parameters;

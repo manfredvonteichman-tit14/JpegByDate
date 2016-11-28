@@ -32,6 +32,7 @@ package Parameters is
    procedure setMinHeight(This: access Parameter; minHeight: Natural);
    procedure setMaxHeight(This: access Parameter; maxHeight: Natural);
    procedure setHelp(This: access Parameter; enable: Boolean);
+   procedure setRename(This: access Parameter; enable: Boolean);
 
    -- Werte abfragen
    function getPath(This: access Parameter) return String;
@@ -52,6 +53,7 @@ package Parameters is
    function getMinHeight(This: access Parameter) return Natural;
    function getMaxHeight(This: access Parameter) return Natural;
    function getHelp(This: access Parameter) return String;
+   function getRename(This: access Parameter) return Boolean;
 
    -- Flags abfragen
    function flagPath(This: access Parameter) return Boolean;
@@ -66,6 +68,7 @@ package Parameters is
    function flagTimeRange(This: access Parameter) return Boolean;
    function flagImageSize(This: access Parameter) return Boolean;
    function flagHelp(This: access Parameter) return Boolean;
+   function flagRename(This: access Parameter) return Boolean;
 
 private
    -- Objektvariablen
@@ -89,6 +92,7 @@ private
          maxWidth: Natural := Globals.maxWidth;
          minHeight: Natural := Globals.minHeight;
          maxHeight: Natural := Globals.maxHeight;
+         rename: Boolean := Globals.defaultRenameFiles;
 
          -- Für Filter default Werte
          Flag_path: Boolean := False;
@@ -103,6 +107,7 @@ private
          Flag_timeRange: Boolean := False;
          Flag_imageSize: Boolean := False;
          Flag_help: Boolean := False;
+         Flag_rename: Boolean := False;
       end record;
 
 end Parameters;

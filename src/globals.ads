@@ -11,6 +11,7 @@ package Globals is
    regexPatternTimeRange: constant String := "^[0-9]{2}:[0-9]{2}:[0-9]{2}$";
    regexPatternFiletype: constant String := ".*\.([Jj][Pp][Gg]|[Jj][Pp][Ee][Gg]|[Jj][Pp][Ee]|[Jj][Ff][Ii][Ff]|[Tt][Ii][Ff]|[Tt][Ii][Ff][Ff])$"; -- case insensitive
    regexPatternSimpleName: constant String := "[^\\/]*$"; -- Dateinamen mit Backslash für Windows und Forwardslash für Linux
+   regexPatternFileExtension: constant String := "[^\.]*$";
    defaultDate: constant String := "....:..:.."; -- beliebiges Datum (Regex Pattern)
    defaultPath: constant String := "."; -- aktuelles Ausfuehrungsverzeichnis
    pathRecursionEnabled: constant Boolean := False;
@@ -27,6 +28,7 @@ package Globals is
    maxWidth: constant Natural := Natural'Last;
    minHeight: constant Natural := Natural'First;
    maxHeight: constant Natural := Natural'Last;
+   defaultRenameFiles: constant Boolean := False;
 
    -- Hilfetext
    help_string: constant String :=
@@ -76,10 +78,12 @@ package Globals is
      "    Allowed are only digits" & ASCII.LF &
      "--fileRegex=regex" & ASCII.LF &
      "    Specify a pattern to filter filenames" & ASCII.LF &
-     "    Use standard regular expression syntax to set the filter" & ASCII.LF & ASCII.LF;
+     "    Use standard regular expression syntax to set the filter" & ASCII.LF &
+     "--rename" & ASCII.LF &
+     "    Renames all matching pictures. New filename will be YYYY-MM-DD-HH-MM-SS.EXT" & ASCII.LF & ASCII.LF;
 
    -- Kommandozeilenparameter
-   CommandLine: constant String := "c d: f: h p: r t: -minSize= -maxSize= -startDate= -finDate= -startTime= -finTime= -minWidth= -maxWidth= -minHeight= -maxHeight= -fileRegex=";
+   CommandLine: constant String := "c d: f: h p: r t: -minSize= -maxSize= -startDate= -finDate= -startTime= -finTime= -minWidth= -maxWidth= -minHeight= -maxHeight= -fileRegex= -rename";
 
    -- EXIF-Tags
    package exif is

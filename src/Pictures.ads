@@ -12,6 +12,10 @@ package Pictures is
    function create(name: String; buffer: Ada.Strings.Unbounded.Unbounded_String) return access Picture'Class;
    procedure destroy(This: access Picture) is abstract;
 
+   -- Name und Pfad des Bildes setzen
+   -- DO NOT OVERLOAD!
+   procedure setName(This: access Picture; name: String);
+
    -- Name und Pfad des Bildes zurückgeben
    -- DO NOT OVERLOAD!
    function getName(This: access Picture) return String;

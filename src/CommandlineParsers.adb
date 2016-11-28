@@ -188,6 +188,9 @@ package body CommandlineParsers is
                elsif GNAT.Command_Line.Full_Switch = "-fileRegex" then
                   -- Vollständige Regex für Dateinamensfilter
                   This.all.parameters.setFilePattern(GNAT.Command_Line.Parameter);
+               elsif GNAT.Command_Line.Full_Switch = "-rename" then
+                  -- Dateien umbenennen aktivieren
+                  This.all.parameters.setRename(True);
                end if;
             when others =>
                exit;
