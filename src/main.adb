@@ -28,23 +28,25 @@ procedure Main is
 begin
    -- Eingabe verarbeiten
    input.parse(output);
-   output.display("DEBUG OUTPUT - Path: " & input.getParams.getPath);
-   output.display("DEBUG OUTPUT - PathRecursionEnabled: " & Boolean'Image(input.getParams.getPathRecursion));
-   output.display("DEBUG OUTPUT - FullFileName: " & Boolean'Image(input.getParams.getFullName));
-   output.display("DEBUG OUTPUT - FileNamePattern: " & input.getParams.getFilePattern);
-   output.display("DEBUG OUTPUT - DatePattern: " & input.getParams.getDatePattern);
-   output.display("DEBUG OUTPUT - DateRangeStart: " & input.getParams.getDateRangeStart);
-   output.display("DEBUG OUTPUT - DateRangeFinish: " & input.getParams.getDateRangeFinish);
-   output.display("DEBUG OUTPUT - minFileSize: " & Natural'Image(input.getParams.getMinFileSize));
-   output.display("DEBUG OUTPUT - maxFileSize: " & Natural'Image(input.getParams.getMaxFileSize));
-   output.display("DEBUG OUTPUT - TimePattern: " & input.getParams.getTimePattern);
-   output.display("DEBUG OUTPUT - TimeRangeStart: " & input.getParams.getTimeRangeStart);
-   output.display("DEBUG OUTPUT - TimeRangeFinish: " & input.getParams.getTimeRangeFinish);
-   output.display("DEBUG OUTPUT - minWidth: " & Natural'Image(input.getParams.getMinWidth));
-   output.display("DEBUG OUTPUT - maxWidth: " & Natural'Image(input.getParams.getMaxWidth));
-   output.display("DEBUG OUTPUT - minHeight: " & Natural'Image(input.getParams.getMinHeight));
-   output.display("DEBUG OUTPUT - maxHeight: " & Natural'Image(input.getParams.getMaxHeight));
-   output.display("DEBUG OUTPUT - RenameFiles: " & Boolean'Image(input.getParams.getRename));
+   if input.getParams.getDebug then
+      output.display("DEBUG OUTPUT - Path: " & input.getParams.getPath);
+      output.display("DEBUG OUTPUT - PathRecursionEnabled: " & Boolean'Image(input.getParams.getPathRecursion));
+      output.display("DEBUG OUTPUT - FullFileName: " & Boolean'Image(input.getParams.getFullName));
+      output.display("DEBUG OUTPUT - FileNamePattern: " & input.getParams.getFilePattern);
+      output.display("DEBUG OUTPUT - DatePattern: " & input.getParams.getDatePattern);
+      output.display("DEBUG OUTPUT - DateRangeStart: " & input.getParams.getDateRangeStart);
+      output.display("DEBUG OUTPUT - DateRangeFinish: " & input.getParams.getDateRangeFinish);
+      output.display("DEBUG OUTPUT - minFileSize: " & Natural'Image(input.getParams.getMinFileSize));
+      output.display("DEBUG OUTPUT - maxFileSize: " & Natural'Image(input.getParams.getMaxFileSize));
+      output.display("DEBUG OUTPUT - TimePattern: " & input.getParams.getTimePattern);
+      output.display("DEBUG OUTPUT - TimeRangeStart: " & input.getParams.getTimeRangeStart);
+      output.display("DEBUG OUTPUT - TimeRangeFinish: " & input.getParams.getTimeRangeFinish);
+      output.display("DEBUG OUTPUT - minWidth: " & Natural'Image(input.getParams.getMinWidth));
+      output.display("DEBUG OUTPUT - maxWidth: " & Natural'Image(input.getParams.getMaxWidth));
+      output.display("DEBUG OUTPUT - minHeight: " & Natural'Image(input.getParams.getMinHeight));
+      output.display("DEBUG OUTPUT - maxHeight: " & Natural'Image(input.getParams.getMaxHeight));
+      output.display("DEBUG OUTPUT - RenameFiles: " & Boolean'Image(input.getParams.getRename));
+   end if;
 
    -- Hilfe anzeigen
    if input.getParams.flagHelp then

@@ -114,6 +114,11 @@ package body Parameters is
       This.all.rename := enable;
       This.all.Flag_rename := True;
    end setRename;
+   procedure setDebug(This: access Parameter; enable: Boolean) is
+   begin
+      This.all.debug := enable;
+      This.all.Flag_debug := True;
+   end setDebug;
 
    -- Werte abfragen
    function getPath(This: access Parameter) return String is
@@ -192,6 +197,10 @@ package body Parameters is
    begin
       return This.all.rename;
    end getRename;
+   function getDebug(This: access Parameter) return Boolean is
+   begin
+      return This.all.debug;
+   end getDebug;
 
    -- Flags abfragen
    function flagPath(This: access Parameter) return Boolean is
@@ -246,5 +255,9 @@ package body Parameters is
    begin
       return This.all.Flag_rename;
    end flagRename;
+   function flagDebug(This: access Parameter) return Boolean is
+   begin
+      return This.all.Flag_debug;
+   end flagDebug;
 
 end Parameters;

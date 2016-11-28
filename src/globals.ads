@@ -29,6 +29,7 @@ package Globals is
    minHeight: constant Natural := Natural'First;
    maxHeight: constant Natural := Natural'Last;
    defaultRenameFiles: constant Boolean := False;
+   defaultDebug: constant Boolean := False;
 
    -- Hilfetext
    help_string: constant String :=
@@ -80,10 +81,12 @@ package Globals is
      "    Specify a pattern to filter filenames" & ASCII.LF &
      "    Use standard regular expression syntax to set the filter" & ASCII.LF &
      "--rename" & ASCII.LF &
-     "    Renames all matching pictures. New filename will be YYYY-MM-DD-HH-MM-SS.EXT" & ASCII.LF & ASCII.LF;
+     "    Renames all matching pictures. New filename will be YYYY-MM-DD-HH-MM-SS.EXT" & ASCII.LF &
+     "--debug" & ASCII.LF &
+     "    Displays debug information for parameters and pictures" & ASCII.LF & ASCII.LF;
 
    -- Kommandozeilenparameter
-   CommandLine: constant String := "c d: f: h p: r t: -minSize= -maxSize= -startDate= -finDate= -startTime= -finTime= -minWidth= -maxWidth= -minHeight= -maxHeight= -fileRegex= -rename";
+   CommandLine: constant String := "c d: f: h p: r t: -minSize= -maxSize= -startDate= -finDate= -startTime= -finTime= -minWidth= -maxWidth= -minHeight= -maxHeight= -fileRegex= -rename -debug";
 
    -- EXIF-Tags
    package exif is

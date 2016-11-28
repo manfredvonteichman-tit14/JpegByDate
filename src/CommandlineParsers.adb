@@ -191,6 +191,9 @@ package body CommandlineParsers is
                elsif GNAT.Command_Line.Full_Switch = "-rename" then
                   -- Dateien umbenennen aktivieren
                   This.all.parameters.setRename(True);
+               elsif GNAT.Command_Line.Full_Switch = "-debug" then
+                  -- Debugausgabe aktivieren
+                  This.all.parameters.setDebug(True);
                end if;
             when others =>
                exit;
