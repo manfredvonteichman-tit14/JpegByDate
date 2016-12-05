@@ -163,22 +163,44 @@ package body Pictures.TiffPictures is
    function createInt(This: access TiffPicture; b0: Character; b1: Character) return Integer is
    begin
       if This.all.little_endian then
-         return Character'Pos(b1) * 16#100# + Character'Pos(b0);
+         return This.createInt(b0, b1, Character'Val(0), Character'Val(0));
       else
-         return Character'Pos(b0) * 16#100# + Character'Pos(b1);
+         return This.createInt(Character'Val(0), Character'Val(0), b0, b1);
       end if;
    end createInt;
    function createInt(This: access TiffPicture; b0: Character; b1: Character; b2: Character; b3: Character) return Integer is
-      -- Eigener Datentyp zum expliziten Cast von zu groﬂen unsigned Zahlen um negative signed Zahlen zu bekommen
-      -- Durch Ada unsauber, gibt es keine bessere Methode?
-      type My_Int is range 0..2**32-1;
-      pragma Suppress(Range_Check);
-      pragma Suppress(Overflow_Check);
+      -- Eigener Datentyp zum Zusammensetzen von Bytes zu Integer
+      type My_Int is record
+         A: Character;
+         B: Character;
+         C: Character;
+         D: Character;
+      end record;
+      for My_Int use record
+         A at 0 range 0..7;
+         B at 0 range 8..15;
+         C at 0 range 16..23;
+         D at 0 range 24..31;
+      end record;
+      for My_Int'Size use 32;
+
+      -- Variablen zum Zusammensetzen
+      typ_int: Integer;
+      typ_rec: My_Int;
+      for typ_rec'Address use typ_int'Address;
    begin
       if This.all.little_endian then
-         return Integer(My_Int(Character'Pos(b3)) * My_Int(16#1000000#) + My_Int(Character'Pos(b2) * 16#10000# + Character'Pos(b1) * 16#100# + Character'Pos(b0)));
+         typ_rec.A := b0;
+         typ_rec.B := b1;
+         typ_rec.C := b2;
+         typ_rec.D := b3;
+         return typ_int;
       else
-         return Integer(My_Int(Character'Pos(b0)) * My_Int(16#1000000#) + My_Int(Character'Pos(b1) * 16#10000# + Character'Pos(b2) * 16#100# + Character'Pos(b3)));
+         typ_rec.A := b3;
+         typ_rec.B := b2;
+         typ_rec.C := b1;
+         typ_rec.D := b0;
+         return typ_int;
       end if;
    end createInt;
 
