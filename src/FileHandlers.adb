@@ -6,6 +6,7 @@ with Ada.Directories;
 with Ada.Direct_IO;
 with Ada.Exceptions;
 with Ada.IO_Exceptions;
+with Ada.Numerics.Generic_Elementary_Functions;
 with Ada.Strings.Fixed;
 with Ada.Strings.Maps;
 with Ada.Strings.Unbounded;
@@ -95,10 +96,16 @@ package body FileHandlers is
                      -- Debug Ausgabe
                      if This.all.params.getDebug then
                         declare
+                           package Float_Functions is new Ada.Numerics.Generic_Elementary_Functions(Float);
                         begin
                            output.display("DEBUG OUTPUT - DateTimeOriginal: " & picture.getEXIF.getDateTimeOriginal);
                            output.display("DEBUG OUTPUT - ExifImageWidth: " & Integer'Image(picture.getEXIF.getExifImageWidth));
                            output.display("DEBUG OUTPUT - ExifImageHeight: " & Integer'Image(picture.getEXIF.getExifImageHeight));
+                           output.display("DEBUG OUTPUT - FocalLength: " & Float'Image(picture.getEXIF.getFocalLength));
+                           output.display("DEBUG OUTPUT - ISOSpeedRatings: " & Integer'Image(picture.getEXIF.getISOSpeedRatings));
+                           output.display("DEBUG OUTPUT - ShutterSpeedValue raw: " & Float'Image(picture.getEXIF.getShutterSpeedValue) & " | computed: " & Float'Image(1.0 / (Float_Functions."**"(2.0, picture.getEXIF.getShutterSpeedValue))));
+                           output.display("DEBUG OUTPUT - ApertureValue: " & Float'Image(picture.getEXIF.getApertureValue) & " | computed: F/" & Float'Image((Float_Functions."**"(1.4142135623730, picture.getEXIF.getApertureValue))));
+                           output.display("DEBUG OUTPUT - Flash: " & Integer'Image(picture.getEXIF.getFlash));
                         exception
                            when E: EXIFParsers.TagNotFound =>
                               output.display("DEBUG OUTPUT - EXCEPTION IN EXIF");

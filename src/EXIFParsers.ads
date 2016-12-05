@@ -14,9 +14,14 @@ package EXIFParsers is
    procedure destroy(This: access EXIFParser);
 
    -- Getterfunktionen
+   function getISOSpeedRatings(This: access EXIFParser) return Integer;
    function getDateTimeOriginal(This: access EXIFParser) return String;
-   function getExifImageWidth(This: access EXIFParser) return Integer; -- Unzuverlässiger Wert im EXIF gespeichert
-   function getExifImageHeight(This: access EXIFParser) return Integer; -- Unzuverlässiger Wert im EXIF gespeichert
+   function getShutterSpeedValue(This: access EXIFParser) return Float;
+   function getApertureValue(This: access EXIFParser) return Float;
+   function getFlash(This: access EXIFParser) return Integer;
+   function getFocalLength(This: access EXIFParser) return Float;
+   function getExifImageWidth(This: access EXIFParser) return Integer;
+   function getExifImageHeight(This: access EXIFParser) return Integer;
 
    -- Exceptions
    TagNotFound: exception; -- EXIF-Tag existiert nicht

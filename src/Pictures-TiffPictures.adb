@@ -169,11 +169,16 @@ package body Pictures.TiffPictures is
       end if;
    end createInt;
    function createInt(This: access TiffPicture; b0: Character; b1: Character; b2: Character; b3: Character) return Integer is
+      -- Eigener Datentyp zum expliziten Cast von zu groﬂen unsigned Zahlen um negative signed Zahlen zu bekommen
+      -- Durch Ada unsauber, gibt es keine bessere Methode?
+      type My_Int is range 0..2**32-1;
+      pragma Suppress(Range_Check);
+      pragma Suppress(Overflow_Check);
    begin
       if This.all.little_endian then
-         return Character'Pos(b3) * 16#1000000# + Character'Pos(b2) * 16#10000# + Character'Pos(b1) * 16#100# + Character'Pos(b0);
+         return Integer(My_Int(Character'Pos(b3)) * My_Int(16#1000000#) + My_Int(Character'Pos(b2) * 16#10000# + Character'Pos(b1) * 16#100# + Character'Pos(b0)));
       else
-         return Character'Pos(b0) * 16#1000000# + Character'Pos(b1) * 16#10000# + Character'Pos(b2) * 16#100# + Character'Pos(b3);
+         return Integer(My_Int(Character'Pos(b0)) * My_Int(16#1000000#) + My_Int(Character'Pos(b1) * 16#10000# + Character'Pos(b2) * 16#100# + Character'Pos(b3)));
       end if;
    end createInt;
 
