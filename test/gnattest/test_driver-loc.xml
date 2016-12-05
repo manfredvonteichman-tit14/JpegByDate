@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<Locations >
+  <Project>
+    <vfs_file>D:\Users\Andi\Documents\GitHub\JpegByDate\test\gnattest\test_driver.gpr</vfs_file>
+    <mdi_marker title="Coverage Report"  />
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project />
+      <vfs_file>D:\Users\Andi\Documents\GitHub\JpegByDate\src\CommandlineParsers.ads</vfs_file>
+    </file_marker>
+    <mdi_marker title="Coverage Report"  />
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project />
+      <vfs_file>D:\Users\Andi\Documents\GitHub\JpegByDate\src\DateRangeFilters.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 52" line=" 1048" >
+      <vfs_project>D:\Users\Andi\Documents\GitHub\JpegByDate\test\gnattest\test_jpegbydate.gpr</vfs_project>
+      <vfs_file>D:\Users\Andi\Documents\GitHub\JpegByDate\test\gnattest\tests\parameters-parameter_test_data-parameter_tests.adb</vfs_file>
+    </file_marker>
+    <file_marker current="true" column=" 1" line=" 1" >
+      <vfs_project />
+      <vfs_file>D:\Users\Andi\Documents\GitHub\JpegByDate\test\gnattest\commandlineparsers-commandlineparser_test_data-commandlineparser_tests-suite.adb</vfs_file>
+    </file_marker>
+  </Project>
+</Locations>

@@ -61,8 +61,6 @@ package body Parameters.Parameter_Test_Data.Parameter_Tests is
    --  parameters.ads:17:4:setPath
 --  end read only
 
---      pragma Unreferenced (Gnattest_T);
-
    begin
       setPath(Gnattest_T.Fixture, "/test/tess");
       AUnit.Assertions.Assert
@@ -82,13 +80,11 @@ package body Parameters.Parameter_Test_Data.Parameter_Tests is
    --  parameters.ads:18:4:setPathRecursion
 --  end read only
 
-      pragma Unreferenced (Gnattest_T);
-
    begin
-
+      setPathRecursion(Gnattest_T.Fixture, True);
       AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value,
-         "Test not implemented.");
+        (getPathRecursion(Gnattest_T.Fixture),
+         "PathRecursion wasnt set properly.");
 
 --  begin read only
    end Test_setPathRecursion;
@@ -103,13 +99,11 @@ package body Parameters.Parameter_Test_Data.Parameter_Tests is
    --  parameters.ads:19:4:setFilePattern
 --  end read only
 
-      pragma Unreferenced (Gnattest_T);
-
    begin
-
+      setFilePattern(Gnattest_T.Fixture, "?.*test");
       AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value,
-         "Test not implemented.");
+        (getFilePattern(Gnattest_T.Fixture) = "?.*test",
+         "FilePattern wasnt set properly.");
 
 --  begin read only
    end Test_setFilePattern;
@@ -124,13 +118,11 @@ package body Parameters.Parameter_Test_Data.Parameter_Tests is
    --  parameters.ads:20:4:setFileExtensionPattern
 --  end read only
 
-      pragma Unreferenced (Gnattest_T);
-
    begin
-
+      setFileExtensionPattern(Gnattest_T.Fixture, ".jp?");
       AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value,
-         "Test not implemented.");
+        (getFileExtensionPattern(Gnattest_T.Fixture) = ".jp?",
+         "FileExtensionPattern wasnt set properly.");
 
 --  begin read only
    end Test_setFileExtensionPattern;
@@ -145,13 +137,11 @@ package body Parameters.Parameter_Test_Data.Parameter_Tests is
    --  parameters.ads:21:4:setFullName
 --  end read only
 
-      pragma Unreferenced (Gnattest_T);
-
    begin
-
+      setFullName(Gnattest_T.Fixture, True);
       AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value,
-         "Test not implemented.");
+        (getFullName(Gnattest_T.Fixture),
+         "FullNameFlag wasnt set properly.");
 
 --  begin read only
    end Test_setFullName;
@@ -166,13 +156,11 @@ package body Parameters.Parameter_Test_Data.Parameter_Tests is
    --  parameters.ads:22:4:setDatePattern
 --  end read only
 
-      pragma Unreferenced (Gnattest_T);
-
    begin
-
+      setDatePattern(Gnattest_T.Fixture, "1970-01-??");
       AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value,
-         "Test not implemented.");
+        (getDatePattern(Gnattest_T.Fixture) = "1970-01-??",
+         "DatePattern wasnt set properly.");
 
 --  begin read only
    end Test_setDatePattern;
@@ -187,13 +175,11 @@ package body Parameters.Parameter_Test_Data.Parameter_Tests is
    --  parameters.ads:23:4:setMinFileSize
 --  end read only
 
-      pragma Unreferenced (Gnattest_T);
-
    begin
-
+      setMinFileSize(Gnattest_T.Fixture, 5);
       AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value,
-         "Test not implemented.");
+        (getMinFileSize(Gnattest_T.Fixture) = 5,
+         "MinFileSize wasnt set properly.");
 
 --  begin read only
    end Test_setMinFileSize;
@@ -208,13 +194,11 @@ package body Parameters.Parameter_Test_Data.Parameter_Tests is
    --  parameters.ads:24:4:setMaxFileSize
 --  end read only
 
-      pragma Unreferenced (Gnattest_T);
-
    begin
-
+      setMaxFileSize(Gnattest_T.Fixture, 100);
       AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value,
-         "Test not implemented.");
+        (getMaxFileSize(Gnattest_T.Fixture) = 100,
+         "MaxFileSize wasnt set properly.");
 
 --  begin read only
    end Test_setMaxFileSize;
@@ -229,13 +213,11 @@ package body Parameters.Parameter_Test_Data.Parameter_Tests is
    --  parameters.ads:25:4:setDateRangeStart
 --  end read only
 
-      pragma Unreferenced (Gnattest_T);
-
    begin
-
+      setDateRangeStart(Gnattest_T.Fixture, "1970-01-01");
       AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value,
-         "Test not implemented.");
+        (getDateRangeStart(Gnattest_T.Fixture) = "1970-01-01",
+         "DateRangeStart wasnt set properly.");
 
 --  begin read only
    end Test_setDateRangeStart;
@@ -250,13 +232,11 @@ package body Parameters.Parameter_Test_Data.Parameter_Tests is
    --  parameters.ads:26:4:setDateRangeFinish
 --  end read only
 
-      pragma Unreferenced (Gnattest_T);
-
    begin
-
+      setDateRangeFinish(Gnattest_T.Fixture, "2016-12-07");
       AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value,
-         "Test not implemented.");
+        (getDateRangeFinish(Gnattest_T.Fixture) = "2016-12-07",
+         "DateRangeFinish wasnt set properly.");
 
 --  begin read only
    end Test_setDateRangeFinish;
@@ -271,13 +251,11 @@ package body Parameters.Parameter_Test_Data.Parameter_Tests is
    --  parameters.ads:27:4:setTimePattern
 --  end read only
 
-      pragma Unreferenced (Gnattest_T);
-
    begin
-
+      setTimePattern(Gnattest_T.Fixture, "10:12:00");
       AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value,
-         "Test not implemented.");
+        (getTimePattern(Gnattest_T.Fixture) = "10:12:00",
+         "TimePattern wasnt set properly.");
 
 --  begin read only
    end Test_setTimePattern;
@@ -292,13 +270,11 @@ package body Parameters.Parameter_Test_Data.Parameter_Tests is
    --  parameters.ads:28:4:setTimeRangeStart
 --  end read only
 
-      pragma Unreferenced (Gnattest_T);
-
    begin
-
+      setTimeRangeStart(Gnattest_T.Fixture, "10:01:00");
       AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value,
-         "Test not implemented.");
+        (getTimeRangeStart(Gnattest_T.Fixture) = "10:01:00",
+         "TimeRangeStart wasnt set properly.");
 
 --  begin read only
    end Test_setTimeRangeStart;
@@ -313,13 +289,11 @@ package body Parameters.Parameter_Test_Data.Parameter_Tests is
    --  parameters.ads:29:4:setTimeRangeFinish
 --  end read only
 
-      pragma Unreferenced (Gnattest_T);
-
    begin
-
+      setTimeRangeFinish(Gnattest_T.Fixture, "11:59:00");
       AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value,
-         "Test not implemented.");
+        (getTimeRangeFinish(Gnattest_T.Fixture) = "11:59:00",
+         "TimeRangeFinish wasnt set properly.");
 
 --  begin read only
    end Test_setTimeRangeFinish;
@@ -334,13 +308,11 @@ package body Parameters.Parameter_Test_Data.Parameter_Tests is
    --  parameters.ads:30:4:setMinWidth
 --  end read only
 
-      pragma Unreferenced (Gnattest_T);
-
    begin
-
+      setMinWidth(Gnattest_T.Fixture, 10);
       AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value,
-         "Test not implemented.");
+        (getMinWidth(Gnattest_T.Fixture) = 10,
+         "MinWidth wasnt set properly.");
 
 --  begin read only
    end Test_setMinWidth;
@@ -355,13 +327,11 @@ package body Parameters.Parameter_Test_Data.Parameter_Tests is
    --  parameters.ads:31:4:setMaxWidth
 --  end read only
 
-      pragma Unreferenced (Gnattest_T);
-
    begin
-
+      setMaxWidth(Gnattest_T.Fixture, 100);
       AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value,
-         "Test not implemented.");
+        (getMaxWidth(Gnattest_T.Fixture) = 100,
+         "MaxWidth wasnt set properly.");
 
 --  begin read only
    end Test_setMaxWidth;
@@ -376,13 +346,11 @@ package body Parameters.Parameter_Test_Data.Parameter_Tests is
    --  parameters.ads:32:4:setMinHeight
 --  end read only
 
-      pragma Unreferenced (Gnattest_T);
-
    begin
-
+      setMinHeight(Gnattest_T.Fixture, 10);
       AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value,
-         "Test not implemented.");
+        (getMinHeight(Gnattest_T.Fixture) = 10,
+         "MinHeight wasnt set properly.");
 
 --  begin read only
    end Test_setMinHeight;
@@ -397,13 +365,11 @@ package body Parameters.Parameter_Test_Data.Parameter_Tests is
    --  parameters.ads:33:4:setMaxHeight
 --  end read only
 
-      pragma Unreferenced (Gnattest_T);
-
    begin
-
+      setMaxHeight(Gnattest_T.Fixture, 100);
       AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value,
-         "Test not implemented.");
+        (getMaxHeight(Gnattest_T.Fixture) = 100,
+         "MaxHeight wasnt set properly.");
 
 --  begin read only
    end Test_setMaxHeight;
@@ -418,13 +384,11 @@ package body Parameters.Parameter_Test_Data.Parameter_Tests is
    --  parameters.ads:34:4:setHelp
 --  end read only
 
-      pragma Unreferenced (Gnattest_T);
-
    begin
-
+      setHelp(Gnattest_T.Fixture, True);
       AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value,
-         "Test not implemented.");
+        (flagHelp(Gnattest_T.Fixture) = True,
+         "HelpFlag wasnt set properly.");
 
 --  begin read only
    end Test_setHelp;
@@ -439,13 +403,11 @@ package body Parameters.Parameter_Test_Data.Parameter_Tests is
    --  parameters.ads:35:4:setRename
 --  end read only
 
-      pragma Unreferenced (Gnattest_T);
-
    begin
-
+      setRename(Gnattest_T.Fixture, True);
       AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value,
-         "Test not implemented.");
+        (getRename(Gnattest_T.Fixture),
+         "RenameFlag wasnt set properly.");
 
 --  begin read only
    end Test_setRename;
@@ -460,13 +422,11 @@ package body Parameters.Parameter_Test_Data.Parameter_Tests is
    --  parameters.ads:36:4:setDebug
 --  end read only
 
-      pragma Unreferenced (Gnattest_T);
-
    begin
-
+      setDebug(Gnattest_T.Fixture, True);
       AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value,
-         "Test not implemented.");
+        (getDebug(Gnattest_T.Fixture),
+         "DebugFlag wasnt set properly.");
 
 --  begin read only
    end Test_setDebug;
@@ -481,13 +441,10 @@ package body Parameters.Parameter_Test_Data.Parameter_Tests is
    --  parameters.ads:39:4:getPath
 --  end read only
 
-      pragma Unreferenced (Gnattest_T);
-
    begin
-
       AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value,
-         "Test not implemented.");
+        (getPath(Gnattest_T.Fixture) = "/test/tess",
+         "Path wasnt read properly.");
 
 --  begin read only
    end Test_getPath;
@@ -502,13 +459,10 @@ package body Parameters.Parameter_Test_Data.Parameter_Tests is
    --  parameters.ads:40:4:getPathRecursion
 --  end read only
 
-      pragma Unreferenced (Gnattest_T);
-
    begin
-
       AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value,
-         "Test not implemented.");
+        (getPathRecursion(Gnattest_T.Fixture),
+         "PathRecursion wasnt read properly.");
 
 --  begin read only
    end Test_getPathRecursion;
@@ -523,13 +477,10 @@ package body Parameters.Parameter_Test_Data.Parameter_Tests is
    --  parameters.ads:41:4:getFilePattern
 --  end read only
 
-      pragma Unreferenced (Gnattest_T);
-
    begin
-
       AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value,
-         "Test not implemented.");
+        (getFilePattern(Gnattest_T.Fixture) = "?.*test",
+         "FilePattern wasnt read properly.");
 
 --  begin read only
    end Test_getFilePattern;
@@ -544,13 +495,10 @@ package body Parameters.Parameter_Test_Data.Parameter_Tests is
    --  parameters.ads:42:4:getFileExtensionPattern
 --  end read only
 
-      pragma Unreferenced (Gnattest_T);
-
    begin
-
       AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value,
-         "Test not implemented.");
+        (getFileExtensionPattern(Gnattest_T.Fixture) = ".jp?",
+         "FileExtensionPattern wasnt read properly.");
 
 --  begin read only
    end Test_getFileExtensionPattern;
@@ -565,13 +513,10 @@ package body Parameters.Parameter_Test_Data.Parameter_Tests is
    --  parameters.ads:43:4:getFullName
 --  end read only
 
-      pragma Unreferenced (Gnattest_T);
-
    begin
-
       AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value,
-         "Test not implemented.");
+        (getFullName(Gnattest_T.Fixture),
+         "FullName wasnt read properly.");
 
 --  begin read only
    end Test_getFullName;
@@ -586,13 +531,10 @@ package body Parameters.Parameter_Test_Data.Parameter_Tests is
    --  parameters.ads:44:4:getDatePattern
 --  end read only
 
-      pragma Unreferenced (Gnattest_T);
-
    begin
-
       AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value,
-         "Test not implemented.");
+        (getDatePattern(Gnattest_T.Fixture) = "1970-01-??",
+         "DatePattern wasnt read properly.");
 
 --  begin read only
    end Test_getDatePattern;
@@ -607,13 +549,10 @@ package body Parameters.Parameter_Test_Data.Parameter_Tests is
    --  parameters.ads:45:4:getMinFileSize
 --  end read only
 
-      pragma Unreferenced (Gnattest_T);
-
    begin
-
       AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value,
-         "Test not implemented.");
+        (getMinFileSize(Gnattest_T.Fixture) = 5,
+         "MinFileSize wasnt read properly.");
 
 --  begin read only
    end Test_getMinFileSize;
@@ -628,13 +567,10 @@ package body Parameters.Parameter_Test_Data.Parameter_Tests is
    --  parameters.ads:46:4:getMaxFileSize
 --  end read only
 
-      pragma Unreferenced (Gnattest_T);
-
    begin
-
       AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value,
-         "Test not implemented.");
+        (getMaxFileSize(Gnattest_T.Fixture) = 100,
+         "MaxFileSize wasnt read properly.");
 
 --  begin read only
    end Test_getMaxFileSize;
@@ -649,13 +585,10 @@ package body Parameters.Parameter_Test_Data.Parameter_Tests is
    --  parameters.ads:47:4:getDateRangeStart
 --  end read only
 
-      pragma Unreferenced (Gnattest_T);
-
    begin
-
       AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value,
-         "Test not implemented.");
+        (getDateRangeStart(Gnattest_T.Fixture) = "1970-01-01",
+         "DateRangeStart wasnt read properly.");
 
 --  begin read only
    end Test_getDateRangeStart;
@@ -670,13 +603,10 @@ package body Parameters.Parameter_Test_Data.Parameter_Tests is
    --  parameters.ads:48:4:getDateRangeFinish
 --  end read only
 
-      pragma Unreferenced (Gnattest_T);
-
    begin
-
       AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value,
-         "Test not implemented.");
+        (getDateRangeFinish(Gnattest_T.Fixture) = "2016-12-07",
+         "DateRangeFinish wasnt read properly.");
 
 --  begin read only
    end Test_getDateRangeFinish;
@@ -691,13 +621,10 @@ package body Parameters.Parameter_Test_Data.Parameter_Tests is
    --  parameters.ads:49:4:getTimePattern
 --  end read only
 
-      pragma Unreferenced (Gnattest_T);
-
    begin
-
       AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value,
-         "Test not implemented.");
+        (getTimePattern(Gnattest_T.Fixture) = "10:12:00",
+         "TimePattern wasnt read properly.");
 
 --  begin read only
    end Test_getTimePattern;
@@ -712,13 +639,10 @@ package body Parameters.Parameter_Test_Data.Parameter_Tests is
    --  parameters.ads:50:4:getTimeRangeStart
 --  end read only
 
-      pragma Unreferenced (Gnattest_T);
-
    begin
-
       AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value,
-         "Test not implemented.");
+        (getTimeRangeStart(Gnattest_T.Fixture) = "10:01:00",
+         "TimeRangeStart wasnt read properly.");
 
 --  begin read only
    end Test_getTimeRangeStart;
@@ -733,13 +657,10 @@ package body Parameters.Parameter_Test_Data.Parameter_Tests is
    --  parameters.ads:51:4:getTimeRangeFinish
 --  end read only
 
-      pragma Unreferenced (Gnattest_T);
-
    begin
-
       AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value,
-         "Test not implemented.");
+        (getTimeRangeFinish(Gnattest_T.Fixture) = "11:59:00",
+         "TimeRangeFinish wasnt read properly.");
 
 --  begin read only
    end Test_getTimeRangeFinish;
@@ -754,13 +675,10 @@ package body Parameters.Parameter_Test_Data.Parameter_Tests is
    --  parameters.ads:52:4:getMinWidth
 --  end read only
 
-      pragma Unreferenced (Gnattest_T);
-
    begin
-
       AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value,
-         "Test not implemented.");
+        (getMinWidth(Gnattest_T.Fixture) = 10,
+         "MinWidth wasnt read properly.");
 
 --  begin read only
    end Test_getMinWidth;
@@ -775,13 +693,10 @@ package body Parameters.Parameter_Test_Data.Parameter_Tests is
    --  parameters.ads:53:4:getMaxWidth
 --  end read only
 
-      pragma Unreferenced (Gnattest_T);
-
    begin
-
       AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value,
-         "Test not implemented.");
+        (getMaxWidth(Gnattest_T.Fixture) = 100,
+         "MaxWidth wasnt read properly.");
 
 --  begin read only
    end Test_getMaxWidth;
@@ -796,13 +711,10 @@ package body Parameters.Parameter_Test_Data.Parameter_Tests is
    --  parameters.ads:54:4:getMinHeight
 --  end read only
 
-      pragma Unreferenced (Gnattest_T);
-
    begin
-
       AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value,
-         "Test not implemented.");
+        (getMinHeight(Gnattest_T.Fixture) = 10,
+         "MinHeight wasnt read properly.");
 
 --  begin read only
    end Test_getMinHeight;
@@ -817,13 +729,10 @@ package body Parameters.Parameter_Test_Data.Parameter_Tests is
    --  parameters.ads:55:4:getMaxHeight
 --  end read only
 
-      pragma Unreferenced (Gnattest_T);
-
    begin
-
       AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value,
-         "Test not implemented.");
+        (getMaxHeight(Gnattest_T.Fixture) = 100,
+         "MaxHeight wasnt read properly.");
 
 --  begin read only
    end Test_getMaxHeight;
@@ -838,10 +747,7 @@ package body Parameters.Parameter_Test_Data.Parameter_Tests is
    --  parameters.ads:56:4:getHelp
 --  end read only
 
-      pragma Unreferenced (Gnattest_T);
-
    begin
-
       AUnit.Assertions.Assert
         (Gnattest_Generated.Default_Assert_Value,
          "Test not implemented.");
@@ -859,13 +765,10 @@ package body Parameters.Parameter_Test_Data.Parameter_Tests is
    --  parameters.ads:57:4:getRename
 --  end read only
 
-      pragma Unreferenced (Gnattest_T);
-
    begin
-
       AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value,
-         "Test not implemented.");
+        (getRename(Gnattest_T.Fixture),
+         "RenameFlag wasnt read properly.");
 
 --  begin read only
    end Test_getRename;
@@ -880,13 +783,10 @@ package body Parameters.Parameter_Test_Data.Parameter_Tests is
    --  parameters.ads:58:4:getDebug
 --  end read only
 
-      pragma Unreferenced (Gnattest_T);
-
    begin
-
       AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value,
-         "Test not implemented.");
+        (getDebug(Gnattest_T.Fixture),
+         "DebugFlag wasnt read properly.");
 
 --  begin read only
    end Test_getDebug;
@@ -901,13 +801,10 @@ package body Parameters.Parameter_Test_Data.Parameter_Tests is
    --  parameters.ads:61:4:flagPath
 --  end read only
 
-      pragma Unreferenced (Gnattest_T);
-
    begin
-
       AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value,
-         "Test not implemented.");
+        (flagPath(Gnattest_T.Fixture),
+         "FlagPath wasnt set.");
 
 --  begin read only
    end Test_flagPath;
@@ -922,13 +819,10 @@ package body Parameters.Parameter_Test_Data.Parameter_Tests is
    --  parameters.ads:62:4:flagPathRecursion
 --  end read only
 
-      pragma Unreferenced (Gnattest_T);
-
    begin
-
       AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value,
-         "Test not implemented.");
+        (flagPathRecursion(Gnattest_T.Fixture),
+         "FlagPathRecursion wasnt set.");
 
 --  begin read only
    end Test_flagPathRecursion;
@@ -943,13 +837,10 @@ package body Parameters.Parameter_Test_Data.Parameter_Tests is
    --  parameters.ads:63:4:flagFilePattern
 --  end read only
 
-      pragma Unreferenced (Gnattest_T);
-
    begin
-
       AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value,
-         "Test not implemented.");
+        (flagFilePattern(Gnattest_T.Fixture),
+         "FlagFilePattern wasnt set.");
 
 --  begin read only
    end Test_flagFilePattern;
@@ -964,13 +855,11 @@ package body Parameters.Parameter_Test_Data.Parameter_Tests is
    --  parameters.ads:64:4:flagFileExtensionPattern
 --  end read only
 
-      pragma Unreferenced (Gnattest_T);
-
    begin
 
       AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value,
-         "Test not implemented.");
+        (flagFileExtensionPattern(Gnattest_T.Fixture),
+         "FlagFileExtensionPattern wasnt set.");
 
 --  begin read only
    end Test_flagFileExtensionPattern;
@@ -985,13 +874,10 @@ package body Parameters.Parameter_Test_Data.Parameter_Tests is
    --  parameters.ads:65:4:flagFullName
 --  end read only
 
-      pragma Unreferenced (Gnattest_T);
-
    begin
-
       AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value,
-         "Test not implemented.");
+        (flagFullName(Gnattest_T.Fixture),
+         "FlagFullName wasnt set.");
 
 --  begin read only
    end Test_flagFullName;
@@ -1006,13 +892,10 @@ package body Parameters.Parameter_Test_Data.Parameter_Tests is
    --  parameters.ads:66:4:flagFileSize
 --  end read only
 
-      pragma Unreferenced (Gnattest_T);
-
    begin
-
       AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value,
-         "Test not implemented.");
+        (flagFileSize(Gnattest_T.Fixture),
+         "FlagFileSize wasnt set.");
 
 --  begin read only
    end Test_flagFileSize;
@@ -1027,13 +910,10 @@ package body Parameters.Parameter_Test_Data.Parameter_Tests is
    --  parameters.ads:67:4:flagDatePattern
 --  end read only
 
-      pragma Unreferenced (Gnattest_T);
-
    begin
-
       AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value,
-         "Test not implemented.");
+        (flagDatePattern(Gnattest_T.Fixture),
+         "FlagDatePattern wasnt set.");
 
 --  begin read only
    end Test_flagDatePattern;
@@ -1048,13 +928,10 @@ package body Parameters.Parameter_Test_Data.Parameter_Tests is
    --  parameters.ads:68:4:flagDateRange
 --  end read only
 
-      pragma Unreferenced (Gnattest_T);
-
    begin
-
       AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value,
-         "Test not implemented.");
+        (flagDateRange(Gnattest_T.Fixture),
+         "FlagDateRange wasnt set.");
 
 --  begin read only
    end Test_flagDateRange;
@@ -1069,13 +946,10 @@ package body Parameters.Parameter_Test_Data.Parameter_Tests is
    --  parameters.ads:69:4:flagTimePattern
 --  end read only
 
-      pragma Unreferenced (Gnattest_T);
-
    begin
-
       AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value,
-         "Test not implemented.");
+        (flagTimePattern(Gnattest_T.Fixture),
+         "FlagTimePattern wasnt set.");
 
 --  begin read only
    end Test_flagTimePattern;
@@ -1090,13 +964,10 @@ package body Parameters.Parameter_Test_Data.Parameter_Tests is
    --  parameters.ads:70:4:flagTimeRange
 --  end read only
 
-      pragma Unreferenced (Gnattest_T);
-
    begin
-
       AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value,
-         "Test not implemented.");
+        (flagTimeRange(Gnattest_T.Fixture),
+         "FlagTimeRange wasnt set.");
 
 --  begin read only
    end Test_flagTimeRange;
@@ -1111,13 +982,10 @@ package body Parameters.Parameter_Test_Data.Parameter_Tests is
    --  parameters.ads:71:4:flagImageSize
 --  end read only
 
-      pragma Unreferenced (Gnattest_T);
-
    begin
-
       AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value,
-         "Test not implemented.");
+        (flagImageSize(Gnattest_T.Fixture),
+         "FlagImageSize wasnt set.");
 
 --  begin read only
    end Test_flagImageSize;
@@ -1132,13 +1000,10 @@ package body Parameters.Parameter_Test_Data.Parameter_Tests is
    --  parameters.ads:72:4:flagHelp
 --  end read only
 
-      pragma Unreferenced (Gnattest_T);
-
    begin
-
       AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value,
-         "Test not implemented.");
+        (flagHelp(Gnattest_T.Fixture),
+         "FlagHelp wasnt set.");
 
 --  begin read only
    end Test_flagHelp;
@@ -1153,13 +1018,10 @@ package body Parameters.Parameter_Test_Data.Parameter_Tests is
    --  parameters.ads:73:4:flagRename
 --  end read only
 
-      pragma Unreferenced (Gnattest_T);
-
    begin
-
       AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value,
-         "Test not implemented.");
+        (flagRename(Gnattest_T.Fixture),
+         "FlagRename wasnt set.");
 
 --  begin read only
    end Test_flagRename;
@@ -1174,13 +1036,10 @@ package body Parameters.Parameter_Test_Data.Parameter_Tests is
    --  parameters.ads:74:4:flagDebug
 --  end read only
 
-      pragma Unreferenced (Gnattest_T);
-
    begin
-
       AUnit.Assertions.Assert
-        (Gnattest_Generated.Default_Assert_Value,
-         "Test not implemented.");
+        (flagDebug(Gnattest_T.Fixture),
+         "FlagDebug wasnt set.");
 
 --  begin read only
    end Test_flagDebug;
