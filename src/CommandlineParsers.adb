@@ -55,6 +55,9 @@ package body CommandlineParsers is
                else
                   raise Constraint_Error with "Invalid date format!";
                end if;
+            when 'e' =>
+               -- CSV Speicherort setzen
+               This.all.parameters.setCSV(GNAT.Command_Line.Parameter);
             when 'f' =>
                -- Dateinamen Pattern abspeichern
                declare

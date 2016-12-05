@@ -19,6 +19,7 @@ package body FileHandlers is
    -- Anmeldung privater Funktionen
    function getDisplayName(This: access FileHandler; full_name: String) return String;
    function renamePicture(This: access FileHandler; picture: access Pictures.Picture'Class) return String;
+   function createCSV(This: access FileHandler; picture: access Pictures.Picture'Class) return String;
    function readFile(name: String; buffer: out Ada.Strings.Unbounded.Unbounded_String) return Integer;
 
    -- Konstruktor
@@ -67,50 +68,82 @@ package body FileHandlers is
                if picture.hasEXIF then
                   -- EXIF Filter anwenden
                   if This.all.filter.apply(EXIFParsers.EXIFParser_Access(picture.getEXIF)) then
-                     -- Datei umbenennen?
-                     if This.all.params.getRename then
-                        -- Alten Namen ausgeben
-                        output.display("OLD: " & This.getDisplayName(picture.getName));
+                     -- CSV-Ausgabe?
+                     if This.all.params.flagCSV then
+                        -- Datei umbenennen?
+                        if This.all.params.getRename then
+                           -- Bild umbenennen
+                           declare
+                           begin
+                              -- Bild umbenennen
+                              declare
+                                 unused: String := This.renamePicture(picture);
+                                 pragma Unreferenced(unused);
+                              begin
+                                 null;
+                              end;
 
-                        -- Bild umbenennen
-                        declare
-                        begin
-                           -- Neuen Namen ausgeben
-                           output.display("NEW: " & This.getDisplayName(This.renamePicture(picture)));
+                           exception
+                              -- Fehler beim Umbenennen -> Keine Ausgabe in CSV Datei
+                              when E: Ada.IO_Exceptions.Name_Error =>
+                                 null;
 
-                        exception
-                           -- Fehler beim Umbenennen
-                           when E: Ada.IO_Exceptions.Name_Error =>
-                              output.display("UNABLE TO RENAME FILE... skipping.");
-                              output.display(Ada.Exceptions.Exception_Message(E));
+                              -- Sonstiger Fehler beim Umbenennen -> Keine Ausgabe in CSV Datei
+                              when E: others =>
+                                 null;
+                           end;
+                        end if;
 
-                           -- Sonstiger Fehler beim Umbenennen
-                           when E: others =>
-                              output.display("UNKNOWN ERROR TRYING TO RENAME FILE... skipping.");
-                        end;
+                        -- Ausgabe in CSV Datei
+                        output.display(This.createCSV(picture));
+
                      else
-                        -- Nur Name ausgeben
-                        output.display(This.getDisplayName(picture.getName));
+                        -- Datei umbenennen?
+                        if This.all.params.getRename then
+                           -- Alten Namen ausgeben
+                           output.display("OLD: " & This.getDisplayName(picture.getName));
+
+                           -- Bild umbenennen
+                           declare
+                           begin
+                              -- Neuen Namen ausgeben
+                              output.display("NEW: " & This.getDisplayName(This.renamePicture(picture)));
+
+                           exception
+                              -- Fehler beim Umbenennen
+                              when E: Ada.IO_Exceptions.Name_Error =>
+                                 output.display("UNABLE TO RENAME FILE... skipping.");
+                                 output.display(Ada.Exceptions.Exception_Message(E));
+
+                              -- Sonstiger Fehler beim Umbenennen
+                              when E: others =>
+                                 output.display("UNKNOWN ERROR TRYING TO RENAME FILE... skipping.");
+                           end;
+                        else
+                           -- Nur Name ausgeben
+                           output.display(This.getDisplayName(picture.getName));
+                        end if;
+
+                        -- Debug Ausgabe
+                        if This.all.params.getDebug then
+                           declare
+                              package Float_Functions is new Ada.Numerics.Generic_Elementary_Functions(Float);
+                           begin
+                              output.display("DEBUG OUTPUT - DateTimeOriginal: " & picture.getEXIF.getDateTimeOriginal);
+                              output.display("DEBUG OUTPUT - ExifImageWidth: " & Integer'Image(picture.getEXIF.getExifImageWidth));
+                              output.display("DEBUG OUTPUT - ExifImageHeight: " & Integer'Image(picture.getEXIF.getExifImageHeight));
+                              output.display("DEBUG OUTPUT - FocalLength: " & Float'Image(picture.getEXIF.getFocalLength));
+                              output.display("DEBUG OUTPUT - ISOSpeedRatings: " & Integer'Image(picture.getEXIF.getISOSpeedRatings));
+                              output.display("DEBUG OUTPUT - ShutterSpeedValue raw: " & Float'Image(picture.getEXIF.getShutterSpeedValue) & " | computed: " & Float'Image(1.0 / (Float_Functions."**"(2.0, picture.getEXIF.getShutterSpeedValue))));
+                              output.display("DEBUG OUTPUT - ApertureValue: " & Float'Image(picture.getEXIF.getApertureValue) & " | computed: F/" & Float'Image((Float_Functions."**"(1.4142135623730, picture.getEXIF.getApertureValue))));
+                              output.display("DEBUG OUTPUT - Flash: " & Integer'Image(picture.getEXIF.getFlash));
+                           exception
+                              when E: EXIFParsers.TagNotFound =>
+                                 output.display("DEBUG OUTPUT - EXCEPTION IN EXIF");
+                           end;
+                        end if;
                      end if;
 
-                     -- Debug Ausgabe
-                     if This.all.params.getDebug then
-                        declare
-                           package Float_Functions is new Ada.Numerics.Generic_Elementary_Functions(Float);
-                        begin
-                           output.display("DEBUG OUTPUT - DateTimeOriginal: " & picture.getEXIF.getDateTimeOriginal);
-                           output.display("DEBUG OUTPUT - ExifImageWidth: " & Integer'Image(picture.getEXIF.getExifImageWidth));
-                           output.display("DEBUG OUTPUT - ExifImageHeight: " & Integer'Image(picture.getEXIF.getExifImageHeight));
-                           output.display("DEBUG OUTPUT - FocalLength: " & Float'Image(picture.getEXIF.getFocalLength));
-                           output.display("DEBUG OUTPUT - ISOSpeedRatings: " & Integer'Image(picture.getEXIF.getISOSpeedRatings));
-                           output.display("DEBUG OUTPUT - ShutterSpeedValue raw: " & Float'Image(picture.getEXIF.getShutterSpeedValue) & " | computed: " & Float'Image(1.0 / (Float_Functions."**"(2.0, picture.getEXIF.getShutterSpeedValue))));
-                           output.display("DEBUG OUTPUT - ApertureValue: " & Float'Image(picture.getEXIF.getApertureValue) & " | computed: F/" & Float'Image((Float_Functions."**"(1.4142135623730, picture.getEXIF.getApertureValue))));
-                           output.display("DEBUG OUTPUT - Flash: " & Integer'Image(picture.getEXIF.getFlash));
-                        exception
-                           when E: EXIFParsers.TagNotFound =>
-                              output.display("DEBUG OUTPUT - EXCEPTION IN EXIF");
-                        end;
-                     end if;
 
                   end if;
                else
@@ -176,7 +209,7 @@ package body FileHandlers is
             end if;
          end;
       end if;
-   end;
+   end getDisplayName;
 
    -- Bild umbenennen
    function renamePicture(This: access FileHandler; picture: access Pictures.Picture'Class) return String is
@@ -236,7 +269,61 @@ package body FileHandlers is
 
       -- Neuen Namen zurückgeben
       return picture.getName;
-   end;
+   end renamePicture;
+
+   -- CSV String parsen
+   function createCSV(This: access FileHandler; picture: access Pictures.Picture'Class) return String is
+      csv_row: Ada.Strings.Unbounded.Unbounded_String := Ada.Strings.Unbounded.To_Unbounded_String("""" & This.getDisplayName(picture.getName) & """,");
+   begin
+      -- Alle Tags auslesen
+      for counter in Integer range 1..8 loop
+         declare
+         begin
+            -- Tag ausgeben
+            case counter is
+               when 1 =>
+                  Ada.Strings.Unbounded.Append(csv_row, Ada.Strings.Fixed.Trim(Integer'Image(picture.getEXIF.getISOSpeedRatings) & ",", Ada.Strings.Left));
+               when 2 =>
+                  declare
+                     date: String := picture.getEXIF.getDateTimeOriginal;
+                  begin
+                     Ada.Strings.Unbounded.Append(csv_row, Ada.Strings.Fixed.Replace_Slice(date, date'Last, date'Last, "") & ",");
+                  end;
+               when 3 =>
+                  Ada.Strings.Unbounded.Append(csv_row, Ada.Strings.Fixed.Trim(Float'Image(picture.getEXIF.getShutterSpeedValue) & ",", Ada.Strings.Left));
+               when 4 =>
+                  Ada.Strings.Unbounded.Append(csv_row, Ada.Strings.Fixed.Trim(Float'Image(picture.getEXIF.getApertureValue) & ",", Ada.Strings.Left));
+               when 5 =>
+                  Ada.Strings.Unbounded.Append(csv_row, Ada.Strings.Fixed.Trim(Integer'Image(picture.getEXIF.getFlash) & ",", Ada.Strings.Left));
+               when 6 =>
+                  Ada.Strings.Unbounded.Append(csv_row, Ada.Strings.Fixed.Trim(Float'Image(picture.getEXIF.getFocalLength) & ",", Ada.Strings.Left));
+               when 7 =>
+                  Ada.Strings.Unbounded.Append(csv_row, Ada.Strings.Fixed.Trim(Integer'Image(picture.getEXIF.getExifImageWidth) & ",", Ada.Strings.Left));
+               when 8 =>
+                  Ada.Strings.Unbounded.Append(csv_row, Ada.Strings.Fixed.Trim(Integer'Image(picture.getEXIF.getExifImageHeight), Ada.Strings.Left));
+               when others =>
+                  null; -- Keine Ausgabe im Overflow Fall
+            end case;
+
+         -- Fehlerbehandlung
+         exception
+            -- Bei nicht vorhandenem Tag Zelle leer lassen
+            when E: EXIFParsers.TagNotFound =>
+               if counter /= 8 then
+                  Ada.Strings.Unbounded.Append(csv_row, ",");
+               end if;
+
+            -- Bei sonstigen Fehlern Zelle leer lassen
+            when E: others =>
+               if counter /= 8 then
+                  Ada.Strings.Unbounded.Append(csv_row, ",");
+               end if;
+         end;
+      end loop;
+
+      -- CSV String zurück geben
+      return Ada.Strings.Unbounded.To_String(csv_row);
+   end createCSV;
 
    -- Datei einlesen
    -- Rückgabe -1 bei fehlender oder leerer Datei

@@ -29,6 +29,7 @@ package Globals is
    minHeight: constant Natural := Natural'First;
    maxHeight: constant Natural := Natural'Last;
    defaultRenameFiles: constant Boolean := False;
+   defaultCSV: constant String := "export.csv";
    defaultDebug: constant Boolean := False;
 
    -- Hilfetext
@@ -41,6 +42,8 @@ package Globals is
      "-d YYYY-MM-DD" & ASCII.LF &
      "    Set the date to filter the pictures" & ASCII.LF &
      "    Allowed are digits and ? as a wildcard" & ASCII.LF &
+     "-e file" & ASCII.LF &
+     "    Stores EXIF parameters in specified file" & ASCII.LF &
      "-f filepattern" & ASCII.LF &
      "    Specify a pattern to filter filenames" & ASCII.LF &
      "    Use charcters or * (general wildcard) or ? (single character wildcard)" & ASCII.LF &
@@ -86,7 +89,7 @@ package Globals is
      "    Displays debug information for parameters and pictures" & ASCII.LF & ASCII.LF;
 
    -- Kommandozeilenparameter
-   CommandLine: constant String := "c d: f: h p: r t: -minSize= -maxSize= -startDate= -finDate= -startTime= -finTime= -minWidth= -maxWidth= -minHeight= -maxHeight= -fileRegex= -rename -debug";
+   CommandLine: constant String := "c d: e: f: h p: r t: -minSize= -maxSize= -startDate= -finDate= -startTime= -finTime= -minWidth= -maxWidth= -minHeight= -maxHeight= -fileRegex= -rename -debug";
 
    -- EXIF-Tags
    package exif is

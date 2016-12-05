@@ -45,6 +45,7 @@ begin
       output.display("DEBUG OUTPUT - maxWidth: " & Natural'Image(input.getParams.getMaxWidth));
       output.display("DEBUG OUTPUT - minHeight: " & Natural'Image(input.getParams.getMinHeight));
       output.display("DEBUG OUTPUT - maxHeight: " & Natural'Image(input.getParams.getMaxHeight));
+      output.display("DEBUG OUTPUT - CSVfile: " & input.getParams.getCSV);
       output.display("DEBUG OUTPUT - RenameFiles: " & Boolean'Image(input.getParams.getRename));
    end if;
 

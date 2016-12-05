@@ -114,6 +114,11 @@ package body Parameters is
       This.all.rename := enable;
       This.all.Flag_rename := True;
    end setRename;
+   procedure setCSV(This: access Parameter; file: String) is
+   begin
+      This.all.csvFile := Ada.Strings.Unbounded.To_Unbounded_String(file);
+      This.all.Flag_csv := True;
+   end setCSV;
    procedure setDebug(This: access Parameter; enable: Boolean) is
    begin
       This.all.debug := enable;
@@ -197,6 +202,10 @@ package body Parameters is
    begin
       return This.all.rename;
    end getRename;
+   function getCSV(This: access Parameter) return String is
+   begin
+      return Ada.Strings.Unbounded.To_String(This.all.csvFile);
+   end getCSV;
    function getDebug(This: access Parameter) return Boolean is
    begin
       return This.all.debug;
@@ -255,6 +264,10 @@ package body Parameters is
    begin
       return This.all.Flag_rename;
    end flagRename;
+   function flagCSV(This: access Parameter) return Boolean is
+   begin
+      return This.all.Flag_csv;
+   end flagCSV;
    function flagDebug(This: access Parameter) return Boolean is
    begin
       return This.all.Flag_debug;
