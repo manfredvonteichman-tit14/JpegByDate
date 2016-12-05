@@ -89,3 +89,6 @@ Sprint Planning Meeting (Sprint 5)
 
 2016-11-30
 "Daily Scrum"
+
+2016-12-05
+"Daily Scrum"

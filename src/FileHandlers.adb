@@ -219,6 +219,8 @@ package body FileHandlers is
       declare
          old_name: String := picture.getName;
          pos: Natural := GNAT.Regpat.Match(Expression => Globals.regexPatternSimpleName, Data => old_name);
+         fileextension: Ada.Strings.Unbounded.Unbounded_String;
+         retry: Integer := 0;
       begin
          -- Pfad ausschneiden
          if pos >= old_name'First then
@@ -232,21 +234,49 @@ package body FileHandlers is
          declare
             date: String := Ada.Strings.Fixed.Translate(Ada.Strings.Fixed.Translate(picture.getEXIF.getDateTimeOriginal, Ada.Strings.Maps.To_Mapping(From => ":", To => "-")), Ada.Strings.Maps.To_Mapping(From => " ", To => "-"));
          begin
-            Ada.Strings.Unbounded.Append(new_name, Ada.Strings.Unbounded.To_Unbounded_String(date(date'First..date'Last-1)));
+            Ada.Strings.Unbounded.Append(new_name, date(date'First..date'Last-1));
          end;
 
-         -- Dateiendung anfügen
+         -- Dateiendung auslesen
          pos := GNAT.Regpat.Match(Expression => Globals.regexPatternFileExtension, Data => old_name);
          if pos >= old_name'First then
-            Ada.Strings.Unbounded.Append(new_name, Ada.Strings.Unbounded.To_Unbounded_String("." & Ada.Strings.Fixed.Replace_Slice(old_name, old_name'First, pos-1, "")));
+            fileextension := Ada.Strings.Unbounded.To_Unbounded_String("." & Ada.Strings.Fixed.Replace_Slice(old_name, old_name'First, pos-1, ""));
          else
             -- Im Fehlerfall
             raise Ada.IO_Exceptions.Name_Error with "Unable to extract file extension!";
          end if;
 
-         -- Datei umbenennen
-         picture.setName(Ada.Strings.Unbounded.To_String(new_name));
-         Ada.Directories.Rename(old_name, picture.getName);
+         -- Versuchen Datei umzubenennen
+         loop
+            declare
+               new_name_copy: Ada.Strings.Unbounded.Unbounded_String := new_name;
+            begin
+               -- Zusatz anfügen?
+               if retry /= 0 then
+                  Ada.Strings.Unbounded.Append(new_name_copy, "_" & Ada.Strings.Fixed.Trim(Integer'Image(retry), Ada.Strings.Left));
+               end if;
+               retry := retry + 1;
+
+               -- Dateiendung anfügen
+               Ada.Strings.Unbounded.Append(new_name_copy, fileextension);
+
+               -- Datei umbenennen
+               picture.setName(Ada.Strings.Unbounded.To_String(new_name_copy));
+               Ada.Directories.Rename(old_name, picture.getName);
+
+               -- Erfolgreich abgeschlossen -> Schleife verlassen
+               exit;
+
+            -- Fehler behandeln
+            exception
+               -- Fehler beim Umbenennen (Möglichwerweise existiert neuer Name bereits) -> nochmal versuchen
+               when E: Ada.IO_Exceptions.Use_Error =>
+                  if retry > Globals.maxRenameRetries then
+                     raise;
+                  end if;
+
+            end;
+         end loop;
 
       -- Fehler behandeln
       exception
@@ -258,7 +288,7 @@ package body FileHandlers is
          when E: Ada.IO_Exceptions.Name_Error =>
             raise Ada.IO_Exceptions.Name_Error with "Unable to rename picture! Invalid filename.";
 
-         -- Fehler beim Umbenennen (Möglichwerweise existiert neuer Name bereits
+         -- Fehler beim Umbenennen (Möglichwerweise existiert neuer Name bereits)
          when E: Ada.IO_Exceptions.Use_Error =>
             raise Ada.IO_Exceptions.Name_Error with "Unable to rename picture! New filename might already be in use.";
 

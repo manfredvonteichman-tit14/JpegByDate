@@ -29,6 +29,7 @@ package Globals is
    minHeight: constant Natural := Natural'First;
    maxHeight: constant Natural := Natural'Last;
    defaultRenameFiles: constant Boolean := False;
+   maxRenameRetries: constant Positive := 99;
    defaultCSV: constant String := "export.csv";
    defaultDebug: constant Boolean := False;
 
