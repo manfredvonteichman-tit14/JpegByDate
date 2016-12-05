@@ -1,0 +1,404 @@
+<tests_mapping mode="monolith">
+   <unit source_file="commandlineparsers.ads">
+      <test_unit target_file="commandlineparsers-commandlineparser_test_data-commandlineparser_tests.ads">
+         <setup file="commandlineparsers-commandlineparser_test_data.adb" line="4"  column="4"/>
+         <teardown file="commandlineparsers-commandlineparser_test_data.adb" line="8"  column="4"/>
+         <tested name="create" line="13" column="4">
+         </tested>
+         <tested name="destroy" line="15" column="4">
+         </tested>
+         <tested name="parse" line="18" column="4">
+         </tested>
+         <tested name="getParams" line="21" column="4">
+         </tested>
+         <dangling>
+         </dangling>
+      </test_unit>
+   </unit>
+   <unit source_file="consoleoutputs.ads">
+      <test_unit target_file="consoleoutputs-consoleoutput_test_data-consoleoutput_tests.ads">
+         <setup file="consoleoutputs-consoleoutput_test_data.adb" line="4"  column="4"/>
+         <teardown file="consoleoutputs-consoleoutput_test_data.adb" line="8"  column="4"/>
+         <tested name="create" line="11" column="4">
+         </tested>
+         <tested name="destroy" line="13" column="4">
+         </tested>
+         <tested name="display" line="16" column="4">
+         </tested>
+         <dangling>
+         </dangling>
+      </test_unit>
+   </unit>
+   <unit source_file="datepatternfilters.ads">
+      <test_unit target_file="datepatternfilters-datepatternfilter_test_data-datepatternfilter_tests.ads">
+         <setup file="datepatternfilters-datepatternfilter_test_data.adb" line="4"  column="4"/>
+         <teardown file="datepatternfilters-datepatternfilter_test_data.adb" line="8"  column="4"/>
+         <tested name="create" line="14" column="4">
+         </tested>
+         <tested name="destroy" line="16" column="4">
+         </tested>
+         <tested name="applyThis" line="19" column="4">
+         </tested>
+         <dangling>
+         </dangling>
+      </test_unit>
+   </unit>
+   <unit source_file="daterangefilters.ads">
+      <test_unit target_file="daterangefilters-daterangefilter_test_data-daterangefilter_tests.ads">
+         <setup file="daterangefilters-daterangefilter_test_data.adb" line="4"  column="4"/>
+         <teardown file="daterangefilters-daterangefilter_test_data.adb" line="8"  column="4"/>
+         <tested name="create" line="14" column="4">
+         </tested>
+         <tested name="destroy" line="16" column="4">
+         </tested>
+         <tested name="applyThis" line="19" column="4">
+         </tested>
+         <dangling>
+         </dangling>
+      </test_unit>
+   </unit>
+   <unit source_file="exifparsers.ads">
+      <test_unit target_file="exifparsers-exifparser_test_data-exifparser_tests.ads">
+         <setup file="exifparsers-exifparser_test_data.adb" line="4"  column="4"/>
+         <teardown file="exifparsers-exifparser_test_data.adb" line="8"  column="4"/>
+         <tested name="create" line="12" column="4">
+         </tested>
+         <tested name="destroy" line="14" column="4">
+         </tested>
+         <tested name="getDateTimeOriginal" line="17" column="4">
+         </tested>
+         <tested name="getExifImageWidth" line="18" column="4">
+         </tested>
+         <tested name="getExifImageHeight" line="19" column="4">
+         </tested>
+         <dangling>
+         </dangling>
+      </test_unit>
+   </unit>
+   <unit source_file="fileextensionfilters.ads">
+      <test_unit target_file="fileextensionfilters-fileextensionfilter_test_data-fileextensionfilter_tests.ads">
+         <setup file="fileextensionfilters-fileextensionfilter_test_data.adb" line="4"  column="4"/>
+         <teardown file="fileextensionfilters-fileextensionfilter_test_data.adb" line="8"  column="4"/>
+         <tested name="create" line="12" column="4">
+         </tested>
+         <tested name="destroy" line="14" column="4">
+         </tested>
+         <tested name="applyThis" line="17" column="4">
+         </tested>
+         <dangling>
+         </dangling>
+      </test_unit>
+   </unit>
+   <unit source_file="filehandlers.ads">
+      <test_unit target_file="filehandlers-filehandler_test_data-filehandler_tests.ads">
+         <setup file="filehandlers-filehandler_test_data.adb" line="4"  column="4"/>
+         <teardown file="filehandlers-filehandler_test_data.adb" line="8"  column="4"/>
+         <tested name="create" line="14" column="4">
+         </tested>
+         <tested name="destroy" line="16" column="4">
+         </tested>
+         <tested name="exec" line="19" column="4">
+         </tested>
+         <dangling>
+         </dangling>
+      </test_unit>
+   </unit>
+   <unit source_file="filelisters.ads">
+   </unit>
+   <unit source_file="filenamefilters.ads">
+      <test_unit target_file="filenamefilters-filenamefilter_test_data-filenamefilter_tests.ads">
+         <setup file="filenamefilters-filenamefilter_test_data.adb" line="4"  column="4"/>
+         <teardown file="filenamefilters-filenamefilter_test_data.adb" line="8"  column="4"/>
+         <tested name="create" line="12" column="4">
+         </tested>
+         <tested name="destroy" line="14" column="4">
+         </tested>
+         <tested name="applyThis" line="17" column="4">
+         </tested>
+         <dangling>
+         </dangling>
+      </test_unit>
+   </unit>
+   <unit source_file="filesizefilters.ads">
+      <test_unit target_file="filesizefilters-filesizefilter_test_data-filesizefilter_tests.ads">
+         <setup file="filesizefilters-filesizefilter_test_data.adb" line="4"  column="4"/>
+         <teardown file="filesizefilters-filesizefilter_test_data.adb" line="8"  column="4"/>
+         <tested name="create" line="12" column="4">
+         </tested>
+         <tested name="destroy" line="14" column="4">
+         </tested>
+         <tested name="applyThis" line="17" column="4">
+         </tested>
+         <dangling>
+         </dangling>
+      </test_unit>
+   </unit>
+   <unit source_file="filesystemlisters.ads">
+      <test_unit target_file="filesystemlisters-filesystemlister_test_data-filesystemlister_tests.ads">
+         <setup file="filesystemlisters-filesystemlister_test_data.adb" line="4"  column="4"/>
+         <teardown file="filesystemlisters-filesystemlister_test_data.adb" line="9"  column="4"/>
+         <tested name="create" line="15" column="4">
+         </tested>
+         <tested name="create" line="16" column="4">
+         </tested>
+         <tested name="destroy" line="18" column="4">
+         </tested>
+         <tested name="hasNext" line="21" column="4">
+         </tested>
+         <tested name="next" line="24" column="4">
+         </tested>
+         <tested name="init" line="44" column="4">
+         </tested>
+         <tested name="parseNext" line="47" column="4">
+         </tested>
+         <dangling>
+         </dangling>
+      </test_unit>
+   </unit>
+   <unit source_file="filters.ads">
+      <test_unit target_file="filters-filter_test_data-filter_tests.ads">
+         <tested name="apply" line="18" column="4">
+         </tested>
+         <tested name="addNew" line="22" column="4">
+         </tested>
+         <tested name="getNext" line="26" column="4">
+         </tested>
+         <dangling>
+         </dangling>
+      </test_unit>
+   </unit>
+   <unit source_file="imagesizefilters.ads">
+      <test_unit target_file="imagesizefilters-imagesizefilter_test_data-imagesizefilter_tests.ads">
+         <setup file="imagesizefilters-imagesizefilter_test_data.adb" line="4"  column="4"/>
+         <teardown file="imagesizefilters-imagesizefilter_test_data.adb" line="8"  column="4"/>
+         <tested name="create" line="14" column="4">
+         </tested>
+         <tested name="destroy" line="16" column="4">
+         </tested>
+         <tested name="applyThis" line="19" column="4">
+         </tested>
+         <dangling>
+         </dangling>
+      </test_unit>
+   </unit>
+   <unit source_file="parameters.ads">
+      <test_unit target_file="parameters-parameter_test_data-parameter_tests.ads">
+         <setup file="parameters-parameter_test_data.adb" line="4"  column="4"/>
+         <teardown file="parameters-parameter_test_data.adb" line="8"  column="4"/>
+         <tested name="create" line="12" column="4">
+         </tested>
+         <tested name="destroy" line="14" column="4">
+         </tested>
+         <tested name="setPath" line="17" column="4">
+         </tested>
+         <tested name="setPathRecursion" line="18" column="4">
+         </tested>
+         <tested name="setFilePattern" line="19" column="4">
+         </tested>
+         <tested name="setFileExtensionPattern" line="20" column="4">
+         </tested>
+         <tested name="setFullName" line="21" column="4">
+         </tested>
+         <tested name="setDatePattern" line="22" column="4">
+         </tested>
+         <tested name="setMinFileSize" line="23" column="4">
+         </tested>
+         <tested name="setMaxFileSize" line="24" column="4">
+         </tested>
+         <tested name="setDateRangeStart" line="25" column="4">
+         </tested>
+         <tested name="setDateRangeFinish" line="26" column="4">
+         </tested>
+         <tested name="setTimePattern" line="27" column="4">
+         </tested>
+         <tested name="setTimeRangeStart" line="28" column="4">
+         </tested>
+         <tested name="setTimeRangeFinish" line="29" column="4">
+         </tested>
+         <tested name="setMinWidth" line="30" column="4">
+         </tested>
+         <tested name="setMaxWidth" line="31" column="4">
+         </tested>
+         <tested name="setMinHeight" line="32" column="4">
+         </tested>
+         <tested name="setMaxHeight" line="33" column="4">
+         </tested>
+         <tested name="setHelp" line="34" column="4">
+         </tested>
+         <tested name="setRename" line="35" column="4">
+         </tested>
+         <tested name="setDebug" line="36" column="4">
+         </tested>
+         <tested name="getPath" line="39" column="4">
+         </tested>
+         <tested name="getPathRecursion" line="40" column="4">
+         </tested>
+         <tested name="getFilePattern" line="41" column="4">
+         </tested>
+         <tested name="getFileExtensionPattern" line="42" column="4">
+         </tested>
+         <tested name="getFullName" line="43" column="4">
+         </tested>
+         <tested name="getDatePattern" line="44" column="4">
+         </tested>
+         <tested name="getMinFileSize" line="45" column="4">
+         </tested>
+         <tested name="getMaxFileSize" line="46" column="4">
+         </tested>
+         <tested name="getDateRangeStart" line="47" column="4">
+         </tested>
+         <tested name="getDateRangeFinish" line="48" column="4">
+         </tested>
+         <tested name="getTimePattern" line="49" column="4">
+         </tested>
+         <tested name="getTimeRangeStart" line="50" column="4">
+         </tested>
+         <tested name="getTimeRangeFinish" line="51" column="4">
+         </tested>
+         <tested name="getMinWidth" line="52" column="4">
+         </tested>
+         <tested name="getMaxWidth" line="53" column="4">
+         </tested>
+         <tested name="getMinHeight" line="54" column="4">
+         </tested>
+         <tested name="getMaxHeight" line="55" column="4">
+         </tested>
+         <tested name="getHelp" line="56" column="4">
+         </tested>
+         <tested name="getRename" line="57" column="4">
+         </tested>
+         <tested name="getDebug" line="58" column="4">
+         </tested>
+         <tested name="flagPath" line="61" column="4">
+         </tested>
+         <tested name="flagPathRecursion" line="62" column="4">
+         </tested>
+         <tested name="flagFilePattern" line="63" column="4">
+         </tested>
+         <tested name="flagFileExtensionPattern" line="64" column="4">
+         </tested>
+         <tested name="flagFullName" line="65" column="4">
+         </tested>
+         <tested name="flagFileSize" line="66" column="4">
+         </tested>
+         <tested name="flagDatePattern" line="67" column="4">
+         </tested>
+         <tested name="flagDateRange" line="68" column="4">
+         </tested>
+         <tested name="flagTimePattern" line="69" column="4">
+         </tested>
+         <tested name="flagTimeRange" line="70" column="4">
+         </tested>
+         <tested name="flagImageSize" line="71" column="4">
+         </tested>
+         <tested name="flagHelp" line="72" column="4">
+         </tested>
+         <tested name="flagRename" line="73" column="4">
+         </tested>
+         <tested name="flagDebug" line="74" column="4">
+         </tested>
+         <dangling>
+         </dangling>
+      </test_unit>
+   </unit>
+   <unit source_file="pictures-jpegpictures.ads">
+      <test_unit target_file="pictures-jpegpictures-jpegpicture_test_data-jpegpicture_tests.ads">
+         <setup file="pictures-jpegpictures-jpegpicture_test_data.adb" line="4"  column="4"/>
+         <teardown file="pictures-jpegpictures-jpegpicture_test_data.adb" line="9"  column="4"/>
+         <tested name="create" line="13" column="4">
+         </tested>
+         <tested name="destroy" line="15" column="4">
+         </tested>
+         <tested name="hasEXIF" line="18" column="4">
+         </tested>
+         <tested name="getEXIF" line="19" column="4">
+         </tested>
+         <dangling>
+         </dangling>
+      </test_unit>
+      <test_unit target_file="pictures-jpegpictures-test_data-tests.ads">
+         <setup file="pictures-jpegpictures-test_data.adb" line="3"  column="4"/>
+         <teardown file="pictures-jpegpictures-test_data.adb" line="9"  column="4"/>
+         <tested name="isJpeg" line="22" column="4">
+         </tested>
+         <dangling>
+         </dangling>
+      </test_unit>
+   </unit>
+   <unit source_file="pictures-tiffpictures.ads">
+      <test_unit target_file="pictures-tiffpictures-tiffpicture_test_data-tiffpicture_tests.ads">
+         <setup file="pictures-tiffpictures-tiffpicture_test_data.adb" line="4"  column="4"/>
+         <teardown file="pictures-tiffpictures-tiffpicture_test_data.adb" line="9"  column="4"/>
+         <tested name="create" line="12" column="4">
+         </tested>
+         <tested name="destroy" line="14" column="4">
+         </tested>
+         <tested name="hasEXIF" line="17" column="4">
+         </tested>
+         <tested name="getEXIF" line="18" column="4">
+         </tested>
+         <tested name="createInt" line="21" column="4">
+         </tested>
+         <tested name="createInt" line="22" column="4">
+         </tested>
+         <tested name="readBinary" line="23" column="4">
+         </tested>
+         <dangling>
+         </dangling>
+      </test_unit>
+      <test_unit target_file="pictures-tiffpictures-test_data-tests.ads">
+         <setup file="pictures-tiffpictures-test_data.adb" line="3"  column="4"/>
+         <teardown file="pictures-tiffpictures-test_data.adb" line="9"  column="4"/>
+         <tested name="isTiff" line="26" column="4">
+         </tested>
+         <dangling>
+         </dangling>
+      </test_unit>
+   </unit>
+   <unit source_file="pictures.ads">
+      <test_unit target_file="pictures-picture_test_data-picture_tests.ads">
+         <tested name="setName" line="17" column="4">
+         </tested>
+         <tested name="getName" line="21" column="4">
+         </tested>
+         <dangling>
+         </dangling>
+      </test_unit>
+      <test_unit target_file="pictures-test_data-tests.ads">
+         <setup file="pictures-test_data.adb" line="3"  column="4"/>
+         <teardown file="pictures-test_data.adb" line="9"  column="4"/>
+         <tested name="create" line="12" column="4">
+         </tested>
+         <dangling>
+         </dangling>
+      </test_unit>
+   </unit>
+   <unit source_file="timepatternfilters.ads">
+      <test_unit target_file="timepatternfilters-timepatternfilter_test_data-timepatternfilter_tests.ads">
+         <setup file="timepatternfilters-timepatternfilter_test_data.adb" line="4"  column="4"/>
+         <teardown file="timepatternfilters-timepatternfilter_test_data.adb" line="8"  column="4"/>
+         <tested name="create" line="14" column="4">
+         </tested>
+         <tested name="destroy" line="16" column="4">
+         </tested>
+         <tested name="applyThis" line="19" column="4">
+         </tested>
+         <dangling>
+         </dangling>
+      </test_unit>
+   </unit>
+   <unit source_file="timerangefilters.ads">
+      <test_unit target_file="timerangefilters-timerangefilter_test_data-timerangefilter_tests.ads">
+         <setup file="timerangefilters-timerangefilter_test_data.adb" line="4"  column="4"/>
+         <teardown file="timerangefilters-timerangefilter_test_data.adb" line="8"  column="4"/>
+         <tested name="create" line="14" column="4">
+         </tested>
+         <tested name="destroy" line="16" column="4">
+         </tested>
+         <tested name="applyThis" line="19" column="4">
+         </tested>
+         <dangling>
+         </dangling>
+      </test_unit>
+   </unit>
+</tests_mapping>

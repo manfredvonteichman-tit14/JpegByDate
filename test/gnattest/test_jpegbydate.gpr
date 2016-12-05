@@ -1,0 +1,14 @@
+with "aunit";
+with "gnattest_common.gpr";
+with "..\..\src\jpegbydate.gpr";
+project test_jpegbydate is
+
+   for Source_Dirs use
+     ("..\..\bin\..\test\gnattest\tests",
+      "common");
+
+   package Compiler renames Gnattest_Common.Compiler;
+
+   package Ide renames jpegbydate.Ide;
+
+end test_jpegbydate;

@@ -20,5 +20,10 @@ project JpegByDate is
       for Executable ("main.adb") use "JpegByDate.exe";
    end Builder;
 
+   package Gnattest is
+      for Harness_Dir use "../test/gnattest";
+      for Tests_Dir use "../test/gnattest/tests";
+   end Gnattest;
+
 end JpegByDate;
 
