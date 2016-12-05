@@ -1,0 +1,1903 @@
+<?xml version="1.0"?>
+<global>
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\CommandlineParsers.adb">
+      <metric name="all_lines">231</metric>
+      <metric name="code_lines">170</metric>
+      <metric name="comment_lines">49</metric>
+      <metric name="eol_comments">0</metric>
+      <metric name="blank_lines">12</metric>
+      <unit name="CommandlineParsers" kind="package body" line="11" col="1">
+         <metric name="all_lines">221</metric>
+         <metric name="code_lines">163</metric>
+         <metric name="comment_lines">47</metric>
+         <metric name="eol_comments">0</metric>
+         <metric name="blank_lines">11</metric>
+         <metric name="all_stmts">73</metric>
+         <metric name="all_dcls">21</metric>
+         <metric name="lsloc">94</metric>
+         <unit name="create" kind="function body" line="14" col="4">
+            <metric name="all_lines">6</metric>
+            <metric name="code_lines">6</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">2</metric>
+            <metric name="all_dcls">2</metric>
+            <metric name="lsloc">4</metric>
+         </unit>
+         <unit name="destroy" kind="procedure body" line="22" col="4">
+            <metric name="all_lines">11</metric>
+            <metric name="code_lines">10</metric>
+            <metric name="comment_lines">1</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">3</metric>
+            <metric name="all_dcls">5</metric>
+            <metric name="lsloc">8</metric>
+         </unit>
+         <unit name="parse" kind="procedure body" line="35" col="4">
+            <metric name="all_lines">189</metric>
+            <metric name="code_lines">141</metric>
+            <metric name="comment_lines">42</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">6</metric>
+            <metric name="all_stmts">67</metric>
+            <metric name="all_dcls">11</metric>
+            <metric name="lsloc">78</metric>
+         </unit>
+         <unit name="getParams" kind="function body" line="226" col="4">
+            <metric name="all_lines">4</metric>
+            <metric name="code_lines">4</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">1</metric>
+            <metric name="all_dcls">2</metric>
+            <metric name="lsloc">3</metric>
+         </unit>
+      </unit>
+   </file>
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\CommandlineParsers.ads">
+      <metric name="all_lines">37</metric>
+      <metric name="code_lines">17</metric>
+      <metric name="comment_lines">12</metric>
+      <metric name="eol_comments">1</metric>
+      <metric name="blank_lines">8</metric>
+      <unit name="CommandlineParsers" kind="package" line="7" col="1">
+         <metric name="all_lines">31</metric>
+         <metric name="code_lines">14</metric>
+         <metric name="comment_lines">10</metric>
+         <metric name="eol_comments">1</metric>
+         <metric name="blank_lines">7</metric>
+         <metric name="all_stmts">0</metric>
+         <metric name="all_dcls">13</metric>
+         <metric name="lsloc">13</metric>
+      </unit>
+   </file>
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\ConsoleOutputs.adb">
+      <metric name="all_lines">29</metric>
+      <metric name="code_lines">19</metric>
+      <metric name="comment_lines">5</metric>
+      <metric name="eol_comments">0</metric>
+      <metric name="blank_lines">5</metric>
+      <unit name="ConsoleOutputs" kind="package body" line="6" col="1">
+         <metric name="all_lines">24</metric>
+         <metric name="code_lines">17</metric>
+         <metric name="comment_lines">3</metric>
+         <metric name="eol_comments">0</metric>
+         <metric name="blank_lines">4</metric>
+         <metric name="all_stmts">3</metric>
+         <metric name="all_dcls">10</metric>
+         <metric name="lsloc">13</metric>
+         <unit name="create" kind="function body" line="9" col="4">
+            <metric name="all_lines">4</metric>
+            <metric name="code_lines">4</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">1</metric>
+            <metric name="all_dcls">1</metric>
+            <metric name="lsloc">2</metric>
+         </unit>
+         <unit name="destroy" kind="procedure body" line="15" col="4">
+            <metric name="all_lines">7</metric>
+            <metric name="code_lines">7</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">1</metric>
+            <metric name="all_dcls">5</metric>
+            <metric name="lsloc">6</metric>
+         </unit>
+         <unit name="display" kind="procedure body" line="24" col="4">
+            <metric name="all_lines">4</metric>
+            <metric name="code_lines">4</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">1</metric>
+            <metric name="all_dcls">3</metric>
+            <metric name="lsloc">4</metric>
+         </unit>
+      </unit>
+   </file>
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\ConsoleOutputs.ads">
+      <metric name="all_lines">18</metric>
+      <metric name="code_lines">7</metric>
+      <metric name="comment_lines">6</metric>
+      <metric name="eol_comments">0</metric>
+      <metric name="blank_lines">5</metric>
+      <unit name="ConsoleOutputs" kind="package" line="5" col="1">
+         <metric name="all_lines">14</metric>
+         <metric name="code_lines">6</metric>
+         <metric name="comment_lines">4</metric>
+         <metric name="eol_comments">0</metric>
+         <metric name="blank_lines">4</metric>
+         <metric name="all_stmts">0</metric>
+         <metric name="all_dcls">8</metric>
+         <metric name="lsloc">8</metric>
+      </unit>
+   </file>
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\DatePatternFilters.adb">
+      <metric name="all_lines">57</metric>
+      <metric name="code_lines">37</metric>
+      <metric name="comment_lines">12</metric>
+      <metric name="eol_comments">0</metric>
+      <metric name="blank_lines">8</metric>
+      <unit name="DatePatternFilters" kind="package body" line="6" col="1">
+         <metric name="all_lines">52</metric>
+         <metric name="code_lines">35</metric>
+         <metric name="comment_lines">10</metric>
+         <metric name="eol_comments">0</metric>
+         <metric name="blank_lines">7</metric>
+         <metric name="all_stmts">11</metric>
+         <metric name="all_dcls">17</metric>
+         <metric name="lsloc">28</metric>
+         <unit name="create" kind="function body" line="9" col="4">
+            <metric name="all_lines">6</metric>
+            <metric name="code_lines">6</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">2</metric>
+            <metric name="all_dcls">3</metric>
+            <metric name="lsloc">5</metric>
+         </unit>
+         <unit name="destroy" kind="procedure body" line="17" col="4">
+            <metric name="all_lines">11</metric>
+            <metric name="code_lines">10</metric>
+            <metric name="comment_lines">1</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">3</metric>
+            <metric name="all_dcls">6</metric>
+            <metric name="lsloc">9</metric>
+         </unit>
+         <unit name="applyThis" kind="function body" line="30" col="4">
+            <metric name="all_lines">26</metric>
+            <metric name="code_lines">17</metric>
+            <metric name="comment_lines">6</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">3</metric>
+            <metric name="all_stmts">6</metric>
+            <metric name="all_dcls">7</metric>
+            <metric name="lsloc">13</metric>
+         </unit>
+      </unit>
+   </file>
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\DatePatternFilters.ads">
+      <metric name="all_lines">28</metric>
+      <metric name="code_lines">15</metric>
+      <metric name="comment_lines">7</metric>
+      <metric name="eol_comments">1</metric>
+      <metric name="blank_lines">6</metric>
+      <unit name="DatePatternFilters" kind="package" line="8" col="1">
+         <metric name="all_lines">21</metric>
+         <metric name="code_lines">11</metric>
+         <metric name="comment_lines">5</metric>
+         <metric name="eol_comments">1</metric>
+         <metric name="blank_lines">5</metric>
+         <metric name="all_stmts">0</metric>
+         <metric name="all_dcls">12</metric>
+         <metric name="lsloc">12</metric>
+      </unit>
+   </file>
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\DateRangeFilters.adb">
+      <metric name="all_lines">70</metric>
+      <metric name="code_lines">48</metric>
+      <metric name="comment_lines">13</metric>
+      <metric name="eol_comments">0</metric>
+      <metric name="blank_lines">9</metric>
+      <unit name="DateRangeFilters" kind="package body" line="5" col="1">
+         <metric name="all_lines">66</metric>
+         <metric name="code_lines">47</metric>
+         <metric name="comment_lines">11</metric>
+         <metric name="eol_comments">0</metric>
+         <metric name="blank_lines">8</metric>
+         <metric name="all_stmts">16</metric>
+         <metric name="all_dcls">22</metric>
+         <metric name="lsloc">38</metric>
+         <unit name="create" kind="function body" line="8" col="4">
+            <metric name="all_lines">6</metric>
+            <metric name="code_lines">6</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">2</metric>
+            <metric name="all_dcls">3</metric>
+            <metric name="lsloc">5</metric>
+         </unit>
+         <unit name="destroy" kind="procedure body" line="16" col="4">
+            <metric name="all_lines">11</metric>
+            <metric name="code_lines">10</metric>
+            <metric name="comment_lines">1</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">3</metric>
+            <metric name="all_dcls">6</metric>
+            <metric name="lsloc">9</metric>
+         </unit>
+         <unit name="applyThis" kind="function body" line="29" col="4">
+            <metric name="all_lines">40</metric>
+            <metric name="code_lines">29</metric>
+            <metric name="comment_lines">7</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">4</metric>
+            <metric name="all_stmts">11</metric>
+            <metric name="all_dcls">12</metric>
+            <metric name="lsloc">23</metric>
+         </unit>
+      </unit>
+   </file>
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\DateRangeFilters.ads">
+      <metric name="all_lines">28</metric>
+      <metric name="code_lines">15</metric>
+      <metric name="comment_lines">7</metric>
+      <metric name="eol_comments">1</metric>
+      <metric name="blank_lines">6</metric>
+      <unit name="DateRangeFilters" kind="package" line="8" col="1">
+         <metric name="all_lines">21</metric>
+         <metric name="code_lines">11</metric>
+         <metric name="comment_lines">5</metric>
+         <metric name="eol_comments">1</metric>
+         <metric name="blank_lines">5</metric>
+         <metric name="all_stmts">0</metric>
+         <metric name="all_dcls">12</metric>
+         <metric name="lsloc">12</metric>
+      </unit>
+   </file>
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\EXIFParsers.adb">
+      <metric name="all_lines">105</metric>
+      <metric name="code_lines">69</metric>
+      <metric name="comment_lines">24</metric>
+      <metric name="eol_comments">4</metric>
+      <metric name="blank_lines">12</metric>
+      <unit name="EXIFParsers" kind="package body" line="7" col="1">
+         <metric name="all_lines">99</metric>
+         <metric name="code_lines">66</metric>
+         <metric name="comment_lines">22</metric>
+         <metric name="eol_comments">4</metric>
+         <metric name="blank_lines">11</metric>
+         <metric name="all_stmts">24</metric>
+         <metric name="all_dcls">23</metric>
+         <metric name="lsloc">47</metric>
+         <unit name="create" kind="function body" line="10" col="4">
+            <metric name="all_lines">13</metric>
+            <metric name="code_lines">10</metric>
+            <metric name="comment_lines">2</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">1</metric>
+            <metric name="all_stmts">5</metric>
+            <metric name="all_dcls">4</metric>
+            <metric name="lsloc">9</metric>
+         </unit>
+         <unit name="destroy" kind="procedure body" line="25" col="4">
+            <metric name="all_lines">15</metric>
+            <metric name="code_lines">13</metric>
+            <metric name="comment_lines">2</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">3</metric>
+            <metric name="all_dcls">8</metric>
+            <metric name="lsloc">11</metric>
+         </unit>
+         <unit name="getDateTimeOriginal" kind="function body" line="42" col="4">
+            <metric name="all_lines">22</metric>
+            <metric name="code_lines">15</metric>
+            <metric name="comment_lines">5</metric>
+            <metric name="eol_comments">2</metric>
+            <metric name="blank_lines">2</metric>
+            <metric name="all_stmts">6</metric>
+            <metric name="all_dcls">4</metric>
+            <metric name="lsloc">10</metric>
+         </unit>
+         <unit name="getExifImageWidth" kind="function body" line="64" col="4">
+            <metric name="all_lines">20</metric>
+            <metric name="code_lines">13</metric>
+            <metric name="comment_lines">5</metric>
+            <metric name="eol_comments">1</metric>
+            <metric name="blank_lines">2</metric>
+            <metric name="all_stmts">5</metric>
+            <metric name="all_dcls">3</metric>
+            <metric name="lsloc">8</metric>
+         </unit>
+         <unit name="getExifImageHeight" kind="function body" line="84" col="4">
+            <metric name="all_lines">20</metric>
+            <metric name="code_lines">13</metric>
+            <metric name="comment_lines">5</metric>
+            <metric name="eol_comments">1</metric>
+            <metric name="blank_lines">2</metric>
+            <metric name="all_stmts">5</metric>
+            <metric name="all_dcls">3</metric>
+            <metric name="lsloc">8</metric>
+         </unit>
+      </unit>
+   </file>
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\EXIFParsers.ads">
+      <metric name="all_lines">32</metric>
+      <metric name="code_lines">17</metric>
+      <metric name="comment_lines">8</metric>
+      <metric name="eol_comments">7</metric>
+      <metric name="blank_lines">7</metric>
+      <unit name="EXIFParsers" kind="package" line="5" col="1">
+         <metric name="all_lines">28</metric>
+         <metric name="code_lines">16</metric>
+         <metric name="comment_lines">6</metric>
+         <metric name="eol_comments">6</metric>
+         <metric name="blank_lines">6</metric>
+         <metric name="all_stmts">0</metric>
+         <metric name="all_dcls">18</metric>
+         <metric name="lsloc">18</metric>
+      </unit>
+   </file>
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\FileExtensionFilters.adb">
+      <metric name="all_lines">35</metric>
+      <metric name="code_lines">24</metric>
+      <metric name="comment_lines">6</metric>
+      <metric name="eol_comments">0</metric>
+      <metric name="blank_lines">5</metric>
+      <unit name="FileExtensionFilters" kind="package body" line="6" col="1">
+         <metric name="all_lines">30</metric>
+         <metric name="code_lines">22</metric>
+         <metric name="comment_lines">4</metric>
+         <metric name="eol_comments">0</metric>
+         <metric name="blank_lines">4</metric>
+         <metric name="all_stmts">6</metric>
+         <metric name="all_dcls">13</metric>
+         <metric name="lsloc">19</metric>
+         <unit name="create" kind="function body" line="9" col="4">
+            <metric name="all_lines">6</metric>
+            <metric name="code_lines">6</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">2</metric>
+            <metric name="all_dcls">3</metric>
+            <metric name="lsloc">5</metric>
+         </unit>
+         <unit name="destroy" kind="procedure body" line="17" col="4">
+            <metric name="all_lines">11</metric>
+            <metric name="code_lines">10</metric>
+            <metric name="comment_lines">1</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">3</metric>
+            <metric name="all_dcls">6</metric>
+            <metric name="lsloc">9</metric>
+         </unit>
+         <unit name="applyThis" kind="function body" line="30" col="4">
+            <metric name="all_lines">4</metric>
+            <metric name="code_lines">4</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">1</metric>
+            <metric name="all_dcls">3</metric>
+            <metric name="lsloc">4</metric>
+         </unit>
+      </unit>
+   </file>
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\FileExtensionFilters.ads">
+      <metric name="all_lines">26</metric>
+      <metric name="code_lines">13</metric>
+      <metric name="comment_lines">7</metric>
+      <metric name="eol_comments">1</metric>
+      <metric name="blank_lines">6</metric>
+      <unit name="FileExtensionFilters" kind="package" line="6" col="1">
+         <metric name="all_lines">21</metric>
+         <metric name="code_lines">11</metric>
+         <metric name="comment_lines">5</metric>
+         <metric name="eol_comments">1</metric>
+         <metric name="blank_lines">5</metric>
+         <metric name="all_stmts">0</metric>
+         <metric name="all_dcls">12</metric>
+         <metric name="lsloc">12</metric>
+      </unit>
+   </file>
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\FileHandlers.adb">
+      <metric name="all_lines">181</metric>
+      <metric name="code_lines">115</metric>
+      <metric name="comment_lines">40</metric>
+      <metric name="eol_comments">1</metric>
+      <metric name="blank_lines">26</metric>
+      <unit name="FileHandlers" kind="package body" line="14" col="1">
+         <metric name="all_lines">168</metric>
+         <metric name="code_lines">105</metric>
+         <metric name="comment_lines">38</metric>
+         <metric name="eol_comments">1</metric>
+         <metric name="blank_lines">25</metric>
+         <metric name="all_stmts">44</metric>
+         <metric name="all_dcls">41</metric>
+         <metric name="lsloc">85</metric>
+         <unit name="create" kind="function body" line="20" col="4">
+            <metric name="all_lines">8</metric>
+            <metric name="code_lines">8</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">4</metric>
+            <metric name="all_dcls">5</metric>
+            <metric name="lsloc">9</metric>
+         </unit>
+         <unit name="destroy" kind="procedure body" line="30" col="4">
+            <metric name="all_lines">8</metric>
+            <metric name="code_lines">7</metric>
+            <metric name="comment_lines">1</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">1</metric>
+            <metric name="all_dcls">5</metric>
+            <metric name="lsloc">6</metric>
+         </unit>
+         <unit name="exec" kind="procedure body" line="40" col="4">
+            <metric name="all_lines">91</metric>
+            <metric name="code_lines">58</metric>
+            <metric name="comment_lines">21</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">12</metric>
+            <metric name="all_stmts">27</metric>
+            <metric name="all_dcls">13</metric>
+            <metric name="lsloc">40</metric>
+         </unit>
+         <unit name="readFile" kind="function body" line="136" col="4">
+            <metric name="all_lines">44</metric>
+            <metric name="code_lines">29</metric>
+            <metric name="comment_lines">9</metric>
+            <metric name="eol_comments">1</metric>
+            <metric name="blank_lines">6</metric>
+            <metric name="all_stmts">12</metric>
+            <metric name="all_dcls">14</metric>
+            <metric name="lsloc">26</metric>
+         </unit>
+      </unit>
+   </file>
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\FileHandlers.ads">
+      <metric name="all_lines">30</metric>
+      <metric name="code_lines">17</metric>
+      <metric name="comment_lines">7</metric>
+      <metric name="eol_comments">3</metric>
+      <metric name="blank_lines">6</metric>
+      <unit name="FileHandlers" kind="package" line="8" col="1">
+         <metric name="all_lines">23</metric>
+         <metric name="code_lines">13</metric>
+         <metric name="comment_lines">5</metric>
+         <metric name="eol_comments">3</metric>
+         <metric name="blank_lines">5</metric>
+         <metric name="all_stmts">0</metric>
+         <metric name="all_dcls">15</metric>
+         <metric name="lsloc">15</metric>
+      </unit>
+   </file>
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\FileNameFilters.adb">
+      <metric name="all_lines">49</metric>
+      <metric name="code_lines">34</metric>
+      <metric name="comment_lines">9</metric>
+      <metric name="eol_comments">0</metric>
+      <metric name="blank_lines">6</metric>
+      <unit name="FileNameFilters" kind="package body" line="8" col="1">
+         <metric name="all_lines">42</metric>
+         <metric name="code_lines">30</metric>
+         <metric name="comment_lines">7</metric>
+         <metric name="eol_comments">0</metric>
+         <metric name="blank_lines">5</metric>
+         <metric name="all_stmts">10</metric>
+         <metric name="all_dcls">14</metric>
+         <metric name="lsloc">24</metric>
+         <unit name="create" kind="function body" line="11" col="4">
+            <metric name="all_lines">6</metric>
+            <metric name="code_lines">6</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">2</metric>
+            <metric name="all_dcls">3</metric>
+            <metric name="lsloc">5</metric>
+         </unit>
+         <unit name="destroy" kind="procedure body" line="19" col="4">
+            <metric name="all_lines">11</metric>
+            <metric name="code_lines">10</metric>
+            <metric name="comment_lines">1</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">3</metric>
+            <metric name="all_dcls">6</metric>
+            <metric name="lsloc">9</metric>
+         </unit>
+         <unit name="applyThis" kind="function body" line="32" col="4">
+            <metric name="all_lines">16</metric>
+            <metric name="code_lines">12</metric>
+            <metric name="comment_lines">3</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">1</metric>
+            <metric name="all_stmts">5</metric>
+            <metric name="all_dcls">4</metric>
+            <metric name="lsloc">9</metric>
+         </unit>
+      </unit>
+   </file>
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\FileNameFilters.ads">
+      <metric name="all_lines">26</metric>
+      <metric name="code_lines">13</metric>
+      <metric name="comment_lines">7</metric>
+      <metric name="eol_comments">1</metric>
+      <metric name="blank_lines">6</metric>
+      <unit name="FileNameFilters" kind="package" line="6" col="1">
+         <metric name="all_lines">21</metric>
+         <metric name="code_lines">11</metric>
+         <metric name="comment_lines">5</metric>
+         <metric name="eol_comments">1</metric>
+         <metric name="blank_lines">5</metric>
+         <metric name="all_stmts">0</metric>
+         <metric name="all_dcls">12</metric>
+         <metric name="lsloc">12</metric>
+      </unit>
+   </file>
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\FileSizeFilters.adb">
+      <metric name="all_lines">60</metric>
+      <metric name="code_lines">38</metric>
+      <metric name="comment_lines">12</metric>
+      <metric name="eol_comments">0</metric>
+      <metric name="blank_lines">10</metric>
+      <unit name="FileSizeFilters" kind="package body" line="6" col="1">
+         <metric name="all_lines">55</metric>
+         <metric name="code_lines">36</metric>
+         <metric name="comment_lines">10</metric>
+         <metric name="eol_comments">0</metric>
+         <metric name="blank_lines">9</metric>
+         <metric name="all_stmts">13</metric>
+         <metric name="all_dcls">16</metric>
+         <metric name="lsloc">29</metric>
+         <unit name="create" kind="function body" line="9" col="4">
+            <metric name="all_lines">6</metric>
+            <metric name="code_lines">6</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">2</metric>
+            <metric name="all_dcls">3</metric>
+            <metric name="lsloc">5</metric>
+         </unit>
+         <unit name="destroy" kind="procedure body" line="17" col="4">
+            <metric name="all_lines">11</metric>
+            <metric name="code_lines">10</metric>
+            <metric name="comment_lines">1</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">3</metric>
+            <metric name="all_dcls">6</metric>
+            <metric name="lsloc">9</metric>
+         </unit>
+         <unit name="applyThis" kind="function body" line="30" col="4">
+            <metric name="all_lines">29</metric>
+            <metric name="code_lines">18</metric>
+            <metric name="comment_lines">6</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">5</metric>
+            <metric name="all_stmts">8</metric>
+            <metric name="all_dcls">6</metric>
+            <metric name="lsloc">14</metric>
+         </unit>
+      </unit>
+   </file>
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\FileSizeFilters.ads">
+      <metric name="all_lines">26</metric>
+      <metric name="code_lines">13</metric>
+      <metric name="comment_lines">7</metric>
+      <metric name="eol_comments">1</metric>
+      <metric name="blank_lines">6</metric>
+      <unit name="FileSizeFilters" kind="package" line="6" col="1">
+         <metric name="all_lines">21</metric>
+         <metric name="code_lines">11</metric>
+         <metric name="comment_lines">5</metric>
+         <metric name="eol_comments">1</metric>
+         <metric name="blank_lines">5</metric>
+         <metric name="all_stmts">0</metric>
+         <metric name="all_dcls">12</metric>
+         <metric name="lsloc">12</metric>
+      </unit>
+   </file>
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\FilesystemListers.adb">
+      <metric name="all_lines">183</metric>
+      <metric name="code_lines">119</metric>
+      <metric name="comment_lines">41</metric>
+      <metric name="eol_comments">4</metric>
+      <metric name="blank_lines">23</metric>
+      <unit name="FilesystemListers" kind="package body" line="5" col="1">
+         <metric name="all_lines">179</metric>
+         <metric name="code_lines">118</metric>
+         <metric name="comment_lines">39</metric>
+         <metric name="eol_comments">4</metric>
+         <metric name="blank_lines">22</metric>
+         <metric name="all_stmts">60</metric>
+         <metric name="all_dcls">34</metric>
+         <metric name="lsloc">94</metric>
+         <unit name="create" kind="function body" line="8" col="4">
+            <metric name="all_lines">4</metric>
+            <metric name="code_lines">4</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">1</metric>
+            <metric name="all_dcls">3</metric>
+            <metric name="lsloc">4</metric>
+         </unit>
+         <unit name="create" kind="function body" line="12" col="4">
+            <metric name="all_lines">7</metric>
+            <metric name="code_lines">7</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">3</metric>
+            <metric name="all_dcls">5</metric>
+            <metric name="lsloc">8</metric>
+         </unit>
+         <unit name="destroy" kind="procedure body" line="21" col="4">
+            <metric name="all_lines">16</metric>
+            <metric name="code_lines">11</metric>
+            <metric name="comment_lines">3</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">2</metric>
+            <metric name="all_stmts">4</metric>
+            <metric name="all_dcls">5</metric>
+            <metric name="lsloc">9</metric>
+         </unit>
+         <unit name="hasNext" kind="function body" line="39" col="4">
+            <metric name="all_lines">4</metric>
+            <metric name="code_lines">4</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">1</metric>
+            <metric name="all_dcls">2</metric>
+            <metric name="lsloc">3</metric>
+         </unit>
+         <unit name="next" kind="function body" line="45" col="4">
+            <metric name="all_lines">13</metric>
+            <metric name="code_lines">11</metric>
+            <metric name="comment_lines">2</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">5</metric>
+            <metric name="all_dcls">3</metric>
+            <metric name="lsloc">8</metric>
+         </unit>
+         <unit name="init" kind="procedure body" line="60" col="4">
+            <metric name="all_lines">32</metric>
+            <metric name="code_lines">22</metric>
+            <metric name="comment_lines">6</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">4</metric>
+            <metric name="all_stmts">12</metric>
+            <metric name="all_dcls">8</metric>
+            <metric name="lsloc">20</metric>
+         </unit>
+         <unit name="parseNext" kind="procedure body" line="94" col="4">
+            <metric name="all_lines">88</metric>
+            <metric name="code_lines">57</metric>
+            <metric name="comment_lines">22</metric>
+            <metric name="eol_comments">4</metric>
+            <metric name="blank_lines">9</metric>
+            <metric name="all_stmts">34</metric>
+            <metric name="all_dcls">7</metric>
+            <metric name="lsloc">41</metric>
+         </unit>
+      </unit>
+   </file>
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\FilesystemListers.ads">
+      <metric name="all_lines">49</metric>
+      <metric name="code_lines">25</metric>
+      <metric name="comment_lines">13</metric>
+      <metric name="eol_comments">4</metric>
+      <metric name="blank_lines">11</metric>
+      <unit name="FilesystemListers" kind="package" line="9" col="1">
+         <metric name="all_lines">41</metric>
+         <metric name="code_lines">20</metric>
+         <metric name="comment_lines">11</metric>
+         <metric name="eol_comments">4</metric>
+         <metric name="blank_lines">10</metric>
+         <metric name="all_stmts">0</metric>
+         <metric name="all_dcls">28</metric>
+         <metric name="lsloc">28</metric>
+      </unit>
+   </file>
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\Filters.adb">
+      <metric name="all_lines">43</metric>
+      <metric name="code_lines">27</metric>
+      <metric name="comment_lines">11</metric>
+      <metric name="eol_comments">1</metric>
+      <metric name="blank_lines">5</metric>
+      <unit name="Filters" kind="package body" line="5" col="1">
+         <metric name="all_lines">39</metric>
+         <metric name="code_lines">27</metric>
+         <metric name="comment_lines">8</metric>
+         <metric name="eol_comments">1</metric>
+         <metric name="blank_lines">4</metric>
+         <metric name="all_stmts">9</metric>
+         <metric name="all_dcls">10</metric>
+         <metric name="lsloc">19</metric>
+         <unit name="apply" kind="function body" line="8" col="4">
+            <metric name="all_lines">16</metric>
+            <metric name="code_lines">13</metric>
+            <metric name="comment_lines">3</metric>
+            <metric name="eol_comments">1</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">5</metric>
+            <metric name="all_dcls">4</metric>
+            <metric name="lsloc">9</metric>
+         </unit>
+         <unit name="addNew" kind="procedure body" line="26" col="4">
+            <metric name="all_lines">10</metric>
+            <metric name="code_lines">8</metric>
+            <metric name="comment_lines">2</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">3</metric>
+            <metric name="all_dcls">3</metric>
+            <metric name="lsloc">6</metric>
+         </unit>
+         <unit name="getNext" kind="function body" line="38" col="4">
+            <metric name="all_lines">4</metric>
+            <metric name="code_lines">4</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">1</metric>
+            <metric name="all_dcls">2</metric>
+            <metric name="lsloc">3</metric>
+         </unit>
+      </unit>
+   </file>
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\Filters.ads">
+      <metric name="all_lines">40</metric>
+      <metric name="code_lines">17</metric>
+      <metric name="comment_lines">14</metric>
+      <metric name="eol_comments">1</metric>
+      <metric name="blank_lines">9</metric>
+      <unit name="Filters" kind="generic package" line="5" col="1">
+         <metric name="all_lines">36</metric>
+         <metric name="code_lines">16</metric>
+         <metric name="comment_lines">12</metric>
+         <metric name="eol_comments">1</metric>
+         <metric name="blank_lines">8</metric>
+         <metric name="all_stmts">0</metric>
+         <metric name="all_dcls">21</metric>
+         <metric name="lsloc">21</metric>
+      </unit>
+   </file>
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\ImageSizeFilters.adb">
+      <metric name="all_lines">63</metric>
+      <metric name="code_lines">43</metric>
+      <metric name="comment_lines">12</metric>
+      <metric name="eol_comments">0</metric>
+      <metric name="blank_lines">8</metric>
+      <unit name="ImageSizeFilters" kind="package body" line="6" col="1">
+         <metric name="all_lines">58</metric>
+         <metric name="code_lines">41</metric>
+         <metric name="comment_lines">10</metric>
+         <metric name="eol_comments">0</metric>
+         <metric name="blank_lines">7</metric>
+         <metric name="all_stmts">13</metric>
+         <metric name="all_dcls">18</metric>
+         <metric name="lsloc">31</metric>
+         <unit name="create" kind="function body" line="9" col="4">
+            <metric name="all_lines">6</metric>
+            <metric name="code_lines">6</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">2</metric>
+            <metric name="all_dcls">3</metric>
+            <metric name="lsloc">5</metric>
+         </unit>
+         <unit name="destroy" kind="procedure body" line="17" col="4">
+            <metric name="all_lines">11</metric>
+            <metric name="code_lines">10</metric>
+            <metric name="comment_lines">1</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">3</metric>
+            <metric name="all_dcls">6</metric>
+            <metric name="lsloc">9</metric>
+         </unit>
+         <unit name="applyThis" kind="function body" line="30" col="4">
+            <metric name="all_lines">32</metric>
+            <metric name="code_lines">23</metric>
+            <metric name="comment_lines">6</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">3</metric>
+            <metric name="all_stmts">8</metric>
+            <metric name="all_dcls">8</metric>
+            <metric name="lsloc">16</metric>
+         </unit>
+      </unit>
+   </file>
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\ImageSizeFilters.ads">
+      <metric name="all_lines">28</metric>
+      <metric name="code_lines">15</metric>
+      <metric name="comment_lines">7</metric>
+      <metric name="eol_comments">1</metric>
+      <metric name="blank_lines">6</metric>
+      <unit name="ImageSizeFilters" kind="package" line="8" col="1">
+         <metric name="all_lines">21</metric>
+         <metric name="code_lines">11</metric>
+         <metric name="comment_lines">5</metric>
+         <metric name="eol_comments">1</metric>
+         <metric name="blank_lines">5</metric>
+         <metric name="all_stmts">0</metric>
+         <metric name="all_dcls">12</metric>
+         <metric name="lsloc">12</metric>
+      </unit>
+   </file>
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\Parameters.adb">
+      <metric name="all_lines">237</metric>
+      <metric name="code_lines">223</metric>
+      <metric name="comment_lines">7</metric>
+      <metric name="eol_comments">0</metric>
+      <metric name="blank_lines">7</metric>
+      <unit name="Parameters" kind="package body" line="5" col="1">
+         <metric name="all_lines">233</metric>
+         <metric name="code_lines">222</metric>
+         <metric name="comment_lines">5</metric>
+         <metric name="eol_comments">0</metric>
+         <metric name="blank_lines">6</metric>
+         <metric name="all_stmts">67</metric>
+         <metric name="all_dcls">121</metric>
+         <metric name="lsloc">188</metric>
+         <unit name="create" kind="function body" line="8" col="4">
+            <metric name="all_lines">4</metric>
+            <metric name="code_lines">4</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">1</metric>
+            <metric name="all_dcls">1</metric>
+            <metric name="lsloc">2</metric>
+         </unit>
+         <unit name="destroy" kind="procedure body" line="14" col="4">
+            <metric name="all_lines">7</metric>
+            <metric name="code_lines">7</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">1</metric>
+            <metric name="all_dcls">5</metric>
+            <metric name="lsloc">6</metric>
+         </unit>
+         <unit name="setPath" kind="procedure body" line="23" col="4">
+            <metric name="all_lines">5</metric>
+            <metric name="code_lines">5</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">2</metric>
+            <metric name="all_dcls">3</metric>
+            <metric name="lsloc">5</metric>
+         </unit>
+         <unit name="setPathRecursion" kind="procedure body" line="28" col="4">
+            <metric name="all_lines">5</metric>
+            <metric name="code_lines">5</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">2</metric>
+            <metric name="all_dcls">3</metric>
+            <metric name="lsloc">5</metric>
+         </unit>
+         <unit name="setFilePattern" kind="procedure body" line="33" col="4">
+            <metric name="all_lines">5</metric>
+            <metric name="code_lines">5</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">2</metric>
+            <metric name="all_dcls">3</metric>
+            <metric name="lsloc">5</metric>
+         </unit>
+         <unit name="setFileExtensionPattern" kind="procedure body" line="38" col="4">
+            <metric name="all_lines">5</metric>
+            <metric name="code_lines">5</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">2</metric>
+            <metric name="all_dcls">3</metric>
+            <metric name="lsloc">5</metric>
+         </unit>
+         <unit name="setFullName" kind="procedure body" line="43" col="4">
+            <metric name="all_lines">5</metric>
+            <metric name="code_lines">5</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">2</metric>
+            <metric name="all_dcls">3</metric>
+            <metric name="lsloc">5</metric>
+         </unit>
+         <unit name="setDatePattern" kind="procedure body" line="48" col="4">
+            <metric name="all_lines">5</metric>
+            <metric name="code_lines">5</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">2</metric>
+            <metric name="all_dcls">3</metric>
+            <metric name="lsloc">5</metric>
+         </unit>
+         <unit name="setMinFileSize" kind="procedure body" line="53" col="4">
+            <metric name="all_lines">5</metric>
+            <metric name="code_lines">5</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">2</metric>
+            <metric name="all_dcls">3</metric>
+            <metric name="lsloc">5</metric>
+         </unit>
+         <unit name="setMaxFileSize" kind="procedure body" line="58" col="4">
+            <metric name="all_lines">5</metric>
+            <metric name="code_lines">5</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">2</metric>
+            <metric name="all_dcls">3</metric>
+            <metric name="lsloc">5</metric>
+         </unit>
+         <unit name="setDateRangeStart" kind="procedure body" line="63" col="4">
+            <metric name="all_lines">5</metric>
+            <metric name="code_lines">5</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">2</metric>
+            <metric name="all_dcls">3</metric>
+            <metric name="lsloc">5</metric>
+         </unit>
+         <unit name="setDateRangeFinish" kind="procedure body" line="68" col="4">
+            <metric name="all_lines">5</metric>
+            <metric name="code_lines">5</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">2</metric>
+            <metric name="all_dcls">3</metric>
+            <metric name="lsloc">5</metric>
+         </unit>
+         <unit name="setTimePattern" kind="procedure body" line="73" col="4">
+            <metric name="all_lines">5</metric>
+            <metric name="code_lines">5</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">2</metric>
+            <metric name="all_dcls">3</metric>
+            <metric name="lsloc">5</metric>
+         </unit>
+         <unit name="setTimeRangeStart" kind="procedure body" line="78" col="4">
+            <metric name="all_lines">5</metric>
+            <metric name="code_lines">5</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">2</metric>
+            <metric name="all_dcls">3</metric>
+            <metric name="lsloc">5</metric>
+         </unit>
+         <unit name="setTimeRangeFinish" kind="procedure body" line="83" col="4">
+            <metric name="all_lines">5</metric>
+            <metric name="code_lines">5</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">2</metric>
+            <metric name="all_dcls">3</metric>
+            <metric name="lsloc">5</metric>
+         </unit>
+         <unit name="setMinWidth" kind="procedure body" line="88" col="4">
+            <metric name="all_lines">5</metric>
+            <metric name="code_lines">5</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">2</metric>
+            <metric name="all_dcls">3</metric>
+            <metric name="lsloc">5</metric>
+         </unit>
+         <unit name="setMaxWidth" kind="procedure body" line="93" col="4">
+            <metric name="all_lines">5</metric>
+            <metric name="code_lines">5</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">2</metric>
+            <metric name="all_dcls">3</metric>
+            <metric name="lsloc">5</metric>
+         </unit>
+         <unit name="setMinHeight" kind="procedure body" line="98" col="4">
+            <metric name="all_lines">5</metric>
+            <metric name="code_lines">5</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">2</metric>
+            <metric name="all_dcls">3</metric>
+            <metric name="lsloc">5</metric>
+         </unit>
+         <unit name="setMaxHeight" kind="procedure body" line="103" col="4">
+            <metric name="all_lines">5</metric>
+            <metric name="code_lines">5</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">2</metric>
+            <metric name="all_dcls">3</metric>
+            <metric name="lsloc">5</metric>
+         </unit>
+         <unit name="setHelp" kind="procedure body" line="108" col="4">
+            <metric name="all_lines">4</metric>
+            <metric name="code_lines">4</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">1</metric>
+            <metric name="all_dcls">3</metric>
+            <metric name="lsloc">4</metric>
+         </unit>
+         <unit name="getPath" kind="function body" line="114" col="4">
+            <metric name="all_lines">4</metric>
+            <metric name="code_lines">4</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">1</metric>
+            <metric name="all_dcls">2</metric>
+            <metric name="lsloc">3</metric>
+         </unit>
+         <unit name="getPathRecursion" kind="function body" line="118" col="4">
+            <metric name="all_lines">4</metric>
+            <metric name="code_lines">4</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">1</metric>
+            <metric name="all_dcls">2</metric>
+            <metric name="lsloc">3</metric>
+         </unit>
+         <unit name="getFilePattern" kind="function body" line="122" col="4">
+            <metric name="all_lines">4</metric>
+            <metric name="code_lines">4</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">1</metric>
+            <metric name="all_dcls">2</metric>
+            <metric name="lsloc">3</metric>
+         </unit>
+         <unit name="getFileExtensionPattern" kind="function body" line="126" col="4">
+            <metric name="all_lines">4</metric>
+            <metric name="code_lines">4</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">1</metric>
+            <metric name="all_dcls">2</metric>
+            <metric name="lsloc">3</metric>
+         </unit>
+         <unit name="getFullName" kind="function body" line="130" col="4">
+            <metric name="all_lines">4</metric>
+            <metric name="code_lines">4</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">1</metric>
+            <metric name="all_dcls">2</metric>
+            <metric name="lsloc">3</metric>
+         </unit>
+         <unit name="getDatePattern" kind="function body" line="134" col="4">
+            <metric name="all_lines">4</metric>
+            <metric name="code_lines">4</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">1</metric>
+            <metric name="all_dcls">2</metric>
+            <metric name="lsloc">3</metric>
+         </unit>
+         <unit name="getMinFileSize" kind="function body" line="138" col="4">
+            <metric name="all_lines">4</metric>
+            <metric name="code_lines">4</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">1</metric>
+            <metric name="all_dcls">2</metric>
+            <metric name="lsloc">3</metric>
+         </unit>
+         <unit name="getMaxFileSize" kind="function body" line="142" col="4">
+            <metric name="all_lines">4</metric>
+            <metric name="code_lines">4</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">1</metric>
+            <metric name="all_dcls">2</metric>
+            <metric name="lsloc">3</metric>
+         </unit>
+         <unit name="getDateRangeStart" kind="function body" line="146" col="4">
+            <metric name="all_lines">4</metric>
+            <metric name="code_lines">4</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">1</metric>
+            <metric name="all_dcls">2</metric>
+            <metric name="lsloc">3</metric>
+         </unit>
+         <unit name="getDateRangeFinish" kind="function body" line="150" col="4">
+            <metric name="all_lines">4</metric>
+            <metric name="code_lines">4</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">1</metric>
+            <metric name="all_dcls">2</metric>
+            <metric name="lsloc">3</metric>
+         </unit>
+         <unit name="getTimePattern" kind="function body" line="154" col="4">
+            <metric name="all_lines">4</metric>
+            <metric name="code_lines">4</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">1</metric>
+            <metric name="all_dcls">2</metric>
+            <metric name="lsloc">3</metric>
+         </unit>
+         <unit name="getTimeRangeStart" kind="function body" line="158" col="4">
+            <metric name="all_lines">4</metric>
+            <metric name="code_lines">4</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">1</metric>
+            <metric name="all_dcls">2</metric>
+            <metric name="lsloc">3</metric>
+         </unit>
+         <unit name="getTimeRangeFinish" kind="function body" line="162" col="4">
+            <metric name="all_lines">4</metric>
+            <metric name="code_lines">4</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">1</metric>
+            <metric name="all_dcls">2</metric>
+            <metric name="lsloc">3</metric>
+         </unit>
+         <unit name="getMinWidth" kind="function body" line="166" col="4">
+            <metric name="all_lines">4</metric>
+            <metric name="code_lines">4</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">1</metric>
+            <metric name="all_dcls">2</metric>
+            <metric name="lsloc">3</metric>
+         </unit>
+         <unit name="getMaxWidth" kind="function body" line="170" col="4">
+            <metric name="all_lines">4</metric>
+            <metric name="code_lines">4</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">1</metric>
+            <metric name="all_dcls">2</metric>
+            <metric name="lsloc">3</metric>
+         </unit>
+         <unit name="getMinHeight" kind="function body" line="174" col="4">
+            <metric name="all_lines">4</metric>
+            <metric name="code_lines">4</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">1</metric>
+            <metric name="all_dcls">2</metric>
+            <metric name="lsloc">3</metric>
+         </unit>
+         <unit name="getMaxHeight" kind="function body" line="178" col="4">
+            <metric name="all_lines">4</metric>
+            <metric name="code_lines">4</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">1</metric>
+            <metric name="all_dcls">2</metric>
+            <metric name="lsloc">3</metric>
+         </unit>
+         <unit name="getHelp" kind="function body" line="182" col="4">
+            <metric name="all_lines">4</metric>
+            <metric name="code_lines">4</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">1</metric>
+            <metric name="all_dcls">2</metric>
+            <metric name="lsloc">3</metric>
+         </unit>
+         <unit name="flagPath" kind="function body" line="188" col="4">
+            <metric name="all_lines">4</metric>
+            <metric name="code_lines">4</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">1</metric>
+            <metric name="all_dcls">2</metric>
+            <metric name="lsloc">3</metric>
+         </unit>
+         <unit name="flagPathRecursion" kind="function body" line="192" col="4">
+            <metric name="all_lines">4</metric>
+            <metric name="code_lines">4</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">1</metric>
+            <metric name="all_dcls">2</metric>
+            <metric name="lsloc">3</metric>
+         </unit>
+         <unit name="flagFilePattern" kind="function body" line="196" col="4">
+            <metric name="all_lines">4</metric>
+            <metric name="code_lines">4</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">1</metric>
+            <metric name="all_dcls">2</metric>
+            <metric name="lsloc">3</metric>
+         </unit>
+         <unit name="flagFileExtensionPattern" kind="function body" line="200" col="4">
+            <metric name="all_lines">4</metric>
+            <metric name="code_lines">4</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">1</metric>
+            <metric name="all_dcls">2</metric>
+            <metric name="lsloc">3</metric>
+         </unit>
+         <unit name="flagFullName" kind="function body" line="204" col="4">
+            <metric name="all_lines">4</metric>
+            <metric name="code_lines">4</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">1</metric>
+            <metric name="all_dcls">2</metric>
+            <metric name="lsloc">3</metric>
+         </unit>
+         <unit name="flagFileSize" kind="function body" line="208" col="4">
+            <metric name="all_lines">4</metric>
+            <metric name="code_lines">4</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">1</metric>
+            <metric name="all_dcls">2</metric>
+            <metric name="lsloc">3</metric>
+         </unit>
+         <unit name="flagDatePattern" kind="function body" line="212" col="4">
+            <metric name="all_lines">4</metric>
+            <metric name="code_lines">4</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">1</metric>
+            <metric name="all_dcls">2</metric>
+            <metric name="lsloc">3</metric>
+         </unit>
+         <unit name="flagDateRange" kind="function body" line="216" col="4">
+            <metric name="all_lines">4</metric>
+            <metric name="code_lines">4</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">1</metric>
+            <metric name="all_dcls">2</metric>
+            <metric name="lsloc">3</metric>
+         </unit>
+         <unit name="flagTimePattern" kind="function body" line="220" col="4">
+            <metric name="all_lines">4</metric>
+            <metric name="code_lines">4</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">1</metric>
+            <metric name="all_dcls">2</metric>
+            <metric name="lsloc">3</metric>
+         </unit>
+         <unit name="flagTimeRange" kind="function body" line="224" col="4">
+            <metric name="all_lines">4</metric>
+            <metric name="code_lines">4</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">1</metric>
+            <metric name="all_dcls">2</metric>
+            <metric name="lsloc">3</metric>
+         </unit>
+         <unit name="flagImageSize" kind="function body" line="228" col="4">
+            <metric name="all_lines">4</metric>
+            <metric name="code_lines">4</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">1</metric>
+            <metric name="all_dcls">2</metric>
+            <metric name="lsloc">3</metric>
+         </unit>
+         <unit name="flagHelp" kind="function body" line="232" col="4">
+            <metric name="all_lines">4</metric>
+            <metric name="code_lines">4</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">1</metric>
+            <metric name="all_dcls">2</metric>
+            <metric name="lsloc">3</metric>
+         </unit>
+      </unit>
+   </file>
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\Parameters.ads">
+      <metric name="all_lines">108</metric>
+      <metric name="code_lines">88</metric>
+      <metric name="comment_lines">11</metric>
+      <metric name="eol_comments">0</metric>
+      <metric name="blank_lines">9</metric>
+      <unit name="Parameters" kind="package" line="6" col="1">
+         <metric name="all_lines">103</metric>
+         <metric name="code_lines">86</metric>
+         <metric name="comment_lines">9</metric>
+         <metric name="eol_comments">0</metric>
+         <metric name="blank_lines">8</metric>
+         <metric name="all_stmts">0</metric>
+         <metric name="all_dcls">149</metric>
+         <metric name="lsloc">149</metric>
+      </unit>
+   </file>
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\Pictures-JpegPictures.adb">
+      <metric name="all_lines">168</metric>
+      <metric name="code_lines">114</metric>
+      <metric name="comment_lines">39</metric>
+      <metric name="eol_comments">2</metric>
+      <metric name="blank_lines">15</metric>
+      <unit name="Pictures.JpegPictures" kind="package body" line="7" col="1">
+         <metric name="all_lines">162</metric>
+         <metric name="code_lines">111</metric>
+         <metric name="comment_lines">37</metric>
+         <metric name="eol_comments">2</metric>
+         <metric name="blank_lines">14</metric>
+         <metric name="all_stmts">38</metric>
+         <metric name="all_dcls">20</metric>
+         <metric name="lsloc">58</metric>
+         <unit name="create" kind="function body" line="10" col="4">
+            <metric name="all_lines">71</metric>
+            <metric name="code_lines">46</metric>
+            <metric name="comment_lines">17</metric>
+            <metric name="eol_comments">2</metric>
+            <metric name="blank_lines">8</metric>
+            <metric name="all_stmts">20</metric>
+            <metric name="all_dcls">8</metric>
+            <metric name="lsloc">28</metric>
+         </unit>
+         <unit name="destroy" kind="procedure body" line="83" col="4">
+            <metric name="all_lines">11</metric>
+            <metric name="code_lines">10</metric>
+            <metric name="comment_lines">1</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">3</metric>
+            <metric name="all_dcls">5</metric>
+            <metric name="lsloc">8</metric>
+         </unit>
+         <unit name="hasEXIF" kind="function body" line="96" col="4">
+            <metric name="all_lines">8</metric>
+            <metric name="code_lines">8</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">3</metric>
+            <metric name="all_dcls">2</metric>
+            <metric name="lsloc">5</metric>
+         </unit>
+         <unit name="getEXIF" kind="function body" line="106" col="4">
+            <metric name="all_lines">8</metric>
+            <metric name="code_lines">8</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">3</metric>
+            <metric name="all_dcls">2</metric>
+            <metric name="lsloc">5</metric>
+         </unit>
+         <unit name="isJpeg" kind="function body" line="116" col="4">
+            <metric name="all_lines">51</metric>
+            <metric name="code_lines">37</metric>
+            <metric name="comment_lines">14</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">9</metric>
+            <metric name="all_dcls">2</metric>
+            <metric name="lsloc">11</metric>
+         </unit>
+      </unit>
+   </file>
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\Pictures-JpegPictures.ads">
+      <metric name="all_lines">31</metric>
+      <metric name="code_lines">16</metric>
+      <metric name="comment_lines">8</metric>
+      <metric name="eol_comments">1</metric>
+      <metric name="blank_lines">7</metric>
+      <unit name="Pictures.JpegPictures" kind="package" line="7" col="1">
+         <metric name="all_lines">25</metric>
+         <metric name="code_lines">13</metric>
+         <metric name="comment_lines">6</metric>
+         <metric name="eol_comments">1</metric>
+         <metric name="blank_lines">6</metric>
+         <metric name="all_stmts">0</metric>
+         <metric name="all_dcls">15</metric>
+         <metric name="lsloc">15</metric>
+      </unit>
+   </file>
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\Pictures-TiffPictures.adb">
+      <metric name="all_lines">213</metric>
+      <metric name="code_lines">136</metric>
+      <metric name="comment_lines">50</metric>
+      <metric name="eol_comments">5</metric>
+      <metric name="blank_lines">27</metric>
+      <unit name="Pictures.TiffPictures" kind="package body" line="7" col="1">
+         <metric name="all_lines">207</metric>
+         <metric name="code_lines">133</metric>
+         <metric name="comment_lines">48</metric>
+         <metric name="eol_comments">5</metric>
+         <metric name="blank_lines">26</metric>
+         <metric name="all_stmts">58</metric>
+         <metric name="all_dcls">39</metric>
+         <metric name="lsloc">97</metric>
+         <unit name="create" kind="function body" line="10" col="4">
+            <metric name="all_lines">122</metric>
+            <metric name="code_lines">71</metric>
+            <metric name="comment_lines">33</metric>
+            <metric name="eol_comments">5</metric>
+            <metric name="blank_lines">18</metric>
+            <metric name="all_stmts">39</metric>
+            <metric name="all_dcls">13</metric>
+            <metric name="lsloc">52</metric>
+         </unit>
+         <unit name="destroy" kind="procedure body" line="134" col="4">
+            <metric name="all_lines">11</metric>
+            <metric name="code_lines">10</metric>
+            <metric name="comment_lines">1</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">3</metric>
+            <metric name="all_dcls">5</metric>
+            <metric name="lsloc">8</metric>
+         </unit>
+         <unit name="hasEXIF" kind="function body" line="147" col="4">
+            <metric name="all_lines">8</metric>
+            <metric name="code_lines">8</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">3</metric>
+            <metric name="all_dcls">2</metric>
+            <metric name="lsloc">5</metric>
+         </unit>
+         <unit name="getEXIF" kind="function body" line="157" col="4">
+            <metric name="all_lines">4</metric>
+            <metric name="code_lines">4</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">1</metric>
+            <metric name="all_dcls">2</metric>
+            <metric name="lsloc">3</metric>
+         </unit>
+         <unit name="createInt" kind="function body" line="163" col="4">
+            <metric name="all_lines">8</metric>
+            <metric name="code_lines">8</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">3</metric>
+            <metric name="all_dcls">4</metric>
+            <metric name="lsloc">7</metric>
+         </unit>
+         <unit name="createInt" kind="function body" line="171" col="4">
+            <metric name="all_lines">8</metric>
+            <metric name="code_lines">8</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">3</metric>
+            <metric name="all_dcls">6</metric>
+            <metric name="lsloc">9</metric>
+         </unit>
+         <unit name="readBinary" kind="function body" line="181" col="4">
+            <metric name="all_lines">4</metric>
+            <metric name="code_lines">4</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">1</metric>
+            <metric name="all_dcls">4</metric>
+            <metric name="lsloc">5</metric>
+         </unit>
+         <unit name="isTiff" kind="function body" line="187" col="4">
+            <metric name="all_lines">25</metric>
+            <metric name="code_lines">18</metric>
+            <metric name="comment_lines">7</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">5</metric>
+            <metric name="all_dcls">2</metric>
+            <metric name="lsloc">7</metric>
+         </unit>
+      </unit>
+   </file>
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\Pictures-TiffPictures.ads">
+      <metric name="all_lines">36</metric>
+      <metric name="code_lines">19</metric>
+      <metric name="comment_lines">9</metric>
+      <metric name="eol_comments">1</metric>
+      <metric name="blank_lines">8</metric>
+      <unit name="Pictures.TiffPictures" kind="package" line="6" col="1">
+         <metric name="all_lines">31</metric>
+         <metric name="code_lines">17</metric>
+         <metric name="comment_lines">7</metric>
+         <metric name="eol_comments">1</metric>
+         <metric name="blank_lines">7</metric>
+         <metric name="all_stmts">0</metric>
+         <metric name="all_dcls">30</metric>
+         <metric name="lsloc">30</metric>
+      </unit>
+   </file>
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\Pictures.adb">
+      <metric name="all_lines">50</metric>
+      <metric name="code_lines">26</metric>
+      <metric name="comment_lines">15</metric>
+      <metric name="eol_comments">2</metric>
+      <metric name="blank_lines">9</metric>
+      <unit name="Pictures" kind="package body" line="6" col="1">
+         <metric name="all_lines">45</metric>
+         <metric name="code_lines">24</metric>
+         <metric name="comment_lines">13</metric>
+         <metric name="eol_comments">2</metric>
+         <metric name="blank_lines">8</metric>
+         <metric name="all_stmts">8</metric>
+         <metric name="all_dcls">8</metric>
+         <metric name="lsloc">16</metric>
+         <unit name="create" kind="function body" line="9" col="4">
+            <metric name="all_lines">34</metric>
+            <metric name="code_lines">18</metric>
+            <metric name="comment_lines">11</metric>
+            <metric name="eol_comments">2</metric>
+            <metric name="blank_lines">5</metric>
+            <metric name="all_stmts">7</metric>
+            <metric name="all_dcls">5</metric>
+            <metric name="lsloc">12</metric>
+         </unit>
+         <unit name="getName" kind="function body" line="45" col="4">
+            <metric name="all_lines">4</metric>
+            <metric name="code_lines">4</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">1</metric>
+            <metric name="all_dcls">2</metric>
+            <metric name="lsloc">3</metric>
+         </unit>
+      </unit>
+   </file>
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\Pictures.ads">
+      <metric name="all_lines">35</metric>
+      <metric name="code_lines">18</metric>
+      <metric name="comment_lines">9</metric>
+      <metric name="eol_comments">2</metric>
+      <metric name="blank_lines">8</metric>
+      <unit name="Pictures" kind="package" line="6" col="1">
+         <metric name="all_lines">30</metric>
+         <metric name="code_lines">16</metric>
+         <metric name="comment_lines">7</metric>
+         <metric name="eol_comments">2</metric>
+         <metric name="blank_lines">7</metric>
+         <metric name="all_stmts">0</metric>
+         <metric name="all_dcls">18</metric>
+         <metric name="lsloc">18</metric>
+      </unit>
+   </file>
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\TimePatternFilters.adb">
+      <metric name="all_lines">57</metric>
+      <metric name="code_lines">37</metric>
+      <metric name="comment_lines">12</metric>
+      <metric name="eol_comments">0</metric>
+      <metric name="blank_lines">8</metric>
+      <unit name="TimePatternFilters" kind="package body" line="6" col="1">
+         <metric name="all_lines">52</metric>
+         <metric name="code_lines">35</metric>
+         <metric name="comment_lines">10</metric>
+         <metric name="eol_comments">0</metric>
+         <metric name="blank_lines">7</metric>
+         <metric name="all_stmts">11</metric>
+         <metric name="all_dcls">17</metric>
+         <metric name="lsloc">28</metric>
+         <unit name="create" kind="function body" line="9" col="4">
+            <metric name="all_lines">6</metric>
+            <metric name="code_lines">6</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">2</metric>
+            <metric name="all_dcls">3</metric>
+            <metric name="lsloc">5</metric>
+         </unit>
+         <unit name="destroy" kind="procedure body" line="17" col="4">
+            <metric name="all_lines">11</metric>
+            <metric name="code_lines">10</metric>
+            <metric name="comment_lines">1</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">3</metric>
+            <metric name="all_dcls">6</metric>
+            <metric name="lsloc">9</metric>
+         </unit>
+         <unit name="applyThis" kind="function body" line="30" col="4">
+            <metric name="all_lines">26</metric>
+            <metric name="code_lines">17</metric>
+            <metric name="comment_lines">6</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">3</metric>
+            <metric name="all_stmts">6</metric>
+            <metric name="all_dcls">7</metric>
+            <metric name="lsloc">13</metric>
+         </unit>
+      </unit>
+   </file>
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\TimePatternFilters.ads">
+      <metric name="all_lines">28</metric>
+      <metric name="code_lines">15</metric>
+      <metric name="comment_lines">7</metric>
+      <metric name="eol_comments">1</metric>
+      <metric name="blank_lines">6</metric>
+      <unit name="TimePatternFilters" kind="package" line="8" col="1">
+         <metric name="all_lines">21</metric>
+         <metric name="code_lines">11</metric>
+         <metric name="comment_lines">5</metric>
+         <metric name="eol_comments">1</metric>
+         <metric name="blank_lines">5</metric>
+         <metric name="all_stmts">0</metric>
+         <metric name="all_dcls">12</metric>
+         <metric name="lsloc">12</metric>
+      </unit>
+   </file>
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\TimeRangeFilters.adb">
+      <metric name="all_lines">80</metric>
+      <metric name="code_lines">56</metric>
+      <metric name="comment_lines">15</metric>
+      <metric name="eol_comments">0</metric>
+      <metric name="blank_lines">9</metric>
+      <unit name="TimeRangeFilters" kind="package body" line="5" col="1">
+         <metric name="all_lines">76</metric>
+         <metric name="code_lines">55</metric>
+         <metric name="comment_lines">13</metric>
+         <metric name="eol_comments">0</metric>
+         <metric name="blank_lines">8</metric>
+         <metric name="all_stmts">20</metric>
+         <metric name="all_dcls">22</metric>
+         <metric name="lsloc">42</metric>
+         <unit name="create" kind="function body" line="8" col="4">
+            <metric name="all_lines">6</metric>
+            <metric name="code_lines">6</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">2</metric>
+            <metric name="all_dcls">3</metric>
+            <metric name="lsloc">5</metric>
+         </unit>
+         <unit name="destroy" kind="procedure body" line="16" col="4">
+            <metric name="all_lines">11</metric>
+            <metric name="code_lines">10</metric>
+            <metric name="comment_lines">1</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">3</metric>
+            <metric name="all_dcls">6</metric>
+            <metric name="lsloc">9</metric>
+         </unit>
+         <unit name="applyThis" kind="function body" line="29" col="4">
+            <metric name="all_lines">50</metric>
+            <metric name="code_lines">37</metric>
+            <metric name="comment_lines">9</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">4</metric>
+            <metric name="all_stmts">15</metric>
+            <metric name="all_dcls">12</metric>
+            <metric name="lsloc">27</metric>
+         </unit>
+      </unit>
+   </file>
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\TimeRangeFilters.ads">
+      <metric name="all_lines">28</metric>
+      <metric name="code_lines">15</metric>
+      <metric name="comment_lines">7</metric>
+      <metric name="eol_comments">1</metric>
+      <metric name="blank_lines">6</metric>
+      <unit name="TimeRangeFilters" kind="package" line="8" col="1">
+         <metric name="all_lines">21</metric>
+         <metric name="code_lines">11</metric>
+         <metric name="comment_lines">5</metric>
+         <metric name="eol_comments">1</metric>
+         <metric name="blank_lines">5</metric>
+         <metric name="all_stmts">0</metric>
+         <metric name="all_dcls">12</metric>
+         <metric name="lsloc">12</metric>
+      </unit>
+   </file>
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\main.adb">
+      <metric name="all_lines">80</metric>
+      <metric name="code_lines">63</metric>
+      <metric name="comment_lines">9</metric>
+      <metric name="eol_comments">0</metric>
+      <metric name="blank_lines">8</metric>
+      <unit name="Main" kind="procedure body" line="21" col="1">
+         <metric name="all_lines">60</metric>
+         <metric name="code_lines">46</metric>
+         <metric name="comment_lines">7</metric>
+         <metric name="eol_comments">0</metric>
+         <metric name="blank_lines">7</metric>
+         <metric name="all_stmts">36</metric>
+         <metric name="all_dcls">7</metric>
+         <metric name="lsloc">43</metric>
+      </unit>
+   </file>
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\EXIFFilters.ads">
+      <metric name="all_lines">6</metric>
+      <metric name="code_lines">3</metric>
+      <metric name="comment_lines">2</metric>
+      <metric name="eol_comments">0</metric>
+      <metric name="blank_lines">1</metric>
+      <unit name="EXIFFilters" kind="package instantiation" line="6" col="1">
+         <metric name="all_lines">1</metric>
+         <metric name="code_lines">1</metric>
+         <metric name="comment_lines">0</metric>
+         <metric name="eol_comments">0</metric>
+         <metric name="blank_lines">0</metric>
+         <metric name="all_stmts">0</metric>
+         <metric name="all_dcls">1</metric>
+         <metric name="lsloc">1</metric>
+      </unit>
+   </file>
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\FileFilters.ads">
+      <metric name="all_lines">5</metric>
+      <metric name="code_lines">2</metric>
+      <metric name="comment_lines">2</metric>
+      <metric name="eol_comments">0</metric>
+      <metric name="blank_lines">1</metric>
+      <unit name="FileFilters" kind="package instantiation" line="5" col="1">
+         <metric name="all_lines">1</metric>
+         <metric name="code_lines">1</metric>
+         <metric name="comment_lines">0</metric>
+         <metric name="eol_comments">0</metric>
+         <metric name="blank_lines">0</metric>
+         <metric name="all_stmts">0</metric>
+         <metric name="all_dcls">1</metric>
+         <metric name="lsloc">1</metric>
+      </unit>
+   </file>
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\FileListers.ads">
+      <metric name="all_lines">20</metric>
+      <metric name="code_lines">9</metric>
+      <metric name="comment_lines">7</metric>
+      <metric name="eol_comments">1</metric>
+      <metric name="blank_lines">4</metric>
+      <unit name="FileListers" kind="package" line="6" col="1">
+         <metric name="all_lines">15</metric>
+         <metric name="code_lines">7</metric>
+         <metric name="comment_lines">5</metric>
+         <metric name="eol_comments">1</metric>
+         <metric name="blank_lines">3</metric>
+         <metric name="all_stmts">0</metric>
+         <metric name="all_dcls">11</metric>
+         <metric name="lsloc">11</metric>
+      </unit>
+   </file>
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\globals.ads">
+      <metric name="all_lines">101</metric>
+      <metric name="code_lines">88</metric>
+      <metric name="comment_lines">7</metric>
+      <metric name="eol_comments">5</metric>
+      <metric name="blank_lines">6</metric>
+      <unit name="Globals" kind="package" line="5" col="1">
+         <metric name="all_lines">97</metric>
+         <metric name="code_lines">88</metric>
+         <metric name="comment_lines">4</metric>
+         <metric name="eol_comments">5</metric>
+         <metric name="blank_lines">5</metric>
+         <metric name="all_stmts">0</metric>
+         <metric name="all_dcls">39</metric>
+         <metric name="lsloc">39</metric>
+         <unit name="exif" kind="package" line="85" col="4">
+            <metric name="all_lines">15</metric>
+            <metric name="code_lines">15</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">0</metric>
+            <metric name="all_dcls">14</metric>
+            <metric name="lsloc">14</metric>
+         </unit>
+      </unit>
+   </file>
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\inputs.ads">
+      <metric name="all_lines">17</metric>
+      <metric name="code_lines">9</metric>
+      <metric name="comment_lines">4</metric>
+      <metric name="eol_comments">0</metric>
+      <metric name="blank_lines">4</metric>
+      <unit name="Inputs" kind="package" line="6" col="1">
+         <metric name="all_lines">12</metric>
+         <metric name="code_lines">7</metric>
+         <metric name="comment_lines">2</metric>
+         <metric name="eol_comments">0</metric>
+         <metric name="blank_lines">3</metric>
+         <metric name="all_stmts">0</metric>
+         <metric name="all_dcls">10</metric>
+         <metric name="lsloc">10</metric>
+      </unit>
+   </file>
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\outputs.ads">
+      <metric name="all_lines">15</metric>
+      <metric name="code_lines">6</metric>
+      <metric name="comment_lines">5</metric>
+      <metric name="eol_comments">0</metric>
+      <metric name="blank_lines">4</metric>
+      <unit name="Outputs" kind="package" line="5" col="1">
+         <metric name="all_lines">11</metric>
+         <metric name="code_lines">6</metric>
+         <metric name="comment_lines">2</metric>
+         <metric name="eol_comments">0</metric>
+         <metric name="blank_lines">3</metric>
+         <metric name="all_stmts">0</metric>
+         <metric name="all_dcls">8</metric>
+         <metric name="lsloc">8</metric>
+      </unit>
+   </file>
+   <metric name="all_lines">2789</metric>
+   <metric name="code_lines">1870</metric>
+   <metric name="comment_lines">561</metric>
+   <metric name="eol_comments">53</metric>
+   <metric name="blank_lines">358</metric>
+   <metric name="average_lines_in_bodies">11.17</metric>
+   <metric name="all_stmts">520</metric>
+   <metric name="all_dcls">954</metric>
+   <metric name="lsloc">1474</metric>
+</global>
