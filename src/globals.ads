@@ -47,7 +47,10 @@ package Globals is
      "    Set the date to filter the pictures" & ASCII.LF &
      "    Allowed are digits and ? as a wildcard" & ASCII.LF &
      "-e file" & ASCII.LF &
-     "    Stores EXIF parameters in specified file" & ASCII.LF &
+     "    Stores EXIF parameters in specified file (comma-separated)" & ASCII.LF &
+     "    File will be overwritten if it already exists" & ASCII.LF &
+     "-E file" & ASCII.LF &
+     "    Stores EXIF parameters in specified file (semicolon-separated)" & ASCII.LF &
      "    File will be overwritten if it already exists" & ASCII.LF &
      "-f filepattern" & ASCII.LF &
      "    Specify a pattern to filter filenames" & ASCII.LF &
