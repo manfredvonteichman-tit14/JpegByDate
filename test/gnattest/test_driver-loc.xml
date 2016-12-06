@@ -1,37 +1,49 @@
 <?xml version="1.0"?>
 <Locations >
-  <Project >
+  <Project>
+    <vfs_file>D:\Users\Andi\Documents\GitHub\JpegByDate\test\gnattest\test_driver.gpr</vfs_file>
     <mdi_marker title="Coverage Report"  />
+    <file_marker column=" 14" line=" 46" >
+      <vfs_project />
+      <vfs_file>D:\Users\Andi\Documents\GitHub\JpegByDate\src\FileHandlers.adb</vfs_file>
+    </file_marker>
     <file_marker column=" 1" line=" 1" >
+      <vfs_project />
+      <vfs_file>D:\Users\Andi\Documents\GitHub\JpegByDate\src\globals.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 4" line=" 13" >
       <vfs_project />
       <vfs_file>D:\Users\Andi\Documents\GitHub\JpegByDate\src\CommandlineParsers.ads</vfs_file>
     </file_marker>
-    <mdi_marker title="Coverage Report"  />
-    <file_marker column=" 1" line=" 1" >
+    <file_marker column=" 4" line=" 11" >
       <vfs_project />
-      <vfs_file>D:\Users\Andi\Documents\GitHub\JpegByDate\src\DateRangeFilters.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 52" line=" 1048" >
-      <vfs_project>D:\Users\Andi\Documents\GitHub\JpegByDate\test\gnattest\test_jpegbydate.gpr</vfs_project>
-      <vfs_file>D:\Users\Andi\Documents\GitHub\JpegByDate\test\gnattest\tests\parameters-parameter_test_data-parameter_tests.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 1" line=" 1" >
-      <vfs_project />
-      <vfs_file>D:\Users\Andi\Documents\GitHub\JpegByDate\test\gnattest\commandlineparsers-commandlineparser_test_data-commandlineparser_tests-suite.adb</vfs_file>
+      <vfs_file>D:\Users\Andi\Documents\GitHub\JpegByDate\src\ConsoleOutputs.ads</vfs_file>
     </file_marker>
     <file_marker column=" 1" line=" 1" >
       <vfs_project>D:\Users\Andi\Documents\GitHub\JpegByDate\test\gnattest\test_jpegbydate.gpr</vfs_project>
       <vfs_file>D:\Users\Andi\Documents\GitHub\JpegByDate\test\gnattest\tests\parameters-parameter_test_data-parameter_tests.adb</vfs_file>
     </file_marker>
-    <file_marker column=" 1" line=" 83" >
+    <file_marker column=" 24" line=" 585" >
       <vfs_project>D:\Users\Andi\Documents\GitHub\JpegByDate\test\gnattest\test_jpegbydate.gpr</vfs_project>
       <vfs_file>D:\Users\Andi\Documents\GitHub\JpegByDate\test\gnattest\tests\parameters-parameter_test_data-parameter_tests.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 31" line=" 981" >
+      <vfs_project>D:\Users\Andi\Documents\GitHub\JpegByDate\test\gnattest\test_jpegbydate.gpr</vfs_project>
+      <vfs_file>D:\Users\Andi\Documents\GitHub\JpegByDate\test\gnattest\tests\parameters-parameter_test_data-parameter_tests.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 27" line=" 1134" >
+      <vfs_project>D:\Users\Andi\Documents\GitHub\JpegByDate\test\gnattest\test_jpegbydate.gpr</vfs_project>
+      <vfs_file>D:\Users\Andi\Documents\GitHub\JpegByDate\test\gnattest\tests\parameters-parameter_test_data-parameter_tests.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 4" line=" 13" >
+      <vfs_project>D:\Users\Andi\Documents\GitHub\JpegByDate\src\jpegbydate.gpr</vfs_project>
+      <vfs_file>D:\Users\Andi\Documents\GitHub\JpegByDate\src\CommandlineParsers.ads</vfs_file>
     </file_marker>
     <file_marker column=" 4" line=" 17" >
       <vfs_project>D:\Users\Andi\Documents\GitHub\JpegByDate\src\jpegbydate.gpr</vfs_project>
       <vfs_file>D:\Users\Andi\Documents\GitHub\JpegByDate\src\Parameters.ads</vfs_file>
     </file_marker>
-    <file_marker column=" 1" line=" 38" >
+    <file_marker column=" 4" line=" 20" >
       <vfs_project>D:\Users\Andi\Documents\GitHub\JpegByDate\src\jpegbydate.gpr</vfs_project>
       <vfs_file>D:\Users\Andi\Documents\GitHub\JpegByDate\src\Parameters.ads</vfs_file>
     </file_marker>
@@ -39,17 +51,9 @@
       <vfs_project>D:\Users\Andi\Documents\GitHub\JpegByDate\src\jpegbydate.gpr</vfs_project>
       <vfs_file>D:\Users\Andi\Documents\GitHub\JpegByDate\src\Parameters.ads</vfs_file>
     </file_marker>
-    <file_marker column=" 4" line=" 37" >
+    <file_marker column=" 1" line=" 1" >
       <vfs_project>D:\Users\Andi\Documents\GitHub\JpegByDate\src\jpegbydate.gpr</vfs_project>
-      <vfs_file>D:\Users\Andi\Documents\GitHub\JpegByDate\src\Parameters.ads</vfs_file>
-    </file_marker>
-    <file_marker column=" 4" line=" 36" >
-      <vfs_project>D:\Users\Andi\Documents\GitHub\JpegByDate\src\jpegbydate.gpr</vfs_project>
-      <vfs_file>D:\Users\Andi\Documents\GitHub\JpegByDate\src\Parameters.ads</vfs_file>
-    </file_marker>
-    <file_marker column=" 4" line=" 41" >
-      <vfs_project>D:\Users\Andi\Documents\GitHub\JpegByDate\src\jpegbydate.gpr</vfs_project>
-      <vfs_file>D:\Users\Andi\Documents\GitHub\JpegByDate\src\Parameters.ads</vfs_file>
+      <vfs_file>D:\Users\Andi\Documents\GitHub\JpegByDate\src\CommandlineParsers.ads</vfs_file>
     </file_marker>
     <file_marker current="true" column=" 4" line=" 13" >
       <vfs_project>D:\Users\Andi\Documents\GitHub\JpegByDate\src\jpegbydate.gpr</vfs_project>

@@ -4,16 +4,16 @@
          <setup file="commandlineparsers-commandlineparser_test_data.adb" line="4"  column="4"/>
          <teardown file="commandlineparsers-commandlineparser_test_data.adb" line="8"  column="4"/>
          <tested name="create" line="13" column="4">
-            <test file="commandlineparsers-commandlineparser_test_data-commandlineparser_tests.adb" line="14" column="1" timestamp="2016-12-05 16:18:12"/>
+            <test file="commandlineparsers-commandlineparser_test_data-commandlineparser_tests.adb" line="14" column="1" timestamp="2016-12-06 15:26:40"/>
          </tested>
          <tested name="destroy" line="15" column="4">
-            <test file="commandlineparsers-commandlineparser_test_data-commandlineparser_tests.adb" line="35" column="1" timestamp="2016-12-05 16:18:12"/>
+            <test file="commandlineparsers-commandlineparser_test_data-commandlineparser_tests.adb" line="35" column="1" timestamp="2016-12-06 15:26:40"/>
          </tested>
          <tested name="parse" line="18" column="4">
-            <test file="commandlineparsers-commandlineparser_test_data-commandlineparser_tests.adb" line="56" column="1" timestamp="2016-12-05 16:18:12"/>
+            <test file="commandlineparsers-commandlineparser_test_data-commandlineparser_tests.adb" line="56" column="1" timestamp="2016-12-06 15:26:40"/>
          </tested>
          <tested name="getParams" line="21" column="4">
-            <test file="commandlineparsers-commandlineparser_test_data-commandlineparser_tests.adb" line="77" column="1" timestamp="2016-12-05 16:18:12"/>
+            <test file="commandlineparsers-commandlineparser_test_data-commandlineparser_tests.adb" line="77" column="1" timestamp="2016-12-06 15:26:40"/>
          </tested>
          <dangling>
          </dangling>
@@ -22,15 +22,35 @@
    <unit source_file="consoleoutputs.ads">
       <test_unit target_file="consoleoutputs-consoleoutput_test_data-consoleoutput_tests.ads">
          <setup file="consoleoutputs-consoleoutput_test_data.adb" line="4"  column="4"/>
-         <teardown file="consoleoutputs-consoleoutput_test_data.adb" line="8"  column="4"/>
+         <teardown file="consoleoutputs-consoleoutput_test_data.adb" line="9"  column="4"/>
          <tested name="create" line="11" column="4">
-            <test file="consoleoutputs-consoleoutput_test_data-consoleoutput_tests.adb" line="14" column="1" timestamp="2016-12-05 16:18:12"/>
+            <test file="consoleoutputs-consoleoutput_test_data-consoleoutput_tests.adb" line="14" column="1" timestamp="2016-12-06 15:26:42"/>
          </tested>
          <tested name="destroy" line="13" column="4">
-            <test file="consoleoutputs-consoleoutput_test_data-consoleoutput_tests.adb" line="35" column="1" timestamp="2016-12-05 16:18:12"/>
+            <test file="consoleoutputs-consoleoutput_test_data-consoleoutput_tests.adb" line="35" column="1" timestamp="2016-12-06 15:26:42"/>
          </tested>
          <tested name="display" line="16" column="4">
-            <test file="consoleoutputs-consoleoutput_test_data-consoleoutput_tests.adb" line="56" column="1" timestamp="2016-12-05 16:18:12"/>
+            <test file="consoleoutputs-consoleoutput_test_data-consoleoutput_tests.adb" line="56" column="1" timestamp="2016-12-06 15:26:42"/>
+         </tested>
+         <dangling>
+         </dangling>
+      </test_unit>
+   </unit>
+   <unit source_file="csvoutputs.ads">
+      <test_unit target_file="csvoutputs-csvoutput_test_data-csvoutput_tests.ads">
+         <setup file="csvoutputs-csvoutput_test_data.adb" line="4"  column="4"/>
+         <teardown file="csvoutputs-csvoutput_test_data.adb" line="9"  column="4"/>
+         <tested name="create" line="12" column="4">
+            <test file="csvoutputs-csvoutput_test_data-csvoutput_tests.adb" line="14" column="1" timestamp="2016-12-06 15:26:42"/>
+         </tested>
+         <tested name="create" line="13" column="4">
+            <test file="csvoutputs-csvoutput_test_data-csvoutput_tests.adb" line="35" column="1" timestamp="2016-12-06 15:26:42"/>
+         </tested>
+         <tested name="destroy" line="15" column="4">
+            <test file="csvoutputs-csvoutput_test_data-csvoutput_tests.adb" line="56" column="1" timestamp="2016-12-06 15:26:42"/>
+         </tested>
+         <tested name="display" line="18" column="4">
+            <test file="csvoutputs-csvoutput_test_data-csvoutput_tests.adb" line="77" column="1" timestamp="2016-12-06 15:26:42"/>
          </tested>
          <dangling>
          </dangling>
@@ -41,13 +61,13 @@
          <setup file="datepatternfilters-datepatternfilter_test_data.adb" line="4"  column="4"/>
          <teardown file="datepatternfilters-datepatternfilter_test_data.adb" line="8"  column="4"/>
          <tested name="create" line="14" column="4">
-            <test file="datepatternfilters-datepatternfilter_test_data-datepatternfilter_tests.adb" line="14" column="1" timestamp="2016-12-05 16:18:12"/>
+            <test file="datepatternfilters-datepatternfilter_test_data-datepatternfilter_tests.adb" line="14" column="1" timestamp="2016-12-06 15:26:42"/>
          </tested>
          <tested name="destroy" line="16" column="4">
-            <test file="datepatternfilters-datepatternfilter_test_data-datepatternfilter_tests.adb" line="35" column="1" timestamp="2016-12-05 16:18:12"/>
+            <test file="datepatternfilters-datepatternfilter_test_data-datepatternfilter_tests.adb" line="35" column="1" timestamp="2016-12-06 15:26:42"/>
          </tested>
          <tested name="applyThis" line="19" column="4">
-            <test file="datepatternfilters-datepatternfilter_test_data-datepatternfilter_tests.adb" line="56" column="1" timestamp="2016-12-05 16:18:12"/>
+            <test file="datepatternfilters-datepatternfilter_test_data-datepatternfilter_tests.adb" line="56" column="1" timestamp="2016-12-06 15:26:42"/>
          </tested>
          <dangling>
          </dangling>
@@ -58,13 +78,13 @@
          <setup file="daterangefilters-daterangefilter_test_data.adb" line="4"  column="4"/>
          <teardown file="daterangefilters-daterangefilter_test_data.adb" line="8"  column="4"/>
          <tested name="create" line="14" column="4">
-            <test file="daterangefilters-daterangefilter_test_data-daterangefilter_tests.adb" line="14" column="1" timestamp="2016-12-05 16:18:12"/>
+            <test file="daterangefilters-daterangefilter_test_data-daterangefilter_tests.adb" line="14" column="1" timestamp="2016-12-06 15:26:42"/>
          </tested>
          <tested name="destroy" line="16" column="4">
-            <test file="daterangefilters-daterangefilter_test_data-daterangefilter_tests.adb" line="35" column="1" timestamp="2016-12-05 16:18:12"/>
+            <test file="daterangefilters-daterangefilter_test_data-daterangefilter_tests.adb" line="35" column="1" timestamp="2016-12-06 15:26:42"/>
          </tested>
          <tested name="applyThis" line="19" column="4">
-            <test file="daterangefilters-daterangefilter_test_data-daterangefilter_tests.adb" line="56" column="1" timestamp="2016-12-05 16:18:12"/>
+            <test file="daterangefilters-daterangefilter_test_data-daterangefilter_tests.adb" line="56" column="1" timestamp="2016-12-06 15:26:42"/>
          </tested>
          <dangling>
          </dangling>
@@ -75,34 +95,34 @@
          <setup file="exifparsers-exifparser_test_data.adb" line="4"  column="4"/>
          <teardown file="exifparsers-exifparser_test_data.adb" line="8"  column="4"/>
          <tested name="create" line="12" column="4">
-            <test file="exifparsers-exifparser_test_data-exifparser_tests.adb" line="14" column="1" timestamp="2016-12-05 16:18:12"/>
+            <test file="exifparsers-exifparser_test_data-exifparser_tests.adb" line="14" column="1" timestamp="2016-12-06 15:26:42"/>
          </tested>
          <tested name="destroy" line="14" column="4">
-            <test file="exifparsers-exifparser_test_data-exifparser_tests.adb" line="35" column="1" timestamp="2016-12-05 16:18:12"/>
+            <test file="exifparsers-exifparser_test_data-exifparser_tests.adb" line="35" column="1" timestamp="2016-12-06 15:26:42"/>
          </tested>
          <tested name="getISOSpeedRatings" line="17" column="4">
-            <test file="exifparsers-exifparser_test_data-exifparser_tests.adb" line="56" column="1" timestamp="2016-12-05 16:18:12"/>
+            <test file="exifparsers-exifparser_test_data-exifparser_tests.adb" line="56" column="1" timestamp="2016-12-06 15:26:42"/>
          </tested>
          <tested name="getDateTimeOriginal" line="18" column="4">
-            <test file="exifparsers-exifparser_test_data-exifparser_tests.adb" line="77" column="1" timestamp="2016-12-05 16:18:12"/>
+            <test file="exifparsers-exifparser_test_data-exifparser_tests.adb" line="77" column="1" timestamp="2016-12-06 15:26:42"/>
          </tested>
          <tested name="getShutterSpeedValue" line="19" column="4">
-            <test file="exifparsers-exifparser_test_data-exifparser_tests.adb" line="98" column="1" timestamp="2016-12-05 16:18:12"/>
+            <test file="exifparsers-exifparser_test_data-exifparser_tests.adb" line="98" column="1" timestamp="2016-12-06 15:26:42"/>
          </tested>
          <tested name="getApertureValue" line="20" column="4">
-            <test file="exifparsers-exifparser_test_data-exifparser_tests.adb" line="119" column="1" timestamp="2016-12-05 16:18:12"/>
+            <test file="exifparsers-exifparser_test_data-exifparser_tests.adb" line="119" column="1" timestamp="2016-12-06 15:26:42"/>
          </tested>
          <tested name="getFlash" line="21" column="4">
-            <test file="exifparsers-exifparser_test_data-exifparser_tests.adb" line="140" column="1" timestamp="2016-12-05 16:18:12"/>
+            <test file="exifparsers-exifparser_test_data-exifparser_tests.adb" line="140" column="1" timestamp="2016-12-06 15:26:42"/>
          </tested>
          <tested name="getFocalLength" line="22" column="4">
-            <test file="exifparsers-exifparser_test_data-exifparser_tests.adb" line="161" column="1" timestamp="2016-12-05 16:18:12"/>
+            <test file="exifparsers-exifparser_test_data-exifparser_tests.adb" line="161" column="1" timestamp="2016-12-06 15:26:42"/>
          </tested>
          <tested name="getExifImageWidth" line="23" column="4">
-            <test file="exifparsers-exifparser_test_data-exifparser_tests.adb" line="182" column="1" timestamp="2016-12-05 16:18:12"/>
+            <test file="exifparsers-exifparser_test_data-exifparser_tests.adb" line="182" column="1" timestamp="2016-12-06 15:26:42"/>
          </tested>
          <tested name="getExifImageHeight" line="24" column="4">
-            <test file="exifparsers-exifparser_test_data-exifparser_tests.adb" line="203" column="1" timestamp="2016-12-05 16:18:12"/>
+            <test file="exifparsers-exifparser_test_data-exifparser_tests.adb" line="203" column="1" timestamp="2016-12-06 15:26:42"/>
          </tested>
          <dangling>
          </dangling>
@@ -113,13 +133,13 @@
          <setup file="fileextensionfilters-fileextensionfilter_test_data.adb" line="4"  column="4"/>
          <teardown file="fileextensionfilters-fileextensionfilter_test_data.adb" line="8"  column="4"/>
          <tested name="create" line="12" column="4">
-            <test file="fileextensionfilters-fileextensionfilter_test_data-fileextensionfilter_tests.adb" line="14" column="1" timestamp="2016-12-05 16:18:12"/>
+            <test file="fileextensionfilters-fileextensionfilter_test_data-fileextensionfilter_tests.adb" line="14" column="1" timestamp="2016-12-06 15:26:42"/>
          </tested>
          <tested name="destroy" line="14" column="4">
-            <test file="fileextensionfilters-fileextensionfilter_test_data-fileextensionfilter_tests.adb" line="35" column="1" timestamp="2016-12-05 16:18:12"/>
+            <test file="fileextensionfilters-fileextensionfilter_test_data-fileextensionfilter_tests.adb" line="35" column="1" timestamp="2016-12-06 15:26:42"/>
          </tested>
          <tested name="applyThis" line="17" column="4">
-            <test file="fileextensionfilters-fileextensionfilter_test_data-fileextensionfilter_tests.adb" line="56" column="1" timestamp="2016-12-05 16:18:12"/>
+            <test file="fileextensionfilters-fileextensionfilter_test_data-fileextensionfilter_tests.adb" line="56" column="1" timestamp="2016-12-06 15:26:42"/>
          </tested>
          <dangling>
          </dangling>
@@ -130,13 +150,13 @@
          <setup file="filehandlers-filehandler_test_data.adb" line="4"  column="4"/>
          <teardown file="filehandlers-filehandler_test_data.adb" line="8"  column="4"/>
          <tested name="create" line="14" column="4">
-            <test file="filehandlers-filehandler_test_data-filehandler_tests.adb" line="14" column="1" timestamp="2016-12-05 16:18:12"/>
+            <test file="filehandlers-filehandler_test_data-filehandler_tests.adb" line="14" column="1" timestamp="2016-12-06 15:26:42"/>
          </tested>
          <tested name="destroy" line="16" column="4">
-            <test file="filehandlers-filehandler_test_data-filehandler_tests.adb" line="35" column="1" timestamp="2016-12-05 16:18:12"/>
+            <test file="filehandlers-filehandler_test_data-filehandler_tests.adb" line="35" column="1" timestamp="2016-12-06 15:26:42"/>
          </tested>
          <tested name="exec" line="19" column="4">
-            <test file="filehandlers-filehandler_test_data-filehandler_tests.adb" line="56" column="1" timestamp="2016-12-05 16:18:12"/>
+            <test file="filehandlers-filehandler_test_data-filehandler_tests.adb" line="56" column="1" timestamp="2016-12-06 15:26:42"/>
          </tested>
          <dangling>
          </dangling>
@@ -149,13 +169,13 @@
          <setup file="filenamefilters-filenamefilter_test_data.adb" line="4"  column="4"/>
          <teardown file="filenamefilters-filenamefilter_test_data.adb" line="8"  column="4"/>
          <tested name="create" line="12" column="4">
-            <test file="filenamefilters-filenamefilter_test_data-filenamefilter_tests.adb" line="14" column="1" timestamp="2016-12-05 16:18:14"/>
+            <test file="filenamefilters-filenamefilter_test_data-filenamefilter_tests.adb" line="14" column="1" timestamp="2016-12-06 15:26:44"/>
          </tested>
          <tested name="destroy" line="14" column="4">
-            <test file="filenamefilters-filenamefilter_test_data-filenamefilter_tests.adb" line="35" column="1" timestamp="2016-12-05 16:18:14"/>
+            <test file="filenamefilters-filenamefilter_test_data-filenamefilter_tests.adb" line="35" column="1" timestamp="2016-12-06 15:26:44"/>
          </tested>
          <tested name="applyThis" line="17" column="4">
-            <test file="filenamefilters-filenamefilter_test_data-filenamefilter_tests.adb" line="56" column="1" timestamp="2016-12-05 16:18:14"/>
+            <test file="filenamefilters-filenamefilter_test_data-filenamefilter_tests.adb" line="56" column="1" timestamp="2016-12-06 15:26:44"/>
          </tested>
          <dangling>
          </dangling>
@@ -166,13 +186,13 @@
          <setup file="filesizefilters-filesizefilter_test_data.adb" line="4"  column="4"/>
          <teardown file="filesizefilters-filesizefilter_test_data.adb" line="8"  column="4"/>
          <tested name="create" line="12" column="4">
-            <test file="filesizefilters-filesizefilter_test_data-filesizefilter_tests.adb" line="14" column="1" timestamp="2016-12-05 16:18:14"/>
+            <test file="filesizefilters-filesizefilter_test_data-filesizefilter_tests.adb" line="14" column="1" timestamp="2016-12-06 15:26:44"/>
          </tested>
          <tested name="destroy" line="14" column="4">
-            <test file="filesizefilters-filesizefilter_test_data-filesizefilter_tests.adb" line="35" column="1" timestamp="2016-12-05 16:18:14"/>
+            <test file="filesizefilters-filesizefilter_test_data-filesizefilter_tests.adb" line="35" column="1" timestamp="2016-12-06 15:26:44"/>
          </tested>
          <tested name="applyThis" line="17" column="4">
-            <test file="filesizefilters-filesizefilter_test_data-filesizefilter_tests.adb" line="56" column="1" timestamp="2016-12-05 16:18:14"/>
+            <test file="filesizefilters-filesizefilter_test_data-filesizefilter_tests.adb" line="56" column="1" timestamp="2016-12-06 15:26:44"/>
          </tested>
          <dangling>
          </dangling>
@@ -183,25 +203,25 @@
          <setup file="filesystemlisters-filesystemlister_test_data.adb" line="4"  column="4"/>
          <teardown file="filesystemlisters-filesystemlister_test_data.adb" line="9"  column="4"/>
          <tested name="create" line="15" column="4">
-            <test file="filesystemlisters-filesystemlister_test_data-filesystemlister_tests.adb" line="14" column="1" timestamp="2016-12-05 16:18:14"/>
+            <test file="filesystemlisters-filesystemlister_test_data-filesystemlister_tests.adb" line="14" column="1" timestamp="2016-12-06 15:26:44"/>
          </tested>
          <tested name="create" line="16" column="4">
-            <test file="filesystemlisters-filesystemlister_test_data-filesystemlister_tests.adb" line="35" column="1" timestamp="2016-12-05 16:18:14"/>
+            <test file="filesystemlisters-filesystemlister_test_data-filesystemlister_tests.adb" line="35" column="1" timestamp="2016-12-06 15:26:44"/>
          </tested>
          <tested name="destroy" line="18" column="4">
-            <test file="filesystemlisters-filesystemlister_test_data-filesystemlister_tests.adb" line="56" column="1" timestamp="2016-12-05 16:18:14"/>
+            <test file="filesystemlisters-filesystemlister_test_data-filesystemlister_tests.adb" line="56" column="1" timestamp="2016-12-06 15:26:44"/>
          </tested>
          <tested name="hasNext" line="21" column="4">
-            <test file="filesystemlisters-filesystemlister_test_data-filesystemlister_tests.adb" line="77" column="1" timestamp="2016-12-05 16:18:14"/>
+            <test file="filesystemlisters-filesystemlister_test_data-filesystemlister_tests.adb" line="77" column="1" timestamp="2016-12-06 15:26:44"/>
          </tested>
          <tested name="next" line="24" column="4">
-            <test file="filesystemlisters-filesystemlister_test_data-filesystemlister_tests.adb" line="98" column="1" timestamp="2016-12-05 16:18:14"/>
+            <test file="filesystemlisters-filesystemlister_test_data-filesystemlister_tests.adb" line="98" column="1" timestamp="2016-12-06 15:26:44"/>
          </tested>
          <tested name="init" line="44" column="4">
-            <test file="filesystemlisters-filesystemlister_test_data-filesystemlister_tests.adb" line="119" column="1" timestamp="2016-12-05 16:18:14"/>
+            <test file="filesystemlisters-filesystemlister_test_data-filesystemlister_tests.adb" line="119" column="1" timestamp="2016-12-06 15:26:44"/>
          </tested>
          <tested name="parseNext" line="47" column="4">
-            <test file="filesystemlisters-filesystemlister_test_data-filesystemlister_tests.adb" line="140" column="1" timestamp="2016-12-05 16:18:14"/>
+            <test file="filesystemlisters-filesystemlister_test_data-filesystemlister_tests.adb" line="140" column="1" timestamp="2016-12-06 15:26:44"/>
          </tested>
          <dangling>
          </dangling>
@@ -210,13 +230,13 @@
    <unit source_file="filters.ads">
       <test_unit target_file="filters-filter_test_data-filter_tests.ads">
          <tested name="apply" line="18" column="4">
-            <test file="filters-filter_test_data-filter_tests.adb" line="14" column="1" timestamp="2016-12-05 16:18:12"/>
+            <test file="filters-filter_test_data-filter_tests.adb" line="14" column="1" timestamp="2016-12-06 15:26:42"/>
          </tested>
          <tested name="addNew" line="22" column="4">
-            <test file="filters-filter_test_data-filter_tests.adb" line="35" column="1" timestamp="2016-12-05 16:18:12"/>
+            <test file="filters-filter_test_data-filter_tests.adb" line="35" column="1" timestamp="2016-12-06 15:26:42"/>
          </tested>
          <tested name="getNext" line="26" column="4">
-            <test file="filters-filter_test_data-filter_tests.adb" line="56" column="1" timestamp="2016-12-05 16:18:12"/>
+            <test file="filters-filter_test_data-filter_tests.adb" line="56" column="1" timestamp="2016-12-06 15:26:42"/>
          </tested>
          <dangling>
          </dangling>
@@ -227,27 +247,29 @@
          <setup file="imagesizefilters-imagesizefilter_test_data.adb" line="4"  column="4"/>
          <teardown file="imagesizefilters-imagesizefilter_test_data.adb" line="8"  column="4"/>
          <tested name="create" line="14" column="4">
-            <test file="imagesizefilters-imagesizefilter_test_data-imagesizefilter_tests.adb" line="14" column="1" timestamp="2016-12-05 16:18:14"/>
+            <test file="imagesizefilters-imagesizefilter_test_data-imagesizefilter_tests.adb" line="14" column="1" timestamp="2016-12-06 15:26:44"/>
          </tested>
          <tested name="destroy" line="16" column="4">
-            <test file="imagesizefilters-imagesizefilter_test_data-imagesizefilter_tests.adb" line="35" column="1" timestamp="2016-12-05 16:18:14"/>
+            <test file="imagesizefilters-imagesizefilter_test_data-imagesizefilter_tests.adb" line="35" column="1" timestamp="2016-12-06 15:26:44"/>
          </tested>
          <tested name="applyThis" line="19" column="4">
-            <test file="imagesizefilters-imagesizefilter_test_data-imagesizefilter_tests.adb" line="56" column="1" timestamp="2016-12-05 16:18:14"/>
+            <test file="imagesizefilters-imagesizefilter_test_data-imagesizefilter_tests.adb" line="56" column="1" timestamp="2016-12-06 15:26:44"/>
          </tested>
          <dangling>
          </dangling>
       </test_unit>
+   </unit>
+   <unit source_file="outputs.ads">
    </unit>
    <unit source_file="parameters.ads">
       <test_unit target_file="parameters-parameter_test_data-parameter_tests.ads">
          <setup file="parameters-parameter_test_data.adb" line="4"  column="4"/>
          <teardown file="parameters-parameter_test_data.adb" line="8"  column="4"/>
          <tested name="create" line="12" column="4">
-            <test file="parameters-parameter_test_data-parameter_tests.adb" line="14" column="1" timestamp="2016-12-05 16:18:12"/>
+            <test file="parameters-parameter_test_data-parameter_tests.adb" line="14" column="1" timestamp="2016-12-06 15:26:40"/>
          </tested>
          <tested name="destroy" line="14" column="4">
-            <test file="parameters-parameter_test_data-parameter_tests.adb" line="35" column="1" timestamp="2016-12-05 16:18:12"/>
+            <test file="parameters-parameter_test_data-parameter_tests.adb" line="35" column="1" timestamp="2016-12-06 15:26:40"/>
          </tested>
          <tested name="setPath" line="17" column="4">
             <test file="parameters-parameter_test_data-parameter_tests.adb" line="56" column="1" timestamp="modified"/>
@@ -306,110 +328,128 @@
          <tested name="setRename" line="35" column="4">
             <test file="parameters-parameter_test_data-parameter_tests.adb" line="398" column="1" timestamp="modified"/>
          </tested>
-         <tested name="setDebug" line="36" column="4">
-            <test file="parameters-parameter_test_data-parameter_tests.adb" line="417" column="1" timestamp="modified"/>
+         <tested name="setCSV" line="36" column="4">
+            <test file="parameters-parameter_test_data-parameter_tests.adb" line="417" column="1" timestamp="2016-12-06 15:26:40"/>
          </tested>
-         <tested name="getPath" line="39" column="4">
-            <test file="parameters-parameter_test_data-parameter_tests.adb" line="436" column="1" timestamp="modified"/>
+         <tested name="setCSVseparator" line="37" column="4">
+            <test file="parameters-parameter_test_data-parameter_tests.adb" line="438" column="1" timestamp="2016-12-06 15:26:40"/>
          </tested>
-         <tested name="getPathRecursion" line="40" column="4">
-            <test file="parameters-parameter_test_data-parameter_tests.adb" line="454" column="1" timestamp="modified"/>
+         <tested name="setDebug" line="38" column="4">
+            <test file="parameters-parameter_test_data-parameter_tests.adb" line="459" column="1" timestamp="modified"/>
          </tested>
-         <tested name="getFilePattern" line="41" column="4">
-            <test file="parameters-parameter_test_data-parameter_tests.adb" line="472" column="1" timestamp="modified"/>
+         <tested name="getPath" line="41" column="4">
+            <test file="parameters-parameter_test_data-parameter_tests.adb" line="478" column="1" timestamp="modified"/>
          </tested>
-         <tested name="getFileExtensionPattern" line="42" column="4">
-            <test file="parameters-parameter_test_data-parameter_tests.adb" line="490" column="1" timestamp="modified"/>
+         <tested name="getPathRecursion" line="42" column="4">
+            <test file="parameters-parameter_test_data-parameter_tests.adb" line="496" column="1" timestamp="modified"/>
          </tested>
-         <tested name="getFullName" line="43" column="4">
-            <test file="parameters-parameter_test_data-parameter_tests.adb" line="508" column="1" timestamp="modified"/>
+         <tested name="getFilePattern" line="43" column="4">
+            <test file="parameters-parameter_test_data-parameter_tests.adb" line="514" column="1" timestamp="modified"/>
          </tested>
-         <tested name="getDatePattern" line="44" column="4">
-            <test file="parameters-parameter_test_data-parameter_tests.adb" line="526" column="1" timestamp="modified"/>
+         <tested name="getFileExtensionPattern" line="44" column="4">
+            <test file="parameters-parameter_test_data-parameter_tests.adb" line="532" column="1" timestamp="modified"/>
          </tested>
-         <tested name="getMinFileSize" line="45" column="4">
-            <test file="parameters-parameter_test_data-parameter_tests.adb" line="544" column="1" timestamp="modified"/>
+         <tested name="getFullName" line="45" column="4">
+            <test file="parameters-parameter_test_data-parameter_tests.adb" line="550" column="1" timestamp="modified"/>
          </tested>
-         <tested name="getMaxFileSize" line="46" column="4">
-            <test file="parameters-parameter_test_data-parameter_tests.adb" line="562" column="1" timestamp="modified"/>
+         <tested name="getDatePattern" line="46" column="4">
+            <test file="parameters-parameter_test_data-parameter_tests.adb" line="568" column="1" timestamp="modified"/>
          </tested>
-         <tested name="getDateRangeStart" line="47" column="4">
-            <test file="parameters-parameter_test_data-parameter_tests.adb" line="580" column="1" timestamp="modified"/>
+         <tested name="getMinFileSize" line="47" column="4">
+            <test file="parameters-parameter_test_data-parameter_tests.adb" line="586" column="1" timestamp="modified"/>
          </tested>
-         <tested name="getDateRangeFinish" line="48" column="4">
-            <test file="parameters-parameter_test_data-parameter_tests.adb" line="598" column="1" timestamp="modified"/>
+         <tested name="getMaxFileSize" line="48" column="4">
+            <test file="parameters-parameter_test_data-parameter_tests.adb" line="604" column="1" timestamp="modified"/>
          </tested>
-         <tested name="getTimePattern" line="49" column="4">
-            <test file="parameters-parameter_test_data-parameter_tests.adb" line="616" column="1" timestamp="modified"/>
+         <tested name="getDateRangeStart" line="49" column="4">
+            <test file="parameters-parameter_test_data-parameter_tests.adb" line="622" column="1" timestamp="modified"/>
          </tested>
-         <tested name="getTimeRangeStart" line="50" column="4">
-            <test file="parameters-parameter_test_data-parameter_tests.adb" line="634" column="1" timestamp="modified"/>
+         <tested name="getDateRangeFinish" line="50" column="4">
+            <test file="parameters-parameter_test_data-parameter_tests.adb" line="640" column="1" timestamp="modified"/>
          </tested>
-         <tested name="getTimeRangeFinish" line="51" column="4">
-            <test file="parameters-parameter_test_data-parameter_tests.adb" line="652" column="1" timestamp="modified"/>
+         <tested name="getTimePattern" line="51" column="4">
+            <test file="parameters-parameter_test_data-parameter_tests.adb" line="658" column="1" timestamp="modified"/>
          </tested>
-         <tested name="getMinWidth" line="52" column="4">
-            <test file="parameters-parameter_test_data-parameter_tests.adb" line="670" column="1" timestamp="modified"/>
+         <tested name="getTimeRangeStart" line="52" column="4">
+            <test file="parameters-parameter_test_data-parameter_tests.adb" line="676" column="1" timestamp="modified"/>
          </tested>
-         <tested name="getMaxWidth" line="53" column="4">
-            <test file="parameters-parameter_test_data-parameter_tests.adb" line="688" column="1" timestamp="modified"/>
+         <tested name="getTimeRangeFinish" line="53" column="4">
+            <test file="parameters-parameter_test_data-parameter_tests.adb" line="694" column="1" timestamp="modified"/>
          </tested>
-         <tested name="getMinHeight" line="54" column="4">
-            <test file="parameters-parameter_test_data-parameter_tests.adb" line="706" column="1" timestamp="modified"/>
+         <tested name="getMinWidth" line="54" column="4">
+            <test file="parameters-parameter_test_data-parameter_tests.adb" line="712" column="1" timestamp="modified"/>
          </tested>
-         <tested name="getMaxHeight" line="55" column="4">
-            <test file="parameters-parameter_test_data-parameter_tests.adb" line="724" column="1" timestamp="modified"/>
+         <tested name="getMaxWidth" line="55" column="4">
+            <test file="parameters-parameter_test_data-parameter_tests.adb" line="730" column="1" timestamp="modified"/>
          </tested>
-         <tested name="getHelp" line="56" column="4">
-            <test file="parameters-parameter_test_data-parameter_tests.adb" line="742" column="1" timestamp="2016-12-05 16:18:12"/>
+         <tested name="getMinHeight" line="56" column="4">
+            <test file="parameters-parameter_test_data-parameter_tests.adb" line="748" column="1" timestamp="modified"/>
          </tested>
-         <tested name="getRename" line="57" column="4">
-            <test file="parameters-parameter_test_data-parameter_tests.adb" line="760" column="1" timestamp="modified"/>
+         <tested name="getMaxHeight" line="57" column="4">
+            <test file="parameters-parameter_test_data-parameter_tests.adb" line="766" column="1" timestamp="modified"/>
          </tested>
-         <tested name="getDebug" line="58" column="4">
-            <test file="parameters-parameter_test_data-parameter_tests.adb" line="778" column="1" timestamp="modified"/>
+         <tested name="getHelp" line="58" column="4">
+            <test file="parameters-parameter_test_data-parameter_tests.adb" line="784" column="1" timestamp="2016-12-06 15:26:40"/>
          </tested>
-         <tested name="flagPath" line="61" column="4">
-            <test file="parameters-parameter_test_data-parameter_tests.adb" line="796" column="1" timestamp="modified"/>
+         <tested name="getRename" line="59" column="4">
+            <test file="parameters-parameter_test_data-parameter_tests.adb" line="802" column="1" timestamp="modified"/>
          </tested>
-         <tested name="flagPathRecursion" line="62" column="4">
-            <test file="parameters-parameter_test_data-parameter_tests.adb" line="814" column="1" timestamp="modified"/>
+         <tested name="getCSV" line="60" column="4">
+            <test file="parameters-parameter_test_data-parameter_tests.adb" line="820" column="1" timestamp="2016-12-06 15:26:40"/>
          </tested>
-         <tested name="flagFilePattern" line="63" column="4">
-            <test file="parameters-parameter_test_data-parameter_tests.adb" line="832" column="1" timestamp="modified"/>
+         <tested name="getCSVseparator" line="61" column="4">
+            <test file="parameters-parameter_test_data-parameter_tests.adb" line="841" column="1" timestamp="2016-12-06 15:26:40"/>
          </tested>
-         <tested name="flagFileExtensionPattern" line="64" column="4">
-            <test file="parameters-parameter_test_data-parameter_tests.adb" line="850" column="1" timestamp="modified"/>
+         <tested name="getDebug" line="62" column="4">
+            <test file="parameters-parameter_test_data-parameter_tests.adb" line="862" column="1" timestamp="modified"/>
          </tested>
-         <tested name="flagFullName" line="65" column="4">
-            <test file="parameters-parameter_test_data-parameter_tests.adb" line="869" column="1" timestamp="modified"/>
+         <tested name="flagPath" line="65" column="4">
+            <test file="parameters-parameter_test_data-parameter_tests.adb" line="880" column="1" timestamp="modified"/>
          </tested>
-         <tested name="flagFileSize" line="66" column="4">
-            <test file="parameters-parameter_test_data-parameter_tests.adb" line="887" column="1" timestamp="modified"/>
+         <tested name="flagPathRecursion" line="66" column="4">
+            <test file="parameters-parameter_test_data-parameter_tests.adb" line="898" column="1" timestamp="modified"/>
          </tested>
-         <tested name="flagDatePattern" line="67" column="4">
-            <test file="parameters-parameter_test_data-parameter_tests.adb" line="905" column="1" timestamp="modified"/>
+         <tested name="flagFilePattern" line="67" column="4">
+            <test file="parameters-parameter_test_data-parameter_tests.adb" line="916" column="1" timestamp="modified"/>
          </tested>
-         <tested name="flagDateRange" line="68" column="4">
-            <test file="parameters-parameter_test_data-parameter_tests.adb" line="923" column="1" timestamp="modified"/>
+         <tested name="flagFileExtensionPattern" line="68" column="4">
+            <test file="parameters-parameter_test_data-parameter_tests.adb" line="934" column="1" timestamp="modified"/>
          </tested>
-         <tested name="flagTimePattern" line="69" column="4">
-            <test file="parameters-parameter_test_data-parameter_tests.adb" line="941" column="1" timestamp="modified"/>
+         <tested name="flagFullName" line="69" column="4">
+            <test file="parameters-parameter_test_data-parameter_tests.adb" line="953" column="1" timestamp="modified"/>
          </tested>
-         <tested name="flagTimeRange" line="70" column="4">
-            <test file="parameters-parameter_test_data-parameter_tests.adb" line="959" column="1" timestamp="modified"/>
+         <tested name="flagFileSize" line="70" column="4">
+            <test file="parameters-parameter_test_data-parameter_tests.adb" line="971" column="1" timestamp="modified"/>
          </tested>
-         <tested name="flagImageSize" line="71" column="4">
-            <test file="parameters-parameter_test_data-parameter_tests.adb" line="977" column="1" timestamp="modified"/>
+         <tested name="flagDatePattern" line="71" column="4">
+            <test file="parameters-parameter_test_data-parameter_tests.adb" line="989" column="1" timestamp="modified"/>
          </tested>
-         <tested name="flagHelp" line="72" column="4">
-            <test file="parameters-parameter_test_data-parameter_tests.adb" line="995" column="1" timestamp="modified"/>
+         <tested name="flagDateRange" line="72" column="4">
+            <test file="parameters-parameter_test_data-parameter_tests.adb" line="1007" column="1" timestamp="modified"/>
          </tested>
-         <tested name="flagRename" line="73" column="4">
-            <test file="parameters-parameter_test_data-parameter_tests.adb" line="1013" column="1" timestamp="modified"/>
+         <tested name="flagTimePattern" line="73" column="4">
+            <test file="parameters-parameter_test_data-parameter_tests.adb" line="1025" column="1" timestamp="modified"/>
          </tested>
-         <tested name="flagDebug" line="74" column="4">
-            <test file="parameters-parameter_test_data-parameter_tests.adb" line="1031" column="1" timestamp="modified"/>
+         <tested name="flagTimeRange" line="74" column="4">
+            <test file="parameters-parameter_test_data-parameter_tests.adb" line="1043" column="1" timestamp="modified"/>
+         </tested>
+         <tested name="flagImageSize" line="75" column="4">
+            <test file="parameters-parameter_test_data-parameter_tests.adb" line="1061" column="1" timestamp="modified"/>
+         </tested>
+         <tested name="flagHelp" line="76" column="4">
+            <test file="parameters-parameter_test_data-parameter_tests.adb" line="1079" column="1" timestamp="modified"/>
+         </tested>
+         <tested name="flagRename" line="77" column="4">
+            <test file="parameters-parameter_test_data-parameter_tests.adb" line="1097" column="1" timestamp="modified"/>
+         </tested>
+         <tested name="flagCSV" line="78" column="4">
+            <test file="parameters-parameter_test_data-parameter_tests.adb" line="1115" column="1" timestamp="2016-12-06 15:26:40"/>
+         </tested>
+         <tested name="flagCSVseparator" line="79" column="4">
+            <test file="parameters-parameter_test_data-parameter_tests.adb" line="1136" column="1" timestamp="2016-12-06 15:26:40"/>
+         </tested>
+         <tested name="flagDebug" line="80" column="4">
+            <test file="parameters-parameter_test_data-parameter_tests.adb" line="1157" column="1" timestamp="modified"/>
          </tested>
          <dangling>
          </dangling>
@@ -420,16 +460,16 @@
          <setup file="pictures-jpegpictures-jpegpicture_test_data.adb" line="4"  column="4"/>
          <teardown file="pictures-jpegpictures-jpegpicture_test_data.adb" line="9"  column="4"/>
          <tested name="create" line="13" column="4">
-            <test file="pictures-jpegpictures-jpegpicture_test_data-jpegpicture_tests.adb" line="14" column="1" timestamp="2016-12-05 16:18:14"/>
+            <test file="pictures-jpegpictures-jpegpicture_test_data-jpegpicture_tests.adb" line="14" column="1" timestamp="2016-12-06 15:26:44"/>
          </tested>
          <tested name="destroy" line="15" column="4">
-            <test file="pictures-jpegpictures-jpegpicture_test_data-jpegpicture_tests.adb" line="35" column="1" timestamp="2016-12-05 16:18:14"/>
+            <test file="pictures-jpegpictures-jpegpicture_test_data-jpegpicture_tests.adb" line="35" column="1" timestamp="2016-12-06 15:26:44"/>
          </tested>
          <tested name="hasEXIF" line="18" column="4">
-            <test file="pictures-jpegpictures-jpegpicture_test_data-jpegpicture_tests.adb" line="56" column="1" timestamp="2016-12-05 16:18:14"/>
+            <test file="pictures-jpegpictures-jpegpicture_test_data-jpegpicture_tests.adb" line="56" column="1" timestamp="2016-12-06 15:26:44"/>
          </tested>
          <tested name="getEXIF" line="19" column="4">
-            <test file="pictures-jpegpictures-jpegpicture_test_data-jpegpicture_tests.adb" line="77" column="1" timestamp="2016-12-05 16:18:14"/>
+            <test file="pictures-jpegpictures-jpegpicture_test_data-jpegpicture_tests.adb" line="77" column="1" timestamp="2016-12-06 15:26:44"/>
          </tested>
          <dangling>
          </dangling>
@@ -438,7 +478,7 @@
          <setup file="pictures-jpegpictures-test_data.adb" line="3"  column="4"/>
          <teardown file="pictures-jpegpictures-test_data.adb" line="9"  column="4"/>
          <tested name="isJpeg" line="22" column="4">
-            <test file="pictures-jpegpictures-test_data-tests.adb" line="14" column="1" timestamp="2016-12-05 16:18:14"/>
+            <test file="pictures-jpegpictures-test_data-tests.adb" line="14" column="1" timestamp="2016-12-06 15:26:44"/>
          </tested>
          <dangling>
          </dangling>
@@ -449,25 +489,25 @@
          <setup file="pictures-tiffpictures-tiffpicture_test_data.adb" line="4"  column="4"/>
          <teardown file="pictures-tiffpictures-tiffpicture_test_data.adb" line="9"  column="4"/>
          <tested name="create" line="12" column="4">
-            <test file="pictures-tiffpictures-tiffpicture_test_data-tiffpicture_tests.adb" line="14" column="1" timestamp="2016-12-05 16:18:14"/>
+            <test file="pictures-tiffpictures-tiffpicture_test_data-tiffpicture_tests.adb" line="14" column="1" timestamp="2016-12-06 15:26:44"/>
          </tested>
          <tested name="destroy" line="14" column="4">
-            <test file="pictures-tiffpictures-tiffpicture_test_data-tiffpicture_tests.adb" line="35" column="1" timestamp="2016-12-05 16:18:14"/>
+            <test file="pictures-tiffpictures-tiffpicture_test_data-tiffpicture_tests.adb" line="35" column="1" timestamp="2016-12-06 15:26:44"/>
          </tested>
          <tested name="hasEXIF" line="17" column="4">
-            <test file="pictures-tiffpictures-tiffpicture_test_data-tiffpicture_tests.adb" line="56" column="1" timestamp="2016-12-05 16:18:14"/>
+            <test file="pictures-tiffpictures-tiffpicture_test_data-tiffpicture_tests.adb" line="56" column="1" timestamp="2016-12-06 15:26:44"/>
          </tested>
          <tested name="getEXIF" line="18" column="4">
-            <test file="pictures-tiffpictures-tiffpicture_test_data-tiffpicture_tests.adb" line="77" column="1" timestamp="2016-12-05 16:18:14"/>
+            <test file="pictures-tiffpictures-tiffpicture_test_data-tiffpicture_tests.adb" line="77" column="1" timestamp="2016-12-06 15:26:44"/>
          </tested>
          <tested name="createInt" line="21" column="4">
-            <test file="pictures-tiffpictures-tiffpicture_test_data-tiffpicture_tests.adb" line="98" column="1" timestamp="2016-12-05 16:18:14"/>
+            <test file="pictures-tiffpictures-tiffpicture_test_data-tiffpicture_tests.adb" line="98" column="1" timestamp="2016-12-06 15:26:44"/>
          </tested>
          <tested name="createInt" line="22" column="4">
-            <test file="pictures-tiffpictures-tiffpicture_test_data-tiffpicture_tests.adb" line="119" column="1" timestamp="2016-12-05 16:18:14"/>
+            <test file="pictures-tiffpictures-tiffpicture_test_data-tiffpicture_tests.adb" line="119" column="1" timestamp="2016-12-06 15:26:44"/>
          </tested>
          <tested name="readBinary" line="23" column="4">
-            <test file="pictures-tiffpictures-tiffpicture_test_data-tiffpicture_tests.adb" line="140" column="1" timestamp="2016-12-05 16:18:14"/>
+            <test file="pictures-tiffpictures-tiffpicture_test_data-tiffpicture_tests.adb" line="140" column="1" timestamp="2016-12-06 15:26:44"/>
          </tested>
          <dangling>
          </dangling>
@@ -476,7 +516,7 @@
          <setup file="pictures-tiffpictures-test_data.adb" line="3"  column="4"/>
          <teardown file="pictures-tiffpictures-test_data.adb" line="9"  column="4"/>
          <tested name="isTiff" line="26" column="4">
-            <test file="pictures-tiffpictures-test_data-tests.adb" line="14" column="1" timestamp="2016-12-05 16:18:14"/>
+            <test file="pictures-tiffpictures-test_data-tests.adb" line="14" column="1" timestamp="2016-12-06 15:26:44"/>
          </tested>
          <dangling>
          </dangling>
@@ -485,10 +525,10 @@
    <unit source_file="pictures.ads">
       <test_unit target_file="pictures-picture_test_data-picture_tests.ads">
          <tested name="setName" line="17" column="4">
-            <test file="pictures-picture_test_data-picture_tests.adb" line="14" column="1" timestamp="2016-12-05 16:18:14"/>
+            <test file="pictures-picture_test_data-picture_tests.adb" line="14" column="1" timestamp="2016-12-06 15:26:44"/>
          </tested>
          <tested name="getName" line="21" column="4">
-            <test file="pictures-picture_test_data-picture_tests.adb" line="35" column="1" timestamp="2016-12-05 16:18:14"/>
+            <test file="pictures-picture_test_data-picture_tests.adb" line="35" column="1" timestamp="2016-12-06 15:26:44"/>
          </tested>
          <dangling>
          </dangling>
@@ -497,7 +537,7 @@
          <setup file="pictures-test_data.adb" line="3"  column="4"/>
          <teardown file="pictures-test_data.adb" line="9"  column="4"/>
          <tested name="create" line="12" column="4">
-            <test file="pictures-test_data-tests.adb" line="14" column="1" timestamp="2016-12-05 16:18:14"/>
+            <test file="pictures-test_data-tests.adb" line="14" column="1" timestamp="2016-12-06 15:26:44"/>
          </tested>
          <dangling>
          </dangling>
@@ -508,13 +548,13 @@
          <setup file="timepatternfilters-timepatternfilter_test_data.adb" line="4"  column="4"/>
          <teardown file="timepatternfilters-timepatternfilter_test_data.adb" line="8"  column="4"/>
          <tested name="create" line="14" column="4">
-            <test file="timepatternfilters-timepatternfilter_test_data-timepatternfilter_tests.adb" line="14" column="1" timestamp="2016-12-05 16:18:14"/>
+            <test file="timepatternfilters-timepatternfilter_test_data-timepatternfilter_tests.adb" line="14" column="1" timestamp="2016-12-06 15:26:46"/>
          </tested>
          <tested name="destroy" line="16" column="4">
-            <test file="timepatternfilters-timepatternfilter_test_data-timepatternfilter_tests.adb" line="35" column="1" timestamp="2016-12-05 16:18:14"/>
+            <test file="timepatternfilters-timepatternfilter_test_data-timepatternfilter_tests.adb" line="35" column="1" timestamp="2016-12-06 15:26:46"/>
          </tested>
          <tested name="applyThis" line="19" column="4">
-            <test file="timepatternfilters-timepatternfilter_test_data-timepatternfilter_tests.adb" line="56" column="1" timestamp="2016-12-05 16:18:14"/>
+            <test file="timepatternfilters-timepatternfilter_test_data-timepatternfilter_tests.adb" line="56" column="1" timestamp="2016-12-06 15:26:46"/>
          </tested>
          <dangling>
          </dangling>
@@ -525,13 +565,13 @@
          <setup file="timerangefilters-timerangefilter_test_data.adb" line="4"  column="4"/>
          <teardown file="timerangefilters-timerangefilter_test_data.adb" line="8"  column="4"/>
          <tested name="create" line="14" column="4">
-            <test file="timerangefilters-timerangefilter_test_data-timerangefilter_tests.adb" line="14" column="1" timestamp="2016-12-05 16:18:16"/>
+            <test file="timerangefilters-timerangefilter_test_data-timerangefilter_tests.adb" line="14" column="1" timestamp="2016-12-06 15:26:46"/>
          </tested>
          <tested name="destroy" line="16" column="4">
-            <test file="timerangefilters-timerangefilter_test_data-timerangefilter_tests.adb" line="35" column="1" timestamp="2016-12-05 16:18:16"/>
+            <test file="timerangefilters-timerangefilter_test_data-timerangefilter_tests.adb" line="35" column="1" timestamp="2016-12-06 15:26:46"/>
          </tested>
          <tested name="applyThis" line="19" column="4">
-            <test file="timerangefilters-timerangefilter_test_data-timerangefilter_tests.adb" line="56" column="1" timestamp="2016-12-05 16:18:16"/>
+            <test file="timerangefilters-timerangefilter_test_data-timerangefilter_tests.adb" line="56" column="1" timestamp="2016-12-06 15:26:46"/>
          </tested>
          <dangling>
          </dangling>

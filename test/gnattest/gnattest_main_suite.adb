@@ -5,6 +5,7 @@
 with CommandlineParsers.CommandlineParser_Test_Data.CommandlineParser_Tests.Suite;
 with Parameters.Parameter_Test_Data.Parameter_Tests.Suite;
 with ConsoleOutputs.ConsoleOutput_Test_Data.ConsoleOutput_Tests.Suite;
+with CSVOutputs.CSVOutput_Test_Data.CSVOutput_Tests.Suite;
 with DatePatternFilters.DatePatternFilter_Test_Data.DatePatternFilter_Tests.Suite;
 with EXIFParsers.EXIFParser_Test_Data.EXIFParser_Tests.Suite;
 with DateRangeFilters.DateRangeFilter_Test_Data.DateRangeFilter_Tests.Suite;
@@ -32,6 +33,7 @@ package body Gnattest_Main_Suite is
       Result.Add_Test (CommandlineParsers.CommandlineParser_Test_Data.CommandlineParser_Tests.Suite.Suite);
       Result.Add_Test (Parameters.Parameter_Test_Data.Parameter_Tests.Suite.Suite);
       Result.Add_Test (ConsoleOutputs.ConsoleOutput_Test_Data.ConsoleOutput_Tests.Suite.Suite);
+      Result.Add_Test (CSVOutputs.CSVOutput_Test_Data.CSVOutput_Tests.Suite.Suite);
       Result.Add_Test (DatePatternFilters.DatePatternFilter_Test_Data.DatePatternFilter_Tests.Suite.Suite);
       Result.Add_Test (EXIFParsers.EXIFParser_Test_Data.EXIFParser_Tests.Suite.Suite);
       Result.Add_Test (DateRangeFilters.DateRangeFilter_Test_Data.DateRangeFilter_Tests.Suite.Suite);

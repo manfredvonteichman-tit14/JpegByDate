@@ -8,3 +8,14 @@
 
 ..\..\bin\JpegByDate.exe --debug -f ".?*()[]{}\^$+-&"
 
+..\..\bin\JpegByDate.exe -r -p ../recursion
+
+..\..\bin\JpegByDate.exe -p ../different_names
+
+..\..\bin\JpegByDate.exe -p ../different_times
+
+..\..\bin\JpegByDate.exe -p ../different_types
+
+..\..\bin\JpegByDate.exe -p --rename ../rename
+
+

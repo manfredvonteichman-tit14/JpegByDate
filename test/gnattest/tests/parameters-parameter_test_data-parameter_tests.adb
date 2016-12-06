@@ -415,11 +415,49 @@ package body Parameters.Parameter_Test_Data.Parameter_Tests is
 
 
 --  begin read only
+   procedure Test_setCSV (Gnattest_T : in out Test_Parameter);
+   procedure Test_setCSV_240f4c (Gnattest_T : in out Test_Parameter) renames Test_setCSV;
+--  id:2.2/240f4cf8c5c266de/setCSV/1/0/
+   procedure Test_setCSV (Gnattest_T : in out Test_Parameter) is
+   --  parameters.ads:36:4:setCSV
+--  end read only
+
+   begin
+     setCSV(Gnattest_T.Fixture, "export.csv");
+      AUnit.Assertions.Assert
+        (getCSV(Gnattest_T.Fixture) = "export.csv",
+         "CSV-Path wasnt set properly.");
+
+--  begin read only
+   end Test_setCSV;
+--  end read only
+
+
+--  begin read only
+   procedure Test_setCSVseparator (Gnattest_T : in out Test_Parameter);
+   procedure Test_setCSVseparator_9ee9c0 (Gnattest_T : in out Test_Parameter) renames Test_setCSVseparator;
+--  id:2.2/9ee9c0ae9f06b284/setCSVseparator/1/0/
+   procedure Test_setCSVseparator (Gnattest_T : in out Test_Parameter) is
+   --  parameters.ads:37:4:setCSVseparator
+--  end read only
+
+   begin
+     setCSVseparator(Gnattest_T.Fixture, ";");
+      AUnit.Assertions.Assert
+        (getCSVseparator(Gnattest_T.Fixture) = ";",
+         "CSV-Separator wasnt set properly.");
+
+--  begin read only
+   end Test_setCSVseparator;
+--  end read only
+
+
+--  begin read only
    procedure Test_setDebug (Gnattest_T : in out Test_Parameter);
    procedure Test_setDebug_308b04 (Gnattest_T : in out Test_Parameter) renames Test_setDebug;
 --  id:2.2/308b04f0b2724838/setDebug/1/0/
    procedure Test_setDebug (Gnattest_T : in out Test_Parameter) is
-   --  parameters.ads:36:4:setDebug
+   --  parameters.ads:38:4:setDebug
 --  end read only
 
    begin
@@ -438,7 +476,7 @@ package body Parameters.Parameter_Test_Data.Parameter_Tests is
    procedure Test_getPath_fc393c (Gnattest_T : in out Test_Parameter) renames Test_getPath;
 --  id:2.2/fc393c56504bd5a9/getPath/1/0/
    procedure Test_getPath (Gnattest_T : in out Test_Parameter) is
-   --  parameters.ads:39:4:getPath
+   --  parameters.ads:41:4:getPath
 --  end read only
 
    begin
@@ -456,7 +494,7 @@ package body Parameters.Parameter_Test_Data.Parameter_Tests is
    procedure Test_getPathRecursion_450653 (Gnattest_T : in out Test_Parameter) renames Test_getPathRecursion;
 --  id:2.2/450653ba41d221b8/getPathRecursion/1/0/
    procedure Test_getPathRecursion (Gnattest_T : in out Test_Parameter) is
-   --  parameters.ads:40:4:getPathRecursion
+   --  parameters.ads:42:4:getPathRecursion
 --  end read only
 
    begin
@@ -474,7 +512,7 @@ package body Parameters.Parameter_Test_Data.Parameter_Tests is
    procedure Test_getFilePattern_de78d2 (Gnattest_T : in out Test_Parameter) renames Test_getFilePattern;
 --  id:2.2/de78d223c0b8312b/getFilePattern/1/0/
    procedure Test_getFilePattern (Gnattest_T : in out Test_Parameter) is
-   --  parameters.ads:41:4:getFilePattern
+   --  parameters.ads:43:4:getFilePattern
 --  end read only
 
    begin
@@ -492,7 +530,7 @@ package body Parameters.Parameter_Test_Data.Parameter_Tests is
    procedure Test_getFileExtensionPattern_b13d20 (Gnattest_T : in out Test_Parameter) renames Test_getFileExtensionPattern;
 --  id:2.2/b13d20833437a13e/getFileExtensionPattern/1/0/
    procedure Test_getFileExtensionPattern (Gnattest_T : in out Test_Parameter) is
-   --  parameters.ads:42:4:getFileExtensionPattern
+   --  parameters.ads:44:4:getFileExtensionPattern
 --  end read only
 
    begin
@@ -510,7 +548,7 @@ package body Parameters.Parameter_Test_Data.Parameter_Tests is
    procedure Test_getFullName_169f79 (Gnattest_T : in out Test_Parameter) renames Test_getFullName;
 --  id:2.2/169f79d5f88101f8/getFullName/1/0/
    procedure Test_getFullName (Gnattest_T : in out Test_Parameter) is
-   --  parameters.ads:43:4:getFullName
+   --  parameters.ads:45:4:getFullName
 --  end read only
 
    begin
@@ -528,7 +566,7 @@ package body Parameters.Parameter_Test_Data.Parameter_Tests is
    procedure Test_getDatePattern_56846b (Gnattest_T : in out Test_Parameter) renames Test_getDatePattern;
 --  id:2.2/56846bfc30ab209d/getDatePattern/1/0/
    procedure Test_getDatePattern (Gnattest_T : in out Test_Parameter) is
-   --  parameters.ads:44:4:getDatePattern
+   --  parameters.ads:46:4:getDatePattern
 --  end read only
 
    begin
@@ -546,7 +584,7 @@ package body Parameters.Parameter_Test_Data.Parameter_Tests is
    procedure Test_getMinFileSize_96e0a9 (Gnattest_T : in out Test_Parameter) renames Test_getMinFileSize;
 --  id:2.2/96e0a9d2750923bd/getMinFileSize/1/0/
    procedure Test_getMinFileSize (Gnattest_T : in out Test_Parameter) is
-   --  parameters.ads:45:4:getMinFileSize
+   --  parameters.ads:47:4:getMinFileSize
 --  end read only
 
    begin
@@ -564,7 +602,7 @@ package body Parameters.Parameter_Test_Data.Parameter_Tests is
    procedure Test_getMaxFileSize_cdb058 (Gnattest_T : in out Test_Parameter) renames Test_getMaxFileSize;
 --  id:2.2/cdb0589878ee8515/getMaxFileSize/1/0/
    procedure Test_getMaxFileSize (Gnattest_T : in out Test_Parameter) is
-   --  parameters.ads:46:4:getMaxFileSize
+   --  parameters.ads:48:4:getMaxFileSize
 --  end read only
 
    begin
@@ -582,7 +620,7 @@ package body Parameters.Parameter_Test_Data.Parameter_Tests is
    procedure Test_getDateRangeStart_6a8fa9 (Gnattest_T : in out Test_Parameter) renames Test_getDateRangeStart;
 --  id:2.2/6a8fa922af0f6b0c/getDateRangeStart/1/0/
    procedure Test_getDateRangeStart (Gnattest_T : in out Test_Parameter) is
-   --  parameters.ads:47:4:getDateRangeStart
+   --  parameters.ads:49:4:getDateRangeStart
 --  end read only
 
    begin
@@ -600,7 +638,7 @@ package body Parameters.Parameter_Test_Data.Parameter_Tests is
    procedure Test_getDateRangeFinish_3f5690 (Gnattest_T : in out Test_Parameter) renames Test_getDateRangeFinish;
 --  id:2.2/3f569073c871c20b/getDateRangeFinish/1/0/
    procedure Test_getDateRangeFinish (Gnattest_T : in out Test_Parameter) is
-   --  parameters.ads:48:4:getDateRangeFinish
+   --  parameters.ads:50:4:getDateRangeFinish
 --  end read only
 
    begin
@@ -618,7 +656,7 @@ package body Parameters.Parameter_Test_Data.Parameter_Tests is
    procedure Test_getTimePattern_e758ab (Gnattest_T : in out Test_Parameter) renames Test_getTimePattern;
 --  id:2.2/e758ab6cbfb036bb/getTimePattern/1/0/
    procedure Test_getTimePattern (Gnattest_T : in out Test_Parameter) is
-   --  parameters.ads:49:4:getTimePattern
+   --  parameters.ads:51:4:getTimePattern
 --  end read only
 
    begin
@@ -636,7 +674,7 @@ package body Parameters.Parameter_Test_Data.Parameter_Tests is
    procedure Test_getTimeRangeStart_07b143 (Gnattest_T : in out Test_Parameter) renames Test_getTimeRangeStart;
 --  id:2.2/07b143fcd3e4cbab/getTimeRangeStart/1/0/
    procedure Test_getTimeRangeStart (Gnattest_T : in out Test_Parameter) is
-   --  parameters.ads:50:4:getTimeRangeStart
+   --  parameters.ads:52:4:getTimeRangeStart
 --  end read only
 
    begin
@@ -654,7 +692,7 @@ package body Parameters.Parameter_Test_Data.Parameter_Tests is
    procedure Test_getTimeRangeFinish_379e39 (Gnattest_T : in out Test_Parameter) renames Test_getTimeRangeFinish;
 --  id:2.2/379e39e6ab63e002/getTimeRangeFinish/1/0/
    procedure Test_getTimeRangeFinish (Gnattest_T : in out Test_Parameter) is
-   --  parameters.ads:51:4:getTimeRangeFinish
+   --  parameters.ads:53:4:getTimeRangeFinish
 --  end read only
 
    begin
@@ -672,7 +710,7 @@ package body Parameters.Parameter_Test_Data.Parameter_Tests is
    procedure Test_getMinWidth_08aec2 (Gnattest_T : in out Test_Parameter) renames Test_getMinWidth;
 --  id:2.2/08aec2f2bcb5deb8/getMinWidth/1/0/
    procedure Test_getMinWidth (Gnattest_T : in out Test_Parameter) is
-   --  parameters.ads:52:4:getMinWidth
+   --  parameters.ads:54:4:getMinWidth
 --  end read only
 
    begin
@@ -690,7 +728,7 @@ package body Parameters.Parameter_Test_Data.Parameter_Tests is
    procedure Test_getMaxWidth_1d20dd (Gnattest_T : in out Test_Parameter) renames Test_getMaxWidth;
 --  id:2.2/1d20dd5e9f7d8306/getMaxWidth/1/0/
    procedure Test_getMaxWidth (Gnattest_T : in out Test_Parameter) is
-   --  parameters.ads:53:4:getMaxWidth
+   --  parameters.ads:55:4:getMaxWidth
 --  end read only
 
    begin
@@ -708,7 +746,7 @@ package body Parameters.Parameter_Test_Data.Parameter_Tests is
    procedure Test_getMinHeight_54b8b9 (Gnattest_T : in out Test_Parameter) renames Test_getMinHeight;
 --  id:2.2/54b8b944588f6c83/getMinHeight/1/0/
    procedure Test_getMinHeight (Gnattest_T : in out Test_Parameter) is
-   --  parameters.ads:54:4:getMinHeight
+   --  parameters.ads:56:4:getMinHeight
 --  end read only
 
    begin
@@ -726,7 +764,7 @@ package body Parameters.Parameter_Test_Data.Parameter_Tests is
    procedure Test_getMaxHeight_d9018b (Gnattest_T : in out Test_Parameter) renames Test_getMaxHeight;
 --  id:2.2/d9018b7ce82e86b2/getMaxHeight/1/0/
    procedure Test_getMaxHeight (Gnattest_T : in out Test_Parameter) is
-   --  parameters.ads:55:4:getMaxHeight
+   --  parameters.ads:57:4:getMaxHeight
 --  end read only
 
    begin
@@ -744,7 +782,7 @@ package body Parameters.Parameter_Test_Data.Parameter_Tests is
    procedure Test_getHelp_ab59e1 (Gnattest_T : in out Test_Parameter) renames Test_getHelp;
 --  id:2.2/ab59e1ba76ba7db9/getHelp/1/0/
    procedure Test_getHelp (Gnattest_T : in out Test_Parameter) is
-   --  parameters.ads:56:4:getHelp
+   --  parameters.ads:58:4:getHelp
 --  end read only
 
    begin
@@ -762,7 +800,7 @@ package body Parameters.Parameter_Test_Data.Parameter_Tests is
    procedure Test_getRename_42e141 (Gnattest_T : in out Test_Parameter) renames Test_getRename;
 --  id:2.2/42e14154bd612471/getRename/1/0/
    procedure Test_getRename (Gnattest_T : in out Test_Parameter) is
-   --  parameters.ads:57:4:getRename
+   --  parameters.ads:59:4:getRename
 --  end read only
 
    begin
@@ -776,11 +814,47 @@ package body Parameters.Parameter_Test_Data.Parameter_Tests is
 
 
 --  begin read only
+   procedure Test_getCSV (Gnattest_T : in out Test_Parameter);
+   procedure Test_getCSV_536ccc (Gnattest_T : in out Test_Parameter) renames Test_getCSV;
+--  id:2.2/536ccc181dda4715/getCSV/1/0/
+   procedure Test_getCSV (Gnattest_T : in out Test_Parameter) is
+   --  parameters.ads:60:4:getCSV
+--  end read only
+
+   begin
+     AUnit.Assertions.Assert
+        (getCSV(Gnattest_T.Fixture) = "export.csv",
+         "CSV-Path wasnt read properly.");
+
+--  begin read only
+   end Test_getCSV;
+--  end read only
+
+
+--  begin read only
+   procedure Test_getCSVseparator (Gnattest_T : in out Test_Parameter);
+   procedure Test_getCSVseparator_694a2a (Gnattest_T : in out Test_Parameter) renames Test_getCSVseparator;
+--  id:2.2/694a2af4afe149e4/getCSVseparator/1/0/
+   procedure Test_getCSVseparator (Gnattest_T : in out Test_Parameter) is
+   --  parameters.ads:61:4:getCSVseparator
+--  end read only
+
+   begin
+     AUnit.Assertions.Assert
+        (getCSVseparator(Gnattest_T.Fixture) = ";",
+         "CSV-Separator wasnt read properly.");
+
+--  begin read only
+   end Test_getCSVseparator;
+--  end read only
+
+
+--  begin read only
    procedure Test_getDebug (Gnattest_T : in out Test_Parameter);
    procedure Test_getDebug_9ba390 (Gnattest_T : in out Test_Parameter) renames Test_getDebug;
 --  id:2.2/9ba3903f93e44f62/getDebug/1/0/
    procedure Test_getDebug (Gnattest_T : in out Test_Parameter) is
-   --  parameters.ads:58:4:getDebug
+   --  parameters.ads:62:4:getDebug
 --  end read only
 
    begin
@@ -798,7 +872,7 @@ package body Parameters.Parameter_Test_Data.Parameter_Tests is
    procedure Test_flagPath_c1a53c (Gnattest_T : in out Test_Parameter) renames Test_flagPath;
 --  id:2.2/c1a53c070acf821f/flagPath/1/0/
    procedure Test_flagPath (Gnattest_T : in out Test_Parameter) is
-   --  parameters.ads:61:4:flagPath
+   --  parameters.ads:65:4:flagPath
 --  end read only
 
    begin
@@ -816,7 +890,7 @@ package body Parameters.Parameter_Test_Data.Parameter_Tests is
    procedure Test_flagPathRecursion_6d9bb4 (Gnattest_T : in out Test_Parameter) renames Test_flagPathRecursion;
 --  id:2.2/6d9bb41a6d5e4352/flagPathRecursion/1/0/
    procedure Test_flagPathRecursion (Gnattest_T : in out Test_Parameter) is
-   --  parameters.ads:62:4:flagPathRecursion
+   --  parameters.ads:66:4:flagPathRecursion
 --  end read only
 
    begin
@@ -834,7 +908,7 @@ package body Parameters.Parameter_Test_Data.Parameter_Tests is
    procedure Test_flagFilePattern_191069 (Gnattest_T : in out Test_Parameter) renames Test_flagFilePattern;
 --  id:2.2/1910692aced22ad5/flagFilePattern/1/0/
    procedure Test_flagFilePattern (Gnattest_T : in out Test_Parameter) is
-   --  parameters.ads:63:4:flagFilePattern
+   --  parameters.ads:67:4:flagFilePattern
 --  end read only
 
    begin
@@ -852,7 +926,7 @@ package body Parameters.Parameter_Test_Data.Parameter_Tests is
    procedure Test_flagFileExtensionPattern_83a5bb (Gnattest_T : in out Test_Parameter) renames Test_flagFileExtensionPattern;
 --  id:2.2/83a5bb264033bc70/flagFileExtensionPattern/1/0/
    procedure Test_flagFileExtensionPattern (Gnattest_T : in out Test_Parameter) is
-   --  parameters.ads:64:4:flagFileExtensionPattern
+   --  parameters.ads:68:4:flagFileExtensionPattern
 --  end read only
 
    begin
@@ -871,7 +945,7 @@ package body Parameters.Parameter_Test_Data.Parameter_Tests is
    procedure Test_flagFullName_c12375 (Gnattest_T : in out Test_Parameter) renames Test_flagFullName;
 --  id:2.2/c12375d70becbf7c/flagFullName/1/0/
    procedure Test_flagFullName (Gnattest_T : in out Test_Parameter) is
-   --  parameters.ads:65:4:flagFullName
+   --  parameters.ads:69:4:flagFullName
 --  end read only
 
    begin
@@ -889,7 +963,7 @@ package body Parameters.Parameter_Test_Data.Parameter_Tests is
    procedure Test_flagFileSize_5da7ff (Gnattest_T : in out Test_Parameter) renames Test_flagFileSize;
 --  id:2.2/5da7ff7052a99b97/flagFileSize/1/0/
    procedure Test_flagFileSize (Gnattest_T : in out Test_Parameter) is
-   --  parameters.ads:66:4:flagFileSize
+   --  parameters.ads:70:4:flagFileSize
 --  end read only
 
    begin
@@ -907,7 +981,7 @@ package body Parameters.Parameter_Test_Data.Parameter_Tests is
    procedure Test_flagDatePattern_148097 (Gnattest_T : in out Test_Parameter) renames Test_flagDatePattern;
 --  id:2.2/1480975b8e8b265d/flagDatePattern/1/0/
    procedure Test_flagDatePattern (Gnattest_T : in out Test_Parameter) is
-   --  parameters.ads:67:4:flagDatePattern
+   --  parameters.ads:71:4:flagDatePattern
 --  end read only
 
    begin
@@ -925,7 +999,7 @@ package body Parameters.Parameter_Test_Data.Parameter_Tests is
    procedure Test_flagDateRange_593993 (Gnattest_T : in out Test_Parameter) renames Test_flagDateRange;
 --  id:2.2/593993d436244c4d/flagDateRange/1/0/
    procedure Test_flagDateRange (Gnattest_T : in out Test_Parameter) is
-   --  parameters.ads:68:4:flagDateRange
+   --  parameters.ads:72:4:flagDateRange
 --  end read only
 
    begin
@@ -943,7 +1017,7 @@ package body Parameters.Parameter_Test_Data.Parameter_Tests is
    procedure Test_flagTimePattern_50c4fa (Gnattest_T : in out Test_Parameter) renames Test_flagTimePattern;
 --  id:2.2/50c4fa4f9c8777fd/flagTimePattern/1/0/
    procedure Test_flagTimePattern (Gnattest_T : in out Test_Parameter) is
-   --  parameters.ads:69:4:flagTimePattern
+   --  parameters.ads:73:4:flagTimePattern
 --  end read only
 
    begin
@@ -961,7 +1035,7 @@ package body Parameters.Parameter_Test_Data.Parameter_Tests is
    procedure Test_flagTimeRange_9b5a94 (Gnattest_T : in out Test_Parameter) renames Test_flagTimeRange;
 --  id:2.2/9b5a940d34d7bb68/flagTimeRange/1/0/
    procedure Test_flagTimeRange (Gnattest_T : in out Test_Parameter) is
-   --  parameters.ads:70:4:flagTimeRange
+   --  parameters.ads:74:4:flagTimeRange
 --  end read only
 
    begin
@@ -979,7 +1053,7 @@ package body Parameters.Parameter_Test_Data.Parameter_Tests is
    procedure Test_flagImageSize_9579af (Gnattest_T : in out Test_Parameter) renames Test_flagImageSize;
 --  id:2.2/9579af2a9576cdbe/flagImageSize/1/0/
    procedure Test_flagImageSize (Gnattest_T : in out Test_Parameter) is
-   --  parameters.ads:71:4:flagImageSize
+   --  parameters.ads:75:4:flagImageSize
 --  end read only
 
    begin
@@ -997,7 +1071,7 @@ package body Parameters.Parameter_Test_Data.Parameter_Tests is
    procedure Test_flagHelp_905052 (Gnattest_T : in out Test_Parameter) renames Test_flagHelp;
 --  id:2.2/9050524171b0fae7/flagHelp/1/0/
    procedure Test_flagHelp (Gnattest_T : in out Test_Parameter) is
-   --  parameters.ads:72:4:flagHelp
+   --  parameters.ads:76:4:flagHelp
 --  end read only
 
    begin
@@ -1015,7 +1089,7 @@ package body Parameters.Parameter_Test_Data.Parameter_Tests is
    procedure Test_flagRename_c65d1a (Gnattest_T : in out Test_Parameter) renames Test_flagRename;
 --  id:2.2/c65d1a55c6cc87c4/flagRename/1/0/
    procedure Test_flagRename (Gnattest_T : in out Test_Parameter) is
-   --  parameters.ads:73:4:flagRename
+   --  parameters.ads:77:4:flagRename
 --  end read only
 
    begin
@@ -1029,11 +1103,47 @@ package body Parameters.Parameter_Test_Data.Parameter_Tests is
 
 
 --  begin read only
+   procedure Test_flagCSV (Gnattest_T : in out Test_Parameter);
+   procedure Test_flagCSV_0dad6c (Gnattest_T : in out Test_Parameter) renames Test_flagCSV;
+--  id:2.2/0dad6cb7f0690294/flagCSV/1/0/
+   procedure Test_flagCSV (Gnattest_T : in out Test_Parameter) is
+   --  parameters.ads:78:4:flagCSV
+--  end read only
+
+   begin
+      AUnit.Assertions.Assert
+        (flagCSV(Gnattest_T.Fixture),
+         "FlagCSV wasnt set.");
+
+--  begin read only
+   end Test_flagCSV;
+--  end read only
+
+
+--  begin read only
+   procedure Test_flagCSVseparator (Gnattest_T : in out Test_Parameter);
+   procedure Test_flagCSVseparator_b57765 (Gnattest_T : in out Test_Parameter) renames Test_flagCSVseparator;
+--  id:2.2/b57765bdb177e086/flagCSVseparator/1/0/
+   procedure Test_flagCSVseparator (Gnattest_T : in out Test_Parameter) is
+   --  parameters.ads:79:4:flagCSVseparator
+--  end read only
+
+   begin
+      AUnit.Assertions.Assert
+        (flagCSVseparator(Gnattest_T.Fixture),
+         "FlagCSVSeparator wasnt set.");
+
+--  begin read only
+   end Test_flagCSVseparator;
+--  end read only
+
+
+--  begin read only
    procedure Test_flagDebug (Gnattest_T : in out Test_Parameter);
    procedure Test_flagDebug_2dbf3b (Gnattest_T : in out Test_Parameter) renames Test_flagDebug;
 --  id:2.2/2dbf3b30907638be/flagDebug/1/0/
    procedure Test_flagDebug (Gnattest_T : in out Test_Parameter) is
-   --  parameters.ads:74:4:flagDebug
+   --  parameters.ads:80:4:flagDebug
 --  end read only
 
    begin
