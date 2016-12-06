@@ -93,6 +93,7 @@ package Globals is
      "    Use standard regular expression syntax to set the filter" & ASCII.LF &
      "--rename" & ASCII.LF &
      "    Renames all matching pictures. New filename will be YYYY-MM-DD-HH-MM-SS.EXT" & ASCII.LF &
+     "    Appends _X (X counting upwards) if file already exists" & ASCII.LF &
      "--debug" & ASCII.LF &
      "    Displays debug information for parameters and pictures" & ASCII.LF & ASCII.LF;
 

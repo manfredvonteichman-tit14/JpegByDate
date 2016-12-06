@@ -22,6 +22,7 @@ with Ada.Strings.Fixed;
 with Ada.Strings.Maps;
 
 -- Hauptfunktion
+-- Programm wird mit modifizierter Stackgröße (256MB) gelinkt -> notwendig für große Bilder zum Einlesen
 procedure Main is
    input: access Inputs.Input'Class := CommandlineParsers.create;
    efilter: access EXIFFilters.Filter'Class := null;
