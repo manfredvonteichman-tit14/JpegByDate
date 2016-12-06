@@ -28,8 +28,8 @@ JpegByDate sucht auf der Festplatte nach Fotos, die an einem bestimmten Datum au
 
 #### Metriken
 
-* Lines of Code: 1870 (|)
-* Lines of Comments: 561 (|)
+* Lines of Code: 1870
+* Lines of Comments: 561
 * Module count: 19
 * Lines of Code per Module: 98 (75 | 50-100)
 
