@@ -1,0 +1,62 @@
+        -:    0:Source:D:/Users/Andi/Documents/GitHub/JpegByDate/src/filesizefilters.adb
+        -:    0:Programs:186
+        -:    1:-- Verwendete Packages
+        -:    2:with Ada.Directories;
+        -:    3:with Ada.Unchecked_Deallocation;
+        -:    4:
+        -:    5:-- Package für Filtermodul
+        -:    6:package body FileSizeFilters is
+        -:    7:
+        -:    8:   -- Konstruktor
+    #####:    9:   function create(params: access Parameters.Parameter) return access FileSizeFilter is
+    #####:   10:      filter: access FileSizeFilter := new FileSizeFilter;
+        -:   11:   begin
+    #####:   12:      filter.all.params := params;
+    #####:   13:      return filter;
+        -:   14:   end create;
+        -:   15:
+        -:   16:   -- Destruktor
+    #####:   17:   procedure destroy(This: access FileSizeFilter; destroy_chain: Boolean := False) is
+        -:   18:      type type_access is access all FileSizeFilter;
+        -:   19:      procedure Free is new Ada.Unchecked_Deallocation(FileSizeFilter, type_access);
+    #####:   20:      obj: type_access := type_access(This);
+        -:   21:   begin
+        -:   22:      -- externe Variablen in diesem Fall doch löschen
+    #####:   23:      if destroy_chain = True and This.getNext /= null then
+    #####:   24:         This.getNext.destroy(destroy_chain);
+        -:   25:      end if;
+    #####:   26:      Free(obj);
+    #####:   27:   end;
+        -:   28:
+        -:   29:   -- private Funktionen
+    #####:   30:   overriding function applyThis(This: access FileSizeFilter; str: String) return Boolean is
+        -:   31:      filesize: Natural;
+        -:   32:   begin
+        -:   33:      -- Shortcut falls Standardwert verwendet wird
+    #####:   34:      if This.all.params.flagFileSize = False then
+        -:   35:         return True;
+        -:   36:      end if;
+        -:   37:
+        -:   38:      -- Dateigröße auslesen
+    #####:   39:      filesize := Natural'Val(Ada.Directories.Size(str));
+        -:   40:
+        -:   41:      -- Filtern des Eintrages nach Dateigröße und mit einer Regular-Expression
+    #####:   42:      if This.all.params.getMinFileSize <= filesize and This.all.params.getMaxFileSize >= filesize then
+        -:   43:         return True;
+        -:   44:      else
+        -:   45:         return False;
+        -:   46:      end if;
+        -:   47:
+        -:   48:   -- Fehler bei Dateilesen
+        -:   49:   exception
+        -:   50:      -- Fehler bei Dateiname
+    #####:   51:      when E: Ada.Directories.Name_Error =>
+        -:   52:         return False;
+        -:   53:
+        -:   54:      -- Alle anderen Fehler
+    #####:   55:      when E: others =>
+        -:   56:         return False;
+        -:   57:
+        -:   58:   end applyThis;
+        -:   59:
+        -:   60:end FileSizeFilters;

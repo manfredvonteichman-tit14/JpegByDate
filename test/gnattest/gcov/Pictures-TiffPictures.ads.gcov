@@ -1,0 +1,38 @@
+        -:    0:Source:D:/Users/Andi/Documents/GitHub/JpegByDate/src/Pictures-TiffPictures.ads
+        -:    0:Programs:186
+        -:    1:-- Verwendete Packages
+        -:    2:with Pictures;
+        -:    3:with Ada.Strings.Unbounded;
+        -:    4:
+        -:    5:-- Package für TiffPicture als Childpackage von Picture
+        4:    6:package Pictures.TiffPictures is
+        -:    7:
+        -:    8:   -- Typ anlegen
+    #####:    9:   type TiffPicture is new Pictures.Picture with private;
+        -:   10:
+        -:   11:   -- Konstruktor
+        -:   12:   not overriding function create(name: String; buffer: Ada.Strings.Unbounded.Unbounded_String) return access TiffPicture;
+        -:   13:   -- Destruktor
+        -:   14:   overriding procedure destroy(This: access TiffPicture);
+        -:   15:
+        -:   16:   -- EXIF abfragen
+        -:   17:   overriding function hasEXIF(This: access TiffPicture) return Boolean;
+        -:   18:   overriding function getEXIF(This: access TiffPicture) return access EXIFParsers.EXIFParser;
+        -:   19:
+        -:   20:   -- Binärdaten lesen
+        -:   21:   function createInt(This: access TiffPicture; b0: Character; b1: Character) return Integer;
+        -:   22:   function createInt(This: access TiffPicture; b0: Character; b1: Character; b2: Character; b3: Character) return Integer;
+        -:   23:   function readBinary(This: access TiffPicture; First: Integer; Last:Integer) return String;
+        -:   24:
+        -:   25:   -- Statische Buffercheckfunktion
+        -:   26:   function isTiff(buffer: Ada.Strings.Unbounded.Unbounded_String) return Boolean;
+        -:   27:
+        -:   28:private
+        -:   29:   -- Objektvariablen
+        6:   30:   type TiffPicture is new Pictures.Picture with
+        -:   31:      record
+        -:   32:         exif: access EXIFParsers.EXIFParser := null; -- intern
+        -:   33:         little_endian: Boolean := False;
+        -:   34:      end record;
+        -:   35:
+        2:   36:end Pictures.TiffPictures;

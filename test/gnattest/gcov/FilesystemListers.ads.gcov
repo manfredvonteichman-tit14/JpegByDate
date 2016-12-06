@@ -1,0 +1,51 @@
+        -:    0:Source:D:/Users/Andi/Documents/GitHub/JpegByDate/src/FilesystemListers.ads
+        -:    0:Programs:186
+        -:    1:-- Verwendete Packages
+        -:    2:with FileFilters;
+        -:    3:with FileListers;
+        -:    4:with Parameters;
+        -:    5:with Ada.Directories;
+        -:    6:with Ada.Strings.Unbounded;
+        -:    7:
+        -:    8:-- Package für das Auflisten von Dateien
+        4:    9:package FilesystemListers is
+        -:   10:
+        -:   11:   -- Typ anlegen
+    #####:   12:   type FilesystemLister is new FileListers.FileLister with private;
+        -:   13:
+        -:   14:   -- Konstruktor
+        -:   15:   overriding function create(params: access Parameters.Parameter; filter: access FileFilters.Filter'Class) return access FilesystemLister;
+        -:   16:   not overriding function create(params: access Parameters.Parameter; path: String; filter: access FileFilters.Filter'Class) return access FilesystemLister;
+        -:   17:   -- Destruktor
+        -:   18:   overriding procedure destroy(This: access FilesystemLister);
+        -:   19:
+        -:   20:   -- Auflisten der Dateien im Suchort
+        -:   21:   overriding function hasNext(This: access FilesystemLister) return Boolean;
+        -:   22:
+        -:   23:   -- Getterfunktionen
+        -:   24:   overriding function next(This: access FilesystemLister) return String;
+        -:   25:
+        -:   26:private
+        -:   27:   -- Objektvariablen
+       12:   28:   type FilesystemLister is new FileListers.FileLister with
+        -:   29:      record
+        -:   30:         -- Interne Datenspeicherung
+        -:   31:         hasNextMatch: Boolean := True; -- Muss True sein, da sonst init denkt es wären bereits alle Einträge durchsucht worden
+        6:   32:         nextMatch: Ada.Strings.Unbounded.Unbounded_String;
+        -:   33:
+        -:   34:         -- Vorbereitung der Verzeichnissuche
+        4:   35:         FilesystemSearch: Ada.Directories.Search_Type;
+        -:   36:         filter: access FileFilters.Filter := null; -- extern
+        -:   37:         params: access Parameters.Parameter := null; --extern
+        -:   38:
+        -:   39:         -- Rekursive Suche
+        -:   40:         subLister: access FilesystemLister := null; -- intern
+        -:   41:      end record;
+        -:   42:
+        -:   43:   -- Initialisierungsfunktion
+        -:   44:   procedure init(This: access FilesystemLister; path: String; filter: access FileFilters.Filter'Class);
+        -:   45:
+        -:   46:   -- Intene Suche nach nächster Datei
+        -:   47:   procedure parseNext(This: access FilesystemLister);
+        -:   48:
+        2:   49:end FilesystemListers;

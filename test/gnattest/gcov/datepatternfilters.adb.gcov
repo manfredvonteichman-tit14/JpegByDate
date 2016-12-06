@@ -1,0 +1,59 @@
+        -:    0:Source:D:/Users/Andi/Documents/GitHub/JpegByDate/src/datepatternfilters.adb
+        -:    0:Programs:186
+        -:    1:-- Verwendete Packages
+        -:    2:with Ada.Unchecked_Deallocation;
+        -:    3:with GNAT.Regpat;
+        -:    4:
+        -:    5:-- Package für Filtermodul
+        -:    6:package body DatePatternFilters is
+        -:    7:
+        -:    8:   -- Konstruktor
+    #####:    9:   function create(params: access Parameters.Parameter) return access DatePatternFilter is
+    #####:   10:      filter: access DatePatternFilter := new DatePatternFilter;
+        -:   11:   begin
+    #####:   12:      filter.all.params := params;
+    #####:   13:      return filter;
+        -:   14:   end create;
+        -:   15:
+        -:   16:   -- Destruktor
+    #####:   17:   procedure destroy(This: access DatePatternFilter; destroy_chain: Boolean := False) is
+        -:   18:      type type_access is access all DatePatternFilter;
+        -:   19:      procedure Free is new Ada.Unchecked_Deallocation(DatePatternFilter, type_access);
+    #####:   20:      obj: type_access := type_access(This);
+        -:   21:   begin
+        -:   22:      -- externe Variablen in diesem Fall doch löschen
+    #####:   23:      if destroy_chain = True and This.getNext /= null then
+    #####:   24:         This.getNext.destroy(destroy_chain);
+        -:   25:      end if;
+    #####:   26:      Free(obj);
+    #####:   27:   end;
+        -:   28:
+        -:   29:   -- private Funktionen
+    #####:   30:   overriding function applyThis(This: access DatePatternFilter; exif: EXIFParsers.EXIFParser_Access) return Boolean is
+        -:   31:   begin
+        -:   32:      -- Shortcut falls Standardwert verwendet wird
+    #####:   33:      if This.all.params.flagDatePattern = False then
+        -:   34:         return True;
+        -:   35:      end if;
+        -:   36:
+        -:   37:      -- Eigentlicher Filter
+    #####:   38:      declare
+    #####:   39:         exif_tmp: access EXIFParsers.EXIFParser := exif;
+    #####:   40:         date: String := exif_tmp.getDateTimeOriginal;
+        -:   41:      begin
+        -:   42:         -- Regex Match des EXIF Datums mit dem Parameter-Date-Pattern
+    #####:   43:         return Boolean'(GNAT.Regpat.Match(Expression => This.all.params.getDatePattern, Data => date(date'First..date'First+9)));
+    #####:   44:      end;
+        -:   45:
+        -:   46:   -- Fehler behandeln
+        -:   47:   exception
+        -:   48:      -- EXIF-Tag existiert nicht
+    #####:   49:      when E: EXIFParsers.TagNotFound =>
+        -:   50:         return False;
+        -:   51:
+        -:   52:      -- Alle anderen Fehler
+    #####:   53:      when E: others =>
+        -:   54:         return False;
+        -:   55:   end applyThis;
+        -:   56:
+        -:   57:end DatePatternFilters;

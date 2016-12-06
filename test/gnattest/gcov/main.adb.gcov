@@ -1,0 +1,108 @@
+        -:    0:Source:D:/Users/Andi/Documents/GitHub/JpegByDate/src/main.adb
+        -:    0:Programs:186
+        -:    1:-- Verwendete Packages
+        -:    2:with CSVOutputs;
+        -:    3:with CommandlineParsers;
+        -:    4:with ConsoleOutputs;
+        -:    5:with DatePatternFilters;
+        -:    6:with DateRangeFilters;
+        -:    7:with EXIFFilters;
+        -:    8:with FileFilters;
+        -:    9:with FileExtensionFilters;
+        -:   10:with FileListers;
+        -:   11:with FileNameFilters;
+        -:   12:with FileSizeFilters;
+        -:   13:with FilesystemListers;
+        -:   14:with FileHandlers;
+        -:   15:with Globals;
+        -:   16:with ImageSizeFilters;
+        -:   17:with Inputs;
+        -:   18:with Outputs;
+        -:   19:with TimePatternFilters;
+        -:   20:with TimeRangeFilters;
+        -:   21:with Ada.Strings.Fixed;
+        -:   22:with Ada.Strings.Maps;
+        -:   23:
+        -:   24:-- Hauptfunktion
+        1:   25:procedure Main is
+        1:   26:   input: access Inputs.Input'Class := CommandlineParsers.create;
+        1:   27:   efilter: access EXIFFilters.Filter'Class := null;
+        1:   28:   ffilter: access FileFilters.Filter'Class := null;
+        1:   29:   files: access FileListers.FileLister'Class := null;
+        1:   30:   handler: access FileHandlers.FileHandler := null;
+        1:   31:   output: access Outputs.Output'Class := ConsoleOutputs.create;
+        -:   32:begin
+        -:   33:   -- Eingabe verarbeiten
+        1:   34:   input.parse(output);
+        1:   35:   if input.getParams.getDebug then
+    #####:   36:      output.display("DEBUG OUTPUT - Path: " & input.getParams.getPath);
+    #####:   37:      output.display("DEBUG OUTPUT - PathRecursionEnabled: " & Boolean'Image(input.getParams.getPathRecursion));
+    #####:   38:      output.display("DEBUG OUTPUT - FullFileName: " & Boolean'Image(input.getParams.getFullName));
+    #####:   39:      output.display("DEBUG OUTPUT - FileNamePattern: " & input.getParams.getFilePattern);
+    #####:   40:      output.display("DEBUG OUTPUT - DatePattern: " & input.getParams.getDatePattern);
+    #####:   41:      output.display("DEBUG OUTPUT - DateRangeStart: " & input.getParams.getDateRangeStart);
+    #####:   42:      output.display("DEBUG OUTPUT - DateRangeFinish: " & input.getParams.getDateRangeFinish);
+    #####:   43:      output.display("DEBUG OUTPUT - minFileSize: " & Natural'Image(input.getParams.getMinFileSize));
+    #####:   44:      output.display("DEBUG OUTPUT - maxFileSize: " & Natural'Image(input.getParams.getMaxFileSize));
+    #####:   45:      output.display("DEBUG OUTPUT - TimePattern: " & input.getParams.getTimePattern);
+    #####:   46:      output.display("DEBUG OUTPUT - TimeRangeStart: " & input.getParams.getTimeRangeStart);
+    #####:   47:      output.display("DEBUG OUTPUT - TimeRangeFinish: " & input.getParams.getTimeRangeFinish);
+    #####:   48:      output.display("DEBUG OUTPUT - minWidth: " & Natural'Image(input.getParams.getMinWidth));
+    #####:   49:      output.display("DEBUG OUTPUT - maxWidth: " & Natural'Image(input.getParams.getMaxWidth));
+    #####:   50:      output.display("DEBUG OUTPUT - minHeight: " & Natural'Image(input.getParams.getMinHeight));
+    #####:   51:      output.display("DEBUG OUTPUT - maxHeight: " & Natural'Image(input.getParams.getMaxHeight));
+    #####:   52:      output.display("DEBUG OUTPUT - CSVfile: " & input.getParams.getCSV);
+    #####:   53:      output.display("DEBUG OUTPUT - RenameFiles: " & Boolean'Image(input.getParams.getRename));
+        -:   54:   end if;
+        -:   55:
+        -:   56:   -- Hilfe anzeigen
+        1:   57:   if input.getParams.flagHelp then
+    #####:   58:      output.display(input.getParams.getHelp);
+        -:   59:   end if;
+        -:   60:
+        -:   61:   -- Dateinamenfilter anlegen
+        1:   62:   ffilter := FileExtensionFilters.create(input.getParams);
+        1:   63:   ffilter.addNew(FileNameFilters.create(input.getParams));
+        1:   64:   ffilter.addNew(FileSizeFilters.create(input.getParams));
+        -:   65:
+        -:   66:   -- EXIF Filter anlegen nach Eingabeparametern
+        1:   67:   efilter := DatePatternFilters.create(input.getParams);
+        1:   68:   efilter.addNew(DateRangeFilters.create(input.getParams));
+        1:   69:   efilter.addNew(TimePatternFilters.create(input.getParams));
+        1:   70:   efilter.addNew(TimeRangeFilters.create(input.getParams));
+        1:   71:   efilter.addNew(ImageSizeFilters.create(input.getParams));
+        -:   72:
+        -:   73:   -- Dateien Auflisten und Filtern vorbereiten
+        1:   74:   files := FilesystemListers.create(input.getParams, ffilter);
+        -:   75:
+        -:   76:   -- Dateien verarbeiten und anzeigen
+        1:   77:   if input.getParams.flagCSV then
+        -:   78:      -- Wechsle von Console-IO zu Datei wenn Export gewünscht
+    #####:   79:      declare
+    #####:   80:         tmp_out: access Outputs.Output'Class;
+        -:   81:      begin
+        -:   82:         -- CSV Datei anlegen
+    #####:   83:         tmp_out := CSVOutputs.create(input.getParams.getCSV, input.getParams.getCSVseparator);
+    #####:   84:         output.destroy;
+        -:   85:         output := tmp_out;
+        -:   86:
+        -:   87:      -- Fehlerbehandlung
+        -:   88:      exception
+        -:   89:         -- Dateierstellen fehlgeschlagen
+    #####:   90:         when E: CSVOutputs.Impossible_Output =>
+    #####:   91:            output.display("ERROR! Creating CSV-export file '" & input.getParams.getCSV & "' failed. Printing to console instead.");
+    #####:   92:            output.display(Ada.Strings.Fixed.Translate(Globals.csvHeader, Ada.Strings.Maps.To_Mapping(From => ",", To => input.getParams.getCSVseparator)));
+    #####:   93:      end;
+        -:   94:   end if;
+        1:   95:   handler := FileHandlers.create(files, efilter, input.getParams);
+        1:   96:   handler.exec(output);
+        -:   97:
+        -:   98:   -- Aufräumen
+        1:   99:   input.destroy;
+        1:  100:   efilter.destroy(True);
+        1:  101:   ffilter.destroy(True);
+        1:  102:   files.destroy;
+        1:  103:   handler.destroy;
+        1:  104:   output.destroy;
+        -:  105:
+        1:  106:end Main;

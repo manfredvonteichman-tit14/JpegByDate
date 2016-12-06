@@ -1,0 +1,22 @@
+        -:    0:Source:D:/Users/Andi/Documents/GitHub/JpegByDate/test/gnattest/tests/csvoutputs-csvoutput_test_data.adb
+        -:    0:Programs:186
+        -:    1:--  This package is intended to set up and tear down  the test environment.
+        -:    2:--  Once created by GNATtest, this package will never be overwritten
+        -:    3:--  automatically. Contents of this package can be modified in any way
+        -:    4:--  except for sections surrounded by a 'read only' marker.
+        -:    5:
+        2:    6:package body CSVOutputs.CSVOutput_Test_Data is
+        -:    7:
+        2:    8:   Local_CSVOutput : aliased GNATtest_Generated.GNATtest_Standard.CSVOutputs.CSVOutput;
+        8:    9:   procedure Set_Up (Gnattest_T : in out Test_CSVOutput) is
+        -:   10:   begin
+        8:   11:     GNATtest_Generated.GNATtest_Standard.Outputs.Output_Test_Data.Output_Tests.Test_Output(Gnattest_T).Set_Up;
+        8:   12:      Gnattest_T.Fixture := Local_CSVOutput'Access;
+        8:   13:   end Set_Up;
+        -:   14:
+        8:   15:   procedure Tear_Down (Gnattest_T : in out Test_CSVOutput) is
+        -:   16:   begin
+        8:   17:     GNATtest_Generated.GNATtest_Standard.Outputs.Output_Test_Data.Output_Tests.Test_Output(Gnattest_T).Tear_Down;
+        8:   18:   end Tear_Down;
+        -:   19:
+        2:   20:end CSVOutputs.CSVOutput_Test_Data;

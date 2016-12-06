@@ -1,0 +1,58 @@
+        -:    0:Source:D:/Users/Andi/Documents/GitHub/JpegByDate/src/pictures.adb
+        -:    0:Programs:186
+        -:    1:-- Verwendete Packages
+        -:    2:with Pictures.JpegPictures;
+        -:    3:with Pictures.TiffPictures;
+        -:    4:
+        -:    5:-- Package für Picturemodul
+        -:    6:package body Pictures is
+        -:    7:
+        -:    8:   -- Bild erstellen
+      246:    9:   function create(name: String; buffer: Ada.Strings.Unbounded.Unbounded_String) return access Picture'Class is
+        -:   10:   begin
+        -:   11:      -- Jpeg Test
+        -:   12:      declare
+        -:   13:      begin
+        -:   14:         -- Versuchen Bild anzulegen
+      246:   15:         return JpegPictures.create(name, buffer); -- indirekter Call auf isJpeg()
+        -:   16:
+        -:   17:      -- Unknown_Format ignorieren, Datei ist kein JPEG -> nächstes Format versuchen
+        -:   18:      -- Illegal_Format wird durchgelassen, Datei ist JPEG, enthält aber Fehler -> nächstes Format unnötig
+        -:   19:      exception
+        -:   20:         -- Unbekanntes Bildformat
+       54:   21:         when E: Unknown_Format =>
+        -:   22:            null;
+        -:   23:      end;
+        -:   24:
+        -:   25:      -- Tiff Test
+        -:   26:      declare
+        -:   27:      begin
+        -:   28:         -- Versuchen Bild anzulegen
+       54:   29:         return TiffPictures.create(name, buffer); -- indirekter Call auf isTiff()
+        -:   30:
+        -:   31:      -- Unknown_Format ignorieren, Datei ist kein TIFF -> nächstes Format versuchen
+        -:   32:      -- Illegal_Format wird durchgelassen, Datei ist TIFF, enthält aber Fehler -> nächstes Format unnötig
+        -:   33:      exception
+        -:   34:         -- Unbekanntes Bildformat
+       12:   35:         when E: Unknown_Format =>
+        -:   36:            null;
+        -:   37:      end;
+        -:   38:
+        -:   39:      -- Kein bekannter Typ
+       12:   40:      raise Unknown_Format with "File does not match any supported picture format!";
+        -:   41:
+        -:   42:   end create;
+        -:   43:
+        -:   44:   -- Name und Pfad des Bildes setzen
+      646:   45:   procedure setName(This: access Picture; name: String) is
+        -:   46:   begin
+     1292:   47:      This.all.name := Ada.Strings.Unbounded.To_Unbounded_String(name);
+      646:   48:   end setName;
+        -:   49:
+        -:   50:   -- Name und Pfad des Bildes zurückgeben
+     1316:   51:   function getName(This: access Picture) return String is
+        -:   52:   begin
+     1316:   53:      return Ada.Strings.Unbounded.To_String(This.all.name);
+        -:   54:   end getName;
+        -:   55:
+        -:   56:end Pictures;

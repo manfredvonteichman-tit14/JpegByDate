@@ -1,0 +1,489 @@
+        -:    0:Source:C:/gnat/2016/lib/gcc/i686-pc-mingw32/4.9.4/adainclude/a-direct.ads
+        -:    0:Programs:186
+        -:    1:------------------------------------------------------------------------------
+        -:    2:--                                                                        --
+        -:    3:--                         GNAT RUN-TIME COMPONENTS                         --
+        -:    4:--                                                                          --
+        -:    5:--                      A D A . D I R E C T O R I E S                       --
+        -:    6:--                                                                          --
+        -:    7:--                                 S p e c                                  --
+        -:    8:--                                                                          --
+        -:    9:--          Copyright (C) 2004-2014, Free Software Foundation, Inc.         --
+        -:   10:--                                                                          --
+        -:   11:-- This specification is derived for use with GNAT from AI-00248,  which is --
+        -:   12:-- expected to be a part of a future expected revised Ada Reference Manual. --
+        -:   13:-- The copyright notice above, and the license provisions that follow apply --
+        -:   14:-- solely to the  contents of the part following the private keyword.       --
+        -:   15:--                                                                          --
+        -:   16:-- GNAT is free software;  you can  redistribute it  and/or modify it under --
+        -:   17:-- terms of the  GNU General Public License as published  by the Free Soft- --
+        -:   18:-- ware  Foundation;  either version 3,  or (at your option) any later ver- --
+        -:   19:-- sion.  GNAT is distributed in the hope that it will be useful, but WITH- --
+        -:   20:-- OUT ANY WARRANTY;  without even the  implied warranty of MERCHANTABILITY --
+        -:   21:-- or FITNESS FOR A PARTICULAR PURPOSE.                                     --
+        -:   22:--                                                                          --
+        -:   23:--                                                                          --
+        -:   24:--                                                                          --
+        -:   25:--                                                                          --
+        -:   26:--                                                                          --
+        -:   27:-- You should have received a copy of the GNU General Public License and    --
+        -:   28:-- a copy of the GCC Runtime Library Exception along with this program;     --
+        -:   29:-- see the files COPYING3 and COPYING.RUNTIME respectively.  If not, see    --
+        -:   30:-- <http://www.gnu.org/licenses/>.                                          --
+        -:   31:--                                                                          --
+        -:   32:-- GNAT was originally developed  by the GNAT team at  New York University. --
+        -:   33:-- Extensive contributions were provided by Ada Core Technologies Inc.      --
+        -:   34:--                                                                          --
+        -:   35:------------------------------------------------------------------------------
+        -:   36:
+        -:   37:--  Ada 2005: Implementation of Ada.Directories (AI95-00248). Note that this
+        -:   38:--  unit is available without -gnat05. That seems reasonable, since you only
+        -:   39:--  get it if you explicitly ask for it.
+        -:   40:
+        -:   41:--  External files may be classified as directories, special files, or ordinary
+        -:   42:--  files. A directory is an external file that is a container for files on
+        -:   43:--  the target system. A special file is an external file that cannot be
+        -:   44:--  created or read by a predefined Ada Input-Output package. External files
+        -:   45:--  that are not special files or directories are called ordinary files.
+        -:   46:
+        -:   47:--  A file name is a string identifying an external file. Similarly, a
+        -:   48:--  directory name is a string identifying a directory. The interpretation of
+        -:   49:--  file names and directory names is implementation-defined.
+        -:   50:
+        -:   51:--  The full name of an external file is a full specification of the name of
+        -:   52:--  the file. If the external environment allows alternative specifications of
+        -:   53:--  the name (for example, abbreviations), the full name should not use such
+        -:   54:--  alternatives. A full name typically will include the names of all of
+        -:   55:--  directories that contain the item. The simple name of an external file is
+        -:   56:--  the name of the item, not including any containing directory names. Unless
+        -:   57:--  otherwise specified, a file name or directory name parameter to a
+        -:   58:--  predefined Ada input-output subprogram can be a full name, a simple name,
+        -:   59:--  or any other form of name supported by the implementation.
+        -:   60:
+        -:   61:--  The default directory is the directory that is used if a directory or
+        -:   62:--  file name is not a full name (that is, when the name does not fully
+        -:   63:--  identify all of the containing directories).
+        -:   64:
+        -:   65:--  A directory entry is a single item in a directory, identifying a single
+        -:   66:--  external file (including directories and special files).
+        -:   67:
+        -:   68:--  For each function that returns a string, the lower bound of the returned
+        -:   69:--  value is 1.
+        -:   70:
+        -:   71:with Ada.Calendar;
+        -:   72:with Ada.Finalization;
+        -:   73:with Ada.IO_Exceptions;
+        -:   74:with Ada.Strings.Unbounded;
+        -:   75:
+        -:   76:package Ada.Directories is
+        -:   77:
+        -:   78:   -----------------------------------
+        -:   79:   -- Directory and File Operations --
+        -:   80:   -----------------------------------
+        -:   81:
+        -:   82:   function Current_Directory return String;
+        -:   83:   --  Returns the full directory name for the current default directory. The
+        -:   84:   --  name returned must be suitable for a future call to Set_Directory.
+        -:   85:   --  The exception Use_Error is propagated if a default directory is not
+        -:   86:   --  supported by the external environment.
+        -:   87:
+        -:   88:   procedure Set_Directory (Directory : String);
+        -:   89:   --  Sets the current default directory. The exception Name_Error is
+        -:   90:   --  propagated if the string given as Directory does not identify an
+        -:   91:   --  existing directory. The exception Use_Error is propagated if the
+        -:   92:   --  external environment does not support making Directory (in the absence
+        -:   93:   --  of Name_Error) a default directory.
+        -:   94:
+        -:   95:   procedure Create_Directory
+        -:   96:     (New_Directory : String;
+        -:   97:      Form          : String := "");
+        -:   98:   --  Creates a directory with name New_Directory. The Form parameter can be
+        -:   99:   --  used to give system-dependent characteristics of the directory; the
+        -:  100:   --  interpretation of the Form parameter is implementation-defined. A null
+        -:  101:   --  string for Form specifies the use of the default options of the
+        -:  102:   --  implementation of the new directory. The exception Name_Error is
+        -:  103:   --  propagated if the string given as New_Directory does not allow the
+        -:  104:   --  identification of a directory. The exception Use_Error is propagated if
+        -:  105:   --  the external environment does not support the creation of a directory
+        -:  106:   --  with the given name (in the absence of Name_Error) and form.
+        -:  107:   --
+        -:  108:   --  The Form parameter is ignored
+        -:  109:
+        -:  110:   procedure Delete_Directory (Directory : String);
+        -:  111:   --  Deletes an existing empty directory with name Directory. The exception
+        -:  112:   --  Name_Error is propagated if the string given as Directory does not
+        -:  113:   --  identify an existing directory. The exception Use_Error is propagated
+        -:  114:   --  if the external environment does not support the deletion of the
+        -:  115:   --  directory (or some portion of its contents) with the given name (in the
+        -:  116:   --  absence of Name_Error).
+        -:  117:
+        -:  118:   procedure Create_Path
+        -:  119:     (New_Directory : String;
+        -:  120:      Form          : String := "");
+        -:  121:   --  Creates zero or more directories with name New_Directory. Each
+        -:  122:   --  non-existent directory named by New_Directory is created. For example,
+        -:  123:   --  on a typical Unix system, Create_Path ("/usr/me/my"); would create
+        -:  124:   --  directory "me" in directory "usr", then create directory "my"
+        -:  125:   --  in directory "me". The Form can be used to give system-dependent
+        -:  126:   --  characteristics of the directory; the interpretation of the Form
+        -:  127:   --  parameter is implementation-defined. A null string for Form specifies
+        -:  128:   --  the use of the default options of the implementation of the new
+        -:  129:   --  directory. The exception Name_Error is propagated if the string given
+        -:  130:   --  as New_Directory does not allow the identification of any directory. The
+        -:  131:   --  exception Use_Error is propagated if the external environment does not
+        -:  132:   --  support the creation of any directories with the given name (in the
+        -:  133:   --  absence of Name_Error) and form.
+        -:  134:   --
+        -:  135:   --  The Form parameter is ignored
+        -:  136:
+        -:  137:   procedure Delete_Tree (Directory : String);
+        -:  138:   --  Deletes an existing directory with name Directory. The directory and
+        -:  139:   --  all of its contents (possibly including other directories) are deleted.
+        -:  140:   --  The exception Name_Error is propagated if the string given as Directory
+        -:  141:   --  does not identify an existing directory. The exception Use_Error is
+        -:  142:   --  propagated if the external environment does not support the deletion
+        -:  143:   --  of the directory or some portion of its contents with the given name
+        -:  144:   --  (in the absence of Name_Error). If Use_Error is propagated, it is
+        -:  145:   --  unspecified if a portion of the contents of the directory are deleted.
+        -:  146:
+        -:  147:   procedure Delete_File (Name : String);
+        -:  148:   --  Deletes an existing ordinary or special file with Name. The exception
+        -:  149:   --  Name_Error is propagated if the string given as Name does not identify
+        -:  150:   --  an existing ordinary or special external file. The exception Use_Error
+        -:  151:   --  is propagated if the external environment does not support the deletion
+        -:  152:   --  of the file with the given name (in the absence of Name_Error).
+        -:  153:
+        -:  154:   procedure Rename (Old_Name, New_Name : String);
+        -:  155:   --  Renames an existing external file (including directories) with Old_Name
+        -:  156:   --  to New_Name. The exception Name_Error is propagated if the string given
+        -:  157:   --  as Old_Name does not identify an existing external file. The exception
+        -:  158:   --  Use_Error is propagated if the external environment does not support the
+        -:  159:   --  renaming of the file with the given name (in the absence of Name_Error).
+        -:  160:   --  In particular, Use_Error is propagated if a file or directory already
+        -:  161:   --  exists with New_Name.
+        -:  162:
+        -:  163:   procedure Copy_File
+        -:  164:     (Source_Name   : String;
+        -:  165:      Target_Name   : String;
+        -:  166:      Form          : String := "");
+        -:  167:   --  Copies the contents of the existing external file with Source_Name to
+        -:  168:   --  Target_Name. The resulting external file is a duplicate of the source
+        -:  169:   --  external file. The Form argument can be used to give system-dependent
+        -:  170:   --  characteristics of the resulting external file; the interpretation of
+        -:  171:   --  the Form parameter is implementation-defined. Exception Name_Error is
+        -:  172:   --  propagated if the string given as Source_Name does not identify an
+        -:  173:   --  existing external ordinary or special file or if the string given as
+        -:  174:   --  Target_Name does not allow the identification of an external file. The
+        -:  175:   --  exception Use_Error is propagated if the external environment does not
+        -:  176:   --  support the creating of the file with the name given by Target_Name and
+        -:  177:   --  form given by Form, or copying of the file with the name given by
+        -:  178:   --  Source_Name (in the absence of Name_Error).
+        -:  179:   --
+        -:  180:   --  Interpretation of the Form parameter:
+        -:  181:   --
+        -:  182:   --    The Form parameter is case-insensitive
+        -:  183:   --
+        -:  184:   --    Two fields are recognized in the Form parameter:
+        -:  185:   --      preserve=<value>
+        -:  186:   --      mode=<value>
+        -:  187:   --
+        -:  188:   --      <value> starts immediately after the character '=' and ends with the
+        -:  189:   --      character immediately preceding the next comma (',') or with the
+        -:  190:   --      last character of the parameter.
+        -:  191:   --
+        -:  192:   --      The allowed values for preserve= are:
+        -:  193:   --
+        -:  194:   --        no_attributes:  Do not try to preserve any file attributes. This
+        -:  195:   --                        is the default if no preserve= is found in Form.
+        -:  196:   --
+        -:  197:   --        all_attributes: Try to preserve all file attributes (timestamps,
+        -:  198:   --                        access rights).
+        -:  199:   --
+        -:  200:   --        timestamps:     Preserve the timestamp of the copied file, but not
+        -:  201:   --                        the other file attributes.
+        -:  202:   --
+        -:  203:   --      The allowed values for mode= are:
+        -:  204:   --
+        -:  205:   --        copy:           Only copy if the destination file does not already
+        -:  206:   --                        exist. If it already exists, Copy_File will fail.
+        -:  207:   --
+        -:  208:   --        overwrite:      Copy the file in all cases. Overwrite an already
+        -:  209:   --                        existing destination file. This is the default if
+        -:  210:   --                        no mode= is found in Form.
+        -:  211:   --
+        -:  212:   --        append:         Append the original file to the destination file.
+        -:  213:   --                        If the destination file does not exist, the
+        -:  214:   --                        destination file is a copy of the source file.
+        -:  215:   --                        When mode=append, the field preserve=, if it
+        -:  216:   --                        exists, is not taken into account.
+        -:  217:   --
+        -:  218:   --    If the Form parameter includes one or both of the fields and the value
+        -:  219:   --    or values are incorrect, Copy_File fails with Use_Error.
+        -:  220:   --
+        -:  221:   --    Examples of correct Forms:
+        -:  222:   --       Form => "preserve=no_attributes,mode=overwrite" (the default)
+        -:  223:   --       Form => "mode=append"
+        -:  224:   --       Form => "mode=copy,preserve=all_attributes"
+        -:  225:   --
+        -:  226:   --    Examples of incorrect Forms:
+        -:  227:   --       Form => "preserve=junk"
+        -:  228:   --       Form => "mode=internal,preserve=timestamps"
+        -:  229:
+        -:  230:   ----------------------------------------
+        -:  231:   -- File and directory name operations --
+        -:  232:   ----------------------------------------
+        -:  233:
+        -:  234:   function Full_Name (Name : String) return String;
+        -:  235:   --  Returns the full name corresponding to the file name specified by Name.
+        -:  236:   --  The exception Name_Error is propagated if the string given as Name does
+        -:  237:   --  not allow the identification of an external file (including directories
+        -:  238:   --  and special files).
+        -:  239:
+        -:  240:   function Simple_Name (Name : String) return String;
+        -:  241:   --  Returns the simple name portion of the file name specified by Name. The
+        -:  242:   --  exception Name_Error is propagated if the string given as Name does not
+        -:  243:   --  allow the identification of an external file (including directories and
+        -:  244:   --  special files).
+        -:  245:
+        -:  246:   function Containing_Directory (Name : String) return String;
+        -:  247:   --  Returns the name of the containing directory of the external file
+        -:  248:   --  (including directories) identified by Name. If more than one directory
+        -:  249:   --  can contain Name, the directory name returned is implementation-defined.
+        -:  250:   --  The exception Name_Error is propagated if the string given as Name does
+        -:  251:   --  not allow the identification of an external file. The exception
+        -:  252:   --  Use_Error is propagated if the external file does not have a containing
+        -:  253:   --  directory.
+        -:  254:
+        -:  255:   function Extension (Name : String) return String;
+        -:  256:   --  Returns the extension name corresponding to Name. The extension name is
+        -:  257:   --  a portion of a simple name (not including any separator characters),
+        -:  258:   --  typically used to identify the file class. If the external environment
+        -:  259:   --  does not have extension names, then the null string is returned.
+        -:  260:   --  The exception Name_Error is propagated if the string given as Name does
+        -:  261:   --  not allow the identification of an external file.
+        -:  262:
+        -:  263:   function Base_Name (Name : String) return String;
+        -:  264:   --  Returns the base name corresponding to Name. The base name is the
+        -:  265:   --  remainder of a simple name after removing any extension and extension
+        -:  266:   --  separators. The exception Name_Error is propagated if the string given
+        -:  267:   --  as Name does not allow the identification of an external file
+        -:  268:   --  (including directories and special files).
+        -:  269:
+        -:  270:   function Compose
+        -:  271:     (Containing_Directory : String := "";
+        -:  272:      Name                 : String;
+        -:  273:      Extension            : String := "") return String;
+        -:  274:   --  Returns the name of the external file with the specified
+        -:  275:   --  Containing_Directory, Name, and Extension. If Extension is the null
+        -:  276:   --  string, then Name is interpreted as a simple name; otherwise Name is
+        -:  277:   --  interpreted as a base name. The exception Name_Error is propagated if
+        -:  278:   --  the string given as Containing_Directory is not null and does not allow
+        -:  279:   --  the identification of a directory, or if the string given as Extension
+        -:  280:   --  is not null and is not a possible extension, or if the string given as
+        -:  281:   --  Name is not a possible simple name (if Extension is null) or base name
+        -:  282:   --  (if Extension is non-null).
+        -:  283:
+        -:  284:   --------------------------------
+        -:  285:   -- File and directory queries --
+        -:  286:   --------------------------------
+        -:  287:
+        -:  288:   type File_Kind is (Directory, Ordinary_File, Special_File);
+        -:  289:   --  The type File_Kind represents the kind of file represented by an
+        -:  290:   --  external file or directory.
+        -:  291:
+        -:  292:   type File_Size is range 0 .. Long_Long_Integer'Last;
+        -:  293:   --  The type File_Size represents the size of an external file
+        -:  294:
+        -:  295:   function Exists (Name : String) return Boolean;
+        -:  296:   --  Returns True if external file represented by Name exists, and False
+        -:  297:   --  otherwise. The exception Name_Error is propagated if the string given as
+        -:  298:   --  Name does not allow the identification of an external file (including
+        -:  299:   --  directories and special files).
+        -:  300:
+        -:  301:   function Kind (Name : String) return File_Kind;
+        -:  302:   --  Returns the kind of external file represented by Name. The exception
+        -:  303:   --  Name_Error is propagated if the string given as Name does not allow the
+        -:  304:   --  identification of an existing external file.
+        -:  305:
+        -:  306:   function Size (Name : String) return File_Size;
+        -:  307:   --  Returns the size of the external file represented by Name. The size of
+        -:  308:   --  an external file is the number of stream elements contained in the file.
+        -:  309:   --  If the external file is discontiguous (not all elements exist), the
+        -:  310:   --  result is implementation-defined. If the external file is not an
+        -:  311:   --  ordinary file, the result is implementation-defined. The exception
+        -:  312:   --  Name_Error is propagated if the string given as Name does not allow the
+        -:  313:   --  identification of an existing external file. The exception
+        -:  314:   --  Constraint_Error is propagated if the file size is not a value of type
+        -:  315:   --  File_Size.
+        -:  316:
+        -:  317:   function Modification_Time (Name : String) return Ada.Calendar.Time;
+        -:  318:   --  Returns the time that the external file represented by Name was most
+        -:  319:   --  recently modified. If the external file is not an ordinary file, the
+        -:  320:   --  result is implementation-defined. The exception Name_Error is propagated
+        -:  321:   --  if the string given as Name does not allow the identification of an
+        -:  322:   --  existing external file. The exception Use_Error is propagated if the
+        -:  323:   --  external environment does not support the reading the modification time
+        -:  324:   --  of the file with the name given by Name (in the absence of Name_Error).
+        -:  325:
+        -:  326:   -------------------------
+        -:  327:   -- Directory Searching --
+        -:  328:   -------------------------
+        -:  329:
+        -:  330:   type Directory_Entry_Type is limited private;
+        -:  331:   --  The type Directory_Entry_Type represents a single item in a directory.
+        -:  332:   --  These items can only be created by the Get_Next_Entry procedure in this
+        -:  333:   --  package. Information about the item can be obtained from the functions
+        -:  334:   --  declared in this package. A default initialized object of this type is
+        -:  335:   --  invalid; objects returned from Get_Next_Entry are valid.
+        -:  336:
+        -:  337:   type Filter_Type is array (File_Kind) of Boolean;
+        -:  338:   --  The type Filter_Type specifies which directory entries are provided from
+        -:  339:   --  a search operation. If the Directory component is True, directory
+        -:  340:   --  entries representing directories are provided. If the Ordinary_File
+        -:  341:   --  component is True, directory entries representing ordinary files are
+        -:  342:   --  provided. If the Special_File component is True, directory entries
+        -:  343:   --  representing special files are provided.
+        -:  344:
+        -:  345:   type Search_Type is limited private;
+        -:  346:   --  The type Search_Type contains the state of a directory search. A
+        -:  347:   --  default-initialized Search_Type object has no entries available
+        -:  348:   --  (More_Entries returns False).
+        -:  349:
+        -:  350:   procedure Start_Search
+        -:  351:     (Search    : in out Search_Type;
+        -:  352:      Directory : String;
+        -:  353:      Pattern   : String;
+        -:  354:      Filter    : Filter_Type := (others => True));
+        -:  355:   --  Starts a search in the directory entry in the directory named by
+        -:  356:   --  Directory for entries matching Pattern. Pattern represents a file name
+        -:  357:   --  matching pattern. If Pattern is null, all items in the directory are
+        -:  358:   --  matched; otherwise, the interpretation of Pattern is implementation-
+        -:  359:   --  defined. Only items which match Filter will be returned. After a
+        -:  360:   --  successful call on Start_Search, the object Search may have entries
+        -:  361:   --  available, but it may have no entries available if no files or
+        -:  362:   --  directories match Pattern and Filter. The exception Name_Error is
+        -:  363:   --  propagated if the string given by Directory does not identify an
+        -:  364:   --  existing directory, or if Pattern does not allow the identification of
+        -:  365:   --  any possible external file or directory. The exception Use_Error is
+        -:  366:   --  propagated if the external environment does not support the searching
+        -:  367:   --  of the directory with the given name (in the absence of Name_Error).
+        -:  368:
+        -:  369:   procedure End_Search (Search : in out Search_Type);
+        -:  370:   --  Ends the search represented by Search. After a successful call on
+        -:  371:   --  End_Search, the object Search will have no entries available. Note
+        -:  372:   --  that it is not necessary to call End_Search if the call to Start_Search
+        -:  373:   --  was unsuccessful and raised an exception (but it is harmless to make
+        -:  374:   --  the call in this case).
+        -:  375:
+        -:  376:   function More_Entries (Search : Search_Type) return Boolean;
+        -:  377:   --  Returns True if more entries are available to be returned by a call
+        -:  378:   --  to Get_Next_Entry for the specified search object, and False otherwise.
+        -:  379:
+        -:  380:   procedure Get_Next_Entry
+        -:  381:     (Search          : in out Search_Type;
+        -:  382:      Directory_Entry : out Directory_Entry_Type);
+        -:  383:   --  Returns the next Directory_Entry for the search described by Search that
+        -:  384:   --  matches the pattern and filter. If no further matches are available,
+        -:  385:   --  Status_Error is raised. It is implementation-defined as to whether the
+        -:  386:   --  results returned by this routine are altered if the contents of the
+        -:  387:   --  directory are altered while the Search object is valid (for example, by
+        -:  388:   --  another program). The exception Use_Error is propagated if the external
+        -:  389:   --  environment does not support continued searching of the directory
+        -:  390:   --  represented by Search.
+        -:  391:
+        -:  392:   procedure Search
+        -:  393:     (Directory : String;
+        -:  394:      Pattern   : String;
+        -:  395:      Filter    : Filter_Type := (others => True);
+        -:  396:      Process   : not null access procedure
+        -:  397:                                    (Directory_Entry : Directory_Entry_Type));
+        -:  398:   --  Searches in the directory named by Directory for entries matching
+        -:  399:   --  Pattern. The subprogram designated by Process is called with each
+        -:  400:   --  matching entry in turn. Pattern represents a pattern for matching file
+        -:  401:   --  names. If Pattern is null, all items in the directory are matched;
+        -:  402:   --  otherwise, the interpretation of Pattern is implementation-defined.
+        -:  403:   --  Only items that match Filter will be returned. The exception Name_Error
+        -:  404:   --  is propagated if the string given by Directory does not identify
+        -:  405:   --  an existing directory, or if Pattern does not allow the identification
+        -:  406:   --  of any possible external file or directory. The exception Use_Error is
+        -:  407:   --  propagated if the external environment does not support the searching
+        -:  408:   --  of the directory with the given name (in the absence of Name_Error).
+        -:  409:
+        -:  410:   -------------------------------------
+        -:  411:   -- Operations on Directory Entries --
+        -:  412:   -------------------------------------
+        -:  413:
+        -:  414:   function Simple_Name (Directory_Entry : Directory_Entry_Type) return String;
+        -:  415:   --  Returns the simple external name of the external file (including
+        -:  416:   --  directories) represented by Directory_Entry. The format of the name
+        -:  417:   --  returned is implementation-defined. The exception Status_Error is
+        -:  418:   --  propagated if Directory_Entry is invalid.
+        -:  419:
+        -:  420:   function Full_Name (Directory_Entry : Directory_Entry_Type) return String;
+        -:  421:   --  Returns the full external name of the external file (including
+        -:  422:   --  directories) represented by Directory_Entry. The format of the name
+        -:  423:   --  returned is implementation-defined. The exception Status_Error is
+        -:  424:   --  propagated if Directory_Entry is invalid.
+        -:  425:
+        -:  426:   function Kind (Directory_Entry : Directory_Entry_Type) return File_Kind;
+        -:  427:   --  Returns the kind of external file represented by Directory_Entry. The
+        -:  428:   --  exception Status_Error is propagated if Directory_Entry is invalid.
+        -:  429:
+        -:  430:   function Size (Directory_Entry : Directory_Entry_Type) return File_Size;
+        -:  431:   --  Returns the size of the external file represented by Directory_Entry.
+        -:  432:   --  The size of an external file is the number of stream elements contained
+        -:  433:   --  in the file. If the external file is discontiguous (not all elements
+        -:  434:   --  exist), the result is implementation-defined. If the external file
+        -:  435:   --  represented by Directory_Entry is not an ordinary file, the result is
+        -:  436:   --  implementation-defined. The exception Status_Error is propagated if
+        -:  437:   --  Directory_Entry is invalid. The exception Constraint_Error is propagated
+        -:  438:   --  if the file size is not a value of type File_Size.
+        -:  439:
+        -:  440:   function Modification_Time
+        -:  441:     (Directory_Entry : Directory_Entry_Type) return Ada.Calendar.Time;
+        -:  442:   --  Returns the time that the external file represented by Directory_Entry
+        -:  443:   --  was most recently modified. If the external file represented by
+        -:  444:   --  Directory_Entry is not an ordinary file, the result is
+        -:  445:   --  implementation-defined. The exception Status_Error is propagated if
+        -:  446:   --  Directory_Entry is invalid. The exception Use_Error is propagated if
+        -:  447:   --  the external environment does not support the reading the modification
+        -:  448:   --  time of the file represented by Directory_Entry.
+        -:  449:
+        -:  450:   ----------------
+        -:  451:   -- Exceptions --
+        -:  452:   ----------------
+        -:  453:
+        -:  454:   Status_Error : exception renames Ada.IO_Exceptions.Status_Error;
+        -:  455:   Name_Error   : exception renames Ada.IO_Exceptions.Name_Error;
+        -:  456:   Use_Error    : exception renames Ada.IO_Exceptions.Use_Error;
+        -:  457:   Device_Error : exception renames Ada.IO_Exceptions.Device_Error;
+        -:  458:
+        -:  459:private
+        -:  460:   type Directory_Entry_Type is record
+        -:  461:      Is_Valid : Boolean := False;
+        -:  462:      Simple   : Ada.Strings.Unbounded.Unbounded_String;
+        -:  463:      Full     : Ada.Strings.Unbounded.Unbounded_String;
+        -:  464:      Kind     : File_Kind := Ordinary_File;
+        -:  465:   end record;
+        -:  466:
+        -:  467:   --  The type Search_Data is defined in the body, so that the spec does not
+        -:  468:   --  depend on packages of the GNAT hierarchy.
+        -:  469:
+        -:  470:   type Search_Data;
+        -:  471:   type Search_Ptr is access Search_Data;
+        -:  472:
+        -:  473:   --  Search_Type need to be a controlled type, because it includes component
+        -:  474:   --  of type Dir_Type (in GNAT.Directory_Operations) that need to be closed
+        -:  475:   --  (if opened) during finalization. The component need to be an access
+        -:  476:   --  value, because Search_Data is not fully defined in the spec.
+        -:  477:
+        4:  478:   type Search_Type is new Ada.Finalization.Controlled with record
+        -:  479:      Value : Search_Ptr;
+        -:  480:   end record;
+        -:  481:
+        -:  482:   procedure Finalize (Search : in out Search_Type);
+        -:  483:   --  Close the directory, if opened, and deallocate Value
+        -:  484:
+        -:  485:   procedure End_Search (Search : in out Search_Type) renames Finalize;
+        -:  486:
+        -:  487:end Ada.Directories;

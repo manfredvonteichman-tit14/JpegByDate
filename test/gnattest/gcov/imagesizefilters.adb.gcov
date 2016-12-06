@@ -1,0 +1,65 @@
+        -:    0:Source:D:/Users/Andi/Documents/GitHub/JpegByDate/src/imagesizefilters.adb
+        -:    0:Programs:186
+        -:    1:-- Verwendete Packages
+        -:    2:with Ada.Unchecked_Deallocation;
+        -:    3:with GNAT.Regpat;
+        -:    4:
+        -:    5:-- Package für Filtermodul
+        -:    6:package body ImageSizeFilters is
+        -:    7:
+        -:    8:   -- Konstruktor
+    #####:    9:   function create(params: access Parameters.Parameter) return access ImageSizeFilter is
+    #####:   10:      filter: access ImageSizeFilter := new ImageSizeFilter;
+        -:   11:   begin
+    #####:   12:      filter.all.params := params;
+    #####:   13:      return filter;
+        -:   14:   end create;
+        -:   15:
+        -:   16:   -- Destruktor
+    #####:   17:   procedure destroy(This: access ImageSizeFilter; destroy_chain: Boolean := False) is
+        -:   18:      type type_access is access all ImageSizeFilter;
+        -:   19:      procedure Free is new Ada.Unchecked_Deallocation(ImageSizeFilter, type_access);
+    #####:   20:      obj: type_access := type_access(This);
+        -:   21:   begin
+        -:   22:      -- externe Variablen in diesem Fall doch löschen
+    #####:   23:      if destroy_chain = True and This.getNext /= null then
+    #####:   24:         This.getNext.destroy(destroy_chain);
+        -:   25:      end if;
+    #####:   26:      Free(obj);
+    #####:   27:   end;
+        -:   28:
+        -:   29:   -- private Funktionen
+    #####:   30:   overriding function applyThis(This: access ImageSizeFilter; exif: EXIFParsers.EXIFParser_Access) return Boolean is
+        -:   31:   begin
+        -:   32:      -- Shortcut falls Standardwert verwendet wird
+    #####:   33:      if This.all.params.flagImageSize = False then
+        -:   34:         return True;
+        -:   35:      end if;
+        -:   36:
+        -:   37:      -- Eigentlicher Filter
+        -:   38:      declare
+    #####:   39:         exif_tmp: access EXIFParsers.EXIFParser := exif;
+    #####:   40:         width: Natural := exif_tmp.getExifImageWidth;
+    #####:   41:         height: Natural := exif_tmp.getExifImageHeight;
+        -:   42:      begin
+        -:   43:         -- Seitengrößen vergleichen
+    #####:   44:         if width >= This.params.getMinWidth and width <= This.params.getMaxWidth and
+    #####:   45:           height >= This.params.getMinHeight and height <= This.params.getMaxHeight then
+        -:   46:            return True;
+        -:   47:         else
+        -:   48:            return False;
+        -:   49:         end if;
+        -:   50:      end;
+        -:   51:
+        -:   52:   -- Fehler behandeln
+        -:   53:   exception
+        -:   54:      -- EXIF-Tag existiert nicht
+    #####:   55:      when E: EXIFParsers.TagNotFound =>
+        -:   56:         return False;
+        -:   57:
+        -:   58:      -- Alle anderen Fehler
+    #####:   59:      when E: others =>
+        -:   60:         return False;
+        -:   61:   end applyThis;
+        -:   62:
+        -:   63:end ImageSizeFilters;

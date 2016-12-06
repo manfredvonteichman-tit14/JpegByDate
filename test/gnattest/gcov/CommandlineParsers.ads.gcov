@@ -1,0 +1,39 @@
+        -:    0:Source:D:/Users/Andi/Documents/GitHub/JpegByDate/src/CommandlineParsers.ads
+        -:    0:Programs:186
+        -:    1:-- Verwendete Packages
+        -:    2:with Inputs;
+        -:    3:with Parameters;
+        -:    4:with Outputs;
+        -:    5:
+        -:    6:-- Package für Eingabemodul
+        4:    7:package CommandlineParsers is
+        -:    8:
+        -:    9:   -- Typ anlegen
+    #####:   10:   type CommandlineParser is new Inputs.Input with private;
+        -:   11:
+        -:   12:   -- Konstruktor
+        -:   13:   overriding function create return access CommandlineParser;
+        -:   14:   -- Destruktor
+        -:   15:   overriding procedure destroy(This: access CommandlineParser);
+        -:   16:
+        -:   17:   -- Eingabewerte verarbeiten mit optionaler Fehlerausgabe
+        -:   18:   overriding procedure parse(This: access CommandlineParser; error_log: access Outputs.Output'Class);
+        -:   19:
+        -:   20:   -- Getter Funktionen
+        -:   21:   overriding function getParams(This: access CommandlineParser) return access Parameters.Parameter;
+        -:   22:
+        -:   23:   -- EXTERNE KONFIGURATION
+        -:   24:   -- Argument an GNAT exportieren um Vorverarbeitung der Kommandozeile einzuschränken
+        -:   25:   -- Argument Expansion soll nicht durchgeführt werden, d.h. ? und * werden nicht automatisch auf mehrere Dateinamen erweitert
+        -:   26:   -- https://gcc.gnu.org/onlinedocs/gnat_ugn/Disabling-Command-Line-Argument-Expansion.html
+        -:   27:   Do_Argv_Expansion: Integer := 0;
+        -:   28:   pragma Export(C, Do_Argv_Expansion, "__gnat_do_argv_expansion");
+        -:   29:
+        -:   30:private
+        -:   31:   -- Objektvariablen
+        4:   32:   type CommandlineParser is new Inputs.Input with
+        -:   33:      record
+        -:   34:         parameters: access Parameters.Parameter := null; -- intern
+        -:   35:      end record;
+        -:   36:
+        2:   37:end CommandlineParsers;

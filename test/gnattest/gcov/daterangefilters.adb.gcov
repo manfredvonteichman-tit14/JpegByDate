@@ -1,0 +1,72 @@
+        -:    0:Source:D:/Users/Andi/Documents/GitHub/JpegByDate/src/daterangefilters.adb
+        -:    0:Programs:186
+        -:    1:-- Verwendete Packages
+        -:    2:with Ada.Unchecked_Deallocation;
+        -:    3:
+        -:    4:-- Package für Filtermodul
+        -:    5:package body DateRangeFilters is
+        -:    6:
+        -:    7:   -- Konstruktor
+    #####:    8:   function create(params: access Parameters.Parameter) return access DateRangeFilter is
+    #####:    9:      filter: access DateRangeFilter := new DateRangeFilter;
+        -:   10:   begin
+    #####:   11:      filter.all.params := params;
+    #####:   12:      return filter;
+        -:   13:   end create;
+        -:   14:
+        -:   15:   -- Destruktor
+    #####:   16:   procedure destroy(This: access DateRangeFilter; destroy_chain: Boolean := False) is
+        -:   17:      type type_access is access all DateRangeFilter;
+        -:   18:      procedure Free is new Ada.Unchecked_Deallocation(DateRangeFilter, type_access);
+    #####:   19:      obj: type_access := type_access(This);
+        -:   20:   begin
+        -:   21:      -- externe Variablen in diesem Fall doch löschen
+    #####:   22:      if destroy_chain = True and This.getNext /= null then
+    #####:   23:         This.getNext.destroy(destroy_chain);
+        -:   24:      end if;
+    #####:   25:      Free(obj);
+    #####:   26:   end;
+        -:   27:
+        -:   28:   -- private Funktionen
+    #####:   29:   overriding function applyThis(This: access DateRangeFilter; exif: EXIFParsers.EXIFParser_Access) return Boolean is
+        -:   30:   begin
+        -:   31:      -- Shortcut falls Standardwert verwendet wird
+    #####:   32:      if This.all.params.flagDateRange = False then
+        -:   33:         return True;
+        -:   34:      end if;
+        -:   35:
+        -:   36:      -- Eigentlicher Filter
+    #####:   37:      declare
+    #####:   38:         exif_tmp: access EXIFParsers.EXIFParser := exif;
+    #####:   39:         date: String := exif_tmp.getDateTimeOriginal;
+    #####:   40:         startDate: String := This.all.params.getDateRangeStart;
+    #####:   41:         finishDate: String := This.all.params.getDateRangeFinish;
+        -:   42:         value: Integer;
+        -:   43:         start: Integer;
+        -:   44:         finish: Integer;
+        -:   45:      begin
+        -:   46:         -- Magic -> Primitive Umrechnung von Datum in Integer zum einfacheren Vergleich
+    #####:   47:         value := Integer'Value(date(date'First..date'First+3)) * 10000 + Integer'Value(date(date'First+5..date'First+6)) * 100 + Integer'Value(date(date'First+8..date'First+9));
+    #####:   48:         start := Integer'Value(startDate(startDate'First..startDate'First+3)) * 10000 + Integer'Value(startDate(startDate'First+5..startDate'First+6)) * 100 + Integer'Value(startDate(startDate'First+8..startDate'First+9));
+    #####:   49:         finish := Integer'Value(finishDate(finishDate'First..finishDate'First+3)) * 10000 + Integer'Value(finishDate(finishDate'First+5..finishDate'First+6)) * 100 + Integer'Value(finishDate(finishDate'First+8..finishDate'First+9));
+        -:   50:
+        -:   51:         -- Vergleich der Datumswerte
+    #####:   52:         if value >= start and value <= finish then
+        -:   53:            return True;
+        -:   54:         else
+        -:   55:            return False;
+        -:   56:         end if;
+    #####:   57:      end;
+        -:   58:
+        -:   59:   -- Fehler behandeln
+        -:   60:   exception
+        -:   61:      -- EXIF-Tag existiert nicht
+    #####:   62:      when E: EXIFParsers.TagNotFound =>
+        -:   63:         return False;
+        -:   64:
+        -:   65:      -- Alle anderen Fehler
+    #####:   66:      when E: others =>
+        -:   67:         return False;
+        -:   68:   end applyThis;
+        -:   69:
+        -:   70:end DateRangeFilters;

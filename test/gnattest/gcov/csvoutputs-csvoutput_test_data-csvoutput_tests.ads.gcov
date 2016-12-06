@@ -1,0 +1,27 @@
+        -:    0:Source:D:/Users/Andi/Documents/GitHub/JpegByDate/test/gnattest/tests/csvoutputs-csvoutput_test_data-csvoutput_tests.ads
+        -:    0:Programs:186
+        -:    1:--  This package has been generated automatically by GNATtest.
+        -:    2:--  Do not edit any part of it, see GNATtest documentation for more details.
+        -:    3:
+        -:    4:--  begin read only
+        -:    5:with GNATtest_Generated;
+        -:    6:
+        4:    7:package CSVOutputs.CSVOutput_Test_Data.CSVOutput_Tests is
+        -:    8:
+        4:    9:   type Test_CSVOutput is new
+        -:   10:     GNATtest_Generated.GNATtest_Standard.CSVOutputs.CSVOutput_Test_Data.Test_CSVOutput with null record;
+        -:   11:
+        -:   12:   procedure Test_create_46cb64 (Gnattest_T : in out Test_CSVOutput);
+        -:   13:   --  csvoutputs.ads:12:4:create
+        -:   14:
+        -:   15:   procedure Test_create_f70831 (Gnattest_T : in out Test_CSVOutput);
+        -:   16:   --  csvoutputs.ads:13:4:create
+        -:   17:
+        -:   18:   procedure Test_destroy_19a48c (Gnattest_T : in out Test_CSVOutput);
+        -:   19:   --  csvoutputs.ads:15:4:destroy
+        -:   20:
+        -:   21:   procedure Test_display_9676c4 (Gnattest_T : in out Test_CSVOutput);
+        -:   22:   --  csvoutputs.ads:18:4:display
+        -:   23:
+        2:   24:end CSVOutputs.CSVOutput_Test_Data.CSVOutput_Tests;
+        -:   25:--  end read only

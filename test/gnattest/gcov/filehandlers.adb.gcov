@@ -1,0 +1,407 @@
+        -:    0:Source:D:/Users/Andi/Documents/GitHub/JpegByDate/src/filehandlers.adb
+        -:    0:Programs:186
+        -:    1:-- Verwendete Packages
+        -:    2:with EXIFParsers;
+        -:    3:with Globals;
+        -:    4:with Pictures;
+        -:    5:with Ada.Directories;
+        -:    6:with Ada.Direct_IO;
+        -:    7:with Ada.Exceptions;
+        -:    8:with Ada.IO_Exceptions;
+        -:    9:with Ada.Numerics.Generic_Elementary_Functions;
+        -:   10:with Ada.Strings.Fixed;
+        -:   11:with Ada.Strings.Maps;
+        -:   12:with Ada.Strings.Unbounded;
+        -:   13:with Ada.Unchecked_Deallocation;
+        -:   14:with GNAT.Regpat;
+        -:   15:
+        -:   16:-- Package für FileHandler
+        -:   17:package body FileHandlers is
+        -:   18:
+        -:   19:   -- Anmeldung privater Funktionen
+        -:   20:   function getDisplayName(This: access FileHandler; full_name: String) return String;
+        -:   21:   function renamePicture(This: access FileHandler; picture: access Pictures.Picture'Class) return String;
+        -:   22:   function createCSV(This: access FileHandler; picture: access Pictures.Picture'Class) return String;
+        -:   23:   function readFile(name: String; buffer: out Ada.Strings.Unbounded.Unbounded_String) return Integer;
+        -:   24:
+        -:   25:   -- Konstruktor
+    #####:   26:   function create(files: access FileListers.FileLister'Class; filter: access EXIFFilters.Filter'Class; params: access Parameters.Parameter) return access FileHandler is
+    #####:   27:      handler: access FileHandler := new FileHandler;
+        -:   28:   begin
+    #####:   29:      handler.all.files := files;
+    #####:   30:      handler.all.filter := filter;
+    #####:   31:      handler.all.params := params;
+    #####:   32:      return handler;
+        -:   33:   end create;
+        -:   34:
+        -:   35:   -- Destruktor
+    #####:   36:   procedure destroy(This: access FileHandler) is
+        -:   37:      type type_access is access all FileHandler;
+        -:   38:      procedure Free is new Ada.Unchecked_Deallocation(FileHandler, type_access);
+    #####:   39:      obj: type_access := type_access(This);
+        -:   40:   begin
+        -:   41:      -- externe Variablen nicht löschen
+    #####:   42:      Free(obj);
+    #####:   43:   end;
+        -:   44:
+        -:   45:   -- Dateien verarbeiten
+    #####:   46:   procedure exec(This: access FileHandler; output: access Outputs.Output'Class) is
+    #####:   47:      str: Ada.Strings.Unbounded.Unbounded_String;
+    #####:   48:      buffer: Ada.Strings.Unbounded.Unbounded_String;
+        -:   49:      size: Integer;
+        -:   50:      picture: access Pictures.Picture'Class := null;
+        -:   51:   begin
+        -:   52:      -- Ausgabe aller Dateien in der Liste
+    #####:   53:      while This.all.files.hasNext loop
+        -:   54:         -- Datei einlesen
+    #####:   55:         str := Ada.Strings.Unbounded.To_Unbounded_String(This.all.files.next);
+    #####:   56:         buffer := Ada.Strings.Unbounded.Null_Unbounded_String;
+    #####:   57:         size := readFile(Ada.Strings.Unbounded.To_String(str), buffer);
+        -:   58:
+        -:   59:         -- Dateigröße überprüfen
+    #####:   60:         if size >= 1 then
+        -:   61:            -- Bild ist mindestens ein Byte groß
+    #####:   62:            declare
+        -:   63:            begin
+        -:   64:               -- Bild erstellen
+    #####:   65:               picture := Pictures.create(Ada.Strings.Unbounded.To_String(str), buffer);
+        -:   66:
+        -:   67:               -- Bildnamen und Pfad anzeigen wenn Bedingungen erfüllt werden und EXIF Informationen vorhanden sind
+    #####:   68:               if picture.hasEXIF then
+        -:   69:                  -- EXIF Filter anwenden
+    #####:   70:                  if This.all.filter.apply(EXIFParsers.EXIFParser_Access(picture.getEXIF)) then
+        -:   71:                     -- CSV-Ausgabe?
+    #####:   72:                     if This.all.params.flagCSV then
+        -:   73:                        -- Datei umbenennen?
+    #####:   74:                        if This.all.params.getRename then
+        -:   75:                           -- Bild umbenennen
+        -:   76:                           declare
+        -:   77:                           begin
+        -:   78:                              -- Bild umbenennen
+    #####:   79:                              declare
+    #####:   80:                                 unused: String := This.renamePicture(picture);
+        -:   81:                                 pragma Unreferenced(unused);
+        -:   82:                              begin
+        -:   83:                                 null;
+    #####:   84:                              end;
+        -:   85:
+        -:   86:                           exception
+        -:   87:                              -- Fehler beim Umbenennen -> Keine Ausgabe in CSV Datei
+    =====:   88:                              when E: Ada.IO_Exceptions.Name_Error =>
+        -:   89:                                 null;
+        -:   90:
+        -:   91:                              -- Sonstiger Fehler beim Umbenennen -> Keine Ausgabe in CSV Datei
+    =====:   92:                              when E: others =>
+        -:   93:                                 null;
+        -:   94:                           end;
+        -:   95:                        end if;
+        -:   96:
+        -:   97:                        -- Ausgabe in CSV Datei
+    #####:   98:                        output.display(This.createCSV(picture));
+        -:   99:
+        -:  100:                     else
+        -:  101:                        -- Datei umbenennen?
+    #####:  102:                        if This.all.params.getRename then
+        -:  103:                           -- Alten Namen ausgeben
+    #####:  104:                           output.display("OLD: " & This.getDisplayName(picture.getName));
+        -:  105:
+        -:  106:                           -- Bild umbenennen
+    #####:  107:                           declare
+        -:  108:                           begin
+        -:  109:                              -- Neuen Namen ausgeben
+    #####:  110:                              output.display("NEW: " & This.getDisplayName(This.renamePicture(picture)));
+        -:  111:
+        -:  112:                           exception
+        -:  113:                              -- Fehler beim Umbenennen
+    #####:  114:                              when E: Ada.IO_Exceptions.Name_Error =>
+    #####:  115:                                 output.display("UNABLE TO RENAME FILE... skipping.");
+    #####:  116:                                 output.display(Ada.Exceptions.Exception_Message(E));
+        -:  117:
+        -:  118:                              -- Sonstiger Fehler beim Umbenennen
+    #####:  119:                              when E: others =>
+    #####:  120:                                 output.display("UNKNOWN ERROR TRYING TO RENAME FILE... skipping.");
+    #####:  121:                           end;
+        -:  122:                        else
+        -:  123:                           -- Nur Name ausgeben
+    #####:  124:                           output.display(This.getDisplayName(picture.getName));
+        -:  125:                        end if;
+        -:  126:
+        -:  127:                        -- Debug Ausgabe
+    #####:  128:                        if This.all.params.getDebug then
+    #####:  129:                           declare
+        -:  130:                              package Float_Functions is new Ada.Numerics.Generic_Elementary_Functions(Float);
+        -:  131:                           begin
+    #####:  132:                              output.display("DEBUG OUTPUT - DateTimeOriginal: " & picture.getEXIF.getDateTimeOriginal);
+    #####:  133:                              output.display("DEBUG OUTPUT - ExifImageWidth: " & Integer'Image(picture.getEXIF.getExifImageWidth));
+    #####:  134:                              output.display("DEBUG OUTPUT - ExifImageHeight: " & Integer'Image(picture.getEXIF.getExifImageHeight));
+    #####:  135:                              output.display("DEBUG OUTPUT - FocalLength: " & Float'Image(picture.getEXIF.getFocalLength));
+    #####:  136:                              output.display("DEBUG OUTPUT - ISOSpeedRatings: " & Integer'Image(picture.getEXIF.getISOSpeedRatings));
+    #####:  137:                              output.display("DEBUG OUTPUT - ShutterSpeedValue raw: " & Float'Image(picture.getEXIF.getShutterSpeedValue) & " | computed: " & Float'Image(1.0 / (Float_Functions."**"(2.0, picture.getEXIF.getShutterSpeedValue))));
+    #####:  138:                              output.display("DEBUG OUTPUT - ApertureValue: " & Float'Image(picture.getEXIF.getApertureValue) & " | computed: F/" & Float'Image((Float_Functions."**"(1.4142135623730, picture.getEXIF.getApertureValue))));
+    #####:  139:                              output.display("DEBUG OUTPUT - Flash: " & Integer'Image(picture.getEXIF.getFlash));
+        -:  140:                           exception
+    #####:  141:                              when E: EXIFParsers.TagNotFound =>
+    #####:  142:                                 output.display("DEBUG OUTPUT - EXCEPTION IN EXIF");
+    #####:  143:                           end;
+        -:  144:                        end if;
+        -:  145:                     end if;
+        -:  146:
+        -:  147:                  end if;
+        -:  148:               else
+        -:  149:                  -- Keine EXIF Informationen in Bild vorhanden
+        -:  150:                  -- KEINE AUSGABE in diesem Fall
+        -:  151:                  -- Nur Forderung nach Anzeige der Bildernamen mit entsprechenden EXIF Informationen
+        -:  152:                  null;
+        -:  153:               end if;
+        -:  154:
+        -:  155:            exception
+        -:  156:               -- Bei Problemen mit der Bilderstellung oder Verarbeitung
+        -:  157:               -- KEINE FEHLERAUSGABE bei kaputtem Bild
+        -:  158:               -- Nur Forderung nach Anzeige der Bildernamen mit entsprechenden EXIF Informationen
+        -:  159:
+        -:  160:               -- Datei besitzt unbekanntes Format
+    #####:  161:               when E: Pictures.Unknown_Format =>
+        -:  162:                  null;
+        -:  163:
+        -:  164:               -- Bekanntes Dateiformat enthält Fehler
+    #####:  165:               when E: Pictures.Illegal_Format =>
+        -:  166:                  null;
+        -:  167:
+        -:  168:               -- Sonstige Fehler
+    #####:  169:               when E: others =>
+        -:  170:                  null;
+    #####:  171:            end;
+        -:  172:
+        -:  173:         else
+        -:  174:            -- Bild ist zu klein oder nicht vorhanden
+        -:  175:            -- KEINE FEHLERAUSGABE bei fehlendem oder zu kleinem Bild
+        -:  176:            -- Nur Forderung nach Anzeige der Bildernamen mit entsprechenden EXIF Informationen
+        -:  177:            null;
+        -:  178:
+        -:  179:         end if;
+        -:  180:
+        -:  181:         -- Bild löschen
+    #####:  182:         if picture /= null then
+    #####:  183:            picture.destroy;
+        -:  184:            picture := null;
+        -:  185:         end if;
+        -:  186:
+        -:  187:      end loop;
+    #####:  188:   end exec;
+        -:  189:
+        -:  190:   -- VOLL PRIVATE FUNKTIONEN
+        -:  191:
+        -:  192:   -- Dateinamen zur Anzeige
+    #####:  193:   function getDisplayName(This: access FileHandler; full_name: String) return String is
+        -:  194:   begin
+    #####:  195:      if This.all.params.getFullName then
+        -:  196:         -- Name mit vollständigem Pfad zurück geben
+    #####:  197:         return full_name;
+        -:  198:      else
+        -:  199:         -- Nur Name zurück geben
+        -:  200:         declare
+    #####:  201:            pos: Natural := GNAT.Regpat.Match(Expression => Globals.regexPatternSimpleName, Data => full_name);
+        -:  202:         begin
+    #####:  203:            if pos >= full_name'First then
+    #####:  204:               return Ada.Strings.Fixed.Replace_Slice(full_name, full_name'First, pos-1, "");
+        -:  205:            else
+        -:  206:               -- Im Fehlerfall alles ausgeben
+    #####:  207:               return full_name;
+        -:  208:            end if;
+        -:  209:         end;
+        -:  210:      end if;
+        -:  211:   end getDisplayName;
+        -:  212:
+        -:  213:   -- Bild umbenennen
+    #####:  214:   function renamePicture(This: access FileHandler; picture: access Pictures.Picture'Class) return String is
+    #####:  215:      new_name: Ada.Strings.Unbounded.Unbounded_String;
+        -:  216:   begin
+        -:  217:      -- Neuen Namen erstellen und umbenennen
+    #####:  218:      declare
+    #####:  219:         old_name: String := picture.getName;
+    #####:  220:         pos: Natural := GNAT.Regpat.Match(Expression => Globals.regexPatternSimpleName, Data => old_name);
+    #####:  221:         fileextension: Ada.Strings.Unbounded.Unbounded_String;
+    #####:  222:         retry: Integer := 0;
+        -:  223:      begin
+        -:  224:         -- Pfad ausschneiden
+    #####:  225:         if pos >= old_name'First then
+    #####:  226:            new_name := Ada.Strings.Unbounded.To_Unbounded_String(Ada.Strings.Fixed.Replace_Slice(old_name, pos, old_name'Last, ""));
+        -:  227:         else
+        -:  228:            -- Im Fehlerfall
+    #####:  229:            raise Ada.IO_Exceptions.Name_Error with "Unable to extract file path";
+        -:  230:         end if;
+        -:  231:
+        -:  232:         -- Datum auslesen und an Pfad anfügen
+    #####:  233:         declare
+    #####:  234:            date: String := Ada.Strings.Fixed.Translate(Ada.Strings.Fixed.Translate(picture.getEXIF.getDateTimeOriginal, Ada.Strings.Maps.To_Mapping(From => ":", To => "-")), Ada.Strings.Maps.To_Mapping(From => " ", To => "-"));
+        -:  235:         begin
+    #####:  236:            Ada.Strings.Unbounded.Append(new_name, date(date'First..date'Last-1));
+    #####:  237:         end;
+        -:  238:
+        -:  239:         -- Dateiendung auslesen
+    #####:  240:         pos := GNAT.Regpat.Match(Expression => Globals.regexPatternFileExtension, Data => old_name);
+    #####:  241:         if pos >= old_name'First then
+    #####:  242:            fileextension := Ada.Strings.Unbounded.To_Unbounded_String("." & Ada.Strings.Fixed.Replace_Slice(old_name, old_name'First, pos-1, ""));
+        -:  243:         else
+        -:  244:            -- Im Fehlerfall
+    #####:  245:            raise Ada.IO_Exceptions.Name_Error with "Unable to extract file extension!";
+        -:  246:         end if;
+        -:  247:
+        -:  248:         -- Versuchen Datei umzubenennen
+        -:  249:         loop
+    #####:  250:            declare
+    #####:  251:               new_name_copy: Ada.Strings.Unbounded.Unbounded_String := new_name;
+        -:  252:            begin
+        -:  253:               -- Zusatz anfügen?
+    #####:  254:               if retry /= 0 then
+    #####:  255:                  Ada.Strings.Unbounded.Append(new_name_copy, "_" & Ada.Strings.Fixed.Trim(Integer'Image(retry), Ada.Strings.Left));
+        -:  256:               end if;
+    #####:  257:               retry := retry + 1;
+        -:  258:
+        -:  259:               -- Dateiendung anfügen
+    #####:  260:               Ada.Strings.Unbounded.Append(new_name_copy, fileextension);
+        -:  261:
+        -:  262:               -- Datei umbenennen
+    #####:  263:               picture.setName(Ada.Strings.Unbounded.To_String(new_name_copy));
+    #####:  264:               Ada.Directories.Rename(old_name, picture.getName);
+        -:  265:
+        -:  266:               -- Erfolgreich abgeschlossen -> Schleife verlassen
+        -:  267:               exit;
+        -:  268:
+        -:  269:            -- Fehler behandeln
+        -:  270:            exception
+        -:  271:               -- Fehler beim Umbenennen (Möglichwerweise existiert neuer Name bereits) -> nochmal versuchen
+    #####:  272:               when E: Ada.IO_Exceptions.Use_Error =>
+    #####:  273:                  if retry > Globals.maxRenameRetries then
+    #####:  274:                     raise;
+        -:  275:                  end if;
+        -:  276:
+    #####:  277:            end;
+        -:  278:         end loop;
+        -:  279:
+        -:  280:      -- Fehler behandeln
+        -:  281:      exception
+        -:  282:         -- EXIF-Tag existiert nicht
+    #####:  283:         when E: EXIFParsers.TagNotFound =>
+    #####:  284:            raise Ada.IO_Exceptions.Name_Error with "Unable to rename picture! No EXIF date available.";
+        -:  285:
+        -:  286:         -- Fehler am Dateinamen
+    #####:  287:         when E: Ada.IO_Exceptions.Name_Error =>
+    #####:  288:            raise Ada.IO_Exceptions.Name_Error with "Unable to rename picture! Invalid filename.";
+        -:  289:
+        -:  290:         -- Fehler beim Umbenennen (Möglichwerweise existiert neuer Name bereits)
+    #####:  291:         when E: Ada.IO_Exceptions.Use_Error =>
+    #####:  292:            raise Ada.IO_Exceptions.Name_Error with "Unable to rename picture! New filename might already be in use.";
+        -:  293:
+        -:  294:         -- Alle anderen Fehler
+    #####:  295:         when E: others =>
+    #####:  296:            raise Ada.IO_Exceptions.Name_Error with "Unknown error renaming picture!";
+    #####:  297:      end;
+        -:  298:
+        -:  299:      -- Neuen Namen zurückgeben
+    #####:  300:      return picture.getName;
+    #####:  301:   end renamePicture;
+        -:  302:
+        -:  303:   -- CSV String parsen
+    #####:  304:   function createCSV(This: access FileHandler; picture: access Pictures.Picture'Class) return String is
+    #####:  305:      separator: String := This.all.params.getCSVseparator;
+    #####:  306:      csv_row: Ada.Strings.Unbounded.Unbounded_String := Ada.Strings.Unbounded.To_Unbounded_String("""" & This.getDisplayName(picture.getName) & """" & separator);
+        -:  307:   begin
+        -:  308:      -- Alle Tags auslesen
+    #####:  309:      for counter in Integer range 1..8 loop
+    #####:  310:         declare
+        -:  311:         begin
+        -:  312:            -- Tag ausgeben
+    #####:  313:            case counter is
+        -:  314:               when 1 =>
+    #####:  315:                  Ada.Strings.Unbounded.Append(csv_row, Ada.Strings.Fixed.Trim(Integer'Image(picture.getEXIF.getISOSpeedRatings) & separator, Ada.Strings.Left));
+        -:  316:               when 2 =>
+    #####:  317:                  declare
+    #####:  318:                     date: String := picture.getEXIF.getDateTimeOriginal;
+        -:  319:                  begin
+    #####:  320:                     Ada.Strings.Unbounded.Append(csv_row, Ada.Strings.Fixed.Replace_Slice(date, date'Last, date'Last, "") & separator);
+    #####:  321:                  end;
+        -:  322:               when 3 =>
+    #####:  323:                  Ada.Strings.Unbounded.Append(csv_row, Ada.Strings.Fixed.Trim(Float'Image(picture.getEXIF.getShutterSpeedValue) & separator, Ada.Strings.Left));
+        -:  324:               when 4 =>
+    #####:  325:                  Ada.Strings.Unbounded.Append(csv_row, Ada.Strings.Fixed.Trim(Float'Image(picture.getEXIF.getApertureValue) & separator, Ada.Strings.Left));
+        -:  326:               when 5 =>
+    #####:  327:                  Ada.Strings.Unbounded.Append(csv_row, Ada.Strings.Fixed.Trim(Integer'Image(picture.getEXIF.getFlash) & separator, Ada.Strings.Left));
+        -:  328:               when 6 =>
+    #####:  329:                  Ada.Strings.Unbounded.Append(csv_row, Ada.Strings.Fixed.Trim(Float'Image(picture.getEXIF.getFocalLength) & separator, Ada.Strings.Left));
+        -:  330:               when 7 =>
+    #####:  331:                  Ada.Strings.Unbounded.Append(csv_row, Ada.Strings.Fixed.Trim(Integer'Image(picture.getEXIF.getExifImageWidth) & separator, Ada.Strings.Left));
+        -:  332:               when 8 =>
+    #####:  333:                  Ada.Strings.Unbounded.Append(csv_row, Ada.Strings.Fixed.Trim(Integer'Image(picture.getEXIF.getExifImageHeight), Ada.Strings.Left));
+        -:  334:               when others =>
+        -:  335:                  null; -- Keine Ausgabe im Overflow Fall
+    #####:  336:            end case;
+        -:  337:
+        -:  338:         -- Fehlerbehandlung
+        -:  339:         exception
+        -:  340:            -- Bei nicht vorhandenem Tag Zelle leer lassen
+    #####:  341:            when E: EXIFParsers.TagNotFound =>
+    #####:  342:               if counter /= 8 then
+    #####:  343:                  Ada.Strings.Unbounded.Append(csv_row, separator);
+        -:  344:               end if;
+        -:  345:
+        -:  346:            -- Bei sonstigen Fehlern Zelle leer lassen
+    #####:  347:            when E: others =>
+    #####:  348:               if counter /= 8 then
+    #####:  349:                  Ada.Strings.Unbounded.Append(csv_row, separator);
+        -:  350:               end if;
+    #####:  351:         end;
+        -:  352:      end loop;
+        -:  353:
+        -:  354:      -- CSV String zurück geben
+    #####:  355:      return Ada.Strings.Unbounded.To_String(csv_row);
+    #####:  356:   end createCSV;
+        -:  357:
+        -:  358:   -- Datei einlesen
+        -:  359:   -- Rückgabe -1 bei fehlender oder leerer Datei
+    #####:  360:   function readFile(name: String; buffer: out Ada.Strings.Unbounded.Unbounded_String) return Integer is
+        -:  361:   begin
+    #####:  362:      declare
+        -:  363:         -- Dateigröße auslesen und Einlesen vorbereiten
+    #####:  364:         size: Ada.Directories.File_Size := Ada.Directories.Size(name);
+    #####:  365:         subtype File_String is String(1..Integer(size));
+        -:  366:         package File_String_IO is new Ada.Direct_IO(File_String);
+    #####:  367:         file: File_String_IO.File_Type;
+    #####:  368:         buf: File_String;
+        -:  369:      begin
+        -:  370:         -- Datei einlesen
+    #####:  371:         File_String_IO.open(file, File_String_IO.In_File, name);
+    #####:  372:         File_String_IO.Read(file, buf);
+        -:  373:         File_String_IO.Close(file);
+    #####:  374:         buffer := Ada.Strings.Unbounded.To_Unbounded_String(buf);
+    #####:  375:         return Integer(size);
+    #####:  376:      end;
+        -:  377:
+        -:  378:   -- Fehlerbehandlung -> im Fehlerfall Dateigröße -1 zurückgeben
+        -:  379:   exception
+        -:  380:      -- Fehler bei Abfrage weiterer Verzeichniseinträge
+    #####:  381:      when E: Ada.IO_Exceptions.Status_Error =>
+        -:  382:         return -1;
+        -:  383:
+        -:  384:      -- Fehler bei Dateioptionen
+    #####:  385:      when E: Ada.IO_Exceptions.Mode_Error =>
+        -:  386:         return -1;
+        -:  387:
+        -:  388:      -- Fehler bei Verzeichnisname
+    #####:  389:      when E: Ada.IO_Exceptions.Name_Error => -- entspricht auch Ada.Directories.Name_Error
+        -:  390:         return -1;
+        -:  391:
+        -:  392:      -- Fehler bei Verwendung des Verzeichnisses (Berechtigungen)
+    #####:  393:      when E: Ada.IO_Exceptions.Use_Error =>
+        -:  394:         return -1;
+        -:  395:
+        -:  396:      -- Fehler bei Dateisystem IO
+    #####:  397:      when E: Ada.IO_Exceptions.Device_Error =>
+        -:  398:         return -1;
+        -:  399:
+        -:  400:      -- Alle anderen Fehler
+    #####:  401:      when E: others =>
+        -:  402:         return -1;
+        -:  403:   end readFile;
+        -:  404:
+        -:  405:end FileHandlers;

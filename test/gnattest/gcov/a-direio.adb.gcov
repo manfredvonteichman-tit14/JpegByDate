@@ -1,0 +1,285 @@
+        -:    0:Source:C:/gnat/2016/lib/gcc/i686-pc-mingw32/4.9.4/adainclude/a-direio.adb
+        -:    0:Programs:186
+        -:    1:------------------------------------------------------------------------------
+        -:    2:--                                                                          --
+        -:    3:--                         GNAT RUN-TIME COMPONENTS                         --
+        -:    4:--                                                                          --
+        -:    5:--                        A D A . D I R E C T _ I O                         --
+        -:    6:--                                                                          --
+        -:    7:--                                 B o d y                                  --
+        -:    8:--                                                                          --
+        -:    9:--          Copyright (C) 1992-2012, Free Software Foundation, Inc.         --
+        -:   10:--                                                                          --
+        -:   11:-- GNAT is free software;  you can  redistribute it  and/or modify it under --
+        -:   12:-- terms of the  GNU General Public License as published  by the Free Soft- --
+        -:   13:-- ware  Foundation;  either version 3,  or (at your option) any later ver- --
+        -:   14:-- sion.  GNAT is distributed in the hope that it will be useful, but WITH- --
+        -:   15:-- OUT ANY WARRANTY;  without even the  implied warranty of MERCHANTABILITY --
+        -:   16:-- or FITNESS FOR A PARTICULAR PURPOSE.                                     --
+        -:   17:--                                                                          --
+        -:   18:--                                                                          --
+        -:   19:--                                                                          --
+        -:   20:--                                                                          --
+        -:   21:--                                                                          --
+        -:   22:-- You should have received a copy of the GNU General Public License and    --
+        -:   23:-- a copy of the GCC Runtime Library Exception along with this program;     --
+        -:   24:-- see the files COPYING3 and COPYING.RUNTIME respectively.  If not, see    --
+        -:   25:-- <http://www.gnu.org/licenses/>.                                          --
+        -:   26:--                                                                          --
+        -:   27:-- GNAT was originally developed  by the GNAT team at  New York University. --
+        -:   28:-- Extensive contributions were provided by Ada Core Technologies Inc.      --
+        -:   29:--                                                                          --
+        -:   30:------------------------------------------------------------------------------
+        -:   31:
+        -:   32:--  This is the generic template for Direct_IO, i.e. the code that gets
+        -:   33:--  duplicated. We absolutely minimize this code by either calling routines
+        -:   34:--  in System.File_IO (for common file functions), or in System.Direct_IO
+        -:   35:--  (for specialized Direct_IO functions)
+        -:   36:
+        -:   37:with Interfaces.C_Streams; use Interfaces.C_Streams;
+        -:   38:with System;               use System;
+        -:   39:with System.CRTL;
+        -:   40:with System.File_Control_Block;
+        -:   41:with System.File_IO;
+        -:   42:with System.Direct_IO;
+        -:   43:with System.Storage_Elements;
+        -:   44:with Ada.Unchecked_Conversion;
+        -:   45:
+        -:   46:use type System.Direct_IO.Count;
+        -:   47:
+        -:   48:package body Ada.Direct_IO is
+        -:   49:
+    #####:   50:   Zeroes : constant System.Storage_Elements.Storage_Array :=
+    #####:   51:     (1 .. System.Storage_Elements.Storage_Offset (Bytes) => 0);
+        -:   52:   --  Buffer used to fill out partial records
+        -:   53:
+        -:   54:   package FCB renames System.File_Control_Block;
+        -:   55:   package FIO renames System.File_IO;
+        -:   56:   package DIO renames System.Direct_IO;
+        -:   57:
+        -:   58:   SU : constant := System.Storage_Unit;
+        -:   59:
+        -:   60:   subtype AP      is FCB.AFCB_Ptr;
+        -:   61:   subtype FP      is DIO.File_Type;
+        -:   62:   subtype DPCount is DIO.Positive_Count;
+        -:   63:
+        -:   64:   function To_FCB is new Ada.Unchecked_Conversion (File_Mode, FCB.File_Mode);
+        -:   65:   function To_DIO is new Ada.Unchecked_Conversion (FCB.File_Mode, File_Mode);
+        -:   66:
+        -:   67:   use type System.CRTL.size_t;
+        -:   68:
+        -:   69:   -----------
+        -:   70:   -- Close --
+        -:   71:   -----------
+        -:   72:
+        -:   73:   procedure Close (File : in out File_Type) is
+        -:   74:   begin
+    #####:   75:      FIO.Close (AP (File)'Unrestricted_Access);
+        -:   76:   end Close;
+        -:   77:
+        -:   78:   ------------
+        -:   79:   -- Create --
+        -:   80:   ------------
+        -:   81:
+        -:   82:   procedure Create
+        -:   83:     (File : in out File_Type;
+        -:   84:      Mode : File_Mode := Inout_File;
+        -:   85:      Name : String := "";
+        -:   86:      Form : String := "")
+        -:   87:   is
+        -:   88:   begin
+        -:   89:      DIO.Create (FP (File), To_FCB (Mode), Name, Form);
+        -:   90:      File.Bytes := Bytes;
+        -:   91:   end Create;
+        -:   92:
+        -:   93:   ------------
+        -:   94:   -- Delete --
+        -:   95:   ------------
+        -:   96:
+        -:   97:   procedure Delete (File : in out File_Type) is
+        -:   98:   begin
+        -:   99:      FIO.Delete (AP (File)'Unrestricted_Access);
+        -:  100:   end Delete;
+        -:  101:
+        -:  102:   -----------------
+        -:  103:   -- End_Of_File --
+        -:  104:   -----------------
+        -:  105:
+        -:  106:   function End_Of_File (File : File_Type) return Boolean is
+        -:  107:   begin
+        -:  108:      return DIO.End_Of_File (FP (File));
+        -:  109:   end End_Of_File;
+        -:  110:
+        -:  111:   ----------
+        -:  112:   -- Form --
+        -:  113:   ----------
+        -:  114:
+        -:  115:   function Form (File : File_Type) return String is
+        -:  116:   begin
+        -:  117:      return FIO.Form (AP (File));
+        -:  118:   end Form;
+        -:  119:
+        -:  120:   -----------
+        -:  121:   -- Index --
+        -:  122:   -----------
+        -:  123:
+        -:  124:   function Index (File : File_Type) return Positive_Count is
+        -:  125:   begin
+        -:  126:      return Positive_Count (DIO.Index (FP (File)));
+        -:  127:   end Index;
+        -:  128:
+        -:  129:   -------------
+        -:  130:   -- Is_Open --
+        -:  131:   -------------
+        -:  132:
+        -:  133:   function Is_Open (File : File_Type) return Boolean is
+        -:  134:   begin
+        -:  135:      return FIO.Is_Open (AP (File));
+        -:  136:   end Is_Open;
+        -:  137:
+        -:  138:   ----------
+        -:  139:   -- Mode --
+        -:  140:   ----------
+        -:  141:
+        -:  142:   function Mode (File : File_Type) return File_Mode is
+        -:  143:   begin
+        -:  144:      return To_DIO (FIO.Mode (AP (File)));
+        -:  145:   end Mode;
+        -:  146:
+        -:  147:   ----------
+        -:  148:   -- Name --
+        -:  149:   ----------
+        -:  150:
+        -:  151:   function Name (File : File_Type) return String is
+        -:  152:   begin
+        -:  153:      return FIO.Name (AP (File));
+        -:  154:   end Name;
+        -:  155:
+        -:  156:   ----------
+        -:  157:   -- Open --
+        -:  158:   ----------
+        -:  159:
+        -:  160:   procedure Open
+        -:  161:     (File : in out File_Type;
+        -:  162:      Mode : File_Mode;
+        -:  163:      Name : String;
+        -:  164:      Form : String := "")
+        -:  165:   is
+        -:  166:   begin
+    #####:  167:      DIO.Open (FP (File), To_FCB (Mode), Name, Form);
+    #####:  168:      File.Bytes := Bytes;
+        -:  169:   end Open;
+        -:  170:
+        -:  171:   ----------
+        -:  172:   -- Read --
+        -:  173:   ----------
+        -:  174:
+        -:  175:   procedure Read
+        -:  176:     (File : File_Type;
+        -:  177:      Item : out Element_Type;
+        -:  178:      From : Positive_Count)
+        -:  179:   is
+        -:  180:   begin
+        -:  181:      --  For a non-constrained variant record type, we read into an
+        -:  182:      --  intermediate buffer, since we may have the case of discriminated
+        -:  183:      --  records where a discriminant check is required, and we may need
+        -:  184:      --  to assign only part of the record buffer originally written.
+        -:  185:
+        -:  186:      --  Note: we have to turn warnings on/off because this use of
+        -:  187:      --  the Constrained attribute is an obsolescent feature.
+        -:  188:
+        -:  189:      pragma Warnings (Off);
+        -:  190:      if not Element_Type'Constrained then
+        -:  191:         pragma Warnings (On);
+        -:  192:
+        -:  193:         declare
+        -:  194:            Buf : Element_Type;
+        -:  195:
+        -:  196:         begin
+        -:  197:            DIO.Read (FP (File), Buf'Address, Bytes, DPCount (From));
+        -:  198:            Item := Buf;
+        -:  199:         end;
+        -:  200:
+        -:  201:      --  In the normal case, we can read straight into the buffer
+        -:  202:
+        -:  203:      else
+        -:  204:         DIO.Read (FP (File), Item'Address, Bytes, DPCount (From));
+        -:  205:      end if;
+        -:  206:   end Read;
+        -:  207:
+        -:  208:   procedure Read (File : File_Type; Item : out Element_Type) is
+        -:  209:   begin
+        -:  210:      --  Same processing for unconstrained case as above
+        -:  211:
+        -:  212:      --  Note: we have to turn warnings on/off because this use of
+        -:  213:      --  the Constrained attribute is an obsolescent feature.
+        -:  214:
+        -:  215:      pragma Warnings (Off);
+        -:  216:      if not Element_Type'Constrained then
+        -:  217:         pragma Warnings (On);
+        -:  218:
+        -:  219:         declare
+        -:  220:            Buf : Element_Type;
+        -:  221:
+        -:  222:         begin
+        -:  223:            DIO.Read (FP (File), Buf'Address, Bytes);
+        -:  224:            Item := Buf;
+        -:  225:         end;
+        -:  226:
+        -:  227:      else
+    #####:  228:         DIO.Read (FP (File), Item'Address, Bytes);
+        -:  229:      end if;
+        -:  230:   end Read;
+        -:  231:
+        -:  232:   -----------
+        -:  233:   -- Reset --
+        -:  234:   -----------
+        -:  235:
+        -:  236:   procedure Reset (File : in out File_Type; Mode : File_Mode) is
+        -:  237:   begin
+        -:  238:      DIO.Reset (FP (File), To_FCB (Mode));
+        -:  239:   end Reset;
+        -:  240:
+        -:  241:   procedure Reset (File : in out File_Type) is
+        -:  242:   begin
+        -:  243:      DIO.Reset (FP (File));
+        -:  244:   end Reset;
+        -:  245:
+        -:  246:   ---------------
+        -:  247:   -- Set_Index --
+        -:  248:   ---------------
+        -:  249:
+        -:  250:   procedure Set_Index (File : File_Type; To : Positive_Count) is
+        -:  251:   begin
+        -:  252:      DIO.Set_Index (FP (File), DPCount (To));
+        -:  253:   end Set_Index;
+        -:  254:
+        -:  255:   ----------
+        -:  256:   -- Size --
+        -:  257:   ----------
+        -:  258:
+        -:  259:   function Size (File : File_Type) return Count is
+        -:  260:   begin
+        -:  261:      return Count (DIO.Size (FP (File)));
+        -:  262:   end Size;
+        -:  263:
+        -:  264:   -----------
+        -:  265:   -- Write --
+        -:  266:   -----------
+        -:  267:
+        -:  268:   procedure Write
+        -:  269:     (File : File_Type;
+        -:  270:      Item : Element_Type;
+        -:  271:      To   : Positive_Count)
+        -:  272:   is
+        -:  273:   begin
+        -:  274:      DIO.Set_Index (FP (File), DPCount (To));
+    #####:  275:      DIO.Write (FP (File), Item'Address, Item'Size / SU, Zeroes);
+        -:  276:   end Write;
+        -:  277:
+        -:  278:   procedure Write (File : File_Type; Item : Element_Type) is
+        -:  279:   begin
+        -:  280:      DIO.Write (FP (File), Item'Address, Item'Size / SU, Zeroes);
+        -:  281:   end Write;
+        -:  282:
+        -:  283:end Ada.Direct_IO;

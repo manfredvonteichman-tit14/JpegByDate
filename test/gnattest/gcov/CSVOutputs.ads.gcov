@@ -1,0 +1,32 @@
+        -:    0:Source:D:/Users/Andi/Documents/GitHub/JpegByDate/src/CSVOutputs.ads
+        -:    0:Programs:186
+        -:    1:-- Verwendete Packages
+        -:    2:with Outputs;
+        -:    3:with Ada.Text_IO;
+        -:    4:
+        -:    5:-- Package für Ausgabemodul
+        4:    6:package CSVOutputs is
+        -:    7:
+        -:    8:   -- Typ anlegen
+    #####:    9:   type CSVOutput is new Outputs.Output with private;
+        -:   10:
+        -:   11:   -- Konstruktor
+        -:   12:   overriding function create return access CSVOutput;
+        -:   13:   function create(file: String; separator: String) return access CSVOutput;
+        -:   14:   -- Destruktor
+        -:   15:   overriding procedure destroy(This: access CSVOutput);
+        -:   16:
+        -:   17:   -- Anzeigefunktion für String
+        -:   18:   overriding procedure display(This: access CSVOutput; str: String);
+        -:   19:
+        -:   20:   -- Exceptions
+        2:   21:   Impossible_Output: exception; -- Fehler bei Datei-IO
+        -:   22:
+        -:   23:private
+        -:   24:   -- Objektvariablen
+        4:   25:   type CSVOutput is new Outputs.Output with
+        -:   26:      record
+        -:   27:         file: Ada.Text_IO.File_Type;
+        -:   28:      end record;
+        -:   29:
+        2:   30:end CSVOutputs;

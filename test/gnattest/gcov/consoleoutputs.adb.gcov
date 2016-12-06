@@ -1,0 +1,31 @@
+        -:    0:Source:D:/Users/Andi/Documents/GitHub/JpegByDate/src/consoleoutputs.adb
+        -:    0:Programs:186
+        -:    1:-- Verwendete Packages
+        -:    2:with Ada.Text_IO;
+        -:    3:with Ada.Unchecked_Deallocation;
+        -:    4:
+        -:    5:-- Package für Ausgabemodul
+        -:    6:package body ConsoleOutputs is
+        -:    7:
+        -:    8:   -- Konstruktor
+       14:    9:   function create return access ConsoleOutput is
+        -:   10:   begin
+       14:   11:      return new ConsoleOutput;
+        -:   12:   end create;
+        -:   13:
+        -:   14:   -- Destruktor
+       14:   15:   procedure destroy(This: access ConsoleOutput) is
+        -:   16:      type type_access is access all ConsoleOutput;
+        -:   17:      procedure Free is new Ada.Unchecked_Deallocation(ConsoleOutput, type_access);
+       14:   18:      obj: type_access := type_access(This);
+        -:   19:   begin
+       14:   20:      Free(obj);
+       14:   21:   end;
+        -:   22:
+        -:   23:   -- Anzeigefunktion für String
+     1600:   24:   procedure display(This: access ConsoleOutput; str: String) is
+        -:   25:   begin
+     1600:   26:      Ada.Text_IO.Put_Line(str);
+     1600:   27:   end display;
+        -:   28:
+        -:   29:end ConsoleOutputs;

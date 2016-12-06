@@ -1,0 +1,42 @@
+        -:    0:Source:D:/Users/Andi/Documents/GitHub/JpegByDate/src/Filters.ads
+        -:    0:Programs:186
+        -:    1:-- Verwendete Packages
+        -:    2:with Parameters;
+        -:    3:
+        -:    4:-- Filter Interface
+        -:    5:generic
+        -:    6:   type FilterElement_T(<>) is private;
+        -:    7:package Filters is
+        -:    8:
+        -:    9:   -- Interfacedefinition
+    #####:   10:   type Filter is abstract tagged private;
+        -:   11:
+        -:   12:   -- Interfacefunktionen
+        -:   13:   function create(params: access Parameters.Parameter) return access Filter is abstract;
+        -:   14:   procedure destroy(This: access Filter; destroy_chain: Boolean := False) is abstract;
+        -:   15:
+        -:   16:   -- Filter anwenden
+        -:   17:   -- DO NOT OVERLOAD!
+        -:   18:   function apply(This: access Filter; param: FilterElement_T) return Boolean;
+        -:   19:
+        -:   20:   -- Neuen Filter an Kette anfügen
+        -:   21:   -- DO NOT OVERLOAD!
+        -:   22:   procedure addNew(This: access Filter; newFilter: access Filter'Class);
+        -:   23:
+        -:   24:   -- Rückgabe des nächsten Filters
+        -:   25:   -- DO NOT OVERLOAD!
+        -:   26:   function getNext(This: access Filter) return access Filter'Class;
+        -:   27:
+        -:   28:   -- private Funktionen
+        -:   29:   -- DO NOT CALL EXTERNALLY! Außer es soll wirklich nur dieser Filter ausgeführt werden
+        -:   30:   -- Sollte private sein, allerdings funktioniert dann die Vererbung mit abstraktem Typ nicht... (mit C++ hätte das funktioniert!) -> Wenn möglich Lösung suchen
+        -:   31:   function applyThis(This: access Filter; param: FilterElement_T) return Boolean is abstract;
+        -:   32:
+        -:   33:private
+        -:   34:   -- Objektvariablen
+       18:   35:   type Filter is abstract tagged
+        -:   36:      record
+        -:   37:         next: access Filter'Class := null; -- extern -> Abfrage Kette zu löschen
+        -:   38:      end record;
+        -:   39:
+        2:   40:end Filters;

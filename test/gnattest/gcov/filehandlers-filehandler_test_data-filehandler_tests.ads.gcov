@@ -1,0 +1,24 @@
+        -:    0:Source:D:/Users/Andi/Documents/GitHub/JpegByDate/test/gnattest/tests/filehandlers-filehandler_test_data-filehandler_tests.ads
+        -:    0:Programs:186
+        -:    1:--  This package has been generated automatically by GNATtest.
+        -:    2:--  Do not edit any part of it, see GNATtest documentation for more details.
+        -:    3:
+        -:    4:--  begin read only
+        -:    5:with GNATtest_Generated;
+        -:    6:
+        4:    7:package FileHandlers.FileHandler_Test_Data.FileHandler_Tests is
+        -:    8:
+        4:    9:   type Test_FileHandler is new
+        -:   10:     GNATtest_Generated.GNATtest_Standard.FileHandlers.FileHandler_Test_Data.Test_FileHandler with null record;
+        -:   11:
+        -:   12:   procedure Test_create_915a1c (Gnattest_T : in out Test_FileHandler);
+        -:   13:   --  filehandlers.ads:14:4:create
+        -:   14:
+        -:   15:   procedure Test_destroy_f0dd10 (Gnattest_T : in out Test_FileHandler);
+        -:   16:   --  filehandlers.ads:16:4:destroy
+        -:   17:
+        -:   18:   procedure Test_exec_13d0f2 (Gnattest_T : in out Test_FileHandler);
+        -:   19:   --  filehandlers.ads:19:4:exec
+        -:   20:
+        2:   21:end FileHandlers.FileHandler_Test_Data.FileHandler_Tests;
+        -:   22:--  end read only

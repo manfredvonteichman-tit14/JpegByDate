@@ -1,0 +1,20 @@
+        -:    0:Source:D:/Users/Andi/Documents/GitHub/JpegByDate/src/ConsoleOutputs.ads
+        -:    0:Programs:186
+        -:    1:-- Verwendete Packages
+        -:    2:with Outputs;
+        -:    3:
+        -:    4:-- Package für Ausgabemodul
+       32:    5:package ConsoleOutputs is
+        -:    6:
+        -:    7:   -- Typ anlegen
+       18:    8:   type ConsoleOutput is new Outputs.Output with null record;
+        -:    9:
+        -:   10:   -- Konstruktor
+        -:   11:   overriding function create return access ConsoleOutput;
+        -:   12:   -- Destruktor
+        -:   13:   overriding procedure destroy(This: access ConsoleOutput);
+        -:   14:
+        -:   15:   -- Anzeigefunktion für String
+        -:   16:   overriding procedure display(This: access ConsoleOutput; str: String);
+        -:   17:
+       16:   18:end ConsoleOutputs;

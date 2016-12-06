@@ -1,0 +1,57 @@
+        -:    0:Source:D:/Users/Andi/Documents/GitHub/JpegByDate/src/csvoutputs.adb
+        -:    0:Programs:186
+        -:    1:-- Verwendete Packages
+        -:    2:with Globals;
+        -:    3:with Ada.Strings.Fixed;
+        -:    4:with Ada.Strings.Maps;
+        -:    5:with Ada.Unchecked_Deallocation;
+        -:    6:
+        -:    7:-- Package für Ausgabemodul
+        -:    8:package body CSVOutputs is
+        -:    9:
+        -:   10:   -- Konstruktor
+    #####:   11:   function create return access CSVOutput is
+        -:   12:   begin
+    #####:   13:      return create(Globals.defaultCSV, Globals.defaultCSVseparator);
+        -:   14:   end create;
+    #####:   15:   function create(file: String; separator: String) return access CSVOutput is
+    #####:   16:      output: access CSVOutput := new CSVOutput;
+        -:   17:   begin
+        -:   18:      -- Datei öffnen (Überschreiben)
+    #####:   19:      Ada.Text_IO.Create(output.file, Ada.Text_IO.Out_File, file);
+    #####:   20:      Ada.Text_IO.Put_Line(output.file, Ada.Strings.Fixed.Translate(Globals.csvHeader, Ada.Strings.Maps.To_Mapping(From => ",", To => separator)));
+    #####:   21:      return output;
+        -:   22:
+        -:   23:   -- Fehlerbehandlung
+        -:   24:   exception
+        -:   25:      -- Alle Exceptions abfangen, weil keine genaue Definition verfügbar
+        -:   26:      -- Fehlermeldung ausgeben
+    #####:   27:      when E: others =>
+    #####:   28:         raise Impossible_Output with "Unable to create CSV-export file!";
+    #####:   29:   end create;
+        -:   30:
+        -:   31:   -- Destruktor
+    #####:   32:   procedure destroy(This: access CSVOutput) is
+        -:   33:      type type_access is access all CSVOutput;
+        -:   34:      procedure Free is new Ada.Unchecked_Deallocation(CSVOutput, type_access);
+    #####:   35:      obj: type_access := type_access(This);
+        -:   36:   begin
+        -:   37:      declare
+        -:   38:      begin
+    #####:   39:         Ada.Text_IO.Close(This.all.file);
+        -:   40:      exception
+        -:   41:         -- Alle Exceptions abfangen, weil keine genaue Definition verfügbar
+        -:   42:         -- Keine Aktion, wenn schließen nicht geht ist eh alles vorbei
+    =====:   43:         when E: others =>
+        -:   44:            null;
+        -:   45:      end;
+    #####:   46:      Free(obj);
+    #####:   47:   end;
+        -:   48:
+        -:   49:   -- Anzeigefunktion für String
+    #####:   50:   procedure display(This: access CSVOutput; str: String) is
+        -:   51:   begin
+    #####:   52:      Ada.Text_IO.Put_Line(This.all.file, str);
+    #####:   53:   end display;
+        -:   54:
+        -:   55:end CSVOutputs;

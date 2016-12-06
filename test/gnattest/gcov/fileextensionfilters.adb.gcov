@@ -1,0 +1,37 @@
+        -:    0:Source:D:/Users/Andi/Documents/GitHub/JpegByDate/src/fileextensionfilters.adb
+        -:    0:Programs:186
+        -:    1:-- Verwendete Packages
+        -:    2:with Ada.Unchecked_Deallocation;
+        -:    3:with GNAT.Regpat;
+        -:    4:
+        -:    5:-- Package für Filtermodul
+        -:    6:package body FileExtensionFilters is
+        -:    7:
+        -:    8:   -- Konstruktor
+    #####:    9:   function create(params: access Parameters.Parameter) return access FileExtensionFilter is
+    #####:   10:      filter: access FileExtensionFilter := new FileExtensionFilter;
+        -:   11:   begin
+    #####:   12:      filter.all.params := params;
+    #####:   13:      return filter;
+        -:   14:   end create;
+        -:   15:
+        -:   16:   -- Destruktor
+    #####:   17:   procedure destroy(This: access FileExtensionFilter; destroy_chain: Boolean := False) is
+        -:   18:      type type_access is access all FileExtensionFilter;
+        -:   19:      procedure Free is new Ada.Unchecked_Deallocation(FileExtensionFilter, type_access);
+    #####:   20:      obj: type_access := type_access(This);
+        -:   21:   begin
+        -:   22:      -- externe Variablen in diesem Fall doch löschen
+    #####:   23:      if destroy_chain = True and This.getNext /= null then
+    #####:   24:         This.getNext.destroy(destroy_chain);
+        -:   25:      end if;
+    #####:   26:      Free(obj);
+    #####:   27:   end;
+        -:   28:
+        -:   29:   -- private Funktionen
+    #####:   30:   overriding function applyThis(This: access FileExtensionFilter; str: String) return Boolean is
+        -:   31:   begin
+    #####:   32:      return Boolean'(GNAT.Regpat.Match(Expression => This.all.params.getFileExtensionPattern, Data => str));
+        -:   33:   end applyThis;
+        -:   34:
+        -:   35:end FileExtensionFilters;

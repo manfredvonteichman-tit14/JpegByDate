@@ -1,0 +1,27 @@
+        -:    0:Source:D:/Users/Andi/Documents/GitHub/JpegByDate/test/gnattest/tests/commandlineparsers-commandlineparser_test_data-commandlineparser_tests.ads
+        -:    0:Programs:186
+        -:    1:--  This package has been generated automatically by GNATtest.
+        -:    2:--  Do not edit any part of it, see GNATtest documentation for more details.
+        -:    3:
+        -:    4:--  begin read only
+        -:    5:with GNATtest_Generated;
+        -:    6:
+        4:    7:package CommandlineParsers.CommandlineParser_Test_Data.CommandlineParser_Tests is
+        -:    8:
+        4:    9:   type Test_CommandlineParser is new
+        -:   10:     GNATtest_Generated.GNATtest_Standard.CommandlineParsers.CommandlineParser_Test_Data.Test_CommandlineParser with null record;
+        -:   11:
+        -:   12:   procedure Test_create_8ce989 (Gnattest_T : in out Test_CommandlineParser);
+        -:   13:   --  commandlineparsers.ads:13:4:create
+        -:   14:
+        -:   15:   procedure Test_destroy_90f6a1 (Gnattest_T : in out Test_CommandlineParser);
+        -:   16:   --  commandlineparsers.ads:15:4:destroy
+        -:   17:
+        -:   18:   procedure Test_parse_f83b07 (Gnattest_T : in out Test_CommandlineParser);
+        -:   19:   --  commandlineparsers.ads:18:4:parse
+        -:   20:
+        -:   21:   procedure Test_getParams_728bfb (Gnattest_T : in out Test_CommandlineParser);
+        -:   22:   --  commandlineparsers.ads:21:4:getParams
+        -:   23:
+        2:   24:end CommandlineParsers.CommandlineParser_Test_Data.CommandlineParser_Tests;
+        -:   25:--  end read only

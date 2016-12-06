@@ -1,0 +1,130 @@
+        -:    0:Source:D:/Users/Andi/Documents/GitHub/JpegByDate/src/Parameters.ads
+        -:    0:Programs:186
+        -:    1:-- Verwendete Packages
+        -:    2:with Globals;
+        -:    3:with Ada.Strings.Unbounded;
+        -:    4:
+        -:    5:-- Package für Parameter
+        4:    6:package Parameters is
+        -:    7:
+        -:    8:   -- Typ anlegen
+    #####:    9:   type Parameter is tagged private;
+        -:   10:
+        -:   11:   -- Konstruktor
+        -:   12:   function create return access Parameter;
+        -:   13:   -- Destruktor
+        -:   14:   procedure destroy(This: access Parameter);
+        -:   15:
+        -:   16:   -- Werte setzen
+        -:   17:   procedure setPath(This: access Parameter; path: String);
+        -:   18:   procedure setPathRecursion(This: access Parameter; recursive: Boolean);
+        -:   19:   procedure setFilePattern(This: access Parameter; pattern: String);
+        -:   20:   procedure setFileExtensionPattern(This: access Parameter; pattern: String);
+        -:   21:   procedure setFullName(This: access Parameter; fullName: Boolean);
+        -:   22:   procedure setDatePattern(This: access Parameter; datePattern: String);
+        -:   23:   procedure setMinFileSize(This: access Parameter; minFileSize: Natural);
+        -:   24:   procedure setMaxFileSize(This: access Parameter; maxFileSize: Natural);
+        -:   25:   procedure setDateRangeStart(This: access Parameter; startDate: String);
+        -:   26:   procedure setDateRangeFinish(This: access Parameter; finishDate: String);
+        -:   27:   procedure setTimePattern(This: access Parameter; timePattern: String);
+        -:   28:   procedure setTimeRangeStart(This: access Parameter; startTime: String);
+        -:   29:   procedure setTimeRangeFinish(This: access Parameter; finishTime: String);
+        -:   30:   procedure setMinWidth(This: access Parameter; minWidth: Natural);
+        -:   31:   procedure setMaxWidth(This: access Parameter; maxWidth: Natural);
+        -:   32:   procedure setMinHeight(This: access Parameter; minHeight: Natural);
+        -:   33:   procedure setMaxHeight(This: access Parameter; maxHeight: Natural);
+        -:   34:   procedure setHelp(This: access Parameter; enable: Boolean);
+        -:   35:   procedure setRename(This: access Parameter; enable: Boolean);
+        -:   36:   procedure setCSV(This: access Parameter; file: String);
+        -:   37:   procedure setCSVseparator(This: access Parameter; separator: String);
+        -:   38:   procedure setDebug(This: access Parameter; enable: Boolean);
+        -:   39:
+        -:   40:   -- Werte abfragen
+        -:   41:   function getPath(This: access Parameter) return String;
+        -:   42:   function getPathRecursion(This: access Parameter) return Boolean;
+        -:   43:   function getFilePattern(This: access Parameter) return String;
+        -:   44:   function getFileExtensionPattern(This: access Parameter) return String;
+        -:   45:   function getFullName(This: access Parameter) return Boolean;
+        -:   46:   function getDatePattern(This: access Parameter) return String;
+        -:   47:   function getMinFileSize(This: access Parameter) return Natural;
+        -:   48:   function getMaxFileSize(This: access Parameter) return Natural;
+        -:   49:   function getDateRangeStart(This: access Parameter) return String;
+        -:   50:   function getDateRangeFinish(This: access Parameter) return String;
+        -:   51:   function getTimePattern(This: access Parameter) return String;
+        -:   52:   function getTimeRangeStart(This: access Parameter) return String;
+        -:   53:   function getTimeRangeFinish(This: access Parameter) return String;
+        -:   54:   function getMinWidth(This: access Parameter) return Natural;
+        -:   55:   function getMaxWidth(This: access Parameter) return Natural;
+        -:   56:   function getMinHeight(This: access Parameter) return Natural;
+        -:   57:   function getMaxHeight(This: access Parameter) return Natural;
+        -:   58:   function getHelp(This: access Parameter) return String;
+        -:   59:   function getRename(This: access Parameter) return Boolean;
+        -:   60:   function getCSV(This: access Parameter) return String;
+        -:   61:   function getCSVseparator(This: access Parameter) return String;
+        -:   62:   function getDebug(This: access Parameter) return Boolean;
+        -:   63:
+        -:   64:   -- Flags abfragen
+        -:   65:   function flagPath(This: access Parameter) return Boolean;
+        -:   66:   function flagPathRecursion(This: access Parameter) return Boolean;
+        -:   67:   function flagFilePattern(This: access Parameter) return Boolean;
+        -:   68:   function flagFileExtensionPattern(This: access Parameter) return Boolean;
+        -:   69:   function flagFullName(This: access Parameter) return Boolean;
+        -:   70:   function flagFileSize(This: access Parameter) return Boolean;
+        -:   71:   function flagDatePattern(This: access Parameter) return Boolean;
+        -:   72:   function flagDateRange(This: access Parameter) return Boolean;
+        -:   73:   function flagTimePattern(This: access Parameter) return Boolean;
+        -:   74:   function flagTimeRange(This: access Parameter) return Boolean;
+        -:   75:   function flagImageSize(This: access Parameter) return Boolean;
+        -:   76:   function flagHelp(This: access Parameter) return Boolean;
+        -:   77:   function flagRename(This: access Parameter) return Boolean;
+        -:   78:   function flagCSV(This: access Parameter) return Boolean;
+        -:   79:   function flagCSVseparator(This: access Parameter) return Boolean;
+        -:   80:   function flagDebug(This: access Parameter) return Boolean;
+        -:   81:
+        -:   82:private
+        -:   83:   -- Objektvariablen
+       26:   84:   type Parameter is tagged
+        -:   85:      record
+        -:   86:         -- Vorinitialisiert, werden immer verwendet
+       10:   87:         path: Ada.Strings.Unbounded.Unbounded_String := Ada.Strings.Unbounded.To_Unbounded_String(Globals.defaultPath);
+        -:   88:         pathRecursion: Boolean := Globals.pathRecursionEnabled;
+        6:   89:         filePattern: Ada.Strings.Unbounded.Unbounded_String := Ada.Strings.Unbounded.To_Unbounded_String(Globals.filePattern);
+        6:   90:         fileExtensionPattern: Ada.Strings.Unbounded.Unbounded_String := Ada.Strings.Unbounded.To_Unbounded_String(Globals.regexPatternFiletype);
+        -:   91:         fullName: Boolean := Globals.defaultName;
+        -:   92:         datePattern: String(1..10) := Globals.defaultDate;
+        -:   93:         minFileSize: Natural := Globals.minFileSize;
+        -:   94:         maxFileSize: Natural := Globals.maxFileSize;
+        -:   95:         dateRangeStart: String(1..10) := Globals.defaultStartDate;
+        -:   96:         dateRangeFinish: String(1..10) := Globals.defaultFinishDate;
+        -:   97:         timePattern: String(1..8) := Globals.defaultTime;
+        -:   98:         timeRangeStart: String(1..8) := Globals.defaultStartTime;
+        -:   99:         timeRangeFinish: String(1..8) := Globals.defaultFinishTime;
+        -:  100:         minWidth: Natural := Globals.minWidth;
+        -:  101:         maxWidth: Natural := Globals.maxWidth;
+        -:  102:         minHeight: Natural := Globals.minHeight;
+        -:  103:         maxHeight: Natural := Globals.maxHeight;
+        -:  104:         rename: Boolean := Globals.defaultRenameFiles;
+        6:  105:         csvFile: Ada.Strings.Unbounded.Unbounded_String := Ada.Strings.Unbounded.To_Unbounded_String(Globals.defaultCSV);
+        -:  106:         csvSeparator: String(1..1) := Globals.defaultCSVseparator;
+        -:  107:         debug: Boolean := Globals.defaultDebug;
+        -:  108:
+        -:  109:         -- Für Filter default Werte
+        -:  110:         Flag_path: Boolean := False;
+        -:  111:         Flag_pathRecursion: Boolean := False;
+        -:  112:         Flag_filePattern: Boolean := False;
+        -:  113:         Flag_fileExtensionPattern: Boolean := False;
+        -:  114:         Flag_fullName: Boolean := False;
+        -:  115:         Flag_fileSize: Boolean := False;
+        -:  116:         Flag_datePattern: Boolean := False;
+        -:  117:         Flag_dateRange: Boolean := False;
+        -:  118:         Flag_timePattern: Boolean := False;
+        -:  119:         Flag_timeRange: Boolean := False;
+        -:  120:         Flag_imageSize: Boolean := False;
+        -:  121:         Flag_help: Boolean := False;
+        -:  122:         Flag_rename: Boolean := False;
+        -:  123:         Flag_csv: Boolean := False;
+        -:  124:         Flag_csvSeparator: Boolean := False;
+        -:  125:         Flag_debug: Boolean := False;
+        -:  126:      end record;
+        -:  127:
+        2:  128:end Parameters;

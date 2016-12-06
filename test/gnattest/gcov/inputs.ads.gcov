@@ -1,0 +1,19 @@
+        -:    0:Source:D:/Users/Andi/Documents/GitHub/JpegByDate/src/inputs.ads
+        -:    0:Programs:186
+        -:    1:-- Verwendete Packages
+        -:    2:with Parameters;
+        -:    3:with Outputs;
+        -:    4:
+        -:    5:-- Eingabe Interface
+        1:    6:package Inputs is
+        -:    7:
+        -:    8:   -- Interfacedefinition
+        1:    9:   type Input is interface;
+        -:   10:
+        -:   11:   -- Interfacefunktionen
+        -:   12:   function create return access Input is abstract;
+        -:   13:   procedure destroy(This: access Input) is abstract;
+        -:   14:   procedure parse(This: access Input; error_log: access Outputs.Output'Class := null) is abstract;
+        -:   15:   function getParams(This: access Input) return access Parameters.Parameter is abstract;
+        -:   16:
+        1:   17:end Inputs;

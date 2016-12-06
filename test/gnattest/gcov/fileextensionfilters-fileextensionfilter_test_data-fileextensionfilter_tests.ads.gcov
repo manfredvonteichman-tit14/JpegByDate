@@ -1,0 +1,24 @@
+        -:    0:Source:D:/Users/Andi/Documents/GitHub/JpegByDate/test/gnattest/tests/fileextensionfilters-fileextensionfilter_test_data-fileextensionfilter_tests.ads
+        -:    0:Programs:186
+        -:    1:--  This package has been generated automatically by GNATtest.
+        -:    2:--  Do not edit any part of it, see GNATtest documentation for more details.
+        -:    3:
+        -:    4:--  begin read only
+        -:    5:with GNATtest_Generated;
+        -:    6:
+        4:    7:package FileExtensionFilters.FileExtensionFilter_Test_Data.FileExtensionFilter_Tests is
+        -:    8:
+        4:    9:   type Test_FileExtensionFilter is new
+        -:   10:     GNATtest_Generated.GNATtest_Standard.FileExtensionFilters.FileExtensionFilter_Test_Data.Test_FileExtensionFilter with null record;
+        -:   11:
+        -:   12:   procedure Test_create_a689c9 (Gnattest_T : in out Test_FileExtensionFilter);
+        -:   13:   --  fileextensionfilters.ads:12:4:create
+        -:   14:
+        -:   15:   procedure Test_destroy_c63404 (Gnattest_T : in out Test_FileExtensionFilter);
+        -:   16:   --  fileextensionfilters.ads:14:4:destroy
+        -:   17:
+        -:   18:   procedure Test_applyThis_13a7c7 (Gnattest_T : in out Test_FileExtensionFilter);
+        -:   19:   --  fileextensionfilters.ads:17:4:applyThis
+        -:   20:
+        2:   21:end FileExtensionFilters.FileExtensionFilter_Test_Data.FileExtensionFilter_Tests;
+        -:   22:--  end read only

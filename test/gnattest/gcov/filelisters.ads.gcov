@@ -1,0 +1,22 @@
+        -:    0:Source:D:/Users/Andi/Documents/GitHub/JpegByDate/src/filelisters.ads
+        -:    0:Programs:186
+        -:    1:-- Verwendete Packages
+        -:    2:with FileFilters;
+        -:    3:with Parameters;
+        -:    4:
+        -:    5:-- FileLister Interface
+        1:    6:package FileListers is
+        -:    7:
+        -:    8:   -- Interfacedefinition
+        -:    9:   -- ACHTUNG! Ist kein Interface, sondern voll abstrakte Klasse.
+        -:   10:   -- Dies ist notwendig, da 'limited' von Interface nicht auf Subklasse vererbt wird.
+        -:   11:   -- Subklasse FilesystemLister muss aber 'limited' sein und eine nachträgliche Definition dazu ist nicht möglich.
+        1:   12:   type FileLister is abstract tagged limited null record; -- quasi interface
+        -:   13:
+        -:   14:   -- Interfacefunktionen
+        -:   15:   function create(params: access Parameters.Parameter; filter: access FileFilters.Filter'Class) return access FileLister is abstract;
+        -:   16:   procedure destroy(This: access FileLister) is abstract;
+        -:   17:   function hasNext(This: access FileLister) return Boolean is abstract;
+        -:   18:   function next(This: access FileLister) return String is abstract;
+        -:   19:
+        1:   20:end FileListers;

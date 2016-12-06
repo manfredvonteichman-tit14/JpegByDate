@@ -1,0 +1,32 @@
+        -:    0:Source:D:/Users/Andi/Documents/GitHub/JpegByDate/src/FileHandlers.ads
+        -:    0:Programs:186
+        -:    1:-- Verwendete Packages
+        -:    2:with EXIFFilters;
+        -:    3:with FileListers;
+        -:    4:with Outputs;
+        -:    5:with Parameters;
+        -:    6:
+        -:    7:-- Package für FileHandler
+        4:    8:package FileHandlers is
+        -:    9:
+        -:   10:   -- Typ anlegen
+    #####:   11:   type FileHandler is tagged private;
+        -:   12:
+        -:   13:   -- Konstruktor
+        -:   14:   function create(files: access FileListers.FileLister'Class; filter: access EXIFFilters.Filter'Class; params: access Parameters.Parameter) return access FileHandler;
+        -:   15:   -- Destruktor
+        -:   16:   procedure destroy(This: access FileHandler);
+        -:   17:
+        -:   18:   -- Dateien verarbeiten
+        -:   19:   procedure exec(This: access FileHandler; output: access Outputs.Output'Class);
+        -:   20:
+        -:   21:private
+        -:   22:   -- Objektvariablen
+        4:   23:   type FileHandler is tagged
+        -:   24:      record
+        -:   25:         files: access FileListers.FileLister'Class := null; -- extern
+        -:   26:         filter: access EXIFFilters.Filter'Class := null; -- extern
+        -:   27:         params: access Parameters.Parameter := null; -- extern
+        -:   28:      end record;
+        -:   29:
+        2:   30:end FileHandlers;

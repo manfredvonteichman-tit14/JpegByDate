@@ -1,0 +1,21 @@
+        -:    0:Source:D:/Users/Andi/Documents/GitHub/JpegByDate/test/gnattest/tests/daterangefilters-daterangefilter_test_data.adb
+        -:    0:Programs:186
+        -:    1:--  This package is intended to set up and tear down  the test environment.
+        -:    2:--  Once created by GNATtest, this package will never be overwritten
+        -:    3:--  automatically. Contents of this package can be modified in any way
+        -:    4:--  except for sections surrounded by a 'read only' marker.
+        -:    5:
+        2:    6:package body DateRangeFilters.DateRangeFilter_Test_Data is
+        -:    7:
+        2:    8:   Local_DateRangeFilter : aliased GNATtest_Generated.GNATtest_Standard.DateRangeFilters.DateRangeFilter;
+        6:    9:   procedure Set_Up (Gnattest_T : in out Test_DateRangeFilter) is
+        -:   10:   begin
+        6:   11:      Gnattest_T.Fixture := Local_DateRangeFilter'Access;
+        6:   12:   end Set_Up;
+        -:   13:
+        6:   14:   procedure Tear_Down (Gnattest_T : in out Test_DateRangeFilter) is
+        -:   15:   begin
+        6:   16:      null;
+        6:   17:   end Tear_Down;
+        -:   18:
+        2:   19:end DateRangeFilters.DateRangeFilter_Test_Data;

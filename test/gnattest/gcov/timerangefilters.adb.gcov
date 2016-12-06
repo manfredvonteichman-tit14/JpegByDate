@@ -1,0 +1,82 @@
+        -:    0:Source:D:/Users/Andi/Documents/GitHub/JpegByDate/src/timerangefilters.adb
+        -:    0:Programs:186
+        -:    1:-- Verwendete Packages
+        -:    2:with Ada.Unchecked_Deallocation;
+        -:    3:
+        -:    4:-- Package für Filtermodul
+        -:    5:package body TimeRangeFilters is
+        -:    6:
+        -:    7:   -- Konstruktor
+    #####:    8:   function create(params: access Parameters.Parameter) return access TimeRangeFilter is
+    #####:    9:      filter: access TimeRangeFilter := new TimeRangeFilter;
+        -:   10:   begin
+    #####:   11:      filter.all.params := params;
+    #####:   12:      return filter;
+        -:   13:   end create;
+        -:   14:
+        -:   15:   -- Destruktor
+    #####:   16:   procedure destroy(This: access TimeRangeFilter; destroy_chain: Boolean := False) is
+        -:   17:      type type_access is access all TimeRangeFilter;
+        -:   18:      procedure Free is new Ada.Unchecked_Deallocation(TimeRangeFilter, type_access);
+    #####:   19:      obj: type_access := type_access(This);
+        -:   20:   begin
+        -:   21:      -- externe Variablen in diesem Fall doch löschen
+    #####:   22:      if destroy_chain = True and This.getNext /= null then
+    #####:   23:         This.getNext.destroy(destroy_chain);
+        -:   24:      end if;
+    #####:   25:      Free(obj);
+    #####:   26:   end;
+        -:   27:
+        -:   28:   -- private Funktionen
+    #####:   29:   overriding function applyThis(This: access TimeRangeFilter; exif: EXIFParsers.EXIFParser_Access) return Boolean is
+        -:   30:   begin
+        -:   31:      -- Shortcut falls Standardwert verwendet wird
+    #####:   32:      if This.all.params.flagTimeRange = False then
+        -:   33:         return True;
+        -:   34:      end if;
+        -:   35:
+        -:   36:      -- Eigentlicher Filter
+    #####:   37:      declare
+    #####:   38:         exif_tmp: access EXIFParsers.EXIFParser := exif;
+    #####:   39:         time: String := exif_tmp.getDateTimeOriginal;
+    #####:   40:         startTime: String := This.all.params.getTimeRangeStart;
+    #####:   41:         finishTime: String := This.all.params.getTimeRangeFinish;
+        -:   42:         value: Integer;
+        -:   43:         start: Integer;
+        -:   44:         finish: Integer;
+        -:   45:      begin
+        -:   46:         -- Magic -> Primitive Umrechnung von Uhrzeit in Integer zum einfacheren Vergleich
+    #####:   47:         value := Integer'Value(time(time'First+11..time'First+12)) * 10000 + Integer'Value(time(time'First+14..time'First+15)) * 100 + Integer'Value(time(time'First+17..time'First+18));
+    #####:   48:         start := Integer'Value(startTime(startTime'First..startTime'First+1)) * 10000 + Integer'Value(startTime(startTime'First+3..startTime'First+4)) * 100 + Integer'Value(startTime(startTime'First+6..startTime'First+7));
+    #####:   49:         finish := Integer'Value(finishTime(finishTime'First..finishTime'First+1)) * 10000 + Integer'Value(finishTime(finishTime'First+3..finishTime'First+4)) * 100 + Integer'Value(finishTime(finishTime'First+6..finishTime'First+7));
+        -:   50:
+        -:   51:         -- Bereich über Mitternacht?
+    #####:   52:         if finish < start then
+        -:   53:            -- Vergleich der Zeitwerte über Nacht
+    #####:   54:            if value >= start or value <= finish then
+        -:   55:               return True;
+        -:   56:            else
+        -:   57:               return False;
+        -:   58:            end if;
+        -:   59:         else
+        -:   60:            -- Vergleich der Zeitwerte am Tag
+    #####:   61:            if value >= start and value <= finish then
+        -:   62:               return True;
+        -:   63:            else
+        -:   64:               return False;
+        -:   65:            end if;
+        -:   66:         end if;
+    #####:   67:      end;
+        -:   68:
+        -:   69:   -- Fehler behandeln
+        -:   70:   exception
+        -:   71:      -- EXIF-Tag existiert nicht
+    #####:   72:      when E: EXIFParsers.TagNotFound =>
+        -:   73:         return False;
+        -:   74:
+        -:   75:      -- Alle anderen Fehler
+    #####:   76:      when E: others =>
+        -:   77:         return False;
+        -:   78:   end applyThis;
+        -:   79:
+        -:   80:end TimeRangeFilters;

@@ -1,0 +1,170 @@
+        -:    0:Source:D:/Users/Andi/Documents/GitHub/JpegByDate/src/pictures-jpegpictures.adb
+        -:    0:Programs:186
+        -:    1:-- Verwendete Packages
+        -:    2:with EXIFParsers;
+        -:    3:with Pictures.TiffPictures;
+        -:    4:with Ada.Unchecked_Deallocation;
+        -:    5:
+        -:    6:-- Package für JpegPicture  als Childpackage von Picture
+       32:    7:package body Pictures.JpegPictures is
+        -:    8:
+        -:    9:   -- Konstruktor
+      246:   10:   function create(name: String; buffer: Ada.Strings.Unbounded.Unbounded_String) return access JpegPicture is
+        -:   11:      -- JPEG Format
+        -:   12:      -- https://www.media.mit.edu/pia/Research/deepview/exif.html
+        -:   13:
+      492:   14:      picture: access JpegPicture := new JpegPicture;
+      246:   15:      tiff: access TiffPictures.TiffPicture := null;
+      246:   16:      I: Integer := 3; -- Start nach SOI
+        -:   17:      part_length: Integer;
+        -:   18:   begin
+      246:   19:      if isJpeg(buffer) then
+        -:   20:         -- Buffer beinhaltet Jpeg Datei
+      384:   21:         picture.all.name := Ada.Strings.Unbounded.To_Unbounded_String(name);
+      192:   22:         picture.all.binary := buffer;
+        -:   23:
+        -:   24:         -- EXIF/TIFF suchen
+      192:   25:         picture.all.tiff_sublayer := null;
+      312:   26:         while I+3 <= Ada.Strings.Unbounded.Length(buffer) loop
+        -:   27:            -- Segmentlänge
+      312:   28:            part_length := Character'Pos(Ada.Strings.Unbounded.Element(buffer, I+2)) * 16#100# + Character'Pos(Ada.Strings.Unbounded.Element(buffer, I+3));
+        -:   29:
+        -:   30:            -- Segment überprüfen
+      312:   31:            if I+2+part_length > Ada.Strings.Unbounded.Length(buffer) then
+    #####:   32:               raise Illegal_Format with "JPEG tag size reaches over EOI!";
+        -:   33:            end if;
+        -:   34:
+        -:   35:            -- Segment-Tag (EXIF/TIFF) abfragen
+      936:   36:            if Ada.Strings.Unbounded.Element(buffer, I) = Character'Val(16#FF#) and
+      624:   37:              Ada.Strings.Unbounded.Element(buffer, I+1) = Character'Val(16#E1#) then
+        -:   38:               -- EXIF Header überprüfen
+      372:   39:               if part_length >= 8 and
+      558:   40:                 Ada.Strings.Unbounded.Element(buffer, I+4) = Character'Val(16#45#) and
+      558:   41:                 Ada.Strings.Unbounded.Element(buffer, I+5) = Character'Val(16#78#) and
+      558:   42:                 Ada.Strings.Unbounded.Element(buffer, I+6) = Character'Val(16#69#) and
+      558:   43:                 Ada.Strings.Unbounded.Element(buffer, I+7) = Character'Val(16#66#) and
+      558:   44:                 Ada.Strings.Unbounded.Element(buffer, I+8) = Character'Val(16#00#) and
+      372:   45:                 Ada.Strings.Unbounded.Element(buffer, I+9) = Character'Val(16#00#) then
+        -:   46:                  -- Tiff Bild aus Unterbereich anlegen
+      186:   47:                  declare
+        -:   48:                  begin
+      372:   49:                     tiff := TiffPictures.create(name, Ada.Strings.Unbounded.To_Unbounded_String(Ada.Strings.Unbounded.Slice(buffer, I+4+6, I+part_length+1))); -- 4 Byte JPEG-Tag + 6 Byte TIFF MagicNumber in Jpeg
+      186:   50:                     picture.all.tiff_sublayer := tiff;
+        -:   51:                  exception
+        -:   52:                     -- Unknown_Format im TIFF Feld bedeutet Illegal_Format für JPEG
+        -:   53:                     -- Alle anderen Exceptions werden durchgelassen
+    #####:   54:                     when E: Unknown_Format =>
+    #####:   55:                        raise Illegal_Format with "JPEG EXIF/TIFF part contains errors!";
+      186:   56:                  end;
+        -:   57:               end if;
+        -:   58:
+        -:   59:               -- Neues Bild zurückgeben
+      186:   60:               return picture;
+        -:   61:            end if;
+        -:   62:
+        -:   63:            -- Segment-Tag (SOS) abfragen
+      378:   64:            if Ada.Strings.Unbounded.Element(buffer, I) = Character'Val(16#FF#) and
+      252:   65:              Ada.Strings.Unbounded.Element(buffer, I+1) = Character'Val(16#DA#) then
+        -:   66:               -- Start of Scan gefunden -> ab hier nur noch Pixeldaten
+        6:   67:               return picture;
+        -:   68:            end if;
+        -:   69:
+        -:   70:            -- nächstes Segment überprüfen
+      120:   71:            I := I + part_length + 2;
+      120:   72:         end loop;
+        -:   73:
+        -:   74:         -- Neues Bild zurückgeben
+    #####:   75:         return picture;
+        -:   76:      else
+        -:   77:         -- Buffer beinhaltet Müll
+       54:   78:         raise Unknown_Format with "File does not contain Jpeg data!";
+        -:   79:      end if;
+      246:   80:   end create;
+        -:   81:
+        -:   82:   -- Destruktor
+      576:   83:   procedure destroy(This: access JpegPicture) is
+      384:   84:      type type_access is access all JpegPicture;
+        -:   85:      procedure Free is new Ada.Unchecked_Deallocation(JpegPicture, type_access);
+      192:   86:      obj: type_access := type_access(This);
+        -:   87:   begin
+        -:   88:      -- interne Variablen löschen
+      192:   89:      if This.all.tiff_sublayer /= null then
+      186:   90:         This.all.tiff_sublayer.destroy;
+        -:   91:      end if;
+      192:   92:      Free(obj);
+      192:   93:   end;
+        -:   94:
+        -:   95:   -- Bild EXIF Informationen vorhanden
+      192:   96:   function hasEXIF(This: access JpegPicture) return Boolean is
+        -:   97:   begin
+      192:   98:      if This.all.tiff_sublayer = null then
+        -:   99:         return False;
+        -:  100:      else
+      186:  101:         return This.all.tiff_sublayer.hasEXIF;
+        -:  102:      end if;
+        -:  103:   end hasEXIF;
+        -:  104:
+        -:  105:   -- Bild EXIF Informationen zurück geben
+     2108:  106:   function getEXIF(This: access JpegPicture) return access EXIFParsers.EXIFParser is
+        -:  107:   begin
+     2108:  108:      if This.all.tiff_sublayer = null then
+        -:  109:         return null;
+        -:  110:      else
+     2108:  111:         return This.all.tiff_sublayer.getEXIF;
+        -:  112:      end if;
+        -:  113:   end getEXIF;
+        -:  114:
+        -:  115:   -- Statische Buffercheckfunktion
+      246:  116:   function isJpeg(buffer: Ada.Strings.Unbounded.Unbounded_String) return Boolean is
+        -:  117:      -- JFIF Magic Numbers:
+        -:  118:      -- https://en.wikipedia.org/wiki/List_of_file_signatures
+        -:  119:      -- http://parsys.informatik.uni-oldenburg.de/~stego/seminar/jpeg_SS_ewi_A.pdf
+        -:  120:      -- ANMERKUNG: ADA ist eine Krankheit! In C wären die Binärarray Zugriffe kein Problem!
+        -:  121:      -- Außerdem würde ich gerne mit dem sinnvollen 0-Index arbeiten und nicht mit dieser 1-er Krankheit.
+        -:  122:   begin
+      246:  123:      if Ada.Strings.Unbounded.Length(buffer) < 4 then
+        -:  124:         -- Dateigröße zu klein für JFIF SOI und EOI
+        -:  125:         return False;
+      492:  126:      elsif Ada.Strings.Unbounded.Element(buffer, 1) /= Character'Val(16#FF#) or
+      246:  127:        Ada.Strings.Unbounded.Element(buffer, 2) /= Character'Val(16#D8#) then
+        -:  128:         -- Magic Number entspricht nicht JFIF SOI
+        -:  129:         return False;
+      576:  130:      elsif Ada.Strings.Unbounded.Element(buffer, Ada.Strings.Unbounded.Length(buffer) - 1) /= Character'Val(16#FF#) or
+      384:  131:        Ada.Strings.Unbounded.Element(buffer, Ada.Strings.Unbounded.Length(buffer) - 0) /= Character'Val(16#D9#) then
+        -:  132:         -- Dateiende entspricht nicht JFIF EOI
+        -:  133:         --> Möglicherweise problematisch, FFD9 muss nicht am Dateiende sein...
+        -:  134:         return False;
+      384:  135:      elsif Ada.Strings.Unbounded.Element(buffer, 3) = Character'Val(16#FF#) and
+      192:  136:        Ada.Strings.Unbounded.Element(buffer, 4) = Character'Val(16#DB#) then
+        -:  137:         -- JFIF RAW Format
+        -:  138:         return True;
+      192:  139:      elsif Ada.Strings.Unbounded.Length(buffer) < 14 then
+        -:  140:         -- Dateigröße zu klein für JFIF SOI, EOI und APPx
+        -:  141:         return False;
+      384:  142:      elsif Ada.Strings.Unbounded.Element(buffer, 3) = Character'Val(16#FF#) and
+      384:  143:        Ada.Strings.Unbounded.Element(buffer, 4) = Character'Val(16#E0#) and
+      384:  144:        Ada.Strings.Unbounded.Element(buffer, 7) = Character'Val(16#4A#) and
+      384:  145:        Ada.Strings.Unbounded.Element(buffer, 8) = Character'Val(16#46#) and
+      384:  146:        Ada.Strings.Unbounded.Element(buffer, 9) = Character'Val(16#49#) and
+      384:  147:        Ada.Strings.Unbounded.Element(buffer, 10) = Character'Val(16#46#) and
+      384:  148:        Ada.Strings.Unbounded.Element(buffer, 11) = Character'Val(16#00#) and
+      192:  149:        Ada.Strings.Unbounded.Element(buffer, 12) = Character'Val(16#01#) then
+        -:  150:         -- JFIF APP0 -> 'JFIF'
+        -:  151:         return True;
+      228:  152:      elsif Ada.Strings.Unbounded.Element(buffer, 3) = Character'Val(16#FF#) and
+      228:  153:        Ada.Strings.Unbounded.Element(buffer, 4) = Character'Val(16#E1#) and
+      228:  154:        Ada.Strings.Unbounded.Element(buffer, 7) = Character'Val(16#45#) and
+      228:  155:        Ada.Strings.Unbounded.Element(buffer, 8) = Character'Val(16#78#) and
+      228:  156:        Ada.Strings.Unbounded.Element(buffer, 9) = Character'Val(16#69#) and
+      228:  157:        Ada.Strings.Unbounded.Element(buffer, 10) = Character'Val(16#66#) and
+      228:  158:        Ada.Strings.Unbounded.Element(buffer, 11) = Character'Val(16#00#) and
+      114:  159:        Ada.Strings.Unbounded.Element(buffer, 12) = Character'Val(16#00#) then
+        -:  160:         -- JFIF APP1 -> 'Exif'
+        -:  161:         return True;
+        -:  162:      else
+        -:  163:         -- Kein gültiges Format
+    #####:  164:         return False;
+        -:  165:      end if;
+        -:  166:   end;
+        -:  167:
+       16:  168:end Pictures.JpegPictures;

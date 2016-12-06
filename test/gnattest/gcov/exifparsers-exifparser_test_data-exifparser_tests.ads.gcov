@@ -1,0 +1,45 @@
+        -:    0:Source:D:/Users/Andi/Documents/GitHub/JpegByDate/test/gnattest/tests/exifparsers-exifparser_test_data-exifparser_tests.ads
+        -:    0:Programs:186
+        -:    1:--  This package has been generated automatically by GNATtest.
+        -:    2:--  Do not edit any part of it, see GNATtest documentation for more details.
+        -:    3:
+        -:    4:--  begin read only
+        -:    5:with GNATtest_Generated;
+        -:    6:
+        4:    7:package EXIFParsers.EXIFParser_Test_Data.EXIFParser_Tests is
+        -:    8:
+        4:    9:   type Test_EXIFParser is new
+        -:   10:     GNATtest_Generated.GNATtest_Standard.EXIFParsers.EXIFParser_Test_Data.Test_EXIFParser with null record;
+        -:   11:
+        -:   12:   procedure Test_create_2268cd (Gnattest_T : in out Test_EXIFParser);
+        -:   13:   --  exifparsers.ads:12:4:create
+        -:   14:
+        -:   15:   procedure Test_destroy_e0b9d4 (Gnattest_T : in out Test_EXIFParser);
+        -:   16:   --  exifparsers.ads:14:4:destroy
+        -:   17:
+        -:   18:   procedure Test_getISOSpeedRatings_43d950 (Gnattest_T : in out Test_EXIFParser);
+        -:   19:   --  exifparsers.ads:17:4:getISOSpeedRatings
+        -:   20:
+        -:   21:   procedure Test_getDateTimeOriginal_b4ec6d (Gnattest_T : in out Test_EXIFParser);
+        -:   22:   --  exifparsers.ads:18:4:getDateTimeOriginal
+        -:   23:
+        -:   24:   procedure Test_getShutterSpeedValue_95462d (Gnattest_T : in out Test_EXIFParser);
+        -:   25:   --  exifparsers.ads:19:4:getShutterSpeedValue
+        -:   26:
+        -:   27:   procedure Test_getApertureValue_6fd5d8 (Gnattest_T : in out Test_EXIFParser);
+        -:   28:   --  exifparsers.ads:20:4:getApertureValue
+        -:   29:
+        -:   30:   procedure Test_getFlash_85f837 (Gnattest_T : in out Test_EXIFParser);
+        -:   31:   --  exifparsers.ads:21:4:getFlash
+        -:   32:
+        -:   33:   procedure Test_getFocalLength_8bf5b9 (Gnattest_T : in out Test_EXIFParser);
+        -:   34:   --  exifparsers.ads:22:4:getFocalLength
+        -:   35:
+        -:   36:   procedure Test_getExifImageWidth_df7f0f (Gnattest_T : in out Test_EXIFParser);
+        -:   37:   --  exifparsers.ads:23:4:getExifImageWidth
+        -:   38:
+        -:   39:   procedure Test_getExifImageHeight_9c2b40 (Gnattest_T : in out Test_EXIFParser);
+        -:   40:   --  exifparsers.ads:24:4:getExifImageHeight
+        -:   41:
+        2:   42:end EXIFParsers.EXIFParser_Test_Data.EXIFParser_Tests;
+        -:   43:--  end read only

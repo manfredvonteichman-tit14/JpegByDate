@@ -1,0 +1,41 @@
+        -:    0:Source:D:/Users/Andi/Documents/GitHub/JpegByDate/src/Pictures.ads
+        -:    0:Programs:186
+        -:    1:-- Verwendete Packages
+        -:    2:limited with EXIFParsers;
+        -:    3:with Ada.Strings.Unbounded;
+        -:    4:
+        -:    5:-- Picture Interface
+       16:    6:package Pictures is
+        -:    7:
+        -:    8:   -- Interfacedefinition
+    #####:    9:   type Picture is abstract tagged private;
+        -:   10:
+        -:   11:   -- Interfacefunktionen
+        -:   12:   function create(name: String; buffer: Ada.Strings.Unbounded.Unbounded_String) return access Picture'Class;
+        -:   13:   procedure destroy(This: access Picture) is abstract;
+        -:   14:
+        -:   15:   -- Name und Pfad des Bildes setzen
+        -:   16:   -- DO NOT OVERLOAD!
+        -:   17:   procedure setName(This: access Picture; name: String);
+        -:   18:
+        -:   19:   -- Name und Pfad des Bildes zurückgeben
+        -:   20:   -- DO NOT OVERLOAD!
+        -:   21:   function getName(This: access Picture) return String;
+        -:   22:
+        -:   23:   -- EXIF abfragen
+        -:   24:   function hasEXIF(This: access Picture) return Boolean is abstract;
+        -:   25:   function getEXIF(This: access Picture) return access EXIFParsers.EXIFParser is abstract;
+        -:   26:
+        -:   27:   -- Exceptions
+       16:   28:   Unknown_Format: exception; -- Bildformat unbekannt
+       16:   29:   Illegal_Format: exception; -- Bildformat beinhaltet Fehler
+        -:   30:
+        -:   31:private
+        -:   32:   -- Objektvariablen
+      992:   33:   type Picture is abstract tagged
+        -:   34:      record
+      980:   35:         name: Ada.Strings.Unbounded.Unbounded_String;
+      980:   36:         binary: Ada.Strings.Unbounded.Unbounded_String;
+        -:   37:      end record;
+        -:   38:
+       16:   39:end Pictures;

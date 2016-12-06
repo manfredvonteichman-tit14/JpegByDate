@@ -1,0 +1,20 @@
+        -:    0:Source:D:/Users/Andi/Documents/GitHub/JpegByDate/src/outputs.ads
+        -:    0:Programs:186
+        -:    1:-- Verwendete Packages
+        -:    2:--> NONE
+        -:    3:
+        -:    4:-- Ausgabe Interface
+        8:    5:package Outputs is
+        -:    6:
+        -:    7:   -- Interfacedefinition
+        -:    8:   -- ACHTUNG! Ist kein Interface, sondern voll abstrakte Klasse.
+        -:    9:   -- Dies ist notwendig, da 'limited' von Interface nicht auf Subklasse vererbt wird.
+        -:   10:   -- Subklasse CSVOutput muss aber 'limited' sein und eine nachträgliche Definition dazu ist nicht möglich.
+        8:   11:   type Output is abstract tagged limited null record; -- quasi interface
+        -:   12:
+        -:   13:   -- Interfacefunktionen
+        -:   14:   function create return access Output is abstract;
+        -:   15:   procedure destroy(This: access Output) is abstract;
+        -:   16:   procedure display(This: access Output; str: String) is abstract;
+        -:   17:
+        8:   18:end Outputs;

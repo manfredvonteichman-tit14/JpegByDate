@@ -1,0 +1,491 @@
+        -:    0:Source:C:/gnat/2016/lib/gcc/i686-pc-mingw32/4.9.4/adainclude/a-strunb.ads
+        -:    0:Programs:186
+        -:    1:------------------------------------------------------------------------------
+        -:    2:--                                                                          --
+        -:    3:--                         GNAT RUN-TIME COMPONENTS                         --
+        -:    4:--                                                                          --
+        -:    5:--                 A D A . S T R I N G S . U N B O U N D E D                --
+        -:    6:--                                                                          --
+        -:    7:--                                 S p e c                                  --
+        -:    8:--                                                                          --
+        -:    9:--          Copyright (C) 1992-2014, Free Software Foundation, Inc.         --
+        -:   10:--                                                                          --
+        -:   11:-- This specification is derived from the Ada Reference Manual for use with --
+        -:   12:-- GNAT. The copyright notice above, and the license provisions that follow --
+        -:   13:-- apply solely to the  contents of the part following the private keyword. --
+        -:   14:--                                                                          --
+        -:   15:-- GNAT is free software;  you can  redistribute it  and/or modify it under --
+        -:   16:-- terms of the  GNU General Public License as published  by the Free Soft- --
+        -:   17:-- ware  Foundation;  either version 3,  or (at your option) any later ver- --
+        -:   18:-- sion.  GNAT is distributed in the hope that it will be useful, but WITH- --
+        -:   19:-- OUT ANY WARRANTY;  without even the  implied warranty of MERCHANTABILITY --
+        -:   20:-- or FITNESS FOR A PARTICULAR PURPOSE.                                     --
+        -:   21:--                                                                          --
+        -:   22:--                                                                          --
+        -:   23:--                                                                          --
+        -:   24:--                                                                          --
+        -:   25:--                                                                          --
+        -:   26:-- You should have received a copy of the GNU General Public License and    --
+        -:   27:-- a copy of the GCC Runtime Library Exception along with this program;     --
+        -:   28:-- see the files COPYING3 and COPYING.RUNTIME respectively.  If not, see    --
+        -:   29:-- <http://www.gnu.org/licenses/>.                                          --
+        -:   30:--                                                                          --
+        -:   31:-- GNAT was originally developed  by the GNAT team at  New York University. --
+        -:   32:-- Extensive contributions were provided by Ada Core Technologies Inc.      --
+        -:   33:--                                                                          --
+        -:   34:------------------------------------------------------------------------------
+        -:   35:
+        -:   36:--  This package provides an implementation of Ada.Strings.Unbounded that uses
+        -:   37:--  reference counts to implement copy on modification (rather than copy on
+        -:   38:--  assignment). This is significantly more efficient on many targets.
+        -:   39:
+        -:   40:--  This version is supported on:
+        -:   41:--    - all Alpha platforms
+        -:   42:--    - all ia64 platforms
+        -:   43:--    - all PowerPC platforms
+        -:   44:--    - all SPARC V9 platforms
+        -:   45:--    - all x86 platforms
+        -:   46:--    - all x86_64 platforms
+        -:   47:
+        -:   48:   --  This package uses several techniques to increase speed:
+        -:   49:
+        -:   50:   --   - Implicit sharing or copy-on-write. An Unbounded_String contains only
+        -:   51:   --     the reference to the data which is shared between several instances.
+        -:   52:   --     The shared data is reallocated only when its value is changed and
+        -:   53:   --     the object mutation can't be used or it is inefficient to use it.
+        -:   54:
+        -:   55:   --   - Object mutation. Shared data object can be reused without memory
+        -:   56:   --     reallocation when all of the following requirements are met:
+        -:   57:   --      - the shared data object is no longer used by anyone else;
+        -:   58:   --      - the size is sufficient to store the new value;
+        -:   59:   --      - the gap after reuse is less than a defined threshold.
+        -:   60:
+        -:   61:   --   - Memory preallocation. Most of used memory allocation algorithms
+        -:   62:   --     align allocated segments on the some boundary, thus some amount of
+        -:   63:   --     additional memory can be preallocated without any impact. Such
+        -:   64:   --     preallocated memory can used later by Append/Insert operations
+        -:   65:   --     without reallocation.
+        -:   66:
+        -:   67:   --  Reference counting uses GCC builtin atomic operations, which allows safe
+        -:   68:   --  sharing of internal data between Ada tasks. Nevertheless, this does not
+        -:   69:   --  make objects of Unbounded_String thread-safe: an instance cannot be
+        -:   70:   --  accessed by several tasks simultaneously.
+        -:   71:
+        -:   72:with Ada.Strings.Maps;
+        -:   73:private with Ada.Finalization;
+        -:   74:private with System.Atomic_Counters;
+        -:   75:
+        -:   76:package Ada.Strings.Unbounded is
+        -:   77:   pragma Preelaborate;
+        -:   78:
+        -:   79:   type Unbounded_String is private;
+        -:   80:   pragma Preelaborable_Initialization (Unbounded_String);
+        -:   81:
+        -:   82:   Null_Unbounded_String : constant Unbounded_String;
+        -:   83:
+        -:   84:   function Length (Source : Unbounded_String) return Natural;
+        -:   85:
+        -:   86:   type String_Access is access all String;
+        -:   87:
+        -:   88:   procedure Free (X : in out String_Access);
+        -:   89:
+        -:   90:   --------------------------------------------------------
+        -:   91:   -- Conversion, Concatenation, and Selection Functions --
+        -:   92:   --------------------------------------------------------
+        -:   93:
+        -:   94:   function To_Unbounded_String
+        -:   95:     (Source : String)  return Unbounded_String;
+        -:   96:
+        -:   97:   function To_Unbounded_String
+        -:   98:     (Length : Natural) return Unbounded_String;
+        -:   99:
+        -:  100:   function To_String (Source : Unbounded_String) return String;
+        -:  101:
+        -:  102:   procedure Set_Unbounded_String
+        -:  103:     (Target : out Unbounded_String;
+        -:  104:      Source : String);
+        -:  105:   pragma Ada_05 (Set_Unbounded_String);
+        -:  106:
+        -:  107:   procedure Append
+        -:  108:     (Source   : in out Unbounded_String;
+        -:  109:      New_Item : Unbounded_String);
+        -:  110:
+        -:  111:   procedure Append
+        -:  112:     (Source   : in out Unbounded_String;
+        -:  113:      New_Item : String);
+        -:  114:
+        -:  115:   procedure Append
+        -:  116:     (Source   : in out Unbounded_String;
+        -:  117:      New_Item : Character);
+        -:  118:
+        -:  119:   function "&"
+        -:  120:     (Left  : Unbounded_String;
+        -:  121:      Right : Unbounded_String) return Unbounded_String;
+        -:  122:
+        -:  123:   function "&"
+        -:  124:     (Left  : Unbounded_String;
+        -:  125:      Right : String) return Unbounded_String;
+        -:  126:
+        -:  127:   function "&"
+        -:  128:     (Left  : String;
+        -:  129:      Right : Unbounded_String) return Unbounded_String;
+        -:  130:
+        -:  131:   function "&"
+        -:  132:     (Left  : Unbounded_String;
+        -:  133:      Right : Character) return Unbounded_String;
+        -:  134:
+        -:  135:   function "&"
+        -:  136:     (Left  : Character;
+        -:  137:      Right : Unbounded_String) return Unbounded_String;
+        -:  138:
+        -:  139:   function Element
+        -:  140:     (Source : Unbounded_String;
+        -:  141:      Index  : Positive) return Character;
+        -:  142:
+        -:  143:   procedure Replace_Element
+        -:  144:     (Source : in out Unbounded_String;
+        -:  145:      Index  : Positive;
+        -:  146:      By     : Character);
+        -:  147:
+        -:  148:   function Slice
+        -:  149:     (Source : Unbounded_String;
+        -:  150:      Low    : Positive;
+        -:  151:      High   : Natural) return String;
+        -:  152:
+        -:  153:   function Unbounded_Slice
+        -:  154:     (Source : Unbounded_String;
+        -:  155:      Low    : Positive;
+        -:  156:      High   : Natural) return Unbounded_String;
+        -:  157:   pragma Ada_05 (Unbounded_Slice);
+        -:  158:
+        -:  159:   procedure Unbounded_Slice
+        -:  160:     (Source : Unbounded_String;
+        -:  161:      Target : out Unbounded_String;
+        -:  162:      Low    : Positive;
+        -:  163:      High   : Natural);
+        -:  164:   pragma Ada_05 (Unbounded_Slice);
+        -:  165:
+        -:  166:   function "="
+        -:  167:     (Left  : Unbounded_String;
+        -:  168:      Right : Unbounded_String) return Boolean;
+        -:  169:
+        -:  170:   function "="
+        -:  171:     (Left  : Unbounded_String;
+        -:  172:      Right : String) return Boolean;
+        -:  173:
+        -:  174:   function "="
+        -:  175:     (Left  : String;
+        -:  176:      Right : Unbounded_String) return Boolean;
+        -:  177:
+        -:  178:   function "<"
+        -:  179:     (Left  : Unbounded_String;
+        -:  180:      Right : Unbounded_String) return Boolean;
+        -:  181:
+        -:  182:   function "<"
+        -:  183:     (Left  : Unbounded_String;
+        -:  184:      Right : String) return Boolean;
+        -:  185:
+        -:  186:   function "<"
+        -:  187:     (Left  : String;
+        -:  188:      Right : Unbounded_String) return Boolean;
+        -:  189:
+        -:  190:   function "<="
+        -:  191:     (Left  : Unbounded_String;
+        -:  192:      Right : Unbounded_String) return Boolean;
+        -:  193:
+        -:  194:   function "<="
+        -:  195:     (Left  : Unbounded_String;
+        -:  196:      Right : String) return Boolean;
+        -:  197:
+        -:  198:   function "<="
+        -:  199:     (Left  : String;
+        -:  200:      Right : Unbounded_String) return Boolean;
+        -:  201:
+        -:  202:   function ">"
+        -:  203:     (Left  : Unbounded_String;
+        -:  204:      Right : Unbounded_String) return Boolean;
+        -:  205:
+        -:  206:   function ">"
+        -:  207:     (Left  : Unbounded_String;
+        -:  208:      Right : String) return Boolean;
+        -:  209:
+        -:  210:   function ">"
+        -:  211:     (Left  : String;
+        -:  212:      Right : Unbounded_String) return Boolean;
+        -:  213:
+        -:  214:   function ">="
+        -:  215:     (Left  : Unbounded_String;
+        -:  216:      Right : Unbounded_String) return Boolean;
+        -:  217:
+        -:  218:   function ">="
+        -:  219:     (Left  : Unbounded_String;
+        -:  220:      Right : String) return Boolean;
+        -:  221:
+        -:  222:   function ">="
+        -:  223:     (Left  : String;
+        -:  224:      Right : Unbounded_String) return Boolean;
+        -:  225:
+        -:  226:   ------------------------
+        -:  227:   -- Search Subprograms --
+        -:  228:   ------------------------
+        -:  229:
+        -:  230:   function Index
+        -:  231:     (Source  : Unbounded_String;
+        -:  232:      Pattern : String;
+        -:  233:      Going   : Direction := Forward;
+        -:  234:      Mapping : Maps.Character_Mapping := Maps.Identity) return Natural;
+        -:  235:
+        -:  236:   function Index
+        -:  237:     (Source  : Unbounded_String;
+        -:  238:      Pattern : String;
+        -:  239:      Going   : Direction := Forward;
+        -:  240:      Mapping : Maps.Character_Mapping_Function) return Natural;
+        -:  241:
+        -:  242:   function Index
+        -:  243:     (Source : Unbounded_String;
+        -:  244:      Set    : Maps.Character_Set;
+        -:  245:      Test   : Membership := Inside;
+        -:  246:      Going  : Direction  := Forward) return Natural;
+        -:  247:
+        -:  248:   function Index
+        -:  249:     (Source  : Unbounded_String;
+        -:  250:      Pattern : String;
+        -:  251:      From    : Positive;
+        -:  252:      Going   : Direction := Forward;
+        -:  253:      Mapping : Maps.Character_Mapping := Maps.Identity) return Natural;
+        -:  254:   pragma Ada_05 (Index);
+        -:  255:
+        -:  256:   function Index
+        -:  257:     (Source  : Unbounded_String;
+        -:  258:      Pattern : String;
+        -:  259:      From    : Positive;
+        -:  260:      Going   : Direction := Forward;
+        -:  261:      Mapping : Maps.Character_Mapping_Function) return Natural;
+        -:  262:   pragma Ada_05 (Index);
+        -:  263:
+        -:  264:   function Index
+        -:  265:     (Source  : Unbounded_String;
+        -:  266:      Set     : Maps.Character_Set;
+        -:  267:      From    : Positive;
+        -:  268:      Test    : Membership := Inside;
+        -:  269:      Going   : Direction := Forward) return Natural;
+        -:  270:   pragma Ada_05 (Index);
+        -:  271:
+        -:  272:   function Index_Non_Blank
+        -:  273:     (Source : Unbounded_String;
+        -:  274:      Going  : Direction := Forward) return Natural;
+        -:  275:
+        -:  276:   function Index_Non_Blank
+        -:  277:     (Source : Unbounded_String;
+        -:  278:      From   : Positive;
+        -:  279:      Going  : Direction := Forward) return Natural;
+        -:  280:   pragma Ada_05 (Index_Non_Blank);
+        -:  281:
+        -:  282:   function Count
+        -:  283:     (Source  : Unbounded_String;
+        -:  284:      Pattern : String;
+        -:  285:      Mapping : Maps.Character_Mapping := Maps.Identity) return Natural;
+        -:  286:
+        -:  287:   function Count
+        -:  288:     (Source  : Unbounded_String;
+        -:  289:      Pattern : String;
+        -:  290:      Mapping : Maps.Character_Mapping_Function) return Natural;
+        -:  291:
+        -:  292:   function Count
+        -:  293:     (Source : Unbounded_String;
+        -:  294:      Set    : Maps.Character_Set) return Natural;
+        -:  295:
+        -:  296:   procedure Find_Token
+        -:  297:     (Source : Unbounded_String;
+        -:  298:      Set    : Maps.Character_Set;
+        -:  299:      From   : Positive;
+        -:  300:      Test   : Membership;
+        -:  301:      First  : out Positive;
+        -:  302:      Last   : out Natural);
+        -:  303:   pragma Ada_2012 (Find_Token);
+        -:  304:
+        -:  305:   procedure Find_Token
+        -:  306:     (Source : Unbounded_String;
+        -:  307:      Set    : Maps.Character_Set;
+        -:  308:      Test   : Membership;
+        -:  309:      First  : out Positive;
+        -:  310:      Last   : out Natural);
+        -:  311:
+        -:  312:   ------------------------------------
+        -:  313:   -- String Translation Subprograms --
+        -:  314:   ------------------------------------
+        -:  315:
+        -:  316:   function Translate
+        -:  317:     (Source  : Unbounded_String;
+        -:  318:      Mapping : Maps.Character_Mapping) return Unbounded_String;
+        -:  319:
+        -:  320:   procedure Translate
+        -:  321:     (Source  : in out Unbounded_String;
+        -:  322:      Mapping : Maps.Character_Mapping);
+        -:  323:
+        -:  324:   function Translate
+        -:  325:     (Source  : Unbounded_String;
+        -:  326:      Mapping : Maps.Character_Mapping_Function) return Unbounded_String;
+        -:  327:
+        -:  328:   procedure Translate
+        -:  329:     (Source  : in out Unbounded_String;
+        -:  330:      Mapping : Maps.Character_Mapping_Function);
+        -:  331:
+        -:  332:   ---------------------------------------
+        -:  333:   -- String Transformation Subprograms --
+        -:  334:   ---------------------------------------
+        -:  335:
+        -:  336:   function Replace_Slice
+        -:  337:     (Source : Unbounded_String;
+        -:  338:      Low    : Positive;
+        -:  339:      High   : Natural;
+        -:  340:      By     : String) return Unbounded_String;
+        -:  341:
+        -:  342:   procedure Replace_Slice
+        -:  343:     (Source : in out Unbounded_String;
+        -:  344:      Low    : Positive;
+        -:  345:      High   : Natural;
+        -:  346:      By     : String);
+        -:  347:
+        -:  348:   function Insert
+        -:  349:     (Source   : Unbounded_String;
+        -:  350:      Before   : Positive;
+        -:  351:      New_Item : String) return Unbounded_String;
+        -:  352:
+        -:  353:   procedure Insert
+        -:  354:     (Source   : in out Unbounded_String;
+        -:  355:      Before   : Positive;
+        -:  356:      New_Item : String);
+        -:  357:
+        -:  358:   function Overwrite
+        -:  359:     (Source   : Unbounded_String;
+        -:  360:      Position : Positive;
+        -:  361:      New_Item : String) return Unbounded_String;
+        -:  362:
+        -:  363:   procedure Overwrite
+        -:  364:     (Source   : in out Unbounded_String;
+        -:  365:      Position : Positive;
+        -:  366:      New_Item : String);
+        -:  367:
+        -:  368:   function Delete
+        -:  369:     (Source  : Unbounded_String;
+        -:  370:      From    : Positive;
+        -:  371:      Through : Natural) return Unbounded_String;
+        -:  372:
+        -:  373:   procedure Delete
+        -:  374:     (Source  : in out Unbounded_String;
+        -:  375:      From    : Positive;
+        -:  376:      Through : Natural);
+        -:  377:
+        -:  378:   function Trim
+        -:  379:     (Source : Unbounded_String;
+        -:  380:      Side   : Trim_End) return Unbounded_String;
+        -:  381:
+        -:  382:   procedure Trim
+        -:  383:     (Source : in out Unbounded_String;
+        -:  384:      Side   : Trim_End);
+        -:  385:
+        -:  386:   function Trim
+        -:  387:     (Source : Unbounded_String;
+        -:  388:      Left   : Maps.Character_Set;
+        -:  389:      Right  : Maps.Character_Set) return Unbounded_String;
+        -:  390:
+        -:  391:   procedure Trim
+        -:  392:     (Source : in out Unbounded_String;
+        -:  393:      Left   : Maps.Character_Set;
+        -:  394:      Right  : Maps.Character_Set);
+        -:  395:
+        -:  396:   function Head
+        -:  397:     (Source : Unbounded_String;
+        -:  398:      Count  : Natural;
+        -:  399:      Pad    : Character := Space) return Unbounded_String;
+        -:  400:
+        -:  401:   procedure Head
+        -:  402:     (Source : in out Unbounded_String;
+        -:  403:      Count  : Natural;
+        -:  404:      Pad    : Character := Space);
+        -:  405:
+        -:  406:   function Tail
+        -:  407:     (Source : Unbounded_String;
+        -:  408:      Count  : Natural;
+        -:  409:      Pad    : Character := Space) return Unbounded_String;
+        -:  410:
+        -:  411:   procedure Tail
+        -:  412:     (Source : in out Unbounded_String;
+        -:  413:      Count  : Natural;
+        -:  414:      Pad    : Character := Space);
+        -:  415:
+        -:  416:   function "*"
+        -:  417:     (Left  : Natural;
+        -:  418:      Right : Character) return Unbounded_String;
+        -:  419:
+        -:  420:   function "*"
+        -:  421:     (Left  : Natural;
+        -:  422:      Right : String) return Unbounded_String;
+        -:  423:
+        -:  424:   function "*"
+        -:  425:     (Left  : Natural;
+        -:  426:      Right : Unbounded_String) return Unbounded_String;
+        -:  427:
+        -:  428:private
+        -:  429:   pragma Inline (Length);
+        -:  430:
+        -:  431:   package AF renames Ada.Finalization;
+        -:  432:
+        -:  433:   type Shared_String (Max_Length : Natural) is limited record
+        -:  434:      Counter : System.Atomic_Counters.Atomic_Counter;
+        -:  435:      --  Reference counter
+        -:  436:
+        -:  437:      Last : Natural := 0;
+        -:  438:      Data : String (1 .. Max_Length);
+        -:  439:      --  Last is the index of last significant element of the Data. All
+        -:  440:      --  elements with larger indexes are currently insignificant.
+        -:  441:   end record;
+        -:  442:
+        -:  443:   type Shared_String_Access is access all Shared_String;
+        -:  444:
+        -:  445:   procedure Reference (Item : not null Shared_String_Access);
+        -:  446:   --  Increment reference counter
+        -:  447:
+        -:  448:   procedure Unreference (Item : not null Shared_String_Access);
+        -:  449:   --  Decrement reference counter, deallocate Item when counter goes to zero
+        -:  450:
+        -:  451:   function Can_Be_Reused
+        -:  452:     (Item   : Shared_String_Access;
+        -:  453:      Length : Natural) return Boolean;
+        -:  454:   --  Returns True if Shared_String can be reused. There are two criteria when
+        -:  455:   --  Shared_String can be reused: its reference counter must be one (thus
+        -:  456:   --  Shared_String is owned exclusively) and its size is sufficient to
+        -:  457:   --  store string with specified length effectively.
+        -:  458:
+        -:  459:   function Allocate (Max_Length : Natural) return Shared_String_Access;
+        -:  460:   --  Allocates new Shared_String with at least specified maximum length.
+        -:  461:   --  Actual maximum length of the allocated Shared_String can be slightly
+        -:  462:   --  greater. Returns reference to Empty_Shared_String when requested length
+        -:  463:   --  is zero.
+        -:  464:
+        -:  465:   Empty_Shared_String : aliased Shared_String (0);
+        -:  466:
+        -:  467:   function To_Unbounded (S : String) return Unbounded_String
+        -:  468:     renames To_Unbounded_String;
+        -:  469:   --  This renames are here only to be used in the pragma Stream_Convert
+        -:  470:
+     1964:  471:   type Unbounded_String is new AF.Controlled with record
+        -:  472:      Reference : Shared_String_Access := Empty_Shared_String'Access;
+        -:  473:   end record;
+        -:  474:
+        -:  475:   pragma Stream_Convert (Unbounded_String, To_Unbounded, To_String);
+        -:  476:   --  Provide stream routines without dragging in Ada.Streams
+        -:  477:
+        -:  478:   pragma Finalize_Storage_Only (Unbounded_String);
+        -:  479:   --  Finalization is required only for freeing storage
+        -:  480:
+        -:  481:   overriding procedure Initialize (Object : in out Unbounded_String);
+        -:  482:   overriding procedure Adjust     (Object : in out Unbounded_String);
+        -:  483:   overriding procedure Finalize   (Object : in out Unbounded_String);
+        -:  484:
+        -:  485:   Null_Unbounded_String : constant Unbounded_String :=
+        -:  486:                             (AF.Controlled with
+        -:  487:                                Reference => Empty_Shared_String'Access);
+        -:  488:
+        -:  489:end Ada.Strings.Unbounded;

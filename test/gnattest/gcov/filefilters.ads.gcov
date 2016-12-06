@@ -1,0 +1,7 @@
+        -:    0:Source:D:/Users/Andi/Documents/GitHub/JpegByDate/src/filefilters.ads
+        -:    0:Programs:186
+        -:    1:-- Verwendete Packages
+        -:    2:with Filters;
+        -:    3:
+        -:    4:-- Filter Spezialisierung für FileFilter
+        1:    5:package FileFilters is new Filters(String);

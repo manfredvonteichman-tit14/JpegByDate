@@ -1,0 +1,51 @@
+        -:    0:Source:D:/Users/Andi/Documents/GitHub/JpegByDate/src/filenamefilters.adb
+        -:    0:Programs:186
+        -:    1:-- Verwendete Packages
+        -:    2:with Globals;
+        -:    3:with Ada.Strings.Fixed;
+        -:    4:with Ada.Unchecked_Deallocation;
+        -:    5:with GNAT.Regpat;
+        -:    6:
+        -:    7:-- Package für Filtermodul
+        -:    8:package body FileNameFilters is
+        -:    9:
+        -:   10:   -- Konstruktor
+    #####:   11:   function create(params: access Parameters.Parameter) return access FileNameFilter is
+    #####:   12:      filter: access FileNameFilter := new FileNameFilter;
+        -:   13:   begin
+    #####:   14:      filter.all.params := params;
+    #####:   15:      return filter;
+        -:   16:   end create;
+        -:   17:
+        -:   18:   -- Destruktor
+    #####:   19:   procedure destroy(This: access FileNameFilter; destroy_chain: Boolean := False) is
+        -:   20:      type type_access is access all FileNameFilter;
+        -:   21:      procedure Free is new Ada.Unchecked_Deallocation(FileNameFilter, type_access);
+    #####:   22:      obj: type_access := type_access(This);
+        -:   23:   begin
+        -:   24:      -- externe Variablen in diesem Fall doch löschen
+    #####:   25:      if destroy_chain = True and This.getNext /= null then
+    #####:   26:         This.getNext.destroy(destroy_chain);
+        -:   27:      end if;
+    #####:   28:      Free(obj);
+    #####:   29:   end;
+        -:   30:
+        -:   31:   -- private Funktionen
+    #####:   32:   overriding function applyThis(This: access FileNameFilter; str: String) return Boolean is
+        -:   33:      -- Dateinamen in gesamten Pfad finden
+    #####:   34:      pos: Natural := GNAT.Regpat.Match(Expression => Globals.regexPatternSimpleName, Data => str);
+        -:   35:   begin
+        -:   36:      -- Shortcut falls Standardwert verwendet wird
+    #####:   37:      if This.all.params.flagFilePattern = False then
+        -:   38:         return True;
+        -:   39:      end if;
+        -:   40:
+        -:   41:      -- Regex Match des Dateinamens mit Pattern
+    #####:   42:      if pos <= str'First then
+        -:   43:         return False;
+        -:   44:      else
+    #####:   45:         return Boolean'(GNAT.Regpat.Match(Expression => This.all.params.getFilePattern, Data => Ada.Strings.Fixed.Replace_Slice(str, str'First, pos-1, "")));
+        -:   46:      end if;
+        -:   47:   end applyThis;
+        -:   48:
+        -:   49:end FileNameFilters;

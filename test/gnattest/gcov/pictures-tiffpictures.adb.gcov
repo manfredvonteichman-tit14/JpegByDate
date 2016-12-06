@@ -1,0 +1,242 @@
+        -:    0:Source:D:/Users/Andi/Documents/GitHub/JpegByDate/src/pictures-tiffpictures.adb
+        -:    0:Programs:186
+        -:    1:-- Verwendete Packages
+        -:    2:with EXIFParsers;
+        -:    3:with Globals;
+        -:    4:with Ada.Unchecked_Deallocation;
+        -:    5:
+        -:    6:-- Package für TiffPicture  als Childpackage von Picture
+        4:    7:package body Pictures.TiffPictures is
+        -:    8:
+        -:    9:   -- Konstruktor
+    #####:   10:   function create(name: String; buffer: Ada.Strings.Unbounded.Unbounded_String) return access TiffPicture is
+    #####:   11:      picture: access TiffPicture := new TiffPicture;
+        -:   12:      I: Integer;
+        -:   13:      part_length: Integer;
+        -:   14:      eos: Integer;
+        -:   15:   begin
+    #####:   16:      if isTiff(buffer) then
+        -:   17:         -- Buffer beinhaltet Tiff Datei
+    #####:   18:         picture.all.name := Ada.Strings.Unbounded.To_Unbounded_String(name);
+    #####:   19:         picture.all.binary := buffer;
+        -:   20:
+        -:   21:         -- Endianness
+    #####:   22:         if Ada.Strings.Unbounded.Element(buffer, 3) = Character'Val(16#2A#) then
+    #####:   23:            picture.all.little_endian := True;
+        -:   24:         else
+    #####:   25:            picture.all.little_endian := False;
+        -:   26:         end if;
+        -:   27:
+        -:   28:         -- Mindestgröße überprüfen
+    #####:   29:         if Ada.Strings.Unbounded.Length(buffer) < 8 then
+        -:   30:            -- keine EXIF Daten in zu kleinem Bild
+    #####:   31:            raise Illegal_Format with "Filesize is too small!";
+        -:   32:         end if;
+        -:   33:
+        -:   34:         -- Offset für IFD0 aus Pointer erstellen
+    #####:   35:         I := picture.createInt(Ada.Strings.Unbounded.Element(buffer, 5), Ada.Strings.Unbounded.Element(buffer, 6), Ada.Strings.Unbounded.Element(buffer, 7), Ada.Strings.Unbounded.Element(buffer, 8)) + 1; -- 0-Index wäre schöner...
+    #####:   36:         if Ada.Strings.Unbounded.Length(buffer) <= I then
+        -:   37:            -- Bilddatei zu klein...
+    #####:   38:            raise Illegal_Format with "EOF reached before begin of IFD0!";
+        -:   39:         end if;
+        -:   40:
+        -:   41:         -- Länge von IFD0 berechnen
+    #####:   42:         part_length := picture.createInt(Ada.Strings.Unbounded.Element(buffer, I+0), Ada.Strings.Unbounded.Element(buffer, I+1)) * Globals.exif.directory_length + 2 + 4; -- 2 Byte Länge + 4 Byte Ptr zu nächstem IFD
+    #####:   43:         if Ada.Strings.Unbounded.Length(buffer) < I+part_length-1 then
+        -:   44:            -- Bilddatei zu klein...
+    #####:   45:            raise Illegal_Format with "EOF reached before end of IFD0!";
+        -:   46:         end if;
+        -:   47:
+        -:   48:         -- Start am ersten Directory
+    #####:   49:         eos := I + part_length - 4; -- 4 Byte zu nächstem IFD abziehen
+    #####:   50:         I := I + 2;
+        -:   51:
+        -:   52:         -- IFD0 durchsuchen
+    #####:   53:         while I < eos loop
+        -:   54:            -- EXIF-Tag gefunden
+    #####:   55:            if picture.createInt(Ada.Strings.Unbounded.Element(buffer, I+0), Ada.Strings.Unbounded.Element(buffer, I+1)) = Globals.exif.tag and
+    #####:   56:              picture.createInt(Ada.Strings.Unbounded.Element(buffer, I+2), Ada.Strings.Unbounded.Element(buffer, I+3)) = Globals.exif.tag_Type and
+    #####:   57:              picture.createInt(Ada.Strings.Unbounded.Element(buffer, I+4), Ada.Strings.Unbounded.Element(buffer, I+5), Ada.Strings.Unbounded.Element(buffer, I+6), Ada.Strings.Unbounded.Element(buffer, I+7)) = Globals.exif.tag_Length then
+        -:   58:               -- Neues Offset berechnen
+    #####:   59:               I := picture.createInt(Ada.Strings.Unbounded.Element(buffer, I+8), Ada.Strings.Unbounded.Element(buffer, I+9), Ada.Strings.Unbounded.Element(buffer, I+10), Ada.Strings.Unbounded.Element(buffer, I+11)) + 1; -- 0-Index wäre schöner...
+        -:   60:
+        -:   61:               -- Länge überprüfen
+    #####:   62:               if Ada.Strings.Unbounded.Length(buffer) <= I then
+        -:   63:                  -- Bilddatei zu klein...
+    #####:   64:                  raise Illegal_Format with "EOF reached before begin of EXIF SubIFD!";
+        -:   65:               end if;
+        -:   66:
+        -:   67:               -- Länge von EXIF SubIFD berechnen
+    #####:   68:               part_length := picture.createInt(Ada.Strings.Unbounded.Element(buffer, I+0), Ada.Strings.Unbounded.Element(buffer, I+1)) * 12 + 2;
+    #####:   69:               if Ada.Strings.Unbounded.Length(buffer) < I+part_length-1 then
+        -:   70:                  -- Bilddatei zu klein...
+    #####:   71:                  raise Illegal_Format with "EOF reached before end of EXIF SubIFD!";
+        -:   72:               end if;
+        -:   73:
+        -:   74:               -- EXIF Parser anlegen
+    #####:   75:               declare
+    #####:   76:                  exif_tmp: access EXIFParsers.EXIFParser := null;
+        -:   77:               begin
+    #####:   78:                  exif_tmp := EXIFParsers.create(Ada.Strings.Unbounded.Slice(buffer, I+2, I+part_length-1), picture);
+    #####:   79:                  picture.exif := exif_tmp;
+        -:   80:               exception
+        -:   81:                  -- Falls keine EXIF Informationen vorhanden
+        -:   82:                  -- KEINE AKTION -> Bild wird ohne EXIF erstellt
+        -:   83:
+        -:   84:                  -- Ungültiges EXIF-Format
+    #####:   85:                  when E: Illegal_Format =>
+        -:   86:                     null;
+        -:   87:
+        -:   88:                  -- Sonstiges Problem
+    #####:   89:                  when E: others =>
+        -:   90:                     null;
+    #####:   91:               end;
+        -:   92:
+        -:   93:               -- Neues Bild zurückgeben
+    #####:   94:               return picture;
+        -:   95:            end if;
+        -:   96:
+        -:   97:            -- Nächstes Directory
+    #####:   98:            I := I + Globals.exif.directory_length;
+    #####:   99:         end loop;
+        -:  100:
+        -:  101:         -- Kein EXIF SubIFD Tag gefunden
+        -:  102:         -- HACK -> Setze IFD0 in EXIFParser, eventuell sind Tags hier vorhanden...
+    #####:  103:         declare
+    #####:  104:            exif_tmp: access EXIFParsers.EXIFParser := null;
+        -:  105:         begin
+        -:  106:            -- IFD0 Index neu berechnen
+    #####:  107:            I := picture.createInt(Ada.Strings.Unbounded.Element(buffer, 5), Ada.Strings.Unbounded.Element(buffer, 6), Ada.Strings.Unbounded.Element(buffer, 7), Ada.Strings.Unbounded.Element(buffer, 8)) + 1; -- 0-Index wäre schöner...
+        -:  108:
+        -:  109:            -- EXIF Parser anlegen mit IFD0
+    #####:  110:            exif_tmp := EXIFParsers.create(Ada.Strings.Unbounded.Slice(buffer, I+2, eos-1), picture);
+    #####:  111:            picture.exif := exif_tmp;
+        -:  112:         exception
+        -:  113:            -- Falls keine EXIF Informationen vorhanden
+        -:  114:            -- KEINE AKTION -> Bild wird ohne EXIF erstellt
+        -:  115:
+        -:  116:            -- Ungültiges EXIF-Format
+    #####:  117:            when E: Illegal_Format =>
+        -:  118:               null;
+        -:  119:
+        -:  120:            -- Sonstiges Problem
+    #####:  121:            when E: others =>
+        -:  122:               null;
+    #####:  123:         end;
+        -:  124:
+        -:  125:         -- Neues Bild zurückgeben
+    #####:  126:         return picture;
+        -:  127:      else
+        -:  128:         -- Buffer beinhaltet Müll
+    #####:  129:         raise Unknown_Format with "File does not contain Tiff data!";
+        -:  130:      end if;
+    #####:  131:   end create;
+        -:  132:
+        -:  133:   -- Destruktor
+    #####:  134:   procedure destroy(This: access TiffPicture) is
+    #####:  135:      type type_access is access all TiffPicture;
+        -:  136:      procedure Free is new Ada.Unchecked_Deallocation(TiffPicture, type_access);
+    #####:  137:      obj: type_access := type_access(This);
+        -:  138:   begin
+        -:  139:      -- interne Variablen löschen
+    #####:  140:      if This.all.exif /= null then
+    #####:  141:         This.all.exif.destroy;
+        -:  142:      end if;
+    #####:  143:      Free(obj);
+    #####:  144:   end;
+        -:  145:
+        -:  146:   -- Bild EXIF Informationen vorhanden
+    #####:  147:   function hasEXIF(This: access TiffPicture) return Boolean is
+        -:  148:   begin
+    #####:  149:      if This.all.exif = null then
+        -:  150:         return False;
+        -:  151:      else
+        -:  152:         return True;
+        -:  153:      end if;
+        -:  154:   end hasEXIF;
+        -:  155:
+        -:  156:   -- Bild EXIF Informationen zurück geben
+    #####:  157:   function getEXIF(This: access TiffPicture) return access EXIFParsers.EXIFParser is
+        -:  158:   begin
+    #####:  159:      return This.all.exif;
+        -:  160:   end getEXIF;
+        -:  161:
+        -:  162:   -- DWORD und WORD anhand Endianness erstellen
+    #####:  163:   function createInt(This: access TiffPicture; b0: Character; b1: Character) return Integer is
+        -:  164:   begin
+    #####:  165:      if This.all.little_endian then
+    #####:  166:         return This.createInt(b0, b1, Character'Val(0), Character'Val(0));
+        -:  167:      else
+    #####:  168:         return This.createInt(Character'Val(0), Character'Val(0), b0, b1);
+        -:  169:      end if;
+        -:  170:   end createInt;
+    #####:  171:   function createInt(This: access TiffPicture; b0: Character; b1: Character; b2: Character; b3: Character) return Integer is
+        -:  172:      -- Eigener Datentyp zum Zusammensetzen von Bytes zu Integer
+        -:  173:      type My_Int is record
+        -:  174:         A: Character;
+        -:  175:         B: Character;
+        -:  176:         C: Character;
+        -:  177:         D: Character;
+        -:  178:      end record;
+        -:  179:      for My_Int use record
+        -:  180:         A at 0 range 0..7;
+        -:  181:         B at 0 range 8..15;
+        -:  182:         C at 0 range 16..23;
+        -:  183:         D at 0 range 24..31;
+        -:  184:      end record;
+        -:  185:      for My_Int'Size use 32;
+        -:  186:
+        -:  187:      -- Variablen zum Zusammensetzen
+        -:  188:      typ_int: Integer;
+    #####:  189:      typ_rec: My_Int;
+        -:  190:      for typ_rec'Address use typ_int'Address;
+        -:  191:   begin
+    #####:  192:      if This.all.little_endian then
+    #####:  193:         typ_rec.A := b0;
+    #####:  194:         typ_rec.B := b1;
+    #####:  195:         typ_rec.C := b2;
+    #####:  196:         typ_rec.D := b3;
+    #####:  197:         return typ_int;
+        -:  198:      else
+    #####:  199:         typ_rec.A := b3;
+    #####:  200:         typ_rec.B := b2;
+    #####:  201:         typ_rec.C := b1;
+    #####:  202:         typ_rec.D := b0;
+    #####:  203:         return typ_int;
+        -:  204:      end if;
+    #####:  205:   end createInt;
+        -:  206:
+        -:  207:   -- Binärdaten lesen
+    #####:  208:   function readBinary(This: access TiffPicture; First: Integer; Last:Integer) return String is
+        -:  209:   begin
+    #####:  210:      return Ada.Strings.Unbounded.Slice(This.all.binary, First, Last);
+        -:  211:   end readBinary;
+        -:  212:
+        -:  213:   -- Statische Buffercheckfunktion
+    #####:  214:   function isTiff(buffer: Ada.Strings.Unbounded.Unbounded_String) return Boolean is
+        -:  215:      -- TIFF Magic Numbers:
+        -:  216:      -- https://en.wikipedia.org/wiki/List_of_file_signatures
+        -:  217:      -- https://www.media.mit.edu/pia/Research/deepview/exif.html
+        -:  218:   begin
+    #####:  219:      if Ada.Strings.Unbounded.Length(buffer) < 4 then
+        -:  220:         -- Dateigröße zu klein für TIFF Magic Number
+        -:  221:         return False;
+    #####:  222:      elsif Ada.Strings.Unbounded.Element(buffer, 1) = Character'Val(16#49#) and
+    #####:  223:        Ada.Strings.Unbounded.Element(buffer, 2) = Character'Val(16#49#) and
+    #####:  224:        Ada.Strings.Unbounded.Element(buffer, 3) = Character'Val(16#2A#) and
+    #####:  225:        Ada.Strings.Unbounded.Element(buffer, 4) = Character'Val(16#00#) then
+        -:  226:         -- Magic Number entspricht TIFF little endian
+        -:  227:         return True;
+    #####:  228:      elsif Ada.Strings.Unbounded.Element(buffer, 1) = Character'Val(16#4D#) and
+    #####:  229:        Ada.Strings.Unbounded.Element(buffer, 2) = Character'Val(16#4D#) and
+    #####:  230:        Ada.Strings.Unbounded.Element(buffer, 3) = Character'Val(16#00#) and
+    #####:  231:        Ada.Strings.Unbounded.Element(buffer, 4) = Character'Val(16#2A#) then
+        -:  232:         -- Magic Number entspricht TIFF big endian
+        -:  233:         return True;
+        -:  234:      else
+        -:  235:         -- kein gültiges Format
+    #####:  236:         return False;
+        -:  237:      end if;
+        -:  238:   end isTiff;
+        -:  239:
+        2:  240:end Pictures.TiffPictures;

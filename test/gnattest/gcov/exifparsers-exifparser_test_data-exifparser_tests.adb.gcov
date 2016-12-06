@@ -1,0 +1,225 @@
+        -:    0:Source:D:/Users/Andi/Documents/GitHub/JpegByDate/test/gnattest/tests/exifparsers-exifparser_test_data-exifparser_tests.adb
+        -:    0:Programs:186
+        -:    1:--  This package has been generated automatically by GNATtest.
+        -:    2:--  You are allowed to add your code to the bodies of test routines.
+        -:    3:--  Such changes will be kept during further regeneration of this file.
+        -:    4:--  All code placed outside of test routine bodies will be lost. The
+        -:    5:--  code intended to set up and tear down the test environment should be
+        -:    6:--  placed into EXIFParsers.EXIFParser_Test_Data.
+        -:    7:
+        -:    8:with AUnit.Assertions; use AUnit.Assertions;
+        -:    9:with System.Assertions;
+        -:   10:
+        -:   11:package body EXIFParsers.EXIFParser_Test_Data.EXIFParser_Tests is
+        -:   12:
+        -:   13:
+        -:   14:--  begin read only
+        -:   15:   procedure Test_create (Gnattest_T : in out Test_EXIFParser);
+        2:   16:   procedure Test_create_2268cd (Gnattest_T : in out Test_EXIFParser) renames Test_create;
+        -:   17:--  id:2.2/2268cddfd6326e87/create/1/0/
+        2:   18:   procedure Test_create (Gnattest_T : in out Test_EXIFParser) is
+        -:   19:   --  exifparsers.ads:12:4:create
+        -:   20:--  end read only
+        -:   21:
+        -:   22:      pragma Unreferenced (Gnattest_T);
+        -:   23:
+        -:   24:   begin
+        -:   25:
+        2:   26:      AUnit.Assertions.Assert
+        -:   27:        (Gnattest_Generated.Default_Assert_Value,
+        -:   28:         "Test not implemented.");
+        -:   29:
+        -:   30:--  begin read only
+        2:   31:   end Test_create;
+        -:   32:--  end read only
+        -:   33:
+        -:   34:
+        -:   35:--  begin read only
+        -:   36:   procedure Test_destroy (Gnattest_T : in out Test_EXIFParser);
+        2:   37:   procedure Test_destroy_e0b9d4 (Gnattest_T : in out Test_EXIFParser) renames Test_destroy;
+        -:   38:--  id:2.2/e0b9d457c4603375/destroy/1/0/
+        2:   39:   procedure Test_destroy (Gnattest_T : in out Test_EXIFParser) is
+        -:   40:   --  exifparsers.ads:14:4:destroy
+        -:   41:--  end read only
+        -:   42:
+        -:   43:      pragma Unreferenced (Gnattest_T);
+        -:   44:
+        -:   45:   begin
+        -:   46:
+        2:   47:      AUnit.Assertions.Assert
+        -:   48:        (Gnattest_Generated.Default_Assert_Value,
+        -:   49:         "Test not implemented.");
+        -:   50:
+        -:   51:--  begin read only
+        2:   52:   end Test_destroy;
+        -:   53:--  end read only
+        -:   54:
+        -:   55:
+        -:   56:--  begin read only
+        -:   57:   procedure Test_getISOSpeedRatings (Gnattest_T : in out Test_EXIFParser);
+        2:   58:   procedure Test_getISOSpeedRatings_43d950 (Gnattest_T : in out Test_EXIFParser) renames Test_getISOSpeedRatings;
+        -:   59:--  id:2.2/43d9503ef557e5c2/getISOSpeedRatings/1/0/
+        2:   60:   procedure Test_getISOSpeedRatings (Gnattest_T : in out Test_EXIFParser) is
+        -:   61:   --  exifparsers.ads:17:4:getISOSpeedRatings
+        -:   62:--  end read only
+        -:   63:
+        -:   64:      pragma Unreferenced (Gnattest_T);
+        -:   65:
+        -:   66:   begin
+        -:   67:
+        2:   68:      AUnit.Assertions.Assert
+        -:   69:        (Gnattest_Generated.Default_Assert_Value,
+        -:   70:         "Test not implemented.");
+        -:   71:
+        -:   72:--  begin read only
+        2:   73:   end Test_getISOSpeedRatings;
+        -:   74:--  end read only
+        -:   75:
+        -:   76:
+        -:   77:--  begin read only
+        -:   78:   procedure Test_getDateTimeOriginal (Gnattest_T : in out Test_EXIFParser);
+        2:   79:   procedure Test_getDateTimeOriginal_b4ec6d (Gnattest_T : in out Test_EXIFParser) renames Test_getDateTimeOriginal;
+        -:   80:--  id:2.2/b4ec6dd0a2279b66/getDateTimeOriginal/1/0/
+        2:   81:   procedure Test_getDateTimeOriginal (Gnattest_T : in out Test_EXIFParser) is
+        -:   82:   --  exifparsers.ads:18:4:getDateTimeOriginal
+        -:   83:--  end read only
+        -:   84:
+        -:   85:      pragma Unreferenced (Gnattest_T);
+        -:   86:
+        -:   87:   begin
+        -:   88:
+        2:   89:      AUnit.Assertions.Assert
+        -:   90:        (Gnattest_Generated.Default_Assert_Value,
+        -:   91:         "Test not implemented.");
+        -:   92:
+        -:   93:--  begin read only
+        2:   94:   end Test_getDateTimeOriginal;
+        -:   95:--  end read only
+        -:   96:
+        -:   97:
+        -:   98:--  begin read only
+        -:   99:   procedure Test_getShutterSpeedValue (Gnattest_T : in out Test_EXIFParser);
+        2:  100:   procedure Test_getShutterSpeedValue_95462d (Gnattest_T : in out Test_EXIFParser) renames Test_getShutterSpeedValue;
+        -:  101:--  id:2.2/95462d2daf957d2c/getShutterSpeedValue/1/0/
+        2:  102:   procedure Test_getShutterSpeedValue (Gnattest_T : in out Test_EXIFParser) is
+        -:  103:   --  exifparsers.ads:19:4:getShutterSpeedValue
+        -:  104:--  end read only
+        -:  105:
+        -:  106:      pragma Unreferenced (Gnattest_T);
+        -:  107:
+        -:  108:   begin
+        -:  109:
+        2:  110:      AUnit.Assertions.Assert
+        -:  111:        (Gnattest_Generated.Default_Assert_Value,
+        -:  112:         "Test not implemented.");
+        -:  113:
+        -:  114:--  begin read only
+        2:  115:   end Test_getShutterSpeedValue;
+        -:  116:--  end read only
+        -:  117:
+        -:  118:
+        -:  119:--  begin read only
+        -:  120:   procedure Test_getApertureValue (Gnattest_T : in out Test_EXIFParser);
+        2:  121:   procedure Test_getApertureValue_6fd5d8 (Gnattest_T : in out Test_EXIFParser) renames Test_getApertureValue;
+        -:  122:--  id:2.2/6fd5d8f3f26ef3b0/getApertureValue/1/0/
+        2:  123:   procedure Test_getApertureValue (Gnattest_T : in out Test_EXIFParser) is
+        -:  124:   --  exifparsers.ads:20:4:getApertureValue
+        -:  125:--  end read only
+        -:  126:
+        -:  127:      pragma Unreferenced (Gnattest_T);
+        -:  128:
+        -:  129:   begin
+        -:  130:
+        2:  131:      AUnit.Assertions.Assert
+        -:  132:        (Gnattest_Generated.Default_Assert_Value,
+        -:  133:         "Test not implemented.");
+        -:  134:
+        -:  135:--  begin read only
+        2:  136:   end Test_getApertureValue;
+        -:  137:--  end read only
+        -:  138:
+        -:  139:
+        -:  140:--  begin read only
+        -:  141:   procedure Test_getFlash (Gnattest_T : in out Test_EXIFParser);
+        2:  142:   procedure Test_getFlash_85f837 (Gnattest_T : in out Test_EXIFParser) renames Test_getFlash;
+        -:  143:--  id:2.2/85f8371c1d7e950a/getFlash/1/0/
+        2:  144:   procedure Test_getFlash (Gnattest_T : in out Test_EXIFParser) is
+        -:  145:   --  exifparsers.ads:21:4:getFlash
+        -:  146:--  end read only
+        -:  147:
+        -:  148:      pragma Unreferenced (Gnattest_T);
+        -:  149:
+        -:  150:   begin
+        -:  151:
+        2:  152:      AUnit.Assertions.Assert
+        -:  153:        (Gnattest_Generated.Default_Assert_Value,
+        -:  154:         "Test not implemented.");
+        -:  155:
+        -:  156:--  begin read only
+        2:  157:   end Test_getFlash;
+        -:  158:--  end read only
+        -:  159:
+        -:  160:
+        -:  161:--  begin read only
+        -:  162:   procedure Test_getFocalLength (Gnattest_T : in out Test_EXIFParser);
+        2:  163:   procedure Test_getFocalLength_8bf5b9 (Gnattest_T : in out Test_EXIFParser) renames Test_getFocalLength;
+        -:  164:--  id:2.2/8bf5b96f9f3c843d/getFocalLength/1/0/
+        2:  165:   procedure Test_getFocalLength (Gnattest_T : in out Test_EXIFParser) is
+        -:  166:   --  exifparsers.ads:22:4:getFocalLength
+        -:  167:--  end read only
+        -:  168:
+        -:  169:      pragma Unreferenced (Gnattest_T);
+        -:  170:
+        -:  171:   begin
+        -:  172:
+        2:  173:      AUnit.Assertions.Assert
+        -:  174:        (Gnattest_Generated.Default_Assert_Value,
+        -:  175:         "Test not implemented.");
+        -:  176:
+        -:  177:--  begin read only
+        2:  178:   end Test_getFocalLength;
+        -:  179:--  end read only
+        -:  180:
+        -:  181:
+        -:  182:--  begin read only
+        -:  183:   procedure Test_getExifImageWidth (Gnattest_T : in out Test_EXIFParser);
+        2:  184:   procedure Test_getExifImageWidth_df7f0f (Gnattest_T : in out Test_EXIFParser) renames Test_getExifImageWidth;
+        -:  185:--  id:2.2/df7f0ff70485843f/getExifImageWidth/1/0/
+        2:  186:   procedure Test_getExifImageWidth (Gnattest_T : in out Test_EXIFParser) is
+        -:  187:   --  exifparsers.ads:23:4:getExifImageWidth
+        -:  188:--  end read only
+        -:  189:
+        -:  190:      pragma Unreferenced (Gnattest_T);
+        -:  191:
+        -:  192:   begin
+        -:  193:
+        2:  194:      AUnit.Assertions.Assert
+        -:  195:        (Gnattest_Generated.Default_Assert_Value,
+        -:  196:         "Test not implemented.");
+        -:  197:
+        -:  198:--  begin read only
+        2:  199:   end Test_getExifImageWidth;
+        -:  200:--  end read only
+        -:  201:
+        -:  202:
+        -:  203:--  begin read only
+        -:  204:   procedure Test_getExifImageHeight (Gnattest_T : in out Test_EXIFParser);
+        2:  205:   procedure Test_getExifImageHeight_9c2b40 (Gnattest_T : in out Test_EXIFParser) renames Test_getExifImageHeight;
+        -:  206:--  id:2.2/9c2b40ee2643f555/getExifImageHeight/1/0/
+        2:  207:   procedure Test_getExifImageHeight (Gnattest_T : in out Test_EXIFParser) is
+        -:  208:   --  exifparsers.ads:24:4:getExifImageHeight
+        -:  209:--  end read only
+        -:  210:
+        -:  211:      pragma Unreferenced (Gnattest_T);
+        -:  212:
+        -:  213:   begin
+        -:  214:
+        2:  215:      AUnit.Assertions.Assert
+        -:  216:        (Gnattest_Generated.Default_Assert_Value,
+        -:  217:         "Test not implemented.");
+        -:  218:
+        -:  219:--  begin read only
+        2:  220:   end Test_getExifImageHeight;
+        -:  221:--  end read only
+        -:  222:
+        -:  223:end EXIFParsers.EXIFParser_Test_Data.EXIFParser_Tests;

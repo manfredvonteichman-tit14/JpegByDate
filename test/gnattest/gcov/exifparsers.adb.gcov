@@ -1,0 +1,271 @@
+        -:    0:Source:D:/Users/Andi/Documents/GitHub/JpegByDate/src/exifparsers.adb
+        -:    0:Programs:186
+        -:    1:-- Verwendete Packages
+        -:    2:with Globals;
+        -:    3:with Pictures.TiffPictures;
+        -:    4:with Ada.Strings.Unbounded;
+        -:    5:with Ada.Unchecked_Deallocation;
+        -:    6:
+        -:    7:-- Package für EXIFParser
+        -:    8:package body EXIFParsers is
+        -:    9:
+        -:   10:   -- Konstruktor
+    #####:   11:   function create(binary: String; tiff_parent: access Pictures.TiffPictures.TiffPicture) return access EXIFParser is
+    #####:   12:      parser: access EXIFParser := new EXIFParser;
+        -:   13:   begin
+        -:   14:      -- Dateigröße überprüfen
+    #####:   15:      if (binary'Length mod Globals.exif.directory_length) = 0 then
+    #####:   16:         parser.all.exif := new String'(binary);
+    #####:   17:         parser.all.parent := tiff_parent;
+    #####:   18:         return parser;
+        -:   19:      end if;
+        -:   20:
+        -:   21:      -- Falsches Datenformat
+    #####:   22:      raise Pictures.Illegal_Format with "EXIF data has illegal format!";
+        -:   23:   end create;
+        -:   24:
+        -:   25:   -- Destruktor
+    #####:   26:   procedure destroy(This: access EXIFParser) is
+        -:   27:      type type_access is access all EXIFParser;
+        -:   28:      procedure Free is new Ada.Unchecked_Deallocation(EXIFParser, type_access);
+        -:   29:      type String_Access is access all String;
+        -:   30:      procedure Free_String is new Ada.Unchecked_Deallocation(String, String_Access);
+    #####:   31:      obj: type_access := type_access(This);
+    #####:   32:      str: String_Access := String_Access(This.all.exif);
+        -:   33:   begin
+        -:   34:      -- externe Variablen nicht löschen
+        -:   35:      -- interne Variablen löschen
+    #####:   36:      if This.all.exif /= null then
+    #####:   37:         Free_String(str);
+        -:   38:      end if;
+    #####:   39:      Free(obj);
+    #####:   40:   end;
+        -:   41:
+        -:   42:   -- Universal-Getter
+    #####:   43:   function getTagBinary(This: access EXIFParser; tag: Integer; buffer: out Ada.Strings.Unbounded.Unbounded_String; typ: out Integer) return Integer is
+    #####:   44:      I: Integer := 0; -- Start am ersten Directory
+        -:   45:      length: Integer;
+        -:   46:      ptr: Integer;
+        -:   47:   begin
+        -:   48:      -- EXIF SubIFD durchsuchen
+    #####:   49:      while I < This.all.exif'Length loop
+        -:   50:         -- gesuchter Tag gefunden
+    #####:   51:         if This.all.parent.createInt(This.all.exif(This.all.exif'First+I+0), This.all.exif(This.all.exif'First+I+1)) = tag then
+        -:   52:            -- Metainformationen sammeln
+    #####:   53:            typ := This.all.parent.createInt(This.all.exif(This.all.exif'First+I+2), This.all.exif(This.all.exif'First+I+3));
+    #####:   54:            length := This.all.parent.createInt(This.all.exif(This.all.exif'First+I+4), This.all.exif(This.all.exif'First+I+5), This.all.exif(This.all.exif'First+I+6), This.all.exif(This.all.exif'First+I+7));
+        -:   55:
+        -:   56:            -- Daten nach Typ binär auslesen
+    #####:   57:            case typ is
+        -:   58:               when 1 | 6 => -- byte
+    #####:   59:                  if length <= 4 then
+    #####:   60:                     buffer := Ada.Strings.Unbounded.To_Unbounded_String(This.all.exif(This.all.exif'First+I+8..This.all.exif'First+I+7+length));
+        -:   61:                  else
+    #####:   62:                     ptr := This.all.parent.createInt(This.all.exif(This.all.exif'First+I+8), This.all.exif(This.all.exif'First+I+9), This.all.exif(This.all.exif'First+I+10), This.all.exif(This.all.exif'First+I+11)) + 1; -- 0-Index wäre schöner...
+    #####:   63:                     buffer := Ada.Strings.Unbounded.To_Unbounded_String(This.all.parent.readBinary(ptr, ptr + length*1 - 1));
+        -:   64:                  end if;
+        -:   65:               when 3 | 8 => -- short
+    #####:   66:                  if length <= 2 then
+    #####:   67:                     buffer := Ada.Strings.Unbounded.To_Unbounded_String(This.all.exif(This.all.exif'First+I+8..This.all.exif'First+I+7+2*length));
+        -:   68:                  else
+    #####:   69:                     ptr := This.all.parent.createInt(This.all.exif(This.all.exif'First+I+8), This.all.exif(This.all.exif'First+I+9), This.all.exif(This.all.exif'First+I+10), This.all.exif(This.all.exif'First+I+11)) + 1; -- 0-Index wäre schöner...
+    #####:   70:                     buffer := Ada.Strings.Unbounded.To_Unbounded_String(This.all.parent.readBinary(ptr, ptr + length*2 - 1));
+        -:   71:                  end if;
+        -:   72:               when 4 => -- long
+    #####:   73:                  if length <= 1 then
+    #####:   74:                     buffer := Ada.Strings.Unbounded.To_Unbounded_String(This.all.exif(This.all.exif'First+I+8..This.all.exif'First+I+7+4*length));
+        -:   75:                  else
+    #####:   76:                     ptr := This.all.parent.createInt(This.all.exif(This.all.exif'First+I+8), This.all.exif(This.all.exif'First+I+9), This.all.exif(This.all.exif'First+I+10), This.all.exif(This.all.exif'First+I+11)) + 1; -- 0-Index wäre schöner...
+    #####:   77:                     buffer := Ada.Strings.Unbounded.To_Unbounded_String(This.all.parent.readBinary(ptr, ptr + length*4 - 1));
+        -:   78:                  end if;
+        -:   79:               when 5 | 10=> --  rational
+    #####:   80:                  ptr := This.all.parent.createInt(This.all.exif(This.all.exif'First+I+8), This.all.exif(This.all.exif'First+I+9), This.all.exif(This.all.exif'First+I+10), This.all.exif(This.all.exif'First+I+11)) + 1; -- 0-Index wäre schöner...
+    #####:   81:                  buffer := Ada.Strings.Unbounded.To_Unbounded_String(This.all.parent.readBinary(ptr, ptr + length*8 - 1));
+        -:   82:               when 2 => -- String
+    #####:   83:                  ptr := This.all.parent.createInt(This.all.exif(This.all.exif'First+I+8), This.all.exif(This.all.exif'First+I+9), This.all.exif(This.all.exif'First+I+10), This.all.exif(This.all.exif'First+I+11)) + 1; -- 0-Index wäre schöner...
+    #####:   84:                  buffer := Ada.Strings.Unbounded.To_Unbounded_String(This.all.parent.readBinary(ptr, ptr + length - 1));
+        -:   85:               when 11 => -- float
+    #####:   86:                  raise TagNotFound with "Tag-type not implemented!";
+        -:   87:               when 12 => -- double
+    #####:   88:                  raise TagNotFound with "Tag-type not implemented!";
+        -:   89:               when others => -- Fehler
+    #####:   90:                  raise TagNotFound with "Tag-type invalid!";
+        -:   91:            end case;
+        -:   92:
+        -:   93:            -- Blocklänge zurückgeben
+        -:   94:            return length;
+        -:   95:         end if;
+        -:   96:
+        -:   97:         -- Nächstes Directory
+    #####:   98:         I := I + Globals.exif.directory_length;
+    #####:   99:      end loop;
+        -:  100:
+        -:  101:      -- Nichts gefunden
+    #####:  102:      raise TagNotFound with "Tag not present!";
+    #####:  103:   end getTagBinary;
+        -:  104:
+        -:  105:
+        -:  106:   -- Getterfunktionen
+    #####:  107:   function getISOSpeedRatings(This: access EXIFParser) return Integer is
+    #####:  108:      str: Ada.Strings.Unbounded.Unbounded_String;
+        -:  109:      length: Integer;
+        -:  110:      typ: Integer;
+        -:  111:   begin
+        -:  112:      -- Daten auslesen
+    #####:  113:      length := This.getTagBinary(Globals.exif.ISOSpeedRatings, str, typ);
+        -:  114:
+        -:  115:      -- Überprüfung
+    #####:  116:      if length /= Globals.exif.ISOSpeedRatings_Length or typ /= Globals.exif.ISOSpeedRatings_Type then
+    #####:  117:         raise TagNotFound with "ISOSpeedRatings error!";
+        -:  118:      else
+    #####:  119:         declare
+    #####:  120:            value: String := Ada.Strings.Unbounded.To_String(str);
+        -:  121:         begin
+    #####:  122:            return This.all.parent.createInt(value(value'First+0), value(value'First+1));
+    #####:  123:         end;
+        -:  124:      end if;
+    #####:  125:   end getISOSpeedRatings;
+    #####:  126:   function getDateTimeOriginal(This: access EXIFParser) return String is
+    #####:  127:      str: Ada.Strings.Unbounded.Unbounded_String;
+        -:  128:      length: Integer;
+        -:  129:      typ: Integer;
+        -:  130:   begin
+        -:  131:      -- Daten auslesen
+    #####:  132:      length := This.getTagBinary(Globals.exif.DateTimeOriginal, str, typ);
+        -:  133:
+        -:  134:      -- Überprüfung
+    #####:  135:      if length /= Globals.exif.DateTimeOriginal_Length or typ /= Globals.exif.DateTimeOriginal_Type then
+    #####:  136:         raise TagNotFound with "DateTimeOriginal error!";
+        -:  137:      else
+    #####:  138:         return Ada.Strings.Unbounded.To_String(str);
+        -:  139:      end if;
+    #####:  140:   end getDateTimeOriginal;
+    #####:  141:   function getShutterSpeedValue(This: access EXIFParser) return Float is
+    #####:  142:      str: Ada.Strings.Unbounded.Unbounded_String;
+        -:  143:      length: Integer;
+        -:  144:      typ: Integer;
+        -:  145:   begin
+        -:  146:      -- Daten auslesen
+    #####:  147:      length := This.getTagBinary(Globals.exif.ShutterSpeedValue, str, typ);
+        -:  148:
+        -:  149:      -- Überprüfung
+    #####:  150:      if length /= Globals.exif.ShutterSpeedValue_Length or typ /= Globals.exif.ShutterSpeedValue_Type then
+    #####:  151:         raise TagNotFound with "ShutterSpeedValue error!";
+        -:  152:      else
+    #####:  153:         declare
+    #####:  154:            value: String := Ada.Strings.Unbounded.To_String(str);
+        -:  155:            num: Integer;
+        -:  156:         begin
+    #####:  157:            num := This.all.parent.createInt(value(value'First+0), value(value'First+1), value(value'First+2), value(value'First+3));
+    #####:  158:            if num < 0 then
+    #####:  159:               num := num - 1; -- EXIF Eigenheit, negative Zahlen im 1-er Komplement nicht 2-er Komplement
+        -:  160:            end if;
+    #####:  161:            return Float(num) / Float(This.all.parent.createInt(value(value'First+4), value(value'First+5), value(value'First+6), value(value'First+7)));
+    #####:  162:         end;
+        -:  163:      end if;
+    #####:  164:   end getShutterSpeedValue;
+    #####:  165:   function getApertureValue(This: access EXIFParser) return Float is
+    #####:  166:      str: Ada.Strings.Unbounded.Unbounded_String;
+        -:  167:      length: Integer;
+        -:  168:      typ: Integer;
+        -:  169:   begin
+        -:  170:      -- Daten auslesen
+    #####:  171:      length := This.getTagBinary(Globals.exif.ApertureValue, str, typ);
+        -:  172:
+        -:  173:      -- Überprüfung
+    #####:  174:      if length /= Globals.exif.ApertureValue_Length or typ /= Globals.exif.ApertureValue_Type then
+    #####:  175:         raise TagNotFound with "ApertureValue error!";
+        -:  176:      else
+    #####:  177:         declare
+    #####:  178:            value: String := Ada.Strings.Unbounded.To_String(str);
+        -:  179:         begin
+    #####:  180:            return Float(This.all.parent.createInt(value(value'First+0), value(value'First+1), value(value'First+2), value(value'First+3))) / Float(This.all.parent.createInt(value(value'First+4), value(value'First+5), value(value'First+6), value(value'First+7)));
+    #####:  181:         end;
+        -:  182:      end if;
+    #####:  183:   end getApertureValue;
+    #####:  184:   function getFlash(This: access EXIFParser) return Integer is
+    #####:  185:      str: Ada.Strings.Unbounded.Unbounded_String;
+        -:  186:      length: Integer;
+        -:  187:      typ: Integer;
+        -:  188:   begin
+        -:  189:      -- Daten auslesen
+    #####:  190:      length := This.getTagBinary(Globals.exif.Flash, str, typ);
+        -:  191:
+        -:  192:      -- Überprüfung
+    #####:  193:      if length /= Globals.exif.Flash_Length or typ /= Globals.exif.Flash_Type then
+    #####:  194:         raise TagNotFound with "Flash error!";
+        -:  195:      else
+    #####:  196:         declare
+    #####:  197:            value: String := Ada.Strings.Unbounded.To_String(str);
+        -:  198:         begin
+    #####:  199:            return This.all.parent.createInt(value(value'First+0), value(value'First+1));
+    #####:  200:         end;
+        -:  201:      end if;
+    #####:  202:   end getFlash;
+    #####:  203:   function getFocalLength(This: access EXIFParser) return Float is
+    #####:  204:      str: Ada.Strings.Unbounded.Unbounded_String;
+        -:  205:      length: Integer;
+        -:  206:      typ: Integer;
+        -:  207:   begin
+        -:  208:      -- Daten auslesen
+    #####:  209:      length := This.getTagBinary(Globals.exif.FocalLength, str, typ);
+        -:  210:
+        -:  211:      -- Überprüfung
+    #####:  212:      if length /= Globals.exif.FocalLength_Length or typ /= Globals.exif.FocalLength_Type then
+    #####:  213:         raise TagNotFound with "FocalLength error!";
+        -:  214:      else
+    #####:  215:         declare
+    #####:  216:            value: String := Ada.Strings.Unbounded.To_String(str);
+        -:  217:         begin
+    #####:  218:            return Float(This.all.parent.createInt(value(value'First+0), value(value'First+1), value(value'First+2), value(value'First+3))) / Float(This.all.parent.createInt(value(value'First+4), value(value'First+5), value(value'First+6), value(value'First+7)));
+    #####:  219:         end;
+        -:  220:      end if;
+    #####:  221:   end getFocalLength;
+    #####:  222:   function getExifImageWidth(This: access EXIFParser) return Integer is
+    #####:  223:      str: Ada.Strings.Unbounded.Unbounded_String;
+        -:  224:      length: Integer;
+        -:  225:      typ: Integer;
+        -:  226:   begin
+        -:  227:      -- Daten auslesen
+    #####:  228:      length := This.getTagBinary(Globals.exif.ExifImageWidth, str, typ);
+        -:  229:
+        -:  230:      -- Überprüfung
+    #####:  231:      if length /= Globals.exif.ExifImageWidth_Length or typ not in Globals.exif.ExifImageWidth_Type then
+    #####:  232:         raise TagNotFound with "ExifImageWidth error!";
+        -:  233:      else
+    #####:  234:         declare
+    #####:  235:            value: String := Ada.Strings.Unbounded.To_String(str);
+        -:  236:         begin
+    #####:  237:            if typ = 3 then
+    #####:  238:               return This.all.parent.createInt(value(value'First+0), value(value'First+1));
+        -:  239:            else
+    #####:  240:               return This.all.parent.createInt(value(value'First+0), value(value'First+1), value(value'First+2), value(value'First+3));
+        -:  241:            end if;
+    #####:  242:         end;
+        -:  243:      end if;
+    #####:  244:   end getExifImageWidth;
+    #####:  245:   function getExifImageHeight(This: access EXIFParser) return Integer is
+    #####:  246:      str: Ada.Strings.Unbounded.Unbounded_String;
+        -:  247:      length: Integer;
+        -:  248:      typ: Integer;
+        -:  249:   begin
+        -:  250:      -- Daten auslesen
+    #####:  251:      length := This.getTagBinary(Globals.exif.ExifImageHeight, str, typ);
+        -:  252:
+        -:  253:      -- Überprüfung
+    #####:  254:      if length /= Globals.exif.ExifImageHeight_Length or typ not in Globals.exif.ExifImageHeight_Type then
+    #####:  255:         raise TagNotFound with "ExifImageHeight error!";
+        -:  256:      else
+    #####:  257:         declare
+    #####:  258:            value: String := Ada.Strings.Unbounded.To_String(str);
+        -:  259:         begin
+    #####:  260:            if typ = 3 then
+    #####:  261:               return This.all.parent.createInt(value(value'First+0), value(value'First+1));
+        -:  262:            else
+    #####:  263:               return This.all.parent.createInt(value(value'First+0), value(value'First+1), value(value'First+2), value(value'First+3));
+        -:  264:            end if;
+    #####:  265:         end;
+        -:  266:      end if;
+    #####:  267:   end getExifImageHeight;
+        -:  268:
+        -:  269:end EXIFParsers;

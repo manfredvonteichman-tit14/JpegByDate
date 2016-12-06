@@ -1,0 +1,28 @@
+        -:    0:Source:D:/Users/Andi/Documents/GitHub/JpegByDate/src/FileExtensionFilters.ads
+        -:    0:Programs:186
+        -:    1:-- Verwendete Packages
+        -:    2:with FileFilters;
+        -:    3:with Parameters;
+        -:    4:
+        -:    5:-- Package für Filtermodul
+        4:    6:package FileExtensionFilters is
+        -:    7:
+        -:    8:   -- Typ anlegen
+    #####:    9:   type FileExtensionFilter is new FileFilters.Filter with private;
+        -:   10:
+        -:   11:   -- Konstruktor
+        -:   12:   overriding function create(params: access Parameters.Parameter) return access FileExtensionFilter;
+        -:   13:   -- Destruktor
+        -:   14:   overriding procedure destroy(This: access FileExtensionFilter; destroy_chain: Boolean := False);
+        -:   15:
+        -:   16:   -- private Funktionen
+        -:   17:   overriding function applyThis(This: access FileExtensionFilter; str: String) return Boolean;
+        -:   18:
+        -:   19:private
+        -:   20:   -- Objektvariablen
+        6:   21:   type FileExtensionFilter is new FileFilters.Filter with
+        -:   22:      record
+        -:   23:         params: access Parameters.Parameter := null; -- extern
+        -:   24:      end record;
+        -:   25:
+        2:   26:end FileExtensionFilters;

@@ -1,0 +1,185 @@
+        -:    0:Source:D:/Users/Andi/Documents/GitHub/JpegByDate/src/filesystemlisters.adb
+        -:    0:Programs:186
+        -:    1:-- Verwendete Packages
+        -:    2:with Ada.Unchecked_Deallocation;
+        -:    3:
+        -:    4:-- Package für das Auflisten von Dateien
+        4:    5:package body FilesystemListers is
+        -:    6:
+        -:    7:   -- Konstruktor
+    #####:    8:   function create(params: access Parameters.Parameter; filter: access FileFilters.Filter'Class) return access FilesystemLister is
+        -:    9:   begin
+    #####:   10:      return create(params, params.getPath, filter);
+        -:   11:   end create;
+    #####:   12:   function create(params: access Parameters.Parameter; path: String; filter: access FileFilters.Filter'Class) return access FilesystemLister is
+    #####:   13:      lister: access FilesystemLister := new FilesystemLister;
+        -:   14:   begin
+    #####:   15:      lister.all.params := params;
+    #####:   16:      lister.init(path, filter);
+    #####:   17:      return lister;
+        -:   18:   end create;
+        -:   19:
+        -:   20:   -- Destruktor
+    #####:   21:   procedure destroy(This: access FilesystemLister) is
+    #####:   22:      type type_access is access all FilesystemLister;
+        -:   23:      procedure Free is new Ada.Unchecked_Deallocation(FilesystemLister, type_access);
+    #####:   24:      obj: type_access := type_access(This);
+        -:   25:   begin
+        -:   26:      -- interne Variablen löschen
+    #####:   27:      if This.all.subLister /= null then
+    #####:   28:         This.all.subLister.destroy;
+        -:   29:      end if;
+        -:   30:
+        -:   31:      -- Suche beenden
+    #####:   32:      Ada.Directories.End_Search(Search => This.all.FilesystemSearch);
+        -:   33:
+        -:   34:      -- externe Variablen nicht löschen
+    #####:   35:      Free(obj);
+    #####:   36:   end;
+        -:   37:
+        -:   38:   -- Auflisten der Dateien im Suchort
+    #####:   39:   function hasNext(This: access FilesystemLister) return Boolean is
+        -:   40:   begin
+    #####:   41:      return This.all.hasNextMatch;
+        -:   42:   end hasNext;
+        -:   43:
+        -:   44:   -- Getterfunktionen
+    #####:   45:   function next(This: access FilesystemLister) return String is
+    #####:   46:      next_str: Ada.Strings.Unbounded.Unbounded_String;
+        -:   47:   begin
+    #####:   48:      if This.all.hasNextMatch = True then
+        -:   49:         -- Wenn es ein weiteres Element gibt, dieses zurück geben
+    #####:   50:         next_str := This.all.nextMatch;
+    #####:   51:         This.parseNext;
+    #####:   52:         return Ada.Strings.Unbounded.To_String(next_str);
+        -:   53:      else
+        -:   54:         -- Wenn kein Element mehr vorhanden ist nichts zurück geben
+    #####:   55:         return "";
+        -:   56:      end if;
+    #####:   57:   end next;
+        -:   58:
+        -:   59:   -- Initialisierungsfunktion
+    #####:   60:   procedure init(This: access FilesystemLister; path: String; filter: access FileFilters.Filter'Class) is
+        -:   61:      dFilter: Ada.Directories.Filter_Type;
+        -:   62:   begin
+        -:   63:      -- Filter anlegen
+    #####:   64:      if This.all.params.getPathRecursion = True then
+    #####:   65:         dFilter := (Ada.Directories.Ordinary_File => True, Ada.Directories.Special_File => False, Ada.Directories.Directory => True);
+        -:   66:      else
+    #####:   67:         dFilter := (Ada.Directories.Ordinary_File => True, Ada.Directories.Special_File => False, Ada.Directories.Directory => False);
+        -:   68:      end if;
+        -:   69:
+        -:   70:      -- Verzeichnis Durchsuchen initialisieren
+    #####:   71:      Ada.Directories.Start_Search(Search => This.all.FilesystemSearch, Directory => path, Pattern => "", Filter => dFilter);
+    #####:   72:      This.all.filter := filter;
+    #####:   73:      This.parseNext;
+        -:   74:
+        -:   75:   -- Fehlerbehandlung
+        -:   76:   exception
+        -:   77:      -- Fehler bei Verzeichnisname
+    #####:   78:      when E: Ada.Directories.Name_Error =>
+    #####:   79:         This.all.nextMatch := Ada.Strings.Unbounded.Null_Unbounded_String;
+    #####:   80:         This.all.hasNextMatch := False;
+        -:   81:
+        -:   82:      -- Fehler bei Verwendung des Verzeichnisses (Berechtigungen)
+    #####:   83:      when E: Ada.Directories.Use_Error =>
+    #####:   84:         This.all.nextMatch := Ada.Strings.Unbounded.Null_Unbounded_String;
+    #####:   85:         This.all.hasNextMatch := False;
+        -:   86:
+        -:   87:      -- Alle anderen Fehler
+    #####:   88:      when E: others =>
+    #####:   89:         This.all.nextMatch := Ada.Strings.Unbounded.Null_Unbounded_String;
+    #####:   90:         This.all.hasNextMatch := False;
+    #####:   91:   end init;
+        -:   92:
+        -:   93:   -- Intene Suche nach nächster Datei
+    #####:   94:   procedure parseNext(This: access FilesystemLister) is
+    #####:   95:      EntryItem: Ada.Directories.Directory_Entry_Type;
+        -:   96:   begin
+        -:   97:      -- Nur durchführen, wenn beim letzten mal noch Matches gefunden wurden
+    #####:   98:      if This.all.hasNextMatch = True then
+        -:   99:         -- Zunächst Unterverzeichnisse abfragen
+    #####:  100:         if This.all.subLister /= null then
+        -:  101:            -- Aktuelle Verarbeitung im Unterverzeichnis
+    #####:  102:            if This.all.subLister.hasNext = True then
+        -:  103:               -- Eintrag aus Unterverzeeichnis kopieren
+    #####:  104:               This.all.nextMatch := Ada.Strings.Unbounded.To_Unbounded_String(This.all.subLister.next);
+    #####:  105:               This.all.hasNextMatch := True;
+        -:  106:               return; -- Abbrechen bei neuem Match aus Unterverzeichnis
+        -:  107:            else
+        -:  108:               -- Unterverzeichnis ist fertig
+    #####:  109:               This.all.subLister.destroy;
+    #####:  110:               This.all.subLister := null;
+        -:  111:            end if;
+        -:  112:         end if;
+        -:  113:
+        -:  114:         -- Directory durchsuchen
+    #####:  115:         while Ada.Directories.More_Entries(Search => This.all.FilesystemSearch) loop
+        -:  116:            -- Nächsten Eintrag auslesen
+    #####:  117:            Ada.Directories.Get_Next_Entry(Search => This.all.FilesystemSearch, Directory_Entry => EntryItem);
+        -:  118:
+        -:  119:            -- Typ überprüfen
+    #####:  120:            declare
+        -:  121:               -- Notwendig für Vergleich von Ada.Directories.File_Kind
+        -:  122:               use type Ada.Directories.File_Kind;
+        -:  123:            begin
+    #####:  124:               if Ada.Directories.Kind(EntryItem) = Ada.Directories.Directory then
+        -:  125:                  -- Spezialverzeichnisse überprüfen
+    #####:  126:                  if Ada.Directories.Simple_Name(EntryItem) /= "." and Ada.Directories.Simple_Name(EntryItem) /= ".." then
+        -:  127:                     -- Unterverzeichnis anlegen
+    #####:  128:                     This.all.subLister := create(This.all.params, Ada.Directories.Full_Name(EntryItem), This.all.filter);
+        -:  129:
+        -:  130:                     -- Unterverzeichnis durchsuchen
+    #####:  131:                     if This.all.subLister.hasNext = True then
+        -:  132:                        -- Eintrag aus Unterverzeeichnis kopieren
+    #####:  133:                        This.all.nextMatch := Ada.Strings.Unbounded.To_Unbounded_String(This.all.subLister.next);
+    #####:  134:                        This.all.hasNextMatch := True;
+        -:  135:                        return; -- Abbrechen bei neuem Match aus Unterverzeichnis
+        -:  136:                     else
+        -:  137:                        -- War wohl nix -> Unterverzeichnis enthält keine gesuchten Dateien
+    #####:  138:                        This.all.subLister.destroy;
+    #####:  139:                        This.all.subLister := null;
+        -:  140:                     end if;
+        -:  141:                  end if;
+        -:  142:               else
+        -:  143:                  -- Filtern des Eintrages nach Dateigröße und mit einer Regular-Expression
+    #####:  144:                  if This.all.filter.apply(Ada.Directories.Full_Name(EntryItem)) then -- Non dispatching Call auf Filter -> Es wird zwangsläufig die Methode der abstrakten Klasse aufgerufen
+        -:  145:                     -- Wenn Filter korrekt -> in Liste aufnehmen
+    #####:  146:                     This.all.nextMatch := Ada.Strings.Unbounded.To_Unbounded_String(Ada.Directories.Full_Name(EntryItem));
+    #####:  147:                     This.all.hasNextMatch := True;
+        -:  148:                     return; -- Abbrechen bei nächstem Match
+        -:  149:                  end if;
+        -:  150:               end if;
+        -:  151:
+    #####:  152:            end;
+        -:  153:         end loop;
+        -:  154:
+        -:  155:         -- Keinen weiteren Eintrag gefunden
+    #####:  156:         This.all.nextMatch := Ada.Strings.Unbounded.Null_Unbounded_String;
+    #####:  157:         This.all.hasNextMatch := False;
+        -:  158:      end if;
+        -:  159:
+        -:  160:   -- Fehlerbehandlung -> weitere Suche abbrechen
+        -:  161:   exception
+        -:  162:      -- Fehler bei Abfrage weiterer Verzeichniseinträge
+    #####:  163:      when E: Ada.Directories.Status_Error =>
+    #####:  164:         This.all.nextMatch := Ada.Strings.Unbounded.Null_Unbounded_String;
+    #####:  165:         This.all.hasNextMatch := False;
+        -:  166:
+        -:  167:      -- Fehler bei Verzeichnisname
+    #####:  168:      when E: Ada.Directories.Name_Error =>
+    #####:  169:         This.all.nextMatch := Ada.Strings.Unbounded.Null_Unbounded_String;
+    #####:  170:         This.all.hasNextMatch := False;
+        -:  171:
+        -:  172:      -- Fehler bei Verwendung des Verzeichnisses (Berechtigungen)
+    #####:  173:      when E: Ada.Directories.Use_Error =>
+    #####:  174:         This.all.nextMatch := Ada.Strings.Unbounded.Null_Unbounded_String;
+    #####:  175:         This.all.hasNextMatch := False;
+        -:  176:
+        -:  177:      -- Alle anderen Fehler
+    #####:  178:      when E: others =>
+    #####:  179:         This.all.nextMatch := Ada.Strings.Unbounded.Null_Unbounded_String;
+    #####:  180:         This.all.hasNextMatch := False;
+    #####:  181:   end parseNext;
+        -:  182:
+        2:  183:end FilesystemListers;

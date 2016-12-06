@@ -1,0 +1,8 @@
+        -:    0:Source:D:/Users/Andi/Documents/GitHub/JpegByDate/src/exiffilters.ads
+        -:    0:Programs:186
+        -:    1:-- Verwendete Packages
+        -:    2:with EXIFParsers;
+        -:    3:with Filters;
+        -:    4:
+        -:    5:-- Filter Spezialisierung für FileFilter
+        1:    6:package EXIFFilters is new Filters(EXIFParsers.EXIFParser_Access);

@@ -1,0 +1,8 @@
+iPhone.JPG
+iPhone.tif
+ModifiedFromCam.jpg
+ModifiedFromCam.tif
+ModifiedInternet.tif
+ModifiedPhotoshop.jpg
+ModifiedPhotoshop.tif
+OutOfCam.jpg

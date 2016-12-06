@@ -1,0 +1,39 @@
+        -:    0:Source:D:/Users/Andi/Documents/GitHub/JpegByDate/src/EXIFParsers.ads
+        -:    0:Programs:186
+        -:    1:-- Verwendete Packages
+        -:    2:limited with Pictures.TiffPictures; -- limited um Circular Dependency zu unterbrechen
+        -:    3:
+        -:    4:-- Package für EXIFParser
+        4:    5:package EXIFParsers is
+        -:    6:
+        -:    7:   -- Typ anlegen
+    #####:    8:   type EXIFParser is tagged private;
+        -:    9:   type EXIFParser_Access is access all EXIFParser; -- nicht verwenden, nur für EXIFFilter notwendig
+        -:   10:
+        -:   11:   -- Konstruktor (binary ist EXIF SubIFD Directory Entries)
+        -:   12:   function create(binary: String; tiff_parent: access Pictures.TiffPictures.TiffPicture) return access EXIFParser;
+        -:   13:   -- Destruktor
+        -:   14:   procedure destroy(This: access EXIFParser);
+        -:   15:
+        -:   16:   -- Getterfunktionen
+        -:   17:   function getISOSpeedRatings(This: access EXIFParser) return Integer;
+        -:   18:   function getDateTimeOriginal(This: access EXIFParser) return String;
+        -:   19:   function getShutterSpeedValue(This: access EXIFParser) return Float;
+        -:   20:   function getApertureValue(This: access EXIFParser) return Float;
+        -:   21:   function getFlash(This: access EXIFParser) return Integer;
+        -:   22:   function getFocalLength(This: access EXIFParser) return Float;
+        -:   23:   function getExifImageWidth(This: access EXIFParser) return Integer;
+        -:   24:   function getExifImageHeight(This: access EXIFParser) return Integer;
+        -:   25:
+        -:   26:   -- Exceptions
+        2:   27:   TagNotFound: exception; -- EXIF-Tag existiert nicht
+        -:   28:
+        -:   29:private
+        -:   30:   -- Objektvariablen
+        4:   31:   type EXIFParser is tagged
+        -:   32:      record
+        -:   33:         exif: access String := null; -- intern
+        -:   34:         parent: access Pictures.TiffPictures.TiffPicture := null; -- extern
+        -:   35:      end record;
+        -:   36:
+        2:   37:end EXIFParsers;

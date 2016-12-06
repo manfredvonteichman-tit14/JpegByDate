@@ -1,0 +1,24 @@
+        -:    0:Source:D:/Users/Andi/Documents/GitHub/JpegByDate/test/gnattest/tests/consoleoutputs-consoleoutput_test_data-consoleoutput_tests.ads
+        -:    0:Programs:186
+        -:    1:--  This package has been generated automatically by GNATtest.
+        -:    2:--  Do not edit any part of it, see GNATtest documentation for more details.
+        -:    3:
+        -:    4:--  begin read only
+        -:    5:with GNATtest_Generated;
+        -:    6:
+        4:    7:package ConsoleOutputs.ConsoleOutput_Test_Data.ConsoleOutput_Tests is
+        -:    8:
+        4:    9:   type Test_ConsoleOutput is new
+        -:   10:     GNATtest_Generated.GNATtest_Standard.ConsoleOutputs.ConsoleOutput_Test_Data.Test_ConsoleOutput with null record;
+        -:   11:
+        -:   12:   procedure Test_create_46cb64 (Gnattest_T : in out Test_ConsoleOutput);
+        -:   13:   --  consoleoutputs.ads:11:4:create
+        -:   14:
+        -:   15:   procedure Test_destroy_19a48c (Gnattest_T : in out Test_ConsoleOutput);
+        -:   16:   --  consoleoutputs.ads:13:4:destroy
+        -:   17:
+        -:   18:   procedure Test_display_9676c4 (Gnattest_T : in out Test_ConsoleOutput);
+        -:   19:   --  consoleoutputs.ads:16:4:display
+        -:   20:
+        2:   21:end ConsoleOutputs.ConsoleOutput_Test_Data.ConsoleOutput_Tests;
+        -:   22:--  end read only

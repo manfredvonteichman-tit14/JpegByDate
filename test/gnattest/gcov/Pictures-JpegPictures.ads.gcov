@@ -1,0 +1,33 @@
+        -:    0:Source:D:/Users/Andi/Documents/GitHub/JpegByDate/src/Pictures-JpegPictures.ads
+        -:    0:Programs:186
+        -:    1:-- Verwendete Packages
+        -:    2:with Pictures;
+        -:    3:limited with Pictures.TiffPictures;
+        -:    4:with Ada.Strings.Unbounded;
+        -:    5:
+        -:    6:-- Package für JpegPicture als Childpackage von Picture
+       32:    7:package Pictures.JpegPictures is
+        -:    8:
+        -:    9:   -- Typ anlegen
+    #####:   10:   type JpegPicture is new Pictures.Picture with private;
+        -:   11:
+        -:   12:   -- Konstruktor
+        -:   13:   not overriding function create(name: String; buffer: Ada.Strings.Unbounded.Unbounded_String) return access JpegPicture;
+        -:   14:   -- Destruktor
+        -:   15:   overriding procedure destroy(This: access JpegPicture);
+        -:   16:
+        -:   17:   -- EXIF abfragen
+        -:   18:   overriding function hasEXIF(This: access JpegPicture) return Boolean;
+        -:   19:   overriding function getEXIF(This: access JpegPicture) return access EXIFParsers.EXIFParser;
+        -:   20:
+        -:   21:   -- Statische Buffercheckfunktion
+        -:   22:   function isJpeg(buffer: Ada.Strings.Unbounded.Unbounded_String) return Boolean;
+        -:   23:
+        -:   24:private
+        -:   25:   -- Objektvariablen
+      320:   26:   type JpegPicture is new Pictures.Picture with
+        -:   27:      record
+        -:   28:         tiff_sublayer: access TiffPictures.TiffPicture := null; -- intern
+        -:   29:      end record;
+        -:   30:
+       16:   31:end Pictures.JpegPictures;

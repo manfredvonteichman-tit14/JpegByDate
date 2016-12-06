@@ -1,0 +1,193 @@
+        -:    0:Source:C:/gnat/2016/lib/gcc/i686-pc-mingw32/4.9.4/adainclude/a-direio.ads
+        -:    0:Programs:186
+        -:    1:------------------------------------------------------------------------------
+        -:    2:--                                                                          --
+        -:    3:--                         GNAT RUN-TIME COMPONENTS                         --
+        -:    4:--                                                                          --
+        -:    5:--                        A D A . D I R E C T _ I O                         --
+        -:    6:--                                                                          --
+        -:    7:--                                 S p e c                                  --
+        -:    8:--                                                                          --
+        -:    9:--          Copyright (C) 1992-2009, Free Software Foundation, Inc.         --
+        -:   10:--                                                                          --
+        -:   11:-- This specification is derived from the Ada Reference Manual for use with --
+        -:   12:-- GNAT. The copyright notice above, and the license provisions that follow --
+        -:   13:-- apply solely to the  contents of the part following the private keyword. --
+        -:   14:--                                                                          --
+        -:   15:-- GNAT is free software;  you can  redistribute it  and/or modify it under --
+        -:   16:-- terms of the  GNU General Public License as published  by the Free Soft- --
+        -:   17:-- ware  Foundation;  either version 3,  or (at your option) any later ver- --
+        -:   18:-- sion.  GNAT is distributed in the hope that it will be useful, but WITH- --
+        -:   19:-- OUT ANY WARRANTY;  without even the  implied warranty of MERCHANTABILITY --
+        -:   20:-- or FITNESS FOR A PARTICULAR PURPOSE.                                     --
+        -:   21:--                                                                          --
+        -:   22:--                                                                          --
+        -:   23:--                                                                          --
+        -:   24:--                                                                          --
+        -:   25:--                                                                          --
+        -:   26:-- You should have received a copy of the GNU General Public License and    --
+        -:   27:-- a copy of the GCC Runtime Library Exception along with this program;     --
+        -:   28:-- see the files COPYING3 and COPYING.RUNTIME respectively.  If not, see    --
+        -:   29:-- <http://www.gnu.org/licenses/>.                                          --
+        -:   30:--                                                                          --
+        -:   31:-- GNAT was originally developed  by the GNAT team at  New York University. --
+        -:   32:-- Extensive contributions were provided by Ada Core Technologies Inc.      --
+        -:   33:--                                                                          --
+        -:   34:------------------------------------------------------------------------------
+        -:   35:
+        -:   36:with Ada.IO_Exceptions;
+        -:   37:with System.Direct_IO;
+        -:   38:with Interfaces.C_Streams;
+        -:   39:
+        -:   40:generic
+    #####:   41:   type Element_Type is private;
+        -:   42:
+        -:   43:package Ada.Direct_IO is
+        -:   44:
+        -:   45:   pragma Compile_Time_Warning
+        -:   46:     (Element_Type'Has_Access_Values,
+        -:   47:      "Element_Type for Direct_IO instance has access values");
+        -:   48:
+        -:   49:   pragma Compile_Time_Warning
+        -:   50:     (Element_Type'Has_Tagged_Values,
+        -:   51:      "Element_Type for Direct_IO instance has tagged values");
+        -:   52:
+        -:   53:   type File_Type is limited private;
+        -:   54:
+        -:   55:   type File_Mode is (In_File, Inout_File, Out_File);
+        -:   56:
+        -:   57:   --  The following representation clause allows the use of unchecked
+        -:   58:   --  conversion for rapid translation between the File_Mode type
+        -:   59:   --  used in this package and System.File_IO.
+        -:   60:
+        -:   61:   for File_Mode use
+        -:   62:     (In_File    => 0,   -- System.File_IO.File_Mode'Pos (In_File)
+        -:   63:      Inout_File => 1,   -- System.File_IO.File_Mode'Pos (Inout_File);
+        -:   64:      Out_File   => 2);  -- System.File_IO.File_Mode'Pos (Out_File)
+        -:   65:
+        -:   66:   type Count is range 0 .. System.Direct_IO.Count'Last;
+        -:   67:
+        -:   68:   subtype Positive_Count is Count range 1 .. Count'Last;
+        -:   69:
+        -:   70:   ---------------------
+        -:   71:   -- File Management --
+        -:   72:   ---------------------
+        -:   73:
+        -:   74:   procedure Create
+        -:   75:     (File : in out File_Type;
+        -:   76:      Mode : File_Mode := Inout_File;
+        -:   77:      Name : String := "";
+        -:   78:      Form : String := "");
+        -:   79:
+        -:   80:   procedure Open
+        -:   81:     (File : in out File_Type;
+        -:   82:      Mode : File_Mode;
+        -:   83:      Name : String;
+        -:   84:      Form : String := "");
+        -:   85:
+        -:   86:   procedure Close  (File : in out File_Type);
+        -:   87:   procedure Delete (File : in out File_Type);
+        -:   88:   procedure Reset  (File : in out File_Type; Mode : File_Mode);
+        -:   89:   procedure Reset  (File : in out File_Type);
+        -:   90:
+        -:   91:   function Mode (File : File_Type) return File_Mode;
+        -:   92:   function Name (File : File_Type) return String;
+        -:   93:   function Form (File : File_Type) return String;
+        -:   94:
+        -:   95:   function Is_Open (File : File_Type) return Boolean;
+        -:   96:
+        -:   97:   ---------------------------------
+        -:   98:   -- Input and Output Operations --
+        -:   99:   ---------------------------------
+        -:  100:
+        -:  101:   procedure Read
+        -:  102:     (File : File_Type;
+        -:  103:      Item : out Element_Type;
+        -:  104:      From : Positive_Count);
+        -:  105:
+        -:  106:   procedure Read
+        -:  107:     (File : File_Type;
+        -:  108:      Item : out Element_Type);
+        -:  109:
+        -:  110:   procedure Write
+        -:  111:     (File : File_Type;
+        -:  112:      Item : Element_Type;
+        -:  113:      To   : Positive_Count);
+        -:  114:
+        -:  115:   procedure Write
+        -:  116:     (File : File_Type;
+        -:  117:      Item : Element_Type);
+        -:  118:
+        -:  119:   procedure Set_Index (File : File_Type; To : Positive_Count);
+        -:  120:
+        -:  121:   function Index (File : File_Type) return Positive_Count;
+        -:  122:   function Size  (File : File_Type) return Count;
+        -:  123:
+        -:  124:   function End_Of_File (File : File_Type) return Boolean;
+        -:  125:
+        -:  126:   ----------------
+        -:  127:   -- Exceptions --
+        -:  128:   ----------------
+        -:  129:
+    #####:  130:   Status_Error : exception renames IO_Exceptions.Status_Error;
+    #####:  131:   Mode_Error   : exception renames IO_Exceptions.Mode_Error;
+    #####:  132:   Name_Error   : exception renames IO_Exceptions.Name_Error;
+    #####:  133:   Use_Error    : exception renames IO_Exceptions.Use_Error;
+    #####:  134:   Device_Error : exception renames IO_Exceptions.Device_Error;
+    #####:  135:   End_Error    : exception renames IO_Exceptions.End_Error;
+    #####:  136:   Data_Error   : exception renames IO_Exceptions.Data_Error;
+        -:  137:
+        -:  138:private
+        -:  139:
+        -:  140:   --  The following procedures have a File_Type formal of mode IN OUT because
+        -:  141:   --  they may close the original file. The Close operation may raise an
+        -:  142:   --  exception, but in that case we want any assignment to the formal to
+        -:  143:   --  be effective anyway, so it must be passed by reference (or the caller
+        -:  144:   --  will be left with a dangling pointer).
+        -:  145:
+        -:  146:   pragma Export_Procedure
+        -:  147:     (Internal  => Close,
+        -:  148:      External  => "",
+        -:  149:      Mechanism => Reference);
+        -:  150:   pragma Export_Procedure
+        -:  151:     (Internal  => Delete,
+        -:  152:      External  => "",
+        -:  153:      Mechanism => Reference);
+        -:  154:   pragma Export_Procedure
+        -:  155:     (Internal        => Reset,
+        -:  156:      External        => "",
+        -:  157:      Parameter_Types => (File_Type),
+        -:  158:      Mechanism       => Reference);
+        -:  159:   pragma Export_Procedure
+        -:  160:     (Internal        => Reset,
+        -:  161:      External        => "",
+        -:  162:      Parameter_Types => (File_Type, File_Mode),
+        -:  163:      Mechanism       => (File => Reference));
+        -:  164:
+        -:  165:   type File_Type is new System.Direct_IO.File_Type;
+        -:  166:
+    #####:  167:   Bytes : constant Interfaces.C_Streams.size_t :=
+        -:  168:             Interfaces.C_Streams.size_t'Max
+    #####:  169:               (1, Element_Type'Max_Size_In_Storage_Elements);
+        -:  170:   --  Size of an element in storage units. The Max operation here is to ensure
+        -:  171:   --  that we allocate a single byte for zero-sized elements. It's a bit weird
+        -:  172:   --  to instantiate Direct_IO with zero sized elements, but it is legal and
+        -:  173:   --  this adjustment ensures that we don't get anomalous behavior.
+        -:  174:
+        -:  175:   pragma Inline (Close);
+        -:  176:   pragma Inline (Create);
+        -:  177:   pragma Inline (Delete);
+        -:  178:   pragma Inline (End_Of_File);
+        -:  179:   pragma Inline (Form);
+        -:  180:   pragma Inline (Index);
+        -:  181:   pragma Inline (Is_Open);
+        -:  182:   pragma Inline (Mode);
+        -:  183:   pragma Inline (Name);
+        -:  184:   pragma Inline (Open);
+        -:  185:   pragma Inline (Read);
+        -:  186:   pragma Inline (Reset);
+        -:  187:   pragma Inline (Set_Index);
+        -:  188:   pragma Inline (Size);
+        -:  189:   pragma Inline (Write);
+        -:  190:
+        -:  191:end Ada.Direct_IO;

@@ -1,0 +1,291 @@
+        -:    0:Source:D:/Users/Andi/Documents/GitHub/JpegByDate/src/parameters.adb
+        -:    0:Programs:186
+        -:    1:-- Verwendete Packages
+        -:    2:with Ada.Unchecked_Deallocation;
+        -:    3:
+        -:    4:-- Package für Parameter
+        4:    5:package body Parameters is
+        -:    6:
+        -:    7:   -- Konstruktor
+    #####:    8:   function create return access Parameter is
+        -:    9:   begin
+    #####:   10:      return new Parameter;
+    #####:   11:   end create;
+        -:   12:
+        -:   13:   -- Destruktor
+    #####:   14:   procedure destroy(This: access Parameter) is
+    #####:   15:      type type_access is access all Parameter;
+        -:   16:      procedure Free is new Ada.Unchecked_Deallocation(Parameter, type_access);
+    #####:   17:      obj: type_access := type_access(This);
+        -:   18:   begin
+    #####:   19:      Free(obj);
+    #####:   20:   end;
+        -:   21:
+        -:   22:   -- Werte setzen
+        2:   23:   procedure setPath(This: access Parameter; path: String) is
+        -:   24:   begin
+        4:   25:      This.all.path := Ada.Strings.Unbounded.To_Unbounded_String(path);
+        2:   26:      This.all.Flag_path := True;
+        2:   27:   end setPath;
+        2:   28:   procedure setPathRecursion(This: access Parameter; recursive: Boolean) is
+        -:   29:   begin
+        2:   30:      This.all.pathRecursion := recursive;
+        2:   31:      This.all.Flag_pathRecursion := True;
+        2:   32:   end setPathRecursion;
+        2:   33:   procedure setFilePattern(This: access Parameter; pattern: String) is
+        -:   34:   begin
+        4:   35:      This.all.filePattern := Ada.Strings.Unbounded.To_Unbounded_String(pattern);
+        2:   36:      This.all.Flag_filePattern := True;
+        2:   37:   end setFilePattern;
+        2:   38:   procedure setFileExtensionPattern(This: access Parameter; pattern: String) is
+        -:   39:   begin
+        4:   40:      This.all.fileExtensionPattern := Ada.Strings.Unbounded.To_Unbounded_String(pattern);
+        2:   41:      This.all.Flag_fileExtensionPattern := True;
+        2:   42:   end setFileExtensionPattern;
+        2:   43:   procedure setFullName(This: access Parameter; fullName: Boolean) is
+        -:   44:   begin
+        2:   45:      This.all.fullName := fullName;
+        2:   46:      This.all.Flag_fullName := True;
+        2:   47:   end setFullName;
+        2:   48:   procedure setDatePattern(This: access Parameter; datePattern: String) is
+        -:   49:   begin
+        2:   50:      This.all.datePattern := datePattern;
+        2:   51:      This.all.Flag_datePattern := True;
+        2:   52:   end setDatePattern;
+        2:   53:   procedure setMinFileSize(This: access Parameter; minFileSize: Natural) is
+        -:   54:   begin
+        2:   55:      This.all.minFileSize := minFileSize;
+        2:   56:      This.all.Flag_fileSize := True;
+        2:   57:   end setMinFileSize;
+        2:   58:   procedure setMaxFileSize(This: access Parameter; maxFileSize: Natural) is
+        -:   59:   begin
+        2:   60:      This.all.maxFileSize := maxFileSize;
+        2:   61:      This.all.Flag_fileSize := True;
+        2:   62:   end setMaxFileSize;
+        2:   63:   procedure setDateRangeStart(This: access Parameter; startDate: String) is
+        -:   64:   begin
+        2:   65:      This.all.dateRangeStart := startDate;
+        2:   66:      This.all.Flag_dateRange := True;
+        2:   67:   end setDateRangeStart;
+        2:   68:   procedure setDateRangeFinish(This: access Parameter; finishDate: String) is
+        -:   69:   begin
+        2:   70:      This.all.dateRangeFinish := finishDate;
+        2:   71:      This.all.Flag_dateRange := True;
+        2:   72:   end setDateRangeFinish;
+        2:   73:   procedure setTimePattern(This: access Parameter; timePattern: String) is
+        -:   74:   begin
+        2:   75:      This.all.timePattern := timePattern;
+        2:   76:      This.all.Flag_timePattern := True;
+        2:   77:   end setTimePattern;
+        2:   78:   procedure setTimeRangeStart(This: access Parameter; startTime: String) is
+        -:   79:   begin
+        2:   80:      This.all.timeRangeStart := startTime;
+        2:   81:      This.all.Flag_timeRange := True;
+        2:   82:   end setTimeRangeStart;
+        2:   83:   procedure setTimeRangeFinish(This: access Parameter; finishTime: String) is
+        -:   84:   begin
+        2:   85:      This.all.timeRangeFinish := finishTime;
+        2:   86:      This.all.Flag_timeRange := True;
+        2:   87:   end setTimeRangeFinish;
+        2:   88:   procedure setMinWidth(This: access Parameter; minWidth: Natural) is
+        -:   89:   begin
+        2:   90:      This.all.minWidth := minWidth;
+        2:   91:      This.all.Flag_imageSize := True;
+        2:   92:   end setMinWidth;
+        2:   93:   procedure setMaxWidth(This: access Parameter; maxWidth: Natural) is
+        -:   94:   begin
+        2:   95:      This.all.maxWidth := maxWidth;
+        2:   96:      This.all.Flag_imageSize := True;
+        2:   97:   end setMaxWidth;
+        2:   98:   procedure setMinHeight(This: access Parameter; minHeight: Natural) is
+        -:   99:   begin
+        2:  100:      This.all.minHeight := minHeight;
+        2:  101:      This.all.Flag_imageSize := True;
+        2:  102:   end setMinHeight;
+        2:  103:   procedure setMaxHeight(This: access Parameter; maxHeight: Natural) is
+        -:  104:   begin
+        2:  105:      This.all.maxHeight := maxHeight;
+        2:  106:      This.all.Flag_imageSize := True;
+        2:  107:   end setMaxHeight;
+        2:  108:   procedure setHelp(This: access Parameter; enable: Boolean) is
+        -:  109:   begin
+        2:  110:      This.all.Flag_help := enable;
+        2:  111:   end setHelp;
+        2:  112:   procedure setRename(This: access Parameter; enable: Boolean) is
+        -:  113:   begin
+        2:  114:      This.all.rename := enable;
+        2:  115:      This.all.Flag_rename := True;
+        2:  116:   end setRename;
+        2:  117:   procedure setCSV(This: access Parameter; file: String) is
+        -:  118:   begin
+        4:  119:      This.all.csvFile := Ada.Strings.Unbounded.To_Unbounded_String(file);
+        2:  120:      This.all.Flag_csv := True;
+        2:  121:   end setCSV;
+        2:  122:   procedure setCSVseparator(This: access Parameter; separator: String) is
+        -:  123:   begin
+        2:  124:      This.all.csvSeparator := separator;
+        2:  125:      This.all.Flag_csvSeparator := True;
+        2:  126:   end setCSVseparator;
+        2:  127:   procedure setDebug(This: access Parameter; enable: Boolean) is
+        -:  128:   begin
+        2:  129:      This.all.debug := enable;
+        2:  130:      This.all.Flag_debug := True;
+        2:  131:   end setDebug;
+        -:  132:
+        -:  133:   -- Werte abfragen
+        4:  134:   function getPath(This: access Parameter) return String is
+        -:  135:   begin
+        4:  136:      return Ada.Strings.Unbounded.To_String(This.all.path);
+        -:  137:   end getPath;
+        4:  138:   function getPathRecursion(This: access Parameter) return Boolean is
+        -:  139:   begin
+        4:  140:      return This.all.pathRecursion;
+        -:  141:   end getPathRecursion;
+        4:  142:   function getFilePattern(This: access Parameter) return String is
+        -:  143:   begin
+        4:  144:      return Ada.Strings.Unbounded.To_String(This.all.filePattern);
+        -:  145:   end getFilePattern;
+        4:  146:   function getFileExtensionPattern(This: access Parameter) return String is
+        -:  147:   begin
+        4:  148:      return Ada.Strings.Unbounded.To_String(This.all.fileExtensionPattern);
+        -:  149:   end getFileExtensionPattern;
+        4:  150:   function getFullName(This: access Parameter) return Boolean is
+        -:  151:   begin
+        4:  152:      return This.all.fullName;
+        -:  153:   end getFullName;
+        4:  154:   function getDatePattern(This: access Parameter) return String is
+        -:  155:   begin
+        4:  156:      return This.all.datePattern;
+        -:  157:   end getDatePattern;
+        4:  158:   function getMinFileSize(This: access Parameter) return Natural is
+        -:  159:   begin
+        4:  160:      return This.all.minFileSize;
+        -:  161:   end getMinFileSize;
+        4:  162:   function getMaxFileSize(This: access Parameter) return Natural is
+        -:  163:   begin
+        4:  164:      return This.all.maxFileSize;
+        -:  165:   end getMaxFileSize;
+        4:  166:   function getDateRangeStart(This: access Parameter) return String is
+        -:  167:   begin
+        4:  168:      return This.all.dateRangeStart;
+        -:  169:   end getDateRangeStart;
+        4:  170:   function getDateRangeFinish(This: access Parameter) return String is
+        -:  171:   begin
+        4:  172:      return This.all.dateRangeFinish;
+        -:  173:   end getDateRangeFinish;
+        4:  174:   function getTimePattern(This: access Parameter) return String is
+        -:  175:   begin
+        4:  176:      return This.all.timePattern;
+        -:  177:   end getTimePattern;
+        4:  178:   function getTimeRangeStart(This: access Parameter) return String is
+        -:  179:   begin
+        4:  180:      return This.all.timeRangeStart;
+        -:  181:   end getTimeRangeStart;
+        4:  182:   function getTimeRangeFinish(This: access Parameter) return String is
+        -:  183:   begin
+        4:  184:      return This.all.timeRangeFinish;
+        -:  185:   end getTimeRangeFinish;
+        4:  186:   function getMinWidth(This: access Parameter) return Natural is
+        -:  187:   begin
+        4:  188:      return This.all.minWidth;
+        -:  189:   end getMinWidth;
+        4:  190:   function getMaxWidth(This: access Parameter) return Natural is
+        -:  191:   begin
+        4:  192:      return This.all.maxWidth;
+        -:  193:   end getMaxWidth;
+        4:  194:   function getMinHeight(This: access Parameter) return Natural is
+        -:  195:   begin
+        4:  196:      return This.all.minHeight;
+        -:  197:   end getMinHeight;
+        4:  198:   function getMaxHeight(This: access Parameter) return Natural is
+        -:  199:   begin
+        4:  200:      return This.all.maxHeight;
+        -:  201:   end getMaxHeight;
+    #####:  202:   function getHelp(This: access Parameter) return String is
+        -:  203:   begin
+    #####:  204:      return Globals.help_string;
+        -:  205:   end getHelp;
+        4:  206:   function getRename(This: access Parameter) return Boolean is
+        -:  207:   begin
+        4:  208:      return This.all.rename;
+        -:  209:   end getRename;
+        4:  210:   function getCSV(This: access Parameter) return String is
+        -:  211:   begin
+        4:  212:      return Ada.Strings.Unbounded.To_String(This.all.csvFile);
+        -:  213:   end getCSV;
+        4:  214:   function getCSVseparator(This: access Parameter) return String is
+        -:  215:   begin
+        4:  216:      return This.all.csvSeparator;
+        -:  217:   end getCSVseparator;
+        4:  218:   function getDebug(This: access Parameter) return Boolean is
+        -:  219:   begin
+        4:  220:      return This.all.debug;
+        -:  221:   end getDebug;
+        -:  222:
+        -:  223:   -- Flags abfragen
+        2:  224:   function flagPath(This: access Parameter) return Boolean is
+        -:  225:   begin
+        2:  226:      return This.all.Flag_path;
+        -:  227:   end flagPath;
+        2:  228:   function flagPathRecursion(This: access Parameter) return Boolean is
+        -:  229:   begin
+        2:  230:      return This.all.Flag_pathRecursion;
+        -:  231:   end flagPathRecursion;
+        2:  232:   function flagFilePattern(This: access Parameter) return Boolean is
+        -:  233:   begin
+        2:  234:      return This.all.Flag_filePattern;
+        -:  235:   end flagFilePattern;
+        2:  236:   function flagFileExtensionPattern(This: access Parameter) return Boolean is
+        -:  237:   begin
+        2:  238:      return This.all.Flag_fileExtensionPattern;
+        -:  239:   end flagFileExtensionPattern;
+        2:  240:   function flagFullName(This: access Parameter) return Boolean is
+        -:  241:   begin
+        2:  242:      return This.all.Flag_fullName;
+        -:  243:   end flagFullName;
+        2:  244:   function flagFileSize(This: access Parameter) return Boolean is
+        -:  245:   begin
+        2:  246:      return This.all.Flag_fileSize;
+        -:  247:   end flagFileSize;
+        2:  248:   function flagDatePattern(This: access Parameter) return Boolean is
+        -:  249:   begin
+        2:  250:      return This.all.Flag_datePattern;
+        -:  251:   end flagDatePattern;
+        2:  252:   function flagDateRange(This: access Parameter) return Boolean is
+        -:  253:   begin
+        2:  254:      return This.all.Flag_dateRange;
+        -:  255:   end flagDateRange;
+        2:  256:   function flagTimePattern(This: access Parameter) return Boolean is
+        -:  257:   begin
+        2:  258:      return This.all.Flag_timePattern;
+        -:  259:   end flagTimePattern;
+        2:  260:   function flagTimeRange(This: access Parameter) return Boolean is
+        -:  261:   begin
+        2:  262:      return This.all.Flag_timeRange;
+        -:  263:   end flagTimeRange;
+        2:  264:   function flagImageSize(This: access Parameter) return Boolean is
+        -:  265:   begin
+        2:  266:      return This.all.Flag_imageSize;
+        -:  267:   end flagImageSize;
+        4:  268:   function flagHelp(This: access Parameter) return Boolean is
+        -:  269:   begin
+        4:  270:      return This.all.Flag_help;
+        -:  271:   end flagHelp;
+        2:  272:   function flagRename(This: access Parameter) return Boolean is
+        -:  273:   begin
+        2:  274:      return This.all.Flag_rename;
+        -:  275:   end flagRename;
+        2:  276:   function flagCSV(This: access Parameter) return Boolean is
+        -:  277:   begin
+        2:  278:      return This.all.Flag_csv;
+        -:  279:   end flagCSV;
+        2:  280:   function flagCSVseparator(This: access Parameter) return Boolean is
+        -:  281:   begin
+        2:  282:      return This.all.Flag_csvSeparator;
+        -:  283:   end flagCSVseparator;
+        2:  284:   function flagDebug(This: access Parameter) return Boolean is
+        -:  285:   begin
+        2:  286:      return This.all.Flag_debug;
+        -:  287:   end flagDebug;
+        -:  288:
+        2:  289:end Parameters;

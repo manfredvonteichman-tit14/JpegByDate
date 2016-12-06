@@ -1,0 +1,17 @@
+.jpg
+0123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789.jpg
+case0.jpg
+case1.JPG
+case2.jPg
+ModifiedFromCam.jpg
+ModifiedFromCam.tif
+ModifiedFromCam.tiff
+ModifiedPhotoshop.jpg
+OutOfCam.jfif
+OutOfCam.jpe
+OutOfCam.jpeg
+OutOfCam.jpg
+ReallyAJpeg.tif
+ReallyATiff.jpg
+Test.jpg
+강남스타일.jpg

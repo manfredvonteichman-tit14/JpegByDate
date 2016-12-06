@@ -1,0 +1,45 @@
+        -:    0:Source:D:/Users/Andi/Documents/GitHub/JpegByDate/src/Filters.adb
+        -:    0:Programs:186
+        -:    1:-- Verwendete Packages
+        -:    2:--> NONE
+        -:    3:
+        -:    4:-- Package für Filtermodul
+        -:    5:package body Filters is
+        -:    6:
+        -:    7:   -- Filter anwenden
+    #####:    8:   function apply(This: access Filter; param: FilterElement_T) return Boolean is
+    #####:    9:      That: access Filter'Class := This; -- notwendig, da weitere Calls dispatching sein müssen, Funktion das aber nicht ist
+        -:   10:   begin
+    #####:   11:      if That.applyThis(param) then
+    #####:   12:         if This.all.next /= null then
+        -:   13:            -- andere Filter anwenden
+    #####:   14:            return This.all.next.apply(param);
+        -:   15:         else
+        -:   16:            -- Letzter Filter in Kette hat gematcht
+        -:   17:            return True;
+        -:   18:         end if;
+        -:   19:      else
+        -:   20:         -- Eigener Filter matcht nicht
+        -:   21:         return False;
+        -:   22:      end if;
+        -:   23:   end apply;
+        -:   24:
+        -:   25:   -- Neuen Filter an Kette anfügen
+    #####:   26:   procedure addNew(This: access Filter; newFilter: access Filter'Class) is
+        -:   27:   begin
+    #####:   28:      if This.all.next /= null then
+        -:   29:         -- Neuen Filter in Kette weiterreichen
+    #####:   30:         This.all.next.addNew(newFilter);
+        -:   31:      else
+        -:   32:         -- Neuen Filter an Ende von Kette anfügen
+    #####:   33:         This.all.next := newFilter;
+        -:   34:      end if;
+    #####:   35:   end addNew;
+        -:   36:
+        -:   37:   -- Rückgabe des nächsten Filters
+    #####:   38:   function getNext(This: access Filter) return access Filter'Class is
+        -:   39:   begin
+    #####:   40:      return This.all.next;
+        -:   41:   end getNext;
+        -:   42:
+        -:   43:end Filters;

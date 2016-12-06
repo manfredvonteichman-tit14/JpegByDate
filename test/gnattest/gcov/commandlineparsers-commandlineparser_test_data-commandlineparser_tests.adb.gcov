@@ -1,0 +1,99 @@
+        -:    0:Source:D:/Users/Andi/Documents/GitHub/JpegByDate/test/gnattest/tests/commandlineparsers-commandlineparser_test_data-commandlineparser_tests.adb
+        -:    0:Programs:186
+        -:    1:--  This package has been generated automatically by GNATtest.
+        -:    2:--  You are allowed to add your code to the bodies of test routines.
+        -:    3:--  Such changes will be kept during further regeneration of this file.
+        -:    4:--  All code placed outside of test routine bodies will be lost. The
+        -:    5:--  code intended to set up and tear down the test environment should be
+        -:    6:--  placed into CommandlineParsers.CommandlineParser_Test_Data.
+        -:    7:
+        -:    8:with AUnit.Assertions; use AUnit.Assertions;
+        -:    9:with System.Assertions;
+        -:   10:
+        -:   11:package body CommandlineParsers.CommandlineParser_Test_Data.CommandlineParser_Tests is
+        -:   12:
+        -:   13:
+        -:   14:--  begin read only
+        -:   15:   procedure Test_create (Gnattest_T : in out Test_CommandlineParser);
+        2:   16:   procedure Test_create_8ce989 (Gnattest_T : in out Test_CommandlineParser) renames Test_create;
+        -:   17:--  id:2.2/8ce9891aaa5748c5/create/1/0/
+        2:   18:   procedure Test_create (Gnattest_T : in out Test_CommandlineParser) is
+        -:   19:   --  commandlineparsers.ads:13:4:create
+        -:   20:--  end read only
+        -:   21:
+        -:   22:      pragma Unreferenced (Gnattest_T);
+        -:   23:
+        -:   24:   begin
+        -:   25:
+        2:   26:      AUnit.Assertions.Assert
+        -:   27:        (Gnattest_Generated.Default_Assert_Value,
+        -:   28:         "Test not implemented.");
+        -:   29:
+        -:   30:--  begin read only
+        2:   31:   end Test_create;
+        -:   32:--  end read only
+        -:   33:
+        -:   34:
+        -:   35:--  begin read only
+        -:   36:   procedure Test_destroy (Gnattest_T : in out Test_CommandlineParser);
+        2:   37:   procedure Test_destroy_90f6a1 (Gnattest_T : in out Test_CommandlineParser) renames Test_destroy;
+        -:   38:--  id:2.2/90f6a1ee0e6bbd35/destroy/1/0/
+        2:   39:   procedure Test_destroy (Gnattest_T : in out Test_CommandlineParser) is
+        -:   40:   --  commandlineparsers.ads:15:4:destroy
+        -:   41:--  end read only
+        -:   42:
+        -:   43:      pragma Unreferenced (Gnattest_T);
+        -:   44:
+        -:   45:   begin
+        -:   46:
+        2:   47:      AUnit.Assertions.Assert
+        -:   48:        (Gnattest_Generated.Default_Assert_Value,
+        -:   49:         "Test not implemented.");
+        -:   50:
+        -:   51:--  begin read only
+        2:   52:   end Test_destroy;
+        -:   53:--  end read only
+        -:   54:
+        -:   55:
+        -:   56:--  begin read only
+        -:   57:   procedure Test_parse (Gnattest_T : in out Test_CommandlineParser);
+        2:   58:   procedure Test_parse_f83b07 (Gnattest_T : in out Test_CommandlineParser) renames Test_parse;
+        -:   59:--  id:2.2/f83b076c5d88d4c3/parse/1/0/
+        2:   60:   procedure Test_parse (Gnattest_T : in out Test_CommandlineParser) is
+        -:   61:   --  commandlineparsers.ads:18:4:parse
+        -:   62:--  end read only
+        -:   63:
+        -:   64:      pragma Unreferenced (Gnattest_T);
+        -:   65:
+        -:   66:   begin
+        -:   67:
+        2:   68:      AUnit.Assertions.Assert
+        -:   69:        (Gnattest_Generated.Default_Assert_Value,
+        -:   70:         "Test not implemented.");
+        -:   71:
+        -:   72:--  begin read only
+        2:   73:   end Test_parse;
+        -:   74:--  end read only
+        -:   75:
+        -:   76:
+        -:   77:--  begin read only
+        -:   78:   procedure Test_getParams (Gnattest_T : in out Test_CommandlineParser);
+        2:   79:   procedure Test_getParams_728bfb (Gnattest_T : in out Test_CommandlineParser) renames Test_getParams;
+        -:   80:--  id:2.2/728bfbc815336fe6/getParams/1/0/
+        2:   81:   procedure Test_getParams (Gnattest_T : in out Test_CommandlineParser) is
+        -:   82:   --  commandlineparsers.ads:21:4:getParams
+        -:   83:--  end read only
+        -:   84:
+        -:   85:      pragma Unreferenced (Gnattest_T);
+        -:   86:
+        -:   87:   begin
+        -:   88:
+        2:   89:      AUnit.Assertions.Assert
+        -:   90:        (Gnattest_Generated.Default_Assert_Value,
+        -:   91:         "Test not implemented.");
+        -:   92:
+        -:   93:--  begin read only
+        2:   94:   end Test_getParams;
+        -:   95:--  end read only
+        -:   96:
+        -:   97:end CommandlineParsers.CommandlineParser_Test_Data.CommandlineParser_Tests;

@@ -1,0 +1,247 @@
+        -:    0:Source:D:/Users/Andi/Documents/GitHub/JpegByDate/src/commandlineparsers.adb
+        -:    0:Programs:186
+        -:    1:-- Verwendete Packages
+        -:    2:with Globals;
+        -:    3:with Ada.Strings.Fixed;
+        -:    4:with Ada.Strings.Maps;
+        -:    5:with Ada.Strings.Unbounded;
+        -:    6:with Ada.Unchecked_Deallocation;
+        -:    7:with GNAT.Command_Line;
+        -:    8:with GNAT.Regpat;
+        -:    9:
+        -:   10:-- Package fuer Eingabemodul
+        -:   11:package body CommandlineParsers is
+        -:   12:
+        -:   13:   -- Konstruktor
+    #####:   14:   function create return access CommandlineParser is
+    #####:   15:      input: access CommandlineParser := new CommandlineParser;
+        -:   16:   begin
+    #####:   17:      input.all.parameters := Parameters.create;
+    #####:   18:      return input;
+        -:   19:   end create;
+        -:   20:
+        -:   21:   -- Destruktor
+    #####:   22:   procedure destroy(This: access CommandlineParser) is
+        -:   23:      type type_access is access all CommandlineParser;
+        -:   24:      procedure Free is new Ada.Unchecked_Deallocation(CommandlineParser, type_access);
+    #####:   25:      obj: type_access := type_access(This);
+        -:   26:   begin
+        -:   27:      -- interne Variablen löschen
+    #####:   28:      if This.all.parameters /= null then
+    #####:   29:         This.all.parameters.destroy;
+        -:   30:      end if;
+    #####:   31:      Free(obj);
+    #####:   32:   end;
+        -:   33:
+        -:   34:   -- Kommandozeile verarbeiten
+    #####:   35:   procedure parse(This: access CommandlineParser; error_log: access Outputs.Output'Class) is
+        -:   36:   begin
+        -:   37:      -- Alle Parameter durcharbeiten
+        -:   38:      loop
+    #####:   39:         declare
+        -:   40:         begin
+        -:   41:            -- Verwende UNIX getopts Funktion
+    #####:   42:            case GNAT.Command_Line.Getopt(Globals.CommandLine) is
+        -:   43:            -- Schöner wäre es die Parameter als Konstanten zu definieren, ist aber nicht ohne weiteres möglich
+        -:   44:            when 'c' =>
+        -:   45:               -- Vollständige Pfadanzeige
+    #####:   46:               This.all.parameters.setFullName(True);
+        -:   47:            when 'd' =>
+        -:   48:               -- Regulärer Ausdruck für ISO Date Pattern Matching
+        -:   49:               -- Prüfen ob das eingegebene Datum einem Datum mit Wildcards der Form
+        -:   50:               -- 2016-01-?? entspricht.
+    #####:   51:               if Boolean'(GNAT.Regpat.Match(Expression => Globals.regexPatternDateWithWildcards, Data => GNAT.Command_Line.Parameter)) then
+        -:   52:                  -- Ersetze die Fragezeichen (CLI-Wildcards) mit Punkten (Regex-Wildcards) und Bindestriche durch Doppelpunkte (EXIF Trennzeichen)
+        -:   53:                  -- und hinterlege dieses Pattern in Parameters
+    #####:   54:                  This.all.parameters.setDatePattern(Ada.Strings.Fixed.Translate(Ada.Strings.Fixed.Translate(GNAT.Command_Line.Parameter, Ada.Strings.Maps.To_Mapping(From => "?", To => ".")), Ada.Strings.Maps.To_Mapping(From => "-", To => ":")));
+        -:   55:               else
+    #####:   56:                  raise Constraint_Error with "Invalid date format!";
+        -:   57:               end if;
+        -:   58:            when 'e' =>
+        -:   59:               -- CSV Speicherort setzen
+    #####:   60:               This.all.parameters.setCSV(GNAT.Command_Line.Parameter);
+    #####:   61:               This.all.parameters.setCSVseparator(Globals.defaultCSVseparator);
+        -:   62:            when 'E' =>
+        -:   63:               -- CSV Speicherort setzen
+    #####:   64:               This.all.parameters.setCSV(GNAT.Command_Line.Parameter);
+    #####:   65:               This.all.parameters.setCSVseparator(Globals.excelCSVseparator);
+        -:   66:            when 'f' =>
+        -:   67:               -- Dateinamen Pattern abspeichern
+    #####:   68:               declare
+    #####:   69:                  input: String := GNAT.Command_Line.Parameter;
+    #####:   70:                  I: Integer := input'First;
+        -:   71:                  -- Ausgabestring mit Zeilenanfang initialisieren
+    #####:   72:                  output: Ada.Strings.Unbounded.Unbounded_String := Ada.Strings.Unbounded.To_Unbounded_String("^");
+        -:   73:               begin
+        -:   74:                  -- Regex aufbauen
+    #####:   75:                  for I in input'Range loop
+        -:   76:                     -- Spezielle Platzhalter verarbeiten
+    #####:   77:                     if input(I) = '.' then
+    #####:   78:                        Ada.Strings.Unbounded.Append(output, "\.");
+    #####:   79:                     elsif input(I) = '?' then
+    #####:   80:                        Ada.Strings.Unbounded.Append(output, ".");
+    #####:   81:                     elsif input(I) = '*' then
+    #####:   82:                        Ada.Strings.Unbounded.Append(output, ".*");
+        -:   83:                     -- Regex spezifische Zeichen escapen
+    #####:   84:                     elsif input(I) = '(' then
+    #####:   85:                        Ada.Strings.Unbounded.Append(output, "\(");
+    #####:   86:                     elsif input(I) = ')' then
+    #####:   87:                        Ada.Strings.Unbounded.Append(output, "\)");
+    #####:   88:                     elsif input(I) = '[' then
+    #####:   89:                        Ada.Strings.Unbounded.Append(output, "\[");
+    #####:   90:                     elsif input(I) = ']' then
+    #####:   91:                        Ada.Strings.Unbounded.Append(output, "\]");
+    #####:   92:                     elsif input(I) = '{' then
+    #####:   93:                        Ada.Strings.Unbounded.Append(output, "\{");
+    #####:   94:                     elsif input(I) = '}' then
+    #####:   95:                        Ada.Strings.Unbounded.Append(output, "\}");
+    #####:   96:                     elsif input(I) = '\' then
+    #####:   97:                        Ada.Strings.Unbounded.Append(output, "\\");
+    #####:   98:                     elsif input(I) = '^' then
+    #####:   99:                        Ada.Strings.Unbounded.Append(output, "\^");
+    #####:  100:                     elsif input(I) = '$' then
+    #####:  101:                        Ada.Strings.Unbounded.Append(output, "\$");
+    #####:  102:                     elsif input(I) = '+' then
+    #####:  103:                        Ada.Strings.Unbounded.Append(output, "\+");
+    #####:  104:                     elsif input(I) = '-' then
+    #####:  105:                        Ada.Strings.Unbounded.Append(output, "\-");
+    #####:  106:                     elsif input(I) = '?' then
+    #####:  107:                        Ada.Strings.Unbounded.Append(output, "\?");
+    #####:  108:                     elsif input(I) = '&' then
+    #####:  109:                        Ada.Strings.Unbounded.Append(output, "\&");
+    #####:  110:                     elsif input(I) = '<' then
+    #####:  111:                        Ada.Strings.Unbounded.Append(output, "\<");
+    #####:  112:                     elsif input(I) = '>' then
+    #####:  113:                        Ada.Strings.Unbounded.Append(output, "\>");
+    #####:  114:                     elsif input(I) = '|' then
+    #####:  115:                        Ada.Strings.Unbounded.Append(output, "\|");
+        -:  116:                     -- Keine spezielle Vearbeitung -> Character kopieren
+        -:  117:                     else
+    #####:  118:                        Ada.Strings.Unbounded.Append(output, input(I));
+        -:  119:                     end if;
+        -:  120:                  end loop;
+        -:  121:                  -- Zeilenende hinzufügen
+    #####:  122:                  Ada.Strings.Unbounded.Append(output, "$");
+        -:  123:
+        -:  124:                  -- Pattern abspeichern
+    #####:  125:                  This.all.parameters.setFilePattern(Ada.Strings.Unbounded.To_String(output));
+    #####:  126:               end;
+        -:  127:            when 'h' =>
+        -:  128:               -- Hilfeausgabe aktivieren
+    #####:  129:               This.all.parameters.setHelp(True);
+        -:  130:            when 'p' =>
+        -:  131:               -- Suchort auswählen und speichern
+    #####:  132:               This.all.parameters.setPath(GNAT.Command_Line.Parameter);
+        -:  133:            when 'r' =>
+        -:  134:               -- Rekursiven Durchlauf aktivieren
+    #####:  135:               This.all.parameters.setPathRecursion(True);
+        -:  136:            when 't' =>
+        -:  137:               -- Prüfen ob die eingegebene Zeit dem richtigen Format entspricht
+        -:  138:               -- 22:??:01
+    #####:  139:               if Boolean'(GNAT.Regpat.Match(Expression => Globals.regexPatternTimeWithWildcards, Data => GNAT.Command_Line.Parameter)) then
+        -:  140:                  -- Ersetze die Fragezeichen (CLI-Wildcards) mit Punkten (Regex-Wildcards)
+        -:  141:                  -- und hinterlege dieses Pattern in Parameters
+    #####:  142:                  This.all.parameters.setTimePattern(Ada.Strings.Fixed.Translate(GNAT.Command_Line.Parameter, Ada.Strings.Maps.To_Mapping(From => "?", To => ".")));
+        -:  143:               else
+    #####:  144:                  raise Constraint_Error with "Invalid time format!";
+        -:  145:               end if;
+        -:  146:            when '-' =>
+        -:  147:               -- Lange Switches
+    #####:  148:               if GNAT.Command_Line.Full_Switch = "-minSize" then
+        -:  149:                  -- Minimum-Dateigröße
+    #####:  150:                  This.all.parameters.setMinFileSize(Natural'Value(GNAT.Command_Line.Parameter));
+    #####:  151:               elsif GNAT.Command_Line.Full_Switch = "-maxSize" then
+        -:  152:                  -- Maximum-Dateigröße
+    #####:  153:                  This.all.parameters.setMaxFileSize(Natural'Value(GNAT.Command_Line.Parameter));
+    #####:  154:               elsif GNAT.Command_Line.Full_Switch = "-startDate" then
+        -:  155:                  -- Regulärer Ausdruck für ISO Date Pattern Bereich
+        -:  156:                  -- Prüfen ob das eingegebene Datum einem Datum entspricht
+    #####:  157:                  if Boolean'(GNAT.Regpat.Match(Expression => Globals.regexPatternDateRange, Data => GNAT.Command_Line.Parameter)) then
+    #####:  158:                     This.all.parameters.setDateRangeStart(GNAT.Command_Line.Parameter);
+        -:  159:                  else
+    #####:  160:                     raise Constraint_Error with "Invalid date-range format!";
+        -:  161:                  end if;
+    #####:  162:               elsif GNAT.Command_Line.Full_Switch = "-finDate" then
+        -:  163:                  -- Regulärer Ausdruck für ISO Date Pattern Bereich
+        -:  164:                  -- Prüfen ob das eingegebene Datum einem Datum entspricht
+    #####:  165:                  if Boolean'(GNAT.Regpat.Match(Expression => Globals.regexPatternDateRange, Data => GNAT.Command_Line.Parameter)) then
+    #####:  166:                     This.all.parameters.setDateRangeFinish(GNAT.Command_Line.Parameter);
+        -:  167:                  else
+    #####:  168:                     raise Constraint_Error with "Invalid date-range format!";
+        -:  169:                  end if;
+    #####:  170:               elsif GNAT.Command_Line.Full_Switch = "-startTime" then
+        -:  171:                  -- Prüfen ob die eingegebene Zeit dem richtigen Format entspricht
+    #####:  172:                  if Boolean'(GNAT.Regpat.Match(Expression => Globals.regexPatternTimeRange, Data => GNAT.Command_Line.Parameter)) then
+    #####:  173:                     This.all.parameters.setTimeRangeStart(GNAT.Command_Line.Parameter);
+        -:  174:                  else
+    #####:  175:                     raise Constraint_Error with "Invalid time-range format!";
+        -:  176:                  end if;
+    #####:  177:               elsif GNAT.Command_Line.Full_Switch = "-finTime" then
+        -:  178:                  -- Prüfen ob die eingegebene Zeit dem richtigen Format entspricht
+    #####:  179:                  if Boolean'(GNAT.Regpat.Match(Expression => Globals.regexPatternTimeRange, Data => GNAT.Command_Line.Parameter)) then
+    #####:  180:                     This.all.parameters.setTimeRangeFinish(GNAT.Command_Line.Parameter);
+        -:  181:                  else
+    #####:  182:                     raise Constraint_Error with "Invalid time-range format!";
+        -:  183:                  end if;
+    #####:  184:               elsif GNAT.Command_Line.Full_Switch = "-minWidth" then
+        -:  185:                  -- Minimalbreite
+    #####:  186:                  This.all.parameters.setMinWidth(Natural'Value(GNAT.Command_Line.Parameter));
+    #####:  187:               elsif GNAT.Command_Line.Full_Switch = "-maxWidth" then
+        -:  188:                  -- Maximalbreite
+    #####:  189:                  This.all.parameters.setMaxWidth(Natural'Value(GNAT.Command_Line.Parameter));
+    #####:  190:               elsif GNAT.Command_Line.Full_Switch = "-minHeight" then
+        -:  191:                  -- Minimalbreite
+    #####:  192:                  This.all.parameters.setMinHeight(Natural'Value(GNAT.Command_Line.Parameter));
+    #####:  193:               elsif GNAT.Command_Line.Full_Switch = "-maxHeight" then
+        -:  194:                  -- Maximalbreite
+    #####:  195:                  This.all.parameters.setMaxHeight(Natural'Value(GNAT.Command_Line.Parameter));
+    #####:  196:               elsif GNAT.Command_Line.Full_Switch = "-fileRegex" then
+        -:  197:                  -- Vollständige Regex für Dateinamensfilter
+    #####:  198:                  This.all.parameters.setFilePattern(GNAT.Command_Line.Parameter);
+    #####:  199:               elsif GNAT.Command_Line.Full_Switch = "-rename" then
+        -:  200:                  -- Dateien umbenennen aktivieren
+    #####:  201:                  This.all.parameters.setRename(True);
+    #####:  202:               elsif GNAT.Command_Line.Full_Switch = "-debug" then
+        -:  203:                  -- Debugausgabe aktivieren
+    #####:  204:                  This.all.parameters.setDebug(True);
+        -:  205:               end if;
+        -:  206:            when others =>
+        -:  207:               exit;
+        -:  208:            end case;
+        -:  209:
+        -:  210:         exception
+        -:  211:            -- Ungültiger Switch
+    #####:  212:            when E: GNAT.Command_Line.Invalid_Switch =>
+    #####:  213:               if error_log /= null then
+    #####:  214:                  error_log.display("Invalid command line switch '" & GNAT.Command_Line.Full_Switch & "'");
+        -:  215:               end if;
+        -:  216:
+        -:  217:            -- Ungültiger Parameter
+    #####:  218:            when E: GNAT.Command_Line.Invalid_Parameter =>
+    #####:  219:               if error_log /= null then
+    #####:  220:                  error_log.display("Invalid command line parameter '" & GNAT.Command_Line.Parameter & "' for command line switch '" & GNAT.Command_Line.Full_Switch & "'");
+        -:  221:               end if;
+        -:  222:
+        -:  223:            -- Problem bei der Parameterverarbeitung
+    #####:  224:            when E: Constraint_Error =>
+    #####:  225:               if error_log /= null then
+    #####:  226:                  error_log.display("Invalid parameter value '" & GNAT.Command_Line.Parameter & "' for command line switch '" & GNAT.Command_Line.Full_Switch & "'");
+        -:  227:               end if;
+        -:  228:
+        -:  229:               -- Anderer Fehler bei der Verarbeitung
+    #####:  230:            when E: others =>
+    #####:  231:               if error_log /= null then
+    #####:  232:                  error_log.display("Unknown error parsing command line!");
+        -:  233:               end if;
+    #####:  234:         end;
+        -:  235:
+        -:  236:      end loop;
+    #####:  237:   end parse;
+        -:  238:
+        -:  239:   -- Getter Funktionen
+    #####:  240:   function getParams(This: access CommandlineParser) return access Parameters.Parameter is
+        -:  241:   begin
+    #####:  242:      return This.all.parameters;
+        -:  243:   end getParams;
+        -:  244:
+        -:  245:end CommandlineParsers;

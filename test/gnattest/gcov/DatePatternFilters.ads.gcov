@@ -1,0 +1,30 @@
+        -:    0:Source:D:/Users/Andi/Documents/GitHub/JpegByDate/src/DatePatternFilters.ads
+        -:    0:Programs:186
+        -:    1:-- Verwendete Packages
+        -:    2:with Globals;
+        -:    3:with EXIFFilters;
+        -:    4:with EXIFParsers;
+        -:    5:with Parameters;
+        -:    6:
+        -:    7:-- Package für Filtermodul
+        4:    8:package DatePatternFilters is
+        -:    9:
+        -:   10:   -- Typ anlegen
+    #####:   11:   type DatePatternFilter is new EXIFFilters.Filter with private;
+        -:   12:
+        -:   13:   -- Konstruktor
+        -:   14:   overriding function create(params: access Parameters.Parameter) return access DatePatternFilter;
+        -:   15:   -- Destruktor
+        -:   16:   overriding procedure destroy(This: access DatePatternFilter; destroy_chain: Boolean := False);
+        -:   17:
+        -:   18:   -- private Funktionen
+        -:   19:   overriding function applyThis(This: access DatePatternFilter; exif: EXIFParsers.EXIFParser_Access) return Boolean;
+        -:   20:
+        -:   21:private
+        -:   22:   -- Objektvariablen
+        6:   23:   type DatePatternFilter is new EXIFFilters.Filter with
+        -:   24:      record
+        -:   25:         params: access Parameters.Parameter := null; -- extern
+        -:   26:      end record;
+        -:   27:
+        2:   28:end DatePatternFilters;

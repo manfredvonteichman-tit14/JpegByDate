@@ -1,0 +1,24 @@
+        -:    0:Source:D:/Users/Andi/Documents/GitHub/JpegByDate/test/gnattest/tests/daterangefilters-daterangefilter_test_data-daterangefilter_tests.ads
+        -:    0:Programs:186
+        -:    1:--  This package has been generated automatically by GNATtest.
+        -:    2:--  Do not edit any part of it, see GNATtest documentation for more details.
+        -:    3:
+        -:    4:--  begin read only
+        -:    5:with GNATtest_Generated;
+        -:    6:
+        4:    7:package DateRangeFilters.DateRangeFilter_Test_Data.DateRangeFilter_Tests is
+        -:    8:
+        4:    9:   type Test_DateRangeFilter is new
+        -:   10:     GNATtest_Generated.GNATtest_Standard.DateRangeFilters.DateRangeFilter_Test_Data.Test_DateRangeFilter with null record;
+        -:   11:
+        -:   12:   procedure Test_create_1f0646 (Gnattest_T : in out Test_DateRangeFilter);
+        -:   13:   --  daterangefilters.ads:14:4:create
+        -:   14:
+        -:   15:   procedure Test_destroy_520ec2 (Gnattest_T : in out Test_DateRangeFilter);
+        -:   16:   --  daterangefilters.ads:16:4:destroy
+        -:   17:
+        -:   18:   procedure Test_applyThis_f0c86c (Gnattest_T : in out Test_DateRangeFilter);
+        -:   19:   --  daterangefilters.ads:19:4:applyThis
+        -:   20:
+        2:   21:end DateRangeFilters.DateRangeFilter_Test_Data.DateRangeFilter_Tests;
+        -:   22:--  end read only
