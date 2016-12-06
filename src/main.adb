@@ -18,6 +18,8 @@ with Inputs;
 with Outputs;
 with TimePatternFilters;
 with TimeRangeFilters;
+with Ada.Strings.Fixed;
+with Ada.Strings.Maps;
 
 -- Hauptfunktion
 procedure Main is
@@ -78,7 +80,7 @@ begin
          tmp_out: access Outputs.Output'Class;
       begin
          -- CSV Datei anlegen
-         tmp_out := CSVOutputs.create(input.getParams.getCSV);
+         tmp_out := CSVOutputs.create(input.getParams.getCSV, input.getParams.getCSVseparator);
          output.destroy;
          output := tmp_out;
 
@@ -87,7 +89,7 @@ begin
          -- Dateierstellen fehlgeschlagen
          when E: CSVOutputs.Impossible_Output =>
             output.display("ERROR! Creating CSV-export file '" & input.getParams.getCSV & "' failed. Printing to console instead.");
-            output.display(Globals.csvHeader);
+            output.display(Ada.Strings.Fixed.Translate(Globals.csvHeader, Ada.Strings.Maps.To_Mapping(From => ",", To => input.getParams.getCSVseparator)));
       end;
    end if;
    handler := FileHandlers.create(files, efilter, input.getParams);

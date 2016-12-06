@@ -10,7 +10,7 @@ package CSVOutputs is
 
    -- Konstruktor
    overriding function create return access CSVOutput;
-   function create(file: String) return access CSVOutput;
+   function create(file: String; separator: String) return access CSVOutput;
    -- Destruktor
    overriding procedure destroy(This: access CSVOutput);
 

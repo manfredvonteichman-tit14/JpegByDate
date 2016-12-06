@@ -119,6 +119,11 @@ package body Parameters is
       This.all.csvFile := Ada.Strings.Unbounded.To_Unbounded_String(file);
       This.all.Flag_csv := True;
    end setCSV;
+   procedure setCSVseparator(This: access Parameter; separator: String) is
+   begin
+      This.all.csvSeparator := separator;
+      This.all.Flag_csvSeparator := True;
+   end setCSVseparator;
    procedure setDebug(This: access Parameter; enable: Boolean) is
    begin
       This.all.debug := enable;
@@ -206,6 +211,10 @@ package body Parameters is
    begin
       return Ada.Strings.Unbounded.To_String(This.all.csvFile);
    end getCSV;
+   function getCSVseparator(This: access Parameter) return String is
+   begin
+      return This.all.csvSeparator;
+   end getCSVseparator;
    function getDebug(This: access Parameter) return Boolean is
    begin
       return This.all.debug;
@@ -268,6 +277,10 @@ package body Parameters is
    begin
       return This.all.Flag_csv;
    end flagCSV;
+   function flagCSVseparator(This: access Parameter) return Boolean is
+   begin
+      return This.all.Flag_csvSeparator;
+   end flagCSVseparator;
    function flagDebug(This: access Parameter) return Boolean is
    begin
       return This.all.Flag_debug;

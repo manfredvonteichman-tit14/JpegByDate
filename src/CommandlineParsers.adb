@@ -58,6 +58,11 @@ package body CommandlineParsers is
             when 'e' =>
                -- CSV Speicherort setzen
                This.all.parameters.setCSV(GNAT.Command_Line.Parameter);
+               This.all.parameters.setCSVseparator(Globals.defaultCSVseparator);
+            when 'E' =>
+               -- CSV Speicherort setzen
+               This.all.parameters.setCSV(GNAT.Command_Line.Parameter);
+               This.all.parameters.setCSVseparator(Globals.excelCSVseparator);
             when 'f' =>
                -- Dateinamen Pattern abspeichern
                declare

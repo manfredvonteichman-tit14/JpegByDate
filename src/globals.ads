@@ -32,6 +32,8 @@ package Globals is
    maxRenameRetries: constant Positive := 99;
    defaultCSV: constant String := "export.csv";
    csvHeader: constant String := "Filename,ISOSpeedRatings,DateTimeOriginal,ShutterSpeedValue,ApertureValue,Flash,FocalLength,ExifImageWidth,ExifImageHeight";
+   defaultCSVseparator: constant String := ",";
+   excelCSVseparator: constant String := ";";
    defaultDebug: constant Boolean := False;
 
    -- Hilfetext
@@ -92,7 +94,7 @@ package Globals is
      "    Displays debug information for parameters and pictures" & ASCII.LF & ASCII.LF;
 
    -- Kommandozeilenparameter
-   CommandLine: constant String := "c d: e: f: h p: r t: -minSize= -maxSize= -startDate= -finDate= -startTime= -finTime= -minWidth= -maxWidth= -minHeight= -maxHeight= -fileRegex= -rename -debug";
+   CommandLine: constant String := "c d: e: E: f: h p: r t: -minSize= -maxSize= -startDate= -finDate= -startTime= -finTime= -minWidth= -maxWidth= -minHeight= -maxHeight= -fileRegex= -rename -debug";
 
    -- EXIF-Tags
    package exif is

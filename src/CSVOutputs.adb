@@ -1,5 +1,7 @@
 -- Verwendete Packages
 with Globals;
+with Ada.Strings.Fixed;
+with Ada.Strings.Maps;
 with Ada.Unchecked_Deallocation;
 
 -- Package für Ausgabemodul
@@ -8,14 +10,14 @@ package body CSVOutputs is
    -- Konstruktor
    function create return access CSVOutput is
    begin
-      return create(Globals.defaultCSV);
+      return create(Globals.defaultCSV, Globals.defaultCSVseparator);
    end create;
-   function create(file: String) return access CSVOutput is
+   function create(file: String; separator: String) return access CSVOutput is
       output: access CSVOutput := new CSVOutput;
    begin
       -- Datei öffnen (Überschreiben)
       Ada.Text_IO.Create(output.file, Ada.Text_IO.Out_File, file);
-      Ada.Text_IO.Put_Line(output.file, Globals.csvHeader);
+      Ada.Text_IO.Put_Line(output.file, Ada.Strings.Fixed.Translate(Globals.csvHeader, Ada.Strings.Maps.To_Mapping(From => ",", To => separator)));
       return output;
 
    -- Fehlerbehandlung

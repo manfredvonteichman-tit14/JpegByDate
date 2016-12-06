@@ -144,7 +144,6 @@ package body FileHandlers is
                         end if;
                      end if;
 
-
                   end if;
                else
                   -- Keine EXIF Informationen in Bild vorhanden
@@ -303,7 +302,8 @@ package body FileHandlers is
 
    -- CSV String parsen
    function createCSV(This: access FileHandler; picture: access Pictures.Picture'Class) return String is
-      csv_row: Ada.Strings.Unbounded.Unbounded_String := Ada.Strings.Unbounded.To_Unbounded_String("""" & This.getDisplayName(picture.getName) & """,");
+      separator: String := This.all.params.getCSVseparator;
+      csv_row: Ada.Strings.Unbounded.Unbounded_String := Ada.Strings.Unbounded.To_Unbounded_String("""" & This.getDisplayName(picture.getName) & """" & separator);
    begin
       -- Alle Tags auslesen
       for counter in Integer range 1..8 loop
@@ -312,23 +312,23 @@ package body FileHandlers is
             -- Tag ausgeben
             case counter is
                when 1 =>
-                  Ada.Strings.Unbounded.Append(csv_row, Ada.Strings.Fixed.Trim(Integer'Image(picture.getEXIF.getISOSpeedRatings) & ",", Ada.Strings.Left));
+                  Ada.Strings.Unbounded.Append(csv_row, Ada.Strings.Fixed.Trim(Integer'Image(picture.getEXIF.getISOSpeedRatings) & separator, Ada.Strings.Left));
                when 2 =>
                   declare
                      date: String := picture.getEXIF.getDateTimeOriginal;
                   begin
-                     Ada.Strings.Unbounded.Append(csv_row, Ada.Strings.Fixed.Replace_Slice(date, date'Last, date'Last, "") & ",");
+                     Ada.Strings.Unbounded.Append(csv_row, Ada.Strings.Fixed.Replace_Slice(date, date'Last, date'Last, "") & separator);
                   end;
                when 3 =>
-                  Ada.Strings.Unbounded.Append(csv_row, Ada.Strings.Fixed.Trim(Float'Image(picture.getEXIF.getShutterSpeedValue) & ",", Ada.Strings.Left));
+                  Ada.Strings.Unbounded.Append(csv_row, Ada.Strings.Fixed.Trim(Float'Image(picture.getEXIF.getShutterSpeedValue) & separator, Ada.Strings.Left));
                when 4 =>
-                  Ada.Strings.Unbounded.Append(csv_row, Ada.Strings.Fixed.Trim(Float'Image(picture.getEXIF.getApertureValue) & ",", Ada.Strings.Left));
+                  Ada.Strings.Unbounded.Append(csv_row, Ada.Strings.Fixed.Trim(Float'Image(picture.getEXIF.getApertureValue) & separator, Ada.Strings.Left));
                when 5 =>
-                  Ada.Strings.Unbounded.Append(csv_row, Ada.Strings.Fixed.Trim(Integer'Image(picture.getEXIF.getFlash) & ",", Ada.Strings.Left));
+                  Ada.Strings.Unbounded.Append(csv_row, Ada.Strings.Fixed.Trim(Integer'Image(picture.getEXIF.getFlash) & separator, Ada.Strings.Left));
                when 6 =>
-                  Ada.Strings.Unbounded.Append(csv_row, Ada.Strings.Fixed.Trim(Float'Image(picture.getEXIF.getFocalLength) & ",", Ada.Strings.Left));
+                  Ada.Strings.Unbounded.Append(csv_row, Ada.Strings.Fixed.Trim(Float'Image(picture.getEXIF.getFocalLength) & separator, Ada.Strings.Left));
                when 7 =>
-                  Ada.Strings.Unbounded.Append(csv_row, Ada.Strings.Fixed.Trim(Integer'Image(picture.getEXIF.getExifImageWidth) & ",", Ada.Strings.Left));
+                  Ada.Strings.Unbounded.Append(csv_row, Ada.Strings.Fixed.Trim(Integer'Image(picture.getEXIF.getExifImageWidth) & separator, Ada.Strings.Left));
                when 8 =>
                   Ada.Strings.Unbounded.Append(csv_row, Ada.Strings.Fixed.Trim(Integer'Image(picture.getEXIF.getExifImageHeight), Ada.Strings.Left));
                when others =>
@@ -340,13 +340,13 @@ package body FileHandlers is
             -- Bei nicht vorhandenem Tag Zelle leer lassen
             when E: EXIFParsers.TagNotFound =>
                if counter /= 8 then
-                  Ada.Strings.Unbounded.Append(csv_row, ",");
+                  Ada.Strings.Unbounded.Append(csv_row, separator);
                end if;
 
             -- Bei sonstigen Fehlern Zelle leer lassen
             when E: others =>
                if counter /= 8 then
-                  Ada.Strings.Unbounded.Append(csv_row, ",");
+                  Ada.Strings.Unbounded.Append(csv_row, separator);
                end if;
          end;
       end loop;

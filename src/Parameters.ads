@@ -34,6 +34,7 @@ package Parameters is
    procedure setHelp(This: access Parameter; enable: Boolean);
    procedure setRename(This: access Parameter; enable: Boolean);
    procedure setCSV(This: access Parameter; file: String);
+   procedure setCSVseparator(This: access Parameter; separator: String);
    procedure setDebug(This: access Parameter; enable: Boolean);
 
    -- Werte abfragen
@@ -57,6 +58,7 @@ package Parameters is
    function getHelp(This: access Parameter) return String;
    function getRename(This: access Parameter) return Boolean;
    function getCSV(This: access Parameter) return String;
+   function getCSVseparator(This: access Parameter) return String;
    function getDebug(This: access Parameter) return Boolean;
 
    -- Flags abfragen
@@ -74,6 +76,7 @@ package Parameters is
    function flagHelp(This: access Parameter) return Boolean;
    function flagRename(This: access Parameter) return Boolean;
    function flagCSV(This: access Parameter) return Boolean;
+   function flagCSVseparator(This: access Parameter) return Boolean;
    function flagDebug(This: access Parameter) return Boolean;
 
 private
@@ -100,6 +103,7 @@ private
          maxHeight: Natural := Globals.maxHeight;
          rename: Boolean := Globals.defaultRenameFiles;
          csvFile: Ada.Strings.Unbounded.Unbounded_String := Ada.Strings.Unbounded.To_Unbounded_String(Globals.defaultCSV);
+         csvSeparator: String(1..1) := Globals.defaultCSVseparator;
          debug: Boolean := Globals.defaultDebug;
 
          -- Für Filter default Werte
@@ -117,6 +121,7 @@ private
          Flag_help: Boolean := False;
          Flag_rename: Boolean := False;
          Flag_csv: Boolean := False;
+         Flag_csvSeparator: Boolean := False;
          Flag_debug: Boolean := False;
       end record;
 
