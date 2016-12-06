@@ -25,5 +25,9 @@ project JpegByDate is
       for Tests_Dir use "../test/gnattest/tests";
    end Gnattest;
 
+   package Linker is
+      for Default_Switches ("ada") use ("-Xlinker", "--stack=0x10000000,0x1000000");
+   end Linker;
+
 end JpegByDate;
 
