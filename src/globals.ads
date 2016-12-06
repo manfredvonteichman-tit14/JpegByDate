@@ -31,6 +31,7 @@ package Globals is
    defaultRenameFiles: constant Boolean := False;
    maxRenameRetries: constant Positive := 99;
    defaultCSV: constant String := "export.csv";
+   csvHeader: constant String := "Filename,ISOSpeedRatings,DateTimeOriginal,ShutterSpeedValue,ApertureValue,Flash,FocalLength,ExifImageWidth,ExifImageHeight";
    defaultDebug: constant Boolean := False;
 
    -- Hilfetext
@@ -45,6 +46,7 @@ package Globals is
      "    Allowed are digits and ? as a wildcard" & ASCII.LF &
      "-e file" & ASCII.LF &
      "    Stores EXIF parameters in specified file" & ASCII.LF &
+     "    File will be overwritten if it already exists" & ASCII.LF &
      "-f filepattern" & ASCII.LF &
      "    Specify a pattern to filter filenames" & ASCII.LF &
      "    Use charcters or * (general wildcard) or ? (single character wildcard)" & ASCII.LF &

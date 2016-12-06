@@ -5,7 +5,10 @@
 package Outputs is
 
    -- Interfacedefinition
-   type Output is interface;
+   -- ACHTUNG! Ist kein Interface, sondern voll abstrakte Klasse.
+   -- Dies ist notwendig, da 'limited' von Interface nicht auf Subklasse vererbt wird.
+   -- Subklasse CSVOutput muss aber 'limited' sein und eine nachträgliche Definition dazu ist nicht möglich.
+   type Output is abstract tagged limited null record; -- quasi interface
 
    -- Interfacefunktionen
    function create return access Output is abstract;

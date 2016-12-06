@@ -1,4 +1,5 @@
 -- Verwendete Packages
+with CSVOutputs;
 with CommandlineParsers;
 with ConsoleOutputs;
 with DatePatternFilters;
@@ -11,6 +12,7 @@ with FileNameFilters;
 with FileSizeFilters;
 with FilesystemListers;
 with FileHandlers;
+with Globals;
 with ImageSizeFilters;
 with Inputs;
 with Outputs;
@@ -70,6 +72,24 @@ begin
    files := FilesystemListers.create(input.getParams, ffilter);
 
    -- Dateien verarbeiten und anzeigen
+   if input.getParams.flagCSV then
+      -- Wechsle von Console-IO zu Datei wenn Export gewünscht
+      declare
+         tmp_out: access Outputs.Output'Class;
+      begin
+         -- CSV Datei anlegen
+         tmp_out := CSVOutputs.create(input.getParams.getCSV);
+         output.destroy;
+         output := tmp_out;
+
+      -- Fehlerbehandlung
+      exception
+         -- Dateierstellen fehlgeschlagen
+         when E: CSVOutputs.Impossible_Output =>
+            output.display("ERROR! Creating CSV-export file '" & input.getParams.getCSV & "' failed. Printing to console instead.");
+            output.display(Globals.csvHeader);
+      end;
+   end if;
    handler := FileHandlers.create(files, efilter, input.getParams);
    handler.exec(output);
 
