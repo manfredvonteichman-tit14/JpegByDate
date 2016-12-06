@@ -10,5 +10,6 @@ call test7.bat
 call test8.bat
 call test9.bat
 call test10.bat
+call test11.bat
 
 pause

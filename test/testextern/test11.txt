@@ -1,0 +1,3 @@
+Invalid parameter value '5' for command line switch '-startDate'
+Invalid command line switch '-u'
+Invalid command line parameter '' for command line switch 'f'

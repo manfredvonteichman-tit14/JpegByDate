@@ -1,3 +1,4 @@
+EXIFerrors.jpg
 iPhone.JPG
 iPhone.tif
 ModifiedFromCam.jpg
