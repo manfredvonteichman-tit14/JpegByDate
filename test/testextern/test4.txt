@@ -1,0 +1,75 @@
+DEBUG OUTPUT - Path: ../test
+DEBUG OUTPUT - PathRecursionEnabled: TRUE
+DEBUG OUTPUT - FullFileName: TRUE
+DEBUG OUTPUT - FileNamePattern: .*
+DEBUG OUTPUT - DatePattern: ....:..:..
+DEBUG OUTPUT - DateRangeStart: 2000-01-01
+DEBUG OUTPUT - DateRangeFinish: 2020-01-01
+DEBUG OUTPUT - minFileSize:  1
+DEBUG OUTPUT - maxFileSize:  2147483646
+DEBUG OUTPUT - TimePattern: ..:..:..
+DEBUG OUTPUT - TimeRangeStart: 16:00:03
+DEBUG OUTPUT - TimeRangeFinish: 16:00:02
+DEBUG OUTPUT - minWidth:  1
+DEBUG OUTPUT - maxWidth:  10000
+DEBUG OUTPUT - minHeight:  1
+DEBUG OUTPUT - maxHeight:  10000
+DEBUG OUTPUT - CSVfile: export.csv
+DEBUG OUTPUT - RenameFiles: TRUE
+JpegByDate is a program to display and filter pictures by EXIF information
+By running the program without parameters all files containing EXIF information will be displayed. Otherwise all files matching the filter will be displayed.
+
+Command line switch description:
+-c
+    Display full path and name instead of just the simple name
+-d YYYY-MM-DD
+    Set the date to filter the pictures
+    Allowed are digits and ? as a wildcard
+-e file
+    Stores EXIF parameters in specified file
+    File will be overwritten if it already exists
+-f filepattern
+    Specify a pattern to filter filenames
+    Use charcters or * (general wildcard) or ? (single character wildcard)
+-h
+    Display this help text
+-p path
+    Specifiy a path to search for pictures (absolute or relative)
+-r
+    Enable recursive directory search
+-t HH:MM:SS
+    Set the time to filter the pictures
+    Allowed are digits and ? as a wildcard
+--minSize=number
+    Specify the minimum picture filesize
+--maxSize=number
+    Specify the maximum picture filesize
+--minWidth=number
+    Specify the minimum picture width
+--maxWidth=number
+    Specify the maximum picture width
+--minHeight=number
+    Specify the minimum picture height
+--maxHeight=number
+    Specify the maximum picture height
+--startDate=YYYY-MM-DD
+    Set the starting date to filter the pictures
+    Allowed are only digits
+--finDate=YYYY-MM-DD
+    Set the finishing date to filter the pictures
+    Allowed are only digits
+--startTime=HH:MM:SS
+    Set the starting time to filter the pictures
+    Allowed are only digits
+--finTime=HH:MM:SS
+    Set the finishing time to filter the pictures
+    Allowed are only digits
+--fileRegex=regex
+    Specify a pattern to filter filenames
+    Use standard regular expression syntax to set the filter
+--rename
+    Renames all matching pictures. New filename will be YYYY-MM-DD-HH-MM-SS.EXT
+--debug
+    Displays debug information for parameters and pictures
+
+

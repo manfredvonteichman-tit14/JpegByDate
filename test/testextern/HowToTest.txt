@@ -1,0 +1,5 @@
+- CLI-Input in Batch-Eintragen (vgl. test1.bat)
+- CLI-Input ausführen und Output in testX.txt schreiben.
+- Output manuell auf Korrektheit prüfen
+- Batch anpassen für den Dateivergleich
+- Batch zum overall-Test-Batch hinzufügen
