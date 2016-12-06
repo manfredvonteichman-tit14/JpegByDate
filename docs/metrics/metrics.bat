@@ -1,25 +1,12 @@
 @echo off
-
 REM Variables
-
-SET PROJECT_DIRECTORY=C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src
-REM SET PROJECT_DIRECTORY=%1
-
+SET PROJECT_DIRECTORY=%1
 SET PROJECT_FILE=jpegbydate.gpr
-REM SET PROJECT_FILE=%2
-
-SET OUTPUT_DIRECTORY=C:\Users\von_teichman.m-tit14\Documents\GitHub\test_results
-REM SET OUTPUT_DIRECTORY=%3
-
-SET OUTPUT_FILE=metrix_1.xml
-REM SET OUTPUT_FILE=%4
-
+SET OUTPUT_DIRECTORY=%2
 SET GPS_DIRECTORY=C:\GNAT\2016\bin
-REM SET GPS_DIRECTORY=%5
 
 REM Add GPS folder to PATH variable
 SET PATH=%PATH%;%GPS_DIRECTORY%
-
 
 REM Check that folders exist
 :IO_CHECK
@@ -35,9 +22,17 @@ GOTO IO_CHECK
 
 REM Start GNATmetric
 :GNAT_METRIC
+REM Variables
+REM Get short SHA of current commit
+for /f "delims=" %%i in ('git rev-parse --short HEAD') do set PROJECT_SHA=%%i
+for /f "tokens=2 delims==" %%j in ('wmic os get localdatetime /format:list') do set datetime=%%j
+set DATETIME=%datetime:~0,8%_%datetime:~8,6%
+SET OUTPUT_FILENAME=%PROJECT_SHA%_%DATETIME%
+SET OUTPUT_EXT=.xml
+SET OUTPUT_FILE=%OUTPUT_FILENAME%%OUTPUT_EXT%
+
 echo "Starting metric generation ..."
-REM gnat metric -dd -ox %OUTPUT_DIRECTORY%\/%OUTPUT_FILE% -x -P%PROJECT_DIRECTORY%\%PROJECT_FILE% --declarations --statements --lines --lines-code --lines-comment --lines-blank --lines-average --lines-eol-comment
-gnat metric  -dd -ox %OUTPUT_DIRECTORY%\/%OUTPUT_FILE% -x -P%PROJECT_DIRECTORY%\%PROJECT_FILE% --syntax-all --lines-all --complexity-all
+gnat metric -dd -ox %OUTPUT_DIRECTORY%\/%OUTPUT_FILE% -x -P%PROJECT_DIRECTORY%\%PROJECT_FILE% --syntax-all --lines-all --complexity-all --coupling-all
 echo "Metric generation complete."
 cd %OUTPUT_DIRECTORY%
 pause
