@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <global>
-   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\filesystemlists.adb">
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\tmp\JpegByDate\src\filesystemlists.adb">
       <metric name="all_lines">73</metric>
       <metric name="code_lines">48</metric>
       <metric name="comment_lines">14</metric>
@@ -81,7 +81,7 @@
       <metric name="essential_complexity">1.00</metric>
       <metric name="max_loop_nesting">1.00</metric>
    </file>
-   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\filesystemlists.ads">
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\tmp\JpegByDate\src\filesystemlists.ads">
       <metric name="all_lines">26</metric>
       <metric name="code_lines">13</metric>
       <metric name="comment_lines">7</metric>
@@ -122,7 +122,7 @@
    </unit>
       </unit>
    </file>
-   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\inputs.adb">
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\tmp\JpegByDate\src\inputs.adb">
       <metric name="all_lines">52</metric>
       <metric name="code_lines">35</metric>
       <metric name="comment_lines">10</metric>
@@ -221,7 +221,7 @@
       <metric name="essential_complexity">1.00</metric>
       <metric name="max_loop_nesting">1.00</metric>
    </file>
-   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\inputs.ads">
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\tmp\JpegByDate\src\inputs.ads">
       <metric name="all_lines">26</metric>
       <metric name="code_lines">15</metric>
       <metric name="comment_lines">6</metric>
@@ -268,7 +268,7 @@
    </unit>
       </unit>
    </file>
-   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\main.adb">
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\tmp\JpegByDate\src\main.adb">
       <metric name="all_lines">21</metric>
       <metric name="code_lines">14</metric>
       <metric name="comment_lines">4</metric>
@@ -302,7 +302,7 @@
       <metric name="essential_complexity">1.00</metric>
       <metric name="max_loop_nesting">0.00</metric>
    </file>
-   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\outputs.adb">
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\tmp\JpegByDate\src\outputs.adb">
       <metric name="all_lines">34</metric>
       <metric name="code_lines">24</metric>
       <metric name="comment_lines">7</metric>
@@ -383,7 +383,7 @@
       <metric name="essential_complexity">1.00</metric>
       <metric name="max_loop_nesting">1.00</metric>
    </file>
-   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\outputs.ads">
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\tmp\JpegByDate\src\outputs.ads">
       <metric name="all_lines">17</metric>
       <metric name="code_lines">8</metric>
       <metric name="comment_lines">5</metric>
@@ -426,7 +426,7 @@
    </unit>
       </unit>
    </file>
-   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\globals.ads">
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\tmp\JpegByDate\src\globals.ads">
       <metric name="all_lines">21</metric>
       <metric name="code_lines">12</metric>
       <metric name="comment_lines">4</metric>
@@ -477,4 +477,57 @@
    <metric name="public_types">9</metric>
    <metric name="all_types">9</metric>
    <metric name="average_complexity">1.81</metric>
+   <coupling>
+      <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\tmp\JpegByDate\src\filesystemlists.ads">
+         <unit name="Filesystemlists" line="5" col="1">
+            <metric name="tagged_fan-out_coupling">0</metric>
+            <metric name="hierarchy_fan-out_coupling">0</metric>
+            <metric name="tagged_fan-in_coupling">0</metric>
+            <metric name="hierarchy_fan-in_coupling">0</metric>
+            <metric name="control_fan-out_coupling">0</metric>
+            <metric name="control_fan-in_coupling">1</metric>
+            <metric name="unit_fan-out_coupling">1</metric>
+            <metric name="unit_fan-in_coupling">1</metric>
+         </unit>
+      </file>
+      <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\tmp\JpegByDate\src\globals.ads">
+         <unit name="Globals" line="5" col="1">
+            <metric name="control_fan-out_coupling">0</metric>
+            <metric name="unit_fan-out_coupling">0</metric>
+            <metric name="unit_fan-in_coupling">4</metric>
+         </unit>
+      </file>
+      <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\tmp\JpegByDate\src\inputs.ads">
+         <unit name="Inputs" line="5" col="1">
+            <metric name="tagged_fan-out_coupling">0</metric>
+            <metric name="hierarchy_fan-out_coupling">0</metric>
+            <metric name="tagged_fan-in_coupling">0</metric>
+            <metric name="hierarchy_fan-in_coupling">0</metric>
+            <metric name="control_fan-out_coupling">0</metric>
+            <metric name="control_fan-in_coupling">1</metric>
+            <metric name="unit_fan-out_coupling">1</metric>
+            <metric name="unit_fan-in_coupling">1</metric>
+         </unit>
+      </file>
+      <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\tmp\JpegByDate\src\main.adb">
+         <unit name="Main" line="8" col="1">
+            <metric name="control_fan-out_coupling">3</metric>
+            <metric name="control_fan-in_coupling">0</metric>
+            <metric name="unit_fan-out_coupling">4</metric>
+            <metric name="unit_fan-in_coupling">0</metric>
+         </unit>
+      </file>
+      <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\tmp\JpegByDate\src\outputs.ads">
+         <unit name="Outputs" line="5" col="1">
+            <metric name="tagged_fan-out_coupling">0</metric>
+            <metric name="hierarchy_fan-out_coupling">0</metric>
+            <metric name="tagged_fan-in_coupling">0</metric>
+            <metric name="hierarchy_fan-in_coupling">0</metric>
+            <metric name="control_fan-out_coupling">0</metric>
+            <metric name="control_fan-in_coupling">1</metric>
+            <metric name="unit_fan-out_coupling">1</metric>
+            <metric name="unit_fan-in_coupling">1</metric>
+         </unit>
+      </file>
+   </coupling>
 </global>

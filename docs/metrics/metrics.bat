@@ -24,10 +24,11 @@ REM Start GNATmetric
 :GNAT_METRIC
 REM Variables
 REM Get short SHA of current commit
+cd %PROJECT_DIRECTORY%
 for /f "delims=" %%i in ('git rev-parse --short HEAD') do set PROJECT_SHA=%%i
 for /f "tokens=2 delims==" %%j in ('wmic os get localdatetime /format:list') do set datetime=%%j
 set DATETIME=%datetime:~0,8%_%datetime:~8,6%
-SET OUTPUT_FILENAME=%PROJECT_SHA%_%DATETIME%
+SET OUTPUT_FILENAME=%DATETIME%_%PROJECT_SHA%
 SET OUTPUT_EXT=.xml
 SET OUTPUT_FILE=%OUTPUT_FILENAME%%OUTPUT_EXT%
 

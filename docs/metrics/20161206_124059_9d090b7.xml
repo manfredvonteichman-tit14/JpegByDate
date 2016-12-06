@@ -1,26 +1,178 @@
 <?xml version="1.0"?>
 <global>
-   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\CommandlineParsers.adb">
-      <metric name="all_lines">231</metric>
-      <metric name="code_lines">170</metric>
-      <metric name="comment_lines">49</metric>
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\tmp\JpegByDate\src\CSVOutputs.adb">
+      <metric name="all_lines">55</metric>
+      <metric name="code_lines">38</metric>
+      <metric name="comment_lines">11</metric>
       <metric name="eol_comments">0</metric>
-      <metric name="comment_percentage">22.37</metric>
+      <metric name="comment_percentage">22.44</metric>
+      <metric name="blank_lines">6</metric>
+      <unit name="CSVOutputs" kind="package body" line="8" col="1">
+         <metric name="all_lines">48</metric>
+         <metric name="code_lines">34</metric>
+         <metric name="comment_lines">9</metric>
+         <metric name="eol_comments">0</metric>
+         <metric name="comment_percentage">20.93</metric>
+         <metric name="blank_lines">5</metric>
+         <metric name="all_types">1</metric>
+         <metric name="all_subprograms">4</metric>
+         <metric name="all_stmts">10</metric>
+         <metric name="all_dcls">16</metric>
+         <metric name="unit_nesting">1</metric>
+         <metric name="construct_nesting">3</metric>
+         <metric name="lsloc">26</metric>
+         <unit name="create" kind="function body" line="11" col="4">
+            <metric name="all_lines">4</metric>
+            <metric name="code_lines">4</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="comment_percentage">0.00</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">1</metric>
+            <metric name="all_dcls">1</metric>
+            <metric name="construct_nesting">1</metric>
+            <metric name="lsloc">2</metric>
+            <metric name="statement_complexity">1</metric>
+            <metric name="expression_complexity">0</metric>
+            <metric name="cyclomatic_complexity">1</metric>
+            <metric name="essential_complexity">1</metric>
+            <metric name="max_loop_nesting">0</metric>
+            <metric name="extra_exit_points">0</metric>
+         </unit>
+         <unit name="create" kind="function body" line="15" col="4">
+            <metric name="all_lines">15</metric>
+            <metric name="code_lines">10</metric>
+            <metric name="comment_lines">4</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="comment_percentage">28.57</metric>
+            <metric name="blank_lines">1</metric>
+            <metric name="all_stmts">4</metric>
+            <metric name="all_dcls">5</metric>
+            <metric name="construct_nesting">1</metric>
+            <metric name="lsloc">9</metric>
+            <metric name="statement_complexity">1</metric>
+            <metric name="expression_complexity">0</metric>
+            <metric name="cyclomatic_complexity">1</metric>
+            <metric name="essential_complexity">1</metric>
+            <metric name="max_loop_nesting">0</metric>
+            <metric name="extra_exit_points">0</metric>
+         </unit>
+         <unit name="destroy" kind="procedure body" line="32" col="4">
+            <metric name="all_lines">16</metric>
+            <metric name="code_lines">14</metric>
+            <metric name="comment_lines">2</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="comment_percentage">12.50</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">4</metric>
+            <metric name="all_dcls">6</metric>
+            <metric name="construct_nesting">2</metric>
+            <metric name="lsloc">10</metric>
+            <metric name="statement_complexity">1</metric>
+            <metric name="expression_complexity">0</metric>
+            <metric name="cyclomatic_complexity">1</metric>
+            <metric name="essential_complexity">1</metric>
+            <metric name="max_loop_nesting">0</metric>
+            <metric name="extra_exit_points">0</metric>
+            <unit name="Free" kind="procedure instantiation" line="34" col="7">
+               <metric name="all_parameters">1</metric>
+                  <metric name="in_parameters">0</metric>
+                  <metric name="out_parameters">0</metric>
+                  <metric name="in_out_parameters">1</metric>
+      </unit>
+         </unit>
+         <unit name="display" kind="procedure body" line="50" col="4">
+            <metric name="all_lines">4</metric>
+            <metric name="code_lines">4</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="comment_percentage">0.00</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">1</metric>
+            <metric name="all_dcls">3</metric>
+            <metric name="construct_nesting">1</metric>
+            <metric name="lsloc">4</metric>
+            <metric name="statement_complexity">1</metric>
+            <metric name="expression_complexity">0</metric>
+            <metric name="cyclomatic_complexity">1</metric>
+            <metric name="essential_complexity">1</metric>
+            <metric name="max_loop_nesting">0</metric>
+            <metric name="extra_exit_points">0</metric>
+         </unit>
+      </unit>
+      <metric name="statement_complexity">1.00</metric>
+      <metric name="expression_complexity">0.00</metric>
+      <metric name="cyclomatic_complexity">1.00</metric>
+      <metric name="essential_complexity">1.00</metric>
+      <metric name="max_loop_nesting">0.00</metric>
+   </file>
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\tmp\JpegByDate\src\CSVOutputs.ads">
+      <metric name="all_lines">30</metric>
+      <metric name="code_lines">15</metric>
+      <metric name="comment_lines">8</metric>
+      <metric name="eol_comments">1</metric>
+      <metric name="comment_percentage">39.13</metric>
+      <metric name="blank_lines">7</metric>
+      <unit name="CSVOutputs" kind="package" line="6" col="1">
+         <metric name="all_lines">25</metric>
+         <metric name="code_lines">13</metric>
+         <metric name="comment_lines">6</metric>
+         <metric name="eol_comments">1</metric>
+         <metric name="comment_percentage">36.84</metric>
+         <metric name="blank_lines">6</metric>
+         <metric name="public_types">1</metric>
+         <metric name="private_types">1</metric>
+         <metric name="all_types">1</metric>
+         <metric name="public_subprograms">4</metric>
+         <metric name="all_stmts">0</metric>
+         <metric name="all_dcls">14</metric>
+         <metric name="unit_nesting">1</metric>
+         <metric name="construct_nesting">1</metric>
+         <metric name="lsloc">14</metric>
+         <unit name="create" kind="function" line="12" col="4">
+            <metric name="all_parameters">0</metric>
+   </unit>
+         <unit name="create" kind="function" line="13" col="4">
+            <metric name="all_parameters">2</metric>
+               <metric name="in_parameters">2</metric>
+               <metric name="out_parameters">0</metric>
+               <metric name="in_out_parameters">0</metric>
+   </unit>
+         <unit name="destroy" kind="procedure" line="15" col="4">
+            <metric name="all_parameters">1</metric>
+               <metric name="in_parameters">1</metric>
+               <metric name="out_parameters">0</metric>
+               <metric name="in_out_parameters">0</metric>
+   </unit>
+         <unit name="display" kind="procedure" line="18" col="4">
+            <metric name="all_parameters">2</metric>
+               <metric name="in_parameters">2</metric>
+               <metric name="out_parameters">0</metric>
+               <metric name="in_out_parameters">0</metric>
+   </unit>
+      </unit>
+   </file>
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\tmp\JpegByDate\src\CommandlineParsers.adb">
+      <metric name="all_lines">245</metric>
+      <metric name="code_lines">180</metric>
+      <metric name="comment_lines">53</metric>
+      <metric name="eol_comments">0</metric>
+      <metric name="comment_percentage">22.74</metric>
       <metric name="blank_lines">12</metric>
       <unit name="CommandlineParsers" kind="package body" line="11" col="1">
-         <metric name="all_lines">221</metric>
-         <metric name="code_lines">163</metric>
-         <metric name="comment_lines">47</metric>
+         <metric name="all_lines">235</metric>
+         <metric name="code_lines">173</metric>
+         <metric name="comment_lines">51</metric>
          <metric name="eol_comments">0</metric>
-         <metric name="comment_percentage">22.38</metric>
+         <metric name="comment_percentage">22.76</metric>
          <metric name="blank_lines">11</metric>
          <metric name="all_types">1</metric>
          <metric name="all_subprograms">4</metric>
-         <metric name="all_stmts">73</metric>
+         <metric name="all_stmts">79</metric>
          <metric name="all_dcls">21</metric>
          <metric name="unit_nesting">1</metric>
          <metric name="construct_nesting">8</metric>
-         <metric name="lsloc">94</metric>
+         <metric name="lsloc">100</metric>
          <unit name="create" kind="function body" line="14" col="4">
             <metric name="all_lines">6</metric>
             <metric name="code_lines">6</metric>
@@ -64,24 +216,24 @@
       </unit>
          </unit>
          <unit name="parse" kind="procedure body" line="35" col="4">
-            <metric name="all_lines">189</metric>
-            <metric name="code_lines">141</metric>
-            <metric name="comment_lines">42</metric>
+            <metric name="all_lines">203</metric>
+            <metric name="code_lines">151</metric>
+            <metric name="comment_lines">46</metric>
             <metric name="eol_comments">0</metric>
-            <metric name="comment_percentage">22.95</metric>
+            <metric name="comment_percentage">23.35</metric>
             <metric name="blank_lines">6</metric>
-            <metric name="all_stmts">67</metric>
+            <metric name="all_stmts">73</metric>
             <metric name="all_dcls">11</metric>
             <metric name="construct_nesting">7</metric>
-            <metric name="lsloc">78</metric>
-            <metric name="statement_complexity">46</metric>
+            <metric name="lsloc">84</metric>
+            <metric name="statement_complexity">50</metric>
             <metric name="expression_complexity">0</metric>
-            <metric name="cyclomatic_complexity">46</metric>
-            <metric name="essential_complexity">27</metric>
+            <metric name="cyclomatic_complexity">50</metric>
+            <metric name="essential_complexity">31</metric>
             <metric name="max_loop_nesting">2</metric>
             <metric name="extra_exit_points">0</metric>
          </unit>
-         <unit name="getParams" kind="function body" line="226" col="4">
+         <unit name="getParams" kind="function body" line="240" col="4">
             <metric name="all_lines">4</metric>
             <metric name="code_lines">4</metric>
             <metric name="comment_lines">0</metric>
@@ -100,13 +252,13 @@
             <metric name="extra_exit_points">0</metric>
          </unit>
       </unit>
-      <metric name="statement_complexity">12.50</metric>
+      <metric name="statement_complexity">13.50</metric>
       <metric name="expression_complexity">0.00</metric>
-      <metric name="cyclomatic_complexity">12.50</metric>
-      <metric name="essential_complexity">7.50</metric>
+      <metric name="cyclomatic_complexity">13.50</metric>
+      <metric name="essential_complexity">8.50</metric>
       <metric name="max_loop_nesting">2.00</metric>
    </file>
-   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\CommandlineParsers.ads">
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\tmp\JpegByDate\src\CommandlineParsers.ads">
       <metric name="all_lines">37</metric>
       <metric name="code_lines">17</metric>
       <metric name="comment_lines">12</metric>
@@ -152,7 +304,7 @@
    </unit>
       </unit>
    </file>
-   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\ConsoleOutputs.adb">
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\tmp\JpegByDate\src\ConsoleOutputs.adb">
       <metric name="all_lines">29</metric>
       <metric name="code_lines">19</metric>
       <metric name="comment_lines">5</metric>
@@ -240,7 +392,7 @@
       <metric name="essential_complexity">1.00</metric>
       <metric name="max_loop_nesting">0.00</metric>
    </file>
-   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\ConsoleOutputs.ads">
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\tmp\JpegByDate\src\ConsoleOutputs.ads">
       <metric name="all_lines">18</metric>
       <metric name="code_lines">7</metric>
       <metric name="comment_lines">6</metric>
@@ -279,7 +431,7 @@
    </unit>
       </unit>
    </file>
-   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\DatePatternFilters.adb">
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\tmp\JpegByDate\src\DatePatternFilters.adb">
       <metric name="all_lines">57</metric>
       <metric name="code_lines">37</metric>
       <metric name="comment_lines">12</metric>
@@ -367,7 +519,7 @@
       <metric name="essential_complexity">1.33</metric>
       <metric name="max_loop_nesting">0.00</metric>
    </file>
-   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\DatePatternFilters.ads">
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\tmp\JpegByDate\src\DatePatternFilters.ads">
       <metric name="all_lines">28</metric>
       <metric name="code_lines">15</metric>
       <metric name="comment_lines">7</metric>
@@ -410,7 +562,7 @@
    </unit>
       </unit>
    </file>
-   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\DateRangeFilters.adb">
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\tmp\JpegByDate\src\DateRangeFilters.adb">
       <metric name="all_lines">70</metric>
       <metric name="code_lines">48</metric>
       <metric name="comment_lines">13</metric>
@@ -498,7 +650,7 @@
       <metric name="essential_complexity">1.66</metric>
       <metric name="max_loop_nesting">0.00</metric>
    </file>
-   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\DateRangeFilters.ads">
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\tmp\JpegByDate\src\DateRangeFilters.ads">
       <metric name="all_lines">28</metric>
       <metric name="code_lines">15</metric>
       <metric name="comment_lines">7</metric>
@@ -541,28 +693,28 @@
    </unit>
       </unit>
    </file>
-   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\EXIFParsers.adb">
-      <metric name="all_lines">105</metric>
-      <metric name="code_lines">69</metric>
-      <metric name="comment_lines">24</metric>
-      <metric name="eol_comments">4</metric>
-      <metric name="comment_percentage">30.10</metric>
-      <metric name="blank_lines">12</metric>
-      <unit name="EXIFParsers" kind="package body" line="7" col="1">
-         <metric name="all_lines">99</metric>
-         <metric name="code_lines">66</metric>
-         <metric name="comment_lines">22</metric>
-         <metric name="eol_comments">4</metric>
-         <metric name="comment_percentage">29.54</metric>
-         <metric name="blank_lines">11</metric>
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\tmp\JpegByDate\src\EXIFParsers.adb">
+      <metric name="all_lines">269</metric>
+      <metric name="code_lines">216</metric>
+      <metric name="comment_lines">33</metric>
+      <metric name="eol_comments">15</metric>
+      <metric name="comment_percentage">19.27</metric>
+      <metric name="blank_lines">20</metric>
+      <unit name="EXIFParsers" kind="package body" line="8" col="1">
+         <metric name="all_lines">262</metric>
+         <metric name="code_lines">212</metric>
+         <metric name="comment_lines">31</metric>
+         <metric name="eol_comments">15</metric>
+         <metric name="comment_percentage">18.93</metric>
+         <metric name="blank_lines">19</metric>
          <metric name="all_types">2</metric>
-         <metric name="all_subprograms">5</metric>
-         <metric name="all_stmts">24</metric>
-         <metric name="all_dcls">23</metric>
+         <metric name="all_subprograms">11</metric>
+         <metric name="all_stmts">81</metric>
+         <metric name="all_dcls">69</metric>
          <metric name="unit_nesting">1</metric>
-         <metric name="construct_nesting">4</metric>
-         <metric name="lsloc">47</metric>
-         <unit name="create" kind="function body" line="10" col="4">
+         <metric name="construct_nesting">6</metric>
+         <metric name="lsloc">150</metric>
+         <unit name="create" kind="function body" line="11" col="4">
             <metric name="all_lines">13</metric>
             <metric name="code_lines">10</metric>
             <metric name="comment_lines">2</metric>
@@ -580,7 +732,7 @@
             <metric name="max_loop_nesting">0</metric>
             <metric name="extra_exit_points">1</metric>
          </unit>
-         <unit name="destroy" kind="procedure body" line="25" col="4">
+         <unit name="destroy" kind="procedure body" line="26" col="4">
             <metric name="all_lines">15</metric>
             <metric name="code_lines">13</metric>
             <metric name="comment_lines">2</metric>
@@ -597,104 +749,216 @@
             <metric name="essential_complexity">1</metric>
             <metric name="max_loop_nesting">0</metric>
             <metric name="extra_exit_points">0</metric>
-            <unit name="Free" kind="procedure instantiation" line="27" col="7">
+            <unit name="Free" kind="procedure instantiation" line="28" col="7">
                <metric name="all_parameters">1</metric>
                   <metric name="in_parameters">0</metric>
                   <metric name="out_parameters">0</metric>
                   <metric name="in_out_parameters">1</metric>
       </unit>
-            <unit name="Free_String" kind="procedure instantiation" line="29" col="7">
+            <unit name="Free_String" kind="procedure instantiation" line="30" col="7">
                <metric name="all_parameters">1</metric>
                   <metric name="in_parameters">0</metric>
                   <metric name="out_parameters">0</metric>
                   <metric name="in_out_parameters">1</metric>
       </unit>
          </unit>
-         <unit name="getDateTimeOriginal" kind="function body" line="42" col="4">
-            <metric name="all_lines">22</metric>
-            <metric name="code_lines">15</metric>
-            <metric name="comment_lines">5</metric>
-            <metric name="eol_comments">2</metric>
-            <metric name="comment_percentage">35.00</metric>
-            <metric name="blank_lines">2</metric>
-            <metric name="all_stmts">6</metric>
-            <metric name="all_dcls">4</metric>
-            <metric name="construct_nesting">3</metric>
-            <metric name="lsloc">10</metric>
-            <metric name="statement_complexity">3</metric>
+         <unit name="getTagBinary" kind="function body" line="43" col="4">
+            <metric name="all_lines">61</metric>
+            <metric name="code_lines">50</metric>
+            <metric name="comment_lines">7</metric>
+            <metric name="eol_comments">14</metric>
+            <metric name="comment_percentage">36.84</metric>
+            <metric name="blank_lines">4</metric>
+            <metric name="all_stmts">27</metric>
+            <metric name="all_dcls">8</metric>
+            <metric name="construct_nesting">5</metric>
+            <metric name="lsloc">35</metric>
+            <metric name="all_parameters">4</metric>
+               <metric name="in_parameters">2</metric>
+               <metric name="out_parameters">2</metric>
+               <metric name="in_out_parameters">0</metric>
+            <metric name="statement_complexity">13</metric>
             <metric name="expression_complexity">0</metric>
-            <metric name="cyclomatic_complexity">3</metric>
-            <metric name="essential_complexity">3</metric>
+            <metric name="cyclomatic_complexity">13</metric>
+            <metric name="essential_complexity">10</metric>
             <metric name="max_loop_nesting">1</metric>
+            <metric name="extra_exit_points">4</metric>
+         </unit>
+         <unit name="getISOSpeedRatings" kind="function body" line="107" col="4">
+            <metric name="all_lines">19</metric>
+            <metric name="code_lines">16</metric>
+            <metric name="comment_lines">2</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="comment_percentage">11.11</metric>
+            <metric name="blank_lines">1</metric>
+            <metric name="all_stmts">5</metric>
+            <metric name="all_dcls">6</metric>
+            <metric name="construct_nesting">3</metric>
+            <metric name="lsloc">11</metric>
+            <metric name="statement_complexity">2</metric>
+            <metric name="expression_complexity">0</metric>
+            <metric name="cyclomatic_complexity">2</metric>
+            <metric name="essential_complexity">2</metric>
+            <metric name="max_loop_nesting">0</metric>
             <metric name="extra_exit_points">1</metric>
          </unit>
-         <unit name="getExifImageWidth" kind="function body" line="64" col="4">
-            <metric name="all_lines">20</metric>
-            <metric name="code_lines">13</metric>
-            <metric name="comment_lines">5</metric>
-            <metric name="eol_comments">1</metric>
-            <metric name="comment_percentage">33.33</metric>
-            <metric name="blank_lines">2</metric>
-            <metric name="all_stmts">5</metric>
-            <metric name="all_dcls">3</metric>
-            <metric name="construct_nesting">3</metric>
-            <metric name="lsloc">8</metric>
-            <metric name="statement_complexity">3</metric>
+         <unit name="getDateTimeOriginal" kind="function body" line="126" col="4">
+            <metric name="all_lines">15</metric>
+            <metric name="code_lines">12</metric>
+            <metric name="comment_lines">2</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="comment_percentage">14.28</metric>
+            <metric name="blank_lines">1</metric>
+            <metric name="all_stmts">4</metric>
+            <metric name="all_dcls">5</metric>
+            <metric name="construct_nesting">2</metric>
+            <metric name="lsloc">9</metric>
+            <metric name="statement_complexity">2</metric>
             <metric name="expression_complexity">0</metric>
-            <metric name="cyclomatic_complexity">3</metric>
-            <metric name="essential_complexity">3</metric>
-            <metric name="max_loop_nesting">1</metric>
+            <metric name="cyclomatic_complexity">2</metric>
+            <metric name="essential_complexity">2</metric>
+            <metric name="max_loop_nesting">0</metric>
             <metric name="extra_exit_points">1</metric>
          </unit>
-         <unit name="getExifImageHeight" kind="function body" line="84" col="4">
-            <metric name="all_lines">20</metric>
-            <metric name="code_lines">13</metric>
-            <metric name="comment_lines">5</metric>
+         <unit name="getShutterSpeedValue" kind="function body" line="141" col="4">
+            <metric name="all_lines">24</metric>
+            <metric name="code_lines">21</metric>
+            <metric name="comment_lines">2</metric>
             <metric name="eol_comments">1</metric>
-            <metric name="comment_percentage">33.33</metric>
-            <metric name="blank_lines">2</metric>
+            <metric name="comment_percentage">13.04</metric>
+            <metric name="blank_lines">1</metric>
+            <metric name="all_stmts">8</metric>
+            <metric name="all_dcls">7</metric>
+            <metric name="construct_nesting">4</metric>
+            <metric name="lsloc">15</metric>
+            <metric name="statement_complexity">3</metric>
+            <metric name="expression_complexity">0</metric>
+            <metric name="cyclomatic_complexity">3</metric>
+            <metric name="essential_complexity">2</metric>
+            <metric name="max_loop_nesting">0</metric>
+            <metric name="extra_exit_points">1</metric>
+         </unit>
+         <unit name="getApertureValue" kind="function body" line="165" col="4">
+            <metric name="all_lines">19</metric>
+            <metric name="code_lines">16</metric>
+            <metric name="comment_lines">2</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="comment_percentage">11.11</metric>
+            <metric name="blank_lines">1</metric>
             <metric name="all_stmts">5</metric>
-            <metric name="all_dcls">3</metric>
+            <metric name="all_dcls">6</metric>
             <metric name="construct_nesting">3</metric>
-            <metric name="lsloc">8</metric>
+            <metric name="lsloc">11</metric>
+            <metric name="statement_complexity">2</metric>
+            <metric name="expression_complexity">0</metric>
+            <metric name="cyclomatic_complexity">2</metric>
+            <metric name="essential_complexity">2</metric>
+            <metric name="max_loop_nesting">0</metric>
+            <metric name="extra_exit_points">1</metric>
+         </unit>
+         <unit name="getFlash" kind="function body" line="184" col="4">
+            <metric name="all_lines">19</metric>
+            <metric name="code_lines">16</metric>
+            <metric name="comment_lines">2</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="comment_percentage">11.11</metric>
+            <metric name="blank_lines">1</metric>
+            <metric name="all_stmts">5</metric>
+            <metric name="all_dcls">6</metric>
+            <metric name="construct_nesting">3</metric>
+            <metric name="lsloc">11</metric>
+            <metric name="statement_complexity">2</metric>
+            <metric name="expression_complexity">0</metric>
+            <metric name="cyclomatic_complexity">2</metric>
+            <metric name="essential_complexity">2</metric>
+            <metric name="max_loop_nesting">0</metric>
+            <metric name="extra_exit_points">1</metric>
+         </unit>
+         <unit name="getFocalLength" kind="function body" line="203" col="4">
+            <metric name="all_lines">19</metric>
+            <metric name="code_lines">16</metric>
+            <metric name="comment_lines">2</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="comment_percentage">11.11</metric>
+            <metric name="blank_lines">1</metric>
+            <metric name="all_stmts">5</metric>
+            <metric name="all_dcls">6</metric>
+            <metric name="construct_nesting">3</metric>
+            <metric name="lsloc">11</metric>
+            <metric name="statement_complexity">2</metric>
+            <metric name="expression_complexity">0</metric>
+            <metric name="cyclomatic_complexity">2</metric>
+            <metric name="essential_complexity">2</metric>
+            <metric name="max_loop_nesting">0</metric>
+            <metric name="extra_exit_points">1</metric>
+         </unit>
+         <unit name="getExifImageWidth" kind="function body" line="222" col="4">
+            <metric name="all_lines">23</metric>
+            <metric name="code_lines">20</metric>
+            <metric name="comment_lines">2</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="comment_percentage">9.09</metric>
+            <metric name="blank_lines">1</metric>
+            <metric name="all_stmts">7</metric>
+            <metric name="all_dcls">6</metric>
+            <metric name="construct_nesting">4</metric>
+            <metric name="lsloc">13</metric>
             <metric name="statement_complexity">3</metric>
             <metric name="expression_complexity">0</metric>
             <metric name="cyclomatic_complexity">3</metric>
             <metric name="essential_complexity">3</metric>
-            <metric name="max_loop_nesting">1</metric>
-            <metric name="extra_exit_points">1</metric>
+            <metric name="max_loop_nesting">0</metric>
+            <metric name="extra_exit_points">2</metric>
+         </unit>
+         <unit name="getExifImageHeight" kind="function body" line="245" col="4">
+            <metric name="all_lines">23</metric>
+            <metric name="code_lines">20</metric>
+            <metric name="comment_lines">2</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="comment_percentage">9.09</metric>
+            <metric name="blank_lines">1</metric>
+            <metric name="all_stmts">7</metric>
+            <metric name="all_dcls">6</metric>
+            <metric name="construct_nesting">4</metric>
+            <metric name="lsloc">13</metric>
+            <metric name="statement_complexity">3</metric>
+            <metric name="expression_complexity">0</metric>
+            <metric name="cyclomatic_complexity">3</metric>
+            <metric name="essential_complexity">3</metric>
+            <metric name="max_loop_nesting">0</metric>
+            <metric name="extra_exit_points">2</metric>
          </unit>
       </unit>
-      <metric name="statement_complexity">2.59</metric>
+      <metric name="statement_complexity">3.27</metric>
       <metric name="expression_complexity">0.00</metric>
-      <metric name="cyclomatic_complexity">2.59</metric>
-      <metric name="essential_complexity">2.40</metric>
+      <metric name="cyclomatic_complexity">3.27</metric>
+      <metric name="essential_complexity">2.81</metric>
       <metric name="max_loop_nesting">1.00</metric>
    </file>
-   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\EXIFParsers.ads">
-      <metric name="all_lines">32</metric>
-      <metric name="code_lines">17</metric>
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\tmp\JpegByDate\src\EXIFParsers.ads">
+      <metric name="all_lines">37</metric>
+      <metric name="code_lines">22</metric>
       <metric name="comment_lines">8</metric>
-      <metric name="eol_comments">7</metric>
-      <metric name="comment_percentage">60.00</metric>
+      <metric name="eol_comments">5</metric>
+      <metric name="comment_percentage">43.33</metric>
       <metric name="blank_lines">7</metric>
       <unit name="EXIFParsers" kind="package" line="5" col="1">
-         <metric name="all_lines">28</metric>
-         <metric name="code_lines">16</metric>
+         <metric name="all_lines">33</metric>
+         <metric name="code_lines">21</metric>
          <metric name="comment_lines">6</metric>
-         <metric name="eol_comments">6</metric>
-         <metric name="comment_percentage">54.54</metric>
+         <metric name="eol_comments">4</metric>
+         <metric name="comment_percentage">37.03</metric>
          <metric name="blank_lines">6</metric>
          <metric name="public_types">2</metric>
          <metric name="tagged_types">1</metric>
          <metric name="private_types">1</metric>
          <metric name="all_types">2</metric>
-         <metric name="public_subprograms">5</metric>
+         <metric name="public_subprograms">10</metric>
          <metric name="all_stmts">0</metric>
-         <metric name="all_dcls">18</metric>
+         <metric name="all_dcls">28</metric>
          <metric name="unit_nesting">1</metric>
          <metric name="construct_nesting">1</metric>
-         <metric name="lsloc">18</metric>
+         <metric name="lsloc">28</metric>
          <unit name="create" kind="function" line="12" col="4">
             <metric name="all_parameters">2</metric>
                <metric name="in_parameters">2</metric>
@@ -707,19 +971,49 @@
                <metric name="out_parameters">0</metric>
                <metric name="in_out_parameters">0</metric>
    </unit>
-         <unit name="getDateTimeOriginal" kind="function" line="17" col="4">
+         <unit name="getISOSpeedRatings" kind="function" line="17" col="4">
             <metric name="all_parameters">1</metric>
                <metric name="in_parameters">1</metric>
                <metric name="out_parameters">0</metric>
                <metric name="in_out_parameters">0</metric>
    </unit>
-         <unit name="getExifImageWidth" kind="function" line="18" col="4">
+         <unit name="getDateTimeOriginal" kind="function" line="18" col="4">
             <metric name="all_parameters">1</metric>
                <metric name="in_parameters">1</metric>
                <metric name="out_parameters">0</metric>
                <metric name="in_out_parameters">0</metric>
    </unit>
-         <unit name="getExifImageHeight" kind="function" line="19" col="4">
+         <unit name="getShutterSpeedValue" kind="function" line="19" col="4">
+            <metric name="all_parameters">1</metric>
+               <metric name="in_parameters">1</metric>
+               <metric name="out_parameters">0</metric>
+               <metric name="in_out_parameters">0</metric>
+   </unit>
+         <unit name="getApertureValue" kind="function" line="20" col="4">
+            <metric name="all_parameters">1</metric>
+               <metric name="in_parameters">1</metric>
+               <metric name="out_parameters">0</metric>
+               <metric name="in_out_parameters">0</metric>
+   </unit>
+         <unit name="getFlash" kind="function" line="21" col="4">
+            <metric name="all_parameters">1</metric>
+               <metric name="in_parameters">1</metric>
+               <metric name="out_parameters">0</metric>
+               <metric name="in_out_parameters">0</metric>
+   </unit>
+         <unit name="getFocalLength" kind="function" line="22" col="4">
+            <metric name="all_parameters">1</metric>
+               <metric name="in_parameters">1</metric>
+               <metric name="out_parameters">0</metric>
+               <metric name="in_out_parameters">0</metric>
+   </unit>
+         <unit name="getExifImageWidth" kind="function" line="23" col="4">
+            <metric name="all_parameters">1</metric>
+               <metric name="in_parameters">1</metric>
+               <metric name="out_parameters">0</metric>
+               <metric name="in_out_parameters">0</metric>
+   </unit>
+         <unit name="getExifImageHeight" kind="function" line="24" col="4">
             <metric name="all_parameters">1</metric>
                <metric name="in_parameters">1</metric>
                <metric name="out_parameters">0</metric>
@@ -727,7 +1021,7 @@
    </unit>
       </unit>
    </file>
-   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\FileExtensionFilters.adb">
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\tmp\JpegByDate\src\FileExtensionFilters.adb">
       <metric name="all_lines">35</metric>
       <metric name="code_lines">24</metric>
       <metric name="comment_lines">6</metric>
@@ -815,7 +1109,7 @@
       <metric name="essential_complexity">1.00</metric>
       <metric name="max_loop_nesting">0.00</metric>
    </file>
-   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\FileExtensionFilters.ads">
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\tmp\JpegByDate\src\FileExtensionFilters.ads">
       <metric name="all_lines">26</metric>
       <metric name="code_lines">13</metric>
       <metric name="comment_lines">7</metric>
@@ -858,34 +1152,52 @@
    </unit>
       </unit>
    </file>
-   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\FileHandlers.adb">
-      <metric name="all_lines">181</metric>
-      <metric name="code_lines">115</metric>
-      <metric name="comment_lines">40</metric>
-      <metric name="eol_comments">1</metric>
-      <metric name="comment_percentage">26.45</metric>
-      <metric name="blank_lines">26</metric>
-      <unit name="FileHandlers" kind="package body" line="14" col="1">
-         <metric name="all_lines">168</metric>
-         <metric name="code_lines">105</metric>
-         <metric name="comment_lines">38</metric>
-         <metric name="eol_comments">1</metric>
-         <metric name="comment_percentage">27.27</metric>
-         <metric name="blank_lines">25</metric>
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\tmp\JpegByDate\src\FileHandlers.adb">
+      <metric name="all_lines">405</metric>
+      <metric name="code_lines">268</metric>
+      <metric name="comment_lines">85</metric>
+      <metric name="eol_comments">2</metric>
+      <metric name="comment_percentage">24.64</metric>
+      <metric name="blank_lines">52</metric>
+      <unit name="FileHandlers" kind="package body" line="17" col="1">
+         <metric name="all_lines">389</metric>
+         <metric name="code_lines">255</metric>
+         <metric name="comment_lines">83</metric>
+         <metric name="eol_comments">2</metric>
+         <metric name="comment_percentage">25.14</metric>
+         <metric name="blank_lines">51</metric>
          <metric name="all_types">1</metric>
-         <metric name="all_subprograms">4</metric>
-         <metric name="all_stmts">44</metric>
-         <metric name="all_dcls">41</metric>
+         <metric name="all_subprograms">7</metric>
+         <metric name="all_stmts">111</metric>
+         <metric name="all_dcls">82</metric>
          <metric name="unit_nesting">1</metric>
-         <metric name="construct_nesting">10</metric>
-         <metric name="lsloc">85</metric>
-         <unit name="readFile" kind="function" line="17" col="4">
+         <metric name="construct_nesting">11</metric>
+         <metric name="lsloc">193</metric>
+         <unit name="getDisplayName" kind="function" line="20" col="4">
+            <metric name="all_parameters">2</metric>
+               <metric name="in_parameters">2</metric>
+               <metric name="out_parameters">0</metric>
+               <metric name="in_out_parameters">0</metric>
+   </unit>
+         <unit name="renamePicture" kind="function" line="21" col="4">
+            <metric name="all_parameters">2</metric>
+               <metric name="in_parameters">2</metric>
+               <metric name="out_parameters">0</metric>
+               <metric name="in_out_parameters">0</metric>
+   </unit>
+         <unit name="createCSV" kind="function" line="22" col="4">
+            <metric name="all_parameters">2</metric>
+               <metric name="in_parameters">2</metric>
+               <metric name="out_parameters">0</metric>
+               <metric name="in_out_parameters">0</metric>
+   </unit>
+         <unit name="readFile" kind="function" line="23" col="4">
             <metric name="all_parameters">2</metric>
                <metric name="in_parameters">1</metric>
                <metric name="out_parameters">1</metric>
                <metric name="in_out_parameters">0</metric>
    </unit>
-         <unit name="create" kind="function body" line="20" col="4">
+         <unit name="create" kind="function body" line="26" col="4">
             <metric name="all_lines">8</metric>
             <metric name="code_lines">8</metric>
             <metric name="comment_lines">0</metric>
@@ -903,7 +1215,7 @@
             <metric name="max_loop_nesting">0</metric>
             <metric name="extra_exit_points">0</metric>
          </unit>
-         <unit name="destroy" kind="procedure body" line="30" col="4">
+         <unit name="destroy" kind="procedure body" line="36" col="4">
             <metric name="all_lines">8</metric>
             <metric name="code_lines">7</metric>
             <metric name="comment_lines">1</metric>
@@ -920,32 +1232,86 @@
             <metric name="essential_complexity">1</metric>
             <metric name="max_loop_nesting">0</metric>
             <metric name="extra_exit_points">0</metric>
-            <unit name="Free" kind="procedure instantiation" line="32" col="7">
+            <unit name="Free" kind="procedure instantiation" line="38" col="7">
                <metric name="all_parameters">1</metric>
                   <metric name="in_parameters">0</metric>
                   <metric name="out_parameters">0</metric>
                   <metric name="in_out_parameters">1</metric>
       </unit>
          </unit>
-         <unit name="exec" kind="procedure body" line="40" col="4">
-            <metric name="all_lines">91</metric>
-            <metric name="code_lines">58</metric>
-            <metric name="comment_lines">21</metric>
+         <unit name="exec" kind="procedure body" line="46" col="4">
+            <metric name="all_lines">143</metric>
+            <metric name="code_lines">89</metric>
+            <metric name="comment_lines">35</metric>
             <metric name="eol_comments">0</metric>
-            <metric name="comment_percentage">26.58</metric>
-            <metric name="blank_lines">12</metric>
-            <metric name="all_stmts">27</metric>
-            <metric name="all_dcls">13</metric>
-            <metric name="construct_nesting">9</metric>
-            <metric name="lsloc">40</metric>
-            <metric name="statement_complexity">8</metric>
+            <metric name="comment_percentage">28.22</metric>
+            <metric name="blank_lines">19</metric>
+            <metric name="all_stmts">44</metric>
+            <metric name="all_dcls">17</metric>
+            <metric name="construct_nesting">10</metric>
+            <metric name="lsloc">61</metric>
+            <metric name="statement_complexity">10</metric>
             <metric name="expression_complexity">0</metric>
-            <metric name="cyclomatic_complexity">8</metric>
+            <metric name="cyclomatic_complexity">10</metric>
             <metric name="essential_complexity">1</metric>
             <metric name="max_loop_nesting">1</metric>
             <metric name="extra_exit_points">0</metric>
          </unit>
-         <unit name="readFile" kind="function body" line="136" col="4">
+         <unit name="getDisplayName" kind="function body" line="193" col="4">
+            <metric name="all_lines">19</metric>
+            <metric name="code_lines">16</metric>
+            <metric name="comment_lines">3</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="comment_percentage">15.78</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">6</metric>
+            <metric name="all_dcls">4</metric>
+            <metric name="construct_nesting">4</metric>
+            <metric name="lsloc">10</metric>
+            <metric name="statement_complexity">3</metric>
+            <metric name="expression_complexity">0</metric>
+            <metric name="cyclomatic_complexity">3</metric>
+            <metric name="essential_complexity">3</metric>
+            <metric name="max_loop_nesting">0</metric>
+            <metric name="extra_exit_points">2</metric>
+         </unit>
+         <unit name="renamePicture" kind="function body" line="214" col="4">
+            <metric name="all_lines">88</metric>
+            <metric name="code_lines">56</metric>
+            <metric name="comment_lines">19</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="comment_percentage">25.33</metric>
+            <metric name="blank_lines">13</metric>
+            <metric name="all_stmts">26</metric>
+            <metric name="all_dcls">15</metric>
+            <metric name="construct_nesting">5</metric>
+            <metric name="lsloc">41</metric>
+            <metric name="statement_complexity">4</metric>
+            <metric name="expression_complexity">0</metric>
+            <metric name="cyclomatic_complexity">4</metric>
+            <metric name="essential_complexity">4</metric>
+            <metric name="max_loop_nesting">1</metric>
+            <metric name="extra_exit_points">2</metric>
+         </unit>
+         <unit name="createCSV" kind="function body" line="304" col="4">
+            <metric name="all_lines">53</metric>
+            <metric name="code_lines">44</metric>
+            <metric name="comment_lines">6</metric>
+            <metric name="eol_comments">1</metric>
+            <metric name="comment_percentage">14.00</metric>
+            <metric name="blank_lines">3</metric>
+            <metric name="all_stmts">18</metric>
+            <metric name="all_dcls">9</metric>
+            <metric name="construct_nesting">5</metric>
+            <metric name="lsloc">27</metric>
+            <metric name="statement_complexity">10</metric>
+            <metric name="expression_complexity">0</metric>
+            <metric name="cyclomatic_complexity">10</metric>
+            <metric name="essential_complexity">1</metric>
+            <metric name="max_loop_nesting">1</metric>
+            <metric name="extra_exit_points">0</metric>
+         </unit>
+         <unit name="readFile" kind="function body" line="360" col="4">
             <metric name="all_lines">44</metric>
             <metric name="code_lines">29</metric>
             <metric name="comment_lines">9</metric>
@@ -964,13 +1330,13 @@
             <metric name="extra_exit_points">0</metric>
          </unit>
       </unit>
-      <metric name="statement_complexity">2.75</metric>
+      <metric name="statement_complexity">4.28</metric>
       <metric name="expression_complexity">0.00</metric>
-      <metric name="cyclomatic_complexity">2.75</metric>
-      <metric name="essential_complexity">1.00</metric>
+      <metric name="cyclomatic_complexity">4.28</metric>
+      <metric name="essential_complexity">1.71</metric>
       <metric name="max_loop_nesting">1.00</metric>
    </file>
-   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\FileHandlers.ads">
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\tmp\JpegByDate\src\FileHandlers.ads">
       <metric name="all_lines">30</metric>
       <metric name="code_lines">17</metric>
       <metric name="comment_lines">7</metric>
@@ -1014,7 +1380,7 @@
    </unit>
       </unit>
    </file>
-   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\FileNameFilters.adb">
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\tmp\JpegByDate\src\FileNameFilters.adb">
       <metric name="all_lines">49</metric>
       <metric name="code_lines">34</metric>
       <metric name="comment_lines">9</metric>
@@ -1102,7 +1468,7 @@
       <metric name="essential_complexity">1.66</metric>
       <metric name="max_loop_nesting">0.00</metric>
    </file>
-   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\FileNameFilters.ads">
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\tmp\JpegByDate\src\FileNameFilters.ads">
       <metric name="all_lines">26</metric>
       <metric name="code_lines">13</metric>
       <metric name="comment_lines">7</metric>
@@ -1145,7 +1511,7 @@
    </unit>
       </unit>
    </file>
-   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\FileSizeFilters.adb">
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\tmp\JpegByDate\src\FileSizeFilters.adb">
       <metric name="all_lines">60</metric>
       <metric name="code_lines">38</metric>
       <metric name="comment_lines">12</metric>
@@ -1233,7 +1599,7 @@
       <metric name="essential_complexity">1.66</metric>
       <metric name="max_loop_nesting">0.00</metric>
    </file>
-   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\FileSizeFilters.ads">
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\tmp\JpegByDate\src\FileSizeFilters.ads">
       <metric name="all_lines">26</metric>
       <metric name="code_lines">13</metric>
       <metric name="comment_lines">7</metric>
@@ -1276,7 +1642,7 @@
    </unit>
       </unit>
    </file>
-   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\FilesystemListers.adb">
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\tmp\JpegByDate\src\FilesystemListers.adb">
       <metric name="all_lines">183</metric>
       <metric name="code_lines">119</metric>
       <metric name="comment_lines">41</metric>
@@ -1436,7 +1802,7 @@
       <metric name="essential_complexity">2.28</metric>
       <metric name="max_loop_nesting">1.00</metric>
    </file>
-   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\FilesystemListers.ads">
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\tmp\JpegByDate\src\FilesystemListers.ads">
       <metric name="all_lines">49</metric>
       <metric name="code_lines">25</metric>
       <metric name="comment_lines">13</metric>
@@ -1503,7 +1869,7 @@
    </unit>
       </unit>
    </file>
-   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\Filters.adb">
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\tmp\JpegByDate\src\Filters.adb">
       <metric name="all_lines">43</metric>
       <metric name="code_lines">27</metric>
       <metric name="comment_lines">11</metric>
@@ -1584,7 +1950,7 @@
       <metric name="essential_complexity">1.66</metric>
       <metric name="max_loop_nesting">0.00</metric>
    </file>
-   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\Filters.ads">
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\tmp\JpegByDate\src\Filters.ads">
       <metric name="all_lines">40</metric>
       <metric name="code_lines">17</metric>
       <metric name="comment_lines">14</metric>
@@ -1647,7 +2013,7 @@
    </unit>
       </unit>
    </file>
-   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\ImageSizeFilters.adb">
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\tmp\JpegByDate\src\ImageSizeFilters.adb">
       <metric name="all_lines">63</metric>
       <metric name="code_lines">43</metric>
       <metric name="comment_lines">12</metric>
@@ -1735,7 +2101,7 @@
       <metric name="essential_complexity">1.66</metric>
       <metric name="max_loop_nesting">0.00</metric>
    </file>
-   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\ImageSizeFilters.ads">
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\tmp\JpegByDate\src\ImageSizeFilters.ads">
       <metric name="all_lines">28</metric>
       <metric name="code_lines">15</metric>
       <metric name="comment_lines">7</metric>
@@ -1778,27 +2144,27 @@
    </unit>
       </unit>
    </file>
-   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\Parameters.adb">
-      <metric name="all_lines">237</metric>
-      <metric name="code_lines">223</metric>
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\tmp\JpegByDate\src\Parameters.adb">
+      <metric name="all_lines">289</metric>
+      <metric name="code_lines">275</metric>
       <metric name="comment_lines">7</metric>
       <metric name="eol_comments">0</metric>
-      <metric name="comment_percentage">3.04</metric>
+      <metric name="comment_percentage">2.48</metric>
       <metric name="blank_lines">7</metric>
       <unit name="Parameters" kind="package body" line="5" col="1">
-         <metric name="all_lines">233</metric>
-         <metric name="code_lines">222</metric>
+         <metric name="all_lines">285</metric>
+         <metric name="code_lines">274</metric>
          <metric name="comment_lines">5</metric>
          <metric name="eol_comments">0</metric>
-         <metric name="comment_percentage">2.20</metric>
+         <metric name="comment_percentage">1.79</metric>
          <metric name="blank_lines">6</metric>
          <metric name="all_types">1</metric>
-         <metric name="all_subprograms">50</metric>
-         <metric name="all_stmts">67</metric>
-         <metric name="all_dcls">121</metric>
+         <metric name="all_subprograms">62</metric>
+         <metric name="all_stmts">83</metric>
+         <metric name="all_dcls">149</metric>
          <metric name="unit_nesting">1</metric>
          <metric name="construct_nesting">2</metric>
-         <metric name="lsloc">188</metric>
+         <metric name="lsloc">232</metric>
          <unit name="create" kind="function body" line="8" col="4">
             <metric name="all_lines">4</metric>
             <metric name="code_lines">4</metric>
@@ -2165,7 +2531,79 @@
             <metric name="max_loop_nesting">0</metric>
             <metric name="extra_exit_points">0</metric>
          </unit>
-         <unit name="getPath" kind="function body" line="114" col="4">
+         <unit name="setRename" kind="procedure body" line="112" col="4">
+            <metric name="all_lines">5</metric>
+            <metric name="code_lines">5</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="comment_percentage">0.00</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">2</metric>
+            <metric name="all_dcls">3</metric>
+            <metric name="construct_nesting">1</metric>
+            <metric name="lsloc">5</metric>
+            <metric name="statement_complexity">1</metric>
+            <metric name="expression_complexity">0</metric>
+            <metric name="cyclomatic_complexity">1</metric>
+            <metric name="essential_complexity">1</metric>
+            <metric name="max_loop_nesting">0</metric>
+            <metric name="extra_exit_points">0</metric>
+         </unit>
+         <unit name="setCSV" kind="procedure body" line="117" col="4">
+            <metric name="all_lines">5</metric>
+            <metric name="code_lines">5</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="comment_percentage">0.00</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">2</metric>
+            <metric name="all_dcls">3</metric>
+            <metric name="construct_nesting">1</metric>
+            <metric name="lsloc">5</metric>
+            <metric name="statement_complexity">1</metric>
+            <metric name="expression_complexity">0</metric>
+            <metric name="cyclomatic_complexity">1</metric>
+            <metric name="essential_complexity">1</metric>
+            <metric name="max_loop_nesting">0</metric>
+            <metric name="extra_exit_points">0</metric>
+         </unit>
+         <unit name="setCSVseparator" kind="procedure body" line="122" col="4">
+            <metric name="all_lines">5</metric>
+            <metric name="code_lines">5</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="comment_percentage">0.00</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">2</metric>
+            <metric name="all_dcls">3</metric>
+            <metric name="construct_nesting">1</metric>
+            <metric name="lsloc">5</metric>
+            <metric name="statement_complexity">1</metric>
+            <metric name="expression_complexity">0</metric>
+            <metric name="cyclomatic_complexity">1</metric>
+            <metric name="essential_complexity">1</metric>
+            <metric name="max_loop_nesting">0</metric>
+            <metric name="extra_exit_points">0</metric>
+         </unit>
+         <unit name="setDebug" kind="procedure body" line="127" col="4">
+            <metric name="all_lines">5</metric>
+            <metric name="code_lines">5</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="comment_percentage">0.00</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">2</metric>
+            <metric name="all_dcls">3</metric>
+            <metric name="construct_nesting">1</metric>
+            <metric name="lsloc">5</metric>
+            <metric name="statement_complexity">1</metric>
+            <metric name="expression_complexity">0</metric>
+            <metric name="cyclomatic_complexity">1</metric>
+            <metric name="essential_complexity">1</metric>
+            <metric name="max_loop_nesting">0</metric>
+            <metric name="extra_exit_points">0</metric>
+         </unit>
+         <unit name="getPath" kind="function body" line="134" col="4">
             <metric name="all_lines">4</metric>
             <metric name="code_lines">4</metric>
             <metric name="comment_lines">0</metric>
@@ -2183,7 +2621,7 @@
             <metric name="max_loop_nesting">0</metric>
             <metric name="extra_exit_points">0</metric>
          </unit>
-         <unit name="getPathRecursion" kind="function body" line="118" col="4">
+         <unit name="getPathRecursion" kind="function body" line="138" col="4">
             <metric name="all_lines">4</metric>
             <metric name="code_lines">4</metric>
             <metric name="comment_lines">0</metric>
@@ -2201,7 +2639,7 @@
             <metric name="max_loop_nesting">0</metric>
             <metric name="extra_exit_points">0</metric>
          </unit>
-         <unit name="getFilePattern" kind="function body" line="122" col="4">
+         <unit name="getFilePattern" kind="function body" line="142" col="4">
             <metric name="all_lines">4</metric>
             <metric name="code_lines">4</metric>
             <metric name="comment_lines">0</metric>
@@ -2219,7 +2657,7 @@
             <metric name="max_loop_nesting">0</metric>
             <metric name="extra_exit_points">0</metric>
          </unit>
-         <unit name="getFileExtensionPattern" kind="function body" line="126" col="4">
+         <unit name="getFileExtensionPattern" kind="function body" line="146" col="4">
             <metric name="all_lines">4</metric>
             <metric name="code_lines">4</metric>
             <metric name="comment_lines">0</metric>
@@ -2237,7 +2675,7 @@
             <metric name="max_loop_nesting">0</metric>
             <metric name="extra_exit_points">0</metric>
          </unit>
-         <unit name="getFullName" kind="function body" line="130" col="4">
+         <unit name="getFullName" kind="function body" line="150" col="4">
             <metric name="all_lines">4</metric>
             <metric name="code_lines">4</metric>
             <metric name="comment_lines">0</metric>
@@ -2255,7 +2693,7 @@
             <metric name="max_loop_nesting">0</metric>
             <metric name="extra_exit_points">0</metric>
          </unit>
-         <unit name="getDatePattern" kind="function body" line="134" col="4">
+         <unit name="getDatePattern" kind="function body" line="154" col="4">
             <metric name="all_lines">4</metric>
             <metric name="code_lines">4</metric>
             <metric name="comment_lines">0</metric>
@@ -2273,7 +2711,7 @@
             <metric name="max_loop_nesting">0</metric>
             <metric name="extra_exit_points">0</metric>
          </unit>
-         <unit name="getMinFileSize" kind="function body" line="138" col="4">
+         <unit name="getMinFileSize" kind="function body" line="158" col="4">
             <metric name="all_lines">4</metric>
             <metric name="code_lines">4</metric>
             <metric name="comment_lines">0</metric>
@@ -2291,7 +2729,7 @@
             <metric name="max_loop_nesting">0</metric>
             <metric name="extra_exit_points">0</metric>
          </unit>
-         <unit name="getMaxFileSize" kind="function body" line="142" col="4">
+         <unit name="getMaxFileSize" kind="function body" line="162" col="4">
             <metric name="all_lines">4</metric>
             <metric name="code_lines">4</metric>
             <metric name="comment_lines">0</metric>
@@ -2309,7 +2747,7 @@
             <metric name="max_loop_nesting">0</metric>
             <metric name="extra_exit_points">0</metric>
          </unit>
-         <unit name="getDateRangeStart" kind="function body" line="146" col="4">
+         <unit name="getDateRangeStart" kind="function body" line="166" col="4">
             <metric name="all_lines">4</metric>
             <metric name="code_lines">4</metric>
             <metric name="comment_lines">0</metric>
@@ -2327,7 +2765,7 @@
             <metric name="max_loop_nesting">0</metric>
             <metric name="extra_exit_points">0</metric>
          </unit>
-         <unit name="getDateRangeFinish" kind="function body" line="150" col="4">
+         <unit name="getDateRangeFinish" kind="function body" line="170" col="4">
             <metric name="all_lines">4</metric>
             <metric name="code_lines">4</metric>
             <metric name="comment_lines">0</metric>
@@ -2345,7 +2783,7 @@
             <metric name="max_loop_nesting">0</metric>
             <metric name="extra_exit_points">0</metric>
          </unit>
-         <unit name="getTimePattern" kind="function body" line="154" col="4">
+         <unit name="getTimePattern" kind="function body" line="174" col="4">
             <metric name="all_lines">4</metric>
             <metric name="code_lines">4</metric>
             <metric name="comment_lines">0</metric>
@@ -2363,7 +2801,7 @@
             <metric name="max_loop_nesting">0</metric>
             <metric name="extra_exit_points">0</metric>
          </unit>
-         <unit name="getTimeRangeStart" kind="function body" line="158" col="4">
+         <unit name="getTimeRangeStart" kind="function body" line="178" col="4">
             <metric name="all_lines">4</metric>
             <metric name="code_lines">4</metric>
             <metric name="comment_lines">0</metric>
@@ -2381,7 +2819,7 @@
             <metric name="max_loop_nesting">0</metric>
             <metric name="extra_exit_points">0</metric>
          </unit>
-         <unit name="getTimeRangeFinish" kind="function body" line="162" col="4">
+         <unit name="getTimeRangeFinish" kind="function body" line="182" col="4">
             <metric name="all_lines">4</metric>
             <metric name="code_lines">4</metric>
             <metric name="comment_lines">0</metric>
@@ -2399,7 +2837,7 @@
             <metric name="max_loop_nesting">0</metric>
             <metric name="extra_exit_points">0</metric>
          </unit>
-         <unit name="getMinWidth" kind="function body" line="166" col="4">
+         <unit name="getMinWidth" kind="function body" line="186" col="4">
             <metric name="all_lines">4</metric>
             <metric name="code_lines">4</metric>
             <metric name="comment_lines">0</metric>
@@ -2417,7 +2855,7 @@
             <metric name="max_loop_nesting">0</metric>
             <metric name="extra_exit_points">0</metric>
          </unit>
-         <unit name="getMaxWidth" kind="function body" line="170" col="4">
+         <unit name="getMaxWidth" kind="function body" line="190" col="4">
             <metric name="all_lines">4</metric>
             <metric name="code_lines">4</metric>
             <metric name="comment_lines">0</metric>
@@ -2435,7 +2873,7 @@
             <metric name="max_loop_nesting">0</metric>
             <metric name="extra_exit_points">0</metric>
          </unit>
-         <unit name="getMinHeight" kind="function body" line="174" col="4">
+         <unit name="getMinHeight" kind="function body" line="194" col="4">
             <metric name="all_lines">4</metric>
             <metric name="code_lines">4</metric>
             <metric name="comment_lines">0</metric>
@@ -2453,7 +2891,7 @@
             <metric name="max_loop_nesting">0</metric>
             <metric name="extra_exit_points">0</metric>
          </unit>
-         <unit name="getMaxHeight" kind="function body" line="178" col="4">
+         <unit name="getMaxHeight" kind="function body" line="198" col="4">
             <metric name="all_lines">4</metric>
             <metric name="code_lines">4</metric>
             <metric name="comment_lines">0</metric>
@@ -2471,7 +2909,7 @@
             <metric name="max_loop_nesting">0</metric>
             <metric name="extra_exit_points">0</metric>
          </unit>
-         <unit name="getHelp" kind="function body" line="182" col="4">
+         <unit name="getHelp" kind="function body" line="202" col="4">
             <metric name="all_lines">4</metric>
             <metric name="code_lines">4</metric>
             <metric name="comment_lines">0</metric>
@@ -2489,7 +2927,7 @@
             <metric name="max_loop_nesting">0</metric>
             <metric name="extra_exit_points">0</metric>
          </unit>
-         <unit name="flagPath" kind="function body" line="188" col="4">
+         <unit name="getRename" kind="function body" line="206" col="4">
             <metric name="all_lines">4</metric>
             <metric name="code_lines">4</metric>
             <metric name="comment_lines">0</metric>
@@ -2507,7 +2945,7 @@
             <metric name="max_loop_nesting">0</metric>
             <metric name="extra_exit_points">0</metric>
          </unit>
-         <unit name="flagPathRecursion" kind="function body" line="192" col="4">
+         <unit name="getCSV" kind="function body" line="210" col="4">
             <metric name="all_lines">4</metric>
             <metric name="code_lines">4</metric>
             <metric name="comment_lines">0</metric>
@@ -2525,7 +2963,7 @@
             <metric name="max_loop_nesting">0</metric>
             <metric name="extra_exit_points">0</metric>
          </unit>
-         <unit name="flagFilePattern" kind="function body" line="196" col="4">
+         <unit name="getCSVseparator" kind="function body" line="214" col="4">
             <metric name="all_lines">4</metric>
             <metric name="code_lines">4</metric>
             <metric name="comment_lines">0</metric>
@@ -2543,7 +2981,7 @@
             <metric name="max_loop_nesting">0</metric>
             <metric name="extra_exit_points">0</metric>
          </unit>
-         <unit name="flagFileExtensionPattern" kind="function body" line="200" col="4">
+         <unit name="getDebug" kind="function body" line="218" col="4">
             <metric name="all_lines">4</metric>
             <metric name="code_lines">4</metric>
             <metric name="comment_lines">0</metric>
@@ -2561,7 +2999,7 @@
             <metric name="max_loop_nesting">0</metric>
             <metric name="extra_exit_points">0</metric>
          </unit>
-         <unit name="flagFullName" kind="function body" line="204" col="4">
+         <unit name="flagPath" kind="function body" line="224" col="4">
             <metric name="all_lines">4</metric>
             <metric name="code_lines">4</metric>
             <metric name="comment_lines">0</metric>
@@ -2579,7 +3017,7 @@
             <metric name="max_loop_nesting">0</metric>
             <metric name="extra_exit_points">0</metric>
          </unit>
-         <unit name="flagFileSize" kind="function body" line="208" col="4">
+         <unit name="flagPathRecursion" kind="function body" line="228" col="4">
             <metric name="all_lines">4</metric>
             <metric name="code_lines">4</metric>
             <metric name="comment_lines">0</metric>
@@ -2597,7 +3035,7 @@
             <metric name="max_loop_nesting">0</metric>
             <metric name="extra_exit_points">0</metric>
          </unit>
-         <unit name="flagDatePattern" kind="function body" line="212" col="4">
+         <unit name="flagFilePattern" kind="function body" line="232" col="4">
             <metric name="all_lines">4</metric>
             <metric name="code_lines">4</metric>
             <metric name="comment_lines">0</metric>
@@ -2615,7 +3053,7 @@
             <metric name="max_loop_nesting">0</metric>
             <metric name="extra_exit_points">0</metric>
          </unit>
-         <unit name="flagDateRange" kind="function body" line="216" col="4">
+         <unit name="flagFileExtensionPattern" kind="function body" line="236" col="4">
             <metric name="all_lines">4</metric>
             <metric name="code_lines">4</metric>
             <metric name="comment_lines">0</metric>
@@ -2633,7 +3071,7 @@
             <metric name="max_loop_nesting">0</metric>
             <metric name="extra_exit_points">0</metric>
          </unit>
-         <unit name="flagTimePattern" kind="function body" line="220" col="4">
+         <unit name="flagFullName" kind="function body" line="240" col="4">
             <metric name="all_lines">4</metric>
             <metric name="code_lines">4</metric>
             <metric name="comment_lines">0</metric>
@@ -2651,7 +3089,7 @@
             <metric name="max_loop_nesting">0</metric>
             <metric name="extra_exit_points">0</metric>
          </unit>
-         <unit name="flagTimeRange" kind="function body" line="224" col="4">
+         <unit name="flagFileSize" kind="function body" line="244" col="4">
             <metric name="all_lines">4</metric>
             <metric name="code_lines">4</metric>
             <metric name="comment_lines">0</metric>
@@ -2669,7 +3107,7 @@
             <metric name="max_loop_nesting">0</metric>
             <metric name="extra_exit_points">0</metric>
          </unit>
-         <unit name="flagImageSize" kind="function body" line="228" col="4">
+         <unit name="flagDatePattern" kind="function body" line="248" col="4">
             <metric name="all_lines">4</metric>
             <metric name="code_lines">4</metric>
             <metric name="comment_lines">0</metric>
@@ -2687,7 +3125,151 @@
             <metric name="max_loop_nesting">0</metric>
             <metric name="extra_exit_points">0</metric>
          </unit>
-         <unit name="flagHelp" kind="function body" line="232" col="4">
+         <unit name="flagDateRange" kind="function body" line="252" col="4">
+            <metric name="all_lines">4</metric>
+            <metric name="code_lines">4</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="comment_percentage">0.00</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">1</metric>
+            <metric name="all_dcls">2</metric>
+            <metric name="construct_nesting">1</metric>
+            <metric name="lsloc">3</metric>
+            <metric name="statement_complexity">1</metric>
+            <metric name="expression_complexity">0</metric>
+            <metric name="cyclomatic_complexity">1</metric>
+            <metric name="essential_complexity">1</metric>
+            <metric name="max_loop_nesting">0</metric>
+            <metric name="extra_exit_points">0</metric>
+         </unit>
+         <unit name="flagTimePattern" kind="function body" line="256" col="4">
+            <metric name="all_lines">4</metric>
+            <metric name="code_lines">4</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="comment_percentage">0.00</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">1</metric>
+            <metric name="all_dcls">2</metric>
+            <metric name="construct_nesting">1</metric>
+            <metric name="lsloc">3</metric>
+            <metric name="statement_complexity">1</metric>
+            <metric name="expression_complexity">0</metric>
+            <metric name="cyclomatic_complexity">1</metric>
+            <metric name="essential_complexity">1</metric>
+            <metric name="max_loop_nesting">0</metric>
+            <metric name="extra_exit_points">0</metric>
+         </unit>
+         <unit name="flagTimeRange" kind="function body" line="260" col="4">
+            <metric name="all_lines">4</metric>
+            <metric name="code_lines">4</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="comment_percentage">0.00</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">1</metric>
+            <metric name="all_dcls">2</metric>
+            <metric name="construct_nesting">1</metric>
+            <metric name="lsloc">3</metric>
+            <metric name="statement_complexity">1</metric>
+            <metric name="expression_complexity">0</metric>
+            <metric name="cyclomatic_complexity">1</metric>
+            <metric name="essential_complexity">1</metric>
+            <metric name="max_loop_nesting">0</metric>
+            <metric name="extra_exit_points">0</metric>
+         </unit>
+         <unit name="flagImageSize" kind="function body" line="264" col="4">
+            <metric name="all_lines">4</metric>
+            <metric name="code_lines">4</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="comment_percentage">0.00</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">1</metric>
+            <metric name="all_dcls">2</metric>
+            <metric name="construct_nesting">1</metric>
+            <metric name="lsloc">3</metric>
+            <metric name="statement_complexity">1</metric>
+            <metric name="expression_complexity">0</metric>
+            <metric name="cyclomatic_complexity">1</metric>
+            <metric name="essential_complexity">1</metric>
+            <metric name="max_loop_nesting">0</metric>
+            <metric name="extra_exit_points">0</metric>
+         </unit>
+         <unit name="flagHelp" kind="function body" line="268" col="4">
+            <metric name="all_lines">4</metric>
+            <metric name="code_lines">4</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="comment_percentage">0.00</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">1</metric>
+            <metric name="all_dcls">2</metric>
+            <metric name="construct_nesting">1</metric>
+            <metric name="lsloc">3</metric>
+            <metric name="statement_complexity">1</metric>
+            <metric name="expression_complexity">0</metric>
+            <metric name="cyclomatic_complexity">1</metric>
+            <metric name="essential_complexity">1</metric>
+            <metric name="max_loop_nesting">0</metric>
+            <metric name="extra_exit_points">0</metric>
+         </unit>
+         <unit name="flagRename" kind="function body" line="272" col="4">
+            <metric name="all_lines">4</metric>
+            <metric name="code_lines">4</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="comment_percentage">0.00</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">1</metric>
+            <metric name="all_dcls">2</metric>
+            <metric name="construct_nesting">1</metric>
+            <metric name="lsloc">3</metric>
+            <metric name="statement_complexity">1</metric>
+            <metric name="expression_complexity">0</metric>
+            <metric name="cyclomatic_complexity">1</metric>
+            <metric name="essential_complexity">1</metric>
+            <metric name="max_loop_nesting">0</metric>
+            <metric name="extra_exit_points">0</metric>
+         </unit>
+         <unit name="flagCSV" kind="function body" line="276" col="4">
+            <metric name="all_lines">4</metric>
+            <metric name="code_lines">4</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="comment_percentage">0.00</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">1</metric>
+            <metric name="all_dcls">2</metric>
+            <metric name="construct_nesting">1</metric>
+            <metric name="lsloc">3</metric>
+            <metric name="statement_complexity">1</metric>
+            <metric name="expression_complexity">0</metric>
+            <metric name="cyclomatic_complexity">1</metric>
+            <metric name="essential_complexity">1</metric>
+            <metric name="max_loop_nesting">0</metric>
+            <metric name="extra_exit_points">0</metric>
+         </unit>
+         <unit name="flagCSVseparator" kind="function body" line="280" col="4">
+            <metric name="all_lines">4</metric>
+            <metric name="code_lines">4</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="comment_percentage">0.00</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">1</metric>
+            <metric name="all_dcls">2</metric>
+            <metric name="construct_nesting">1</metric>
+            <metric name="lsloc">3</metric>
+            <metric name="statement_complexity">1</metric>
+            <metric name="expression_complexity">0</metric>
+            <metric name="cyclomatic_complexity">1</metric>
+            <metric name="essential_complexity">1</metric>
+            <metric name="max_loop_nesting">0</metric>
+            <metric name="extra_exit_points">0</metric>
+         </unit>
+         <unit name="flagDebug" kind="function body" line="284" col="4">
             <metric name="all_lines">4</metric>
             <metric name="code_lines">4</metric>
             <metric name="comment_lines">0</metric>
@@ -2712,30 +3294,30 @@
       <metric name="essential_complexity">1.00</metric>
       <metric name="max_loop_nesting">0.00</metric>
    </file>
-   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\Parameters.ads">
-      <metric name="all_lines">108</metric>
-      <metric name="code_lines">88</metric>
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\tmp\JpegByDate\src\Parameters.ads">
+      <metric name="all_lines">128</metric>
+      <metric name="code_lines">108</metric>
       <metric name="comment_lines">11</metric>
       <metric name="eol_comments">0</metric>
-      <metric name="comment_percentage">11.11</metric>
+      <metric name="comment_percentage">9.24</metric>
       <metric name="blank_lines">9</metric>
       <unit name="Parameters" kind="package" line="6" col="1">
-         <metric name="all_lines">103</metric>
-         <metric name="code_lines">86</metric>
+         <metric name="all_lines">123</metric>
+         <metric name="code_lines">106</metric>
          <metric name="comment_lines">9</metric>
          <metric name="eol_comments">0</metric>
-         <metric name="comment_percentage">9.47</metric>
+         <metric name="comment_percentage">7.82</metric>
          <metric name="blank_lines">8</metric>
          <metric name="public_types">1</metric>
          <metric name="tagged_types">1</metric>
          <metric name="private_types">1</metric>
          <metric name="all_types">1</metric>
-         <metric name="public_subprograms">50</metric>
+         <metric name="public_subprograms">62</metric>
          <metric name="all_stmts">0</metric>
-         <metric name="all_dcls">149</metric>
+         <metric name="all_dcls">185</metric>
          <metric name="unit_nesting">1</metric>
          <metric name="construct_nesting">1</metric>
-         <metric name="lsloc">149</metric>
+         <metric name="lsloc">185</metric>
          <unit name="create" kind="function" line="12" col="4">
             <metric name="all_parameters">0</metric>
    </unit>
@@ -2853,181 +3435,253 @@
                <metric name="out_parameters">0</metric>
                <metric name="in_out_parameters">0</metric>
    </unit>
-         <unit name="getPath" kind="function" line="37" col="4">
+         <unit name="setRename" kind="procedure" line="35" col="4">
+            <metric name="all_parameters">2</metric>
+               <metric name="in_parameters">2</metric>
+               <metric name="out_parameters">0</metric>
+               <metric name="in_out_parameters">0</metric>
+   </unit>
+         <unit name="setCSV" kind="procedure" line="36" col="4">
+            <metric name="all_parameters">2</metric>
+               <metric name="in_parameters">2</metric>
+               <metric name="out_parameters">0</metric>
+               <metric name="in_out_parameters">0</metric>
+   </unit>
+         <unit name="setCSVseparator" kind="procedure" line="37" col="4">
+            <metric name="all_parameters">2</metric>
+               <metric name="in_parameters">2</metric>
+               <metric name="out_parameters">0</metric>
+               <metric name="in_out_parameters">0</metric>
+   </unit>
+         <unit name="setDebug" kind="procedure" line="38" col="4">
+            <metric name="all_parameters">2</metric>
+               <metric name="in_parameters">2</metric>
+               <metric name="out_parameters">0</metric>
+               <metric name="in_out_parameters">0</metric>
+   </unit>
+         <unit name="getPath" kind="function" line="41" col="4">
             <metric name="all_parameters">1</metric>
                <metric name="in_parameters">1</metric>
                <metric name="out_parameters">0</metric>
                <metric name="in_out_parameters">0</metric>
    </unit>
-         <unit name="getPathRecursion" kind="function" line="38" col="4">
+         <unit name="getPathRecursion" kind="function" line="42" col="4">
             <metric name="all_parameters">1</metric>
                <metric name="in_parameters">1</metric>
                <metric name="out_parameters">0</metric>
                <metric name="in_out_parameters">0</metric>
    </unit>
-         <unit name="getFilePattern" kind="function" line="39" col="4">
+         <unit name="getFilePattern" kind="function" line="43" col="4">
             <metric name="all_parameters">1</metric>
                <metric name="in_parameters">1</metric>
                <metric name="out_parameters">0</metric>
                <metric name="in_out_parameters">0</metric>
    </unit>
-         <unit name="getFileExtensionPattern" kind="function" line="40" col="4">
+         <unit name="getFileExtensionPattern" kind="function" line="44" col="4">
             <metric name="all_parameters">1</metric>
                <metric name="in_parameters">1</metric>
                <metric name="out_parameters">0</metric>
                <metric name="in_out_parameters">0</metric>
    </unit>
-         <unit name="getFullName" kind="function" line="41" col="4">
+         <unit name="getFullName" kind="function" line="45" col="4">
             <metric name="all_parameters">1</metric>
                <metric name="in_parameters">1</metric>
                <metric name="out_parameters">0</metric>
                <metric name="in_out_parameters">0</metric>
    </unit>
-         <unit name="getDatePattern" kind="function" line="42" col="4">
+         <unit name="getDatePattern" kind="function" line="46" col="4">
             <metric name="all_parameters">1</metric>
                <metric name="in_parameters">1</metric>
                <metric name="out_parameters">0</metric>
                <metric name="in_out_parameters">0</metric>
    </unit>
-         <unit name="getMinFileSize" kind="function" line="43" col="4">
+         <unit name="getMinFileSize" kind="function" line="47" col="4">
             <metric name="all_parameters">1</metric>
                <metric name="in_parameters">1</metric>
                <metric name="out_parameters">0</metric>
                <metric name="in_out_parameters">0</metric>
    </unit>
-         <unit name="getMaxFileSize" kind="function" line="44" col="4">
+         <unit name="getMaxFileSize" kind="function" line="48" col="4">
             <metric name="all_parameters">1</metric>
                <metric name="in_parameters">1</metric>
                <metric name="out_parameters">0</metric>
                <metric name="in_out_parameters">0</metric>
    </unit>
-         <unit name="getDateRangeStart" kind="function" line="45" col="4">
+         <unit name="getDateRangeStart" kind="function" line="49" col="4">
             <metric name="all_parameters">1</metric>
                <metric name="in_parameters">1</metric>
                <metric name="out_parameters">0</metric>
                <metric name="in_out_parameters">0</metric>
    </unit>
-         <unit name="getDateRangeFinish" kind="function" line="46" col="4">
+         <unit name="getDateRangeFinish" kind="function" line="50" col="4">
             <metric name="all_parameters">1</metric>
                <metric name="in_parameters">1</metric>
                <metric name="out_parameters">0</metric>
                <metric name="in_out_parameters">0</metric>
    </unit>
-         <unit name="getTimePattern" kind="function" line="47" col="4">
+         <unit name="getTimePattern" kind="function" line="51" col="4">
             <metric name="all_parameters">1</metric>
                <metric name="in_parameters">1</metric>
                <metric name="out_parameters">0</metric>
                <metric name="in_out_parameters">0</metric>
    </unit>
-         <unit name="getTimeRangeStart" kind="function" line="48" col="4">
+         <unit name="getTimeRangeStart" kind="function" line="52" col="4">
             <metric name="all_parameters">1</metric>
                <metric name="in_parameters">1</metric>
                <metric name="out_parameters">0</metric>
                <metric name="in_out_parameters">0</metric>
    </unit>
-         <unit name="getTimeRangeFinish" kind="function" line="49" col="4">
+         <unit name="getTimeRangeFinish" kind="function" line="53" col="4">
             <metric name="all_parameters">1</metric>
                <metric name="in_parameters">1</metric>
                <metric name="out_parameters">0</metric>
                <metric name="in_out_parameters">0</metric>
    </unit>
-         <unit name="getMinWidth" kind="function" line="50" col="4">
+         <unit name="getMinWidth" kind="function" line="54" col="4">
             <metric name="all_parameters">1</metric>
                <metric name="in_parameters">1</metric>
                <metric name="out_parameters">0</metric>
                <metric name="in_out_parameters">0</metric>
    </unit>
-         <unit name="getMaxWidth" kind="function" line="51" col="4">
+         <unit name="getMaxWidth" kind="function" line="55" col="4">
             <metric name="all_parameters">1</metric>
                <metric name="in_parameters">1</metric>
                <metric name="out_parameters">0</metric>
                <metric name="in_out_parameters">0</metric>
    </unit>
-         <unit name="getMinHeight" kind="function" line="52" col="4">
+         <unit name="getMinHeight" kind="function" line="56" col="4">
             <metric name="all_parameters">1</metric>
                <metric name="in_parameters">1</metric>
                <metric name="out_parameters">0</metric>
                <metric name="in_out_parameters">0</metric>
    </unit>
-         <unit name="getMaxHeight" kind="function" line="53" col="4">
+         <unit name="getMaxHeight" kind="function" line="57" col="4">
             <metric name="all_parameters">1</metric>
                <metric name="in_parameters">1</metric>
                <metric name="out_parameters">0</metric>
                <metric name="in_out_parameters">0</metric>
    </unit>
-         <unit name="getHelp" kind="function" line="54" col="4">
+         <unit name="getHelp" kind="function" line="58" col="4">
             <metric name="all_parameters">1</metric>
                <metric name="in_parameters">1</metric>
                <metric name="out_parameters">0</metric>
                <metric name="in_out_parameters">0</metric>
    </unit>
-         <unit name="flagPath" kind="function" line="57" col="4">
+         <unit name="getRename" kind="function" line="59" col="4">
             <metric name="all_parameters">1</metric>
                <metric name="in_parameters">1</metric>
                <metric name="out_parameters">0</metric>
                <metric name="in_out_parameters">0</metric>
    </unit>
-         <unit name="flagPathRecursion" kind="function" line="58" col="4">
+         <unit name="getCSV" kind="function" line="60" col="4">
             <metric name="all_parameters">1</metric>
                <metric name="in_parameters">1</metric>
                <metric name="out_parameters">0</metric>
                <metric name="in_out_parameters">0</metric>
    </unit>
-         <unit name="flagFilePattern" kind="function" line="59" col="4">
+         <unit name="getCSVseparator" kind="function" line="61" col="4">
             <metric name="all_parameters">1</metric>
                <metric name="in_parameters">1</metric>
                <metric name="out_parameters">0</metric>
                <metric name="in_out_parameters">0</metric>
    </unit>
-         <unit name="flagFileExtensionPattern" kind="function" line="60" col="4">
+         <unit name="getDebug" kind="function" line="62" col="4">
             <metric name="all_parameters">1</metric>
                <metric name="in_parameters">1</metric>
                <metric name="out_parameters">0</metric>
                <metric name="in_out_parameters">0</metric>
    </unit>
-         <unit name="flagFullName" kind="function" line="61" col="4">
+         <unit name="flagPath" kind="function" line="65" col="4">
             <metric name="all_parameters">1</metric>
                <metric name="in_parameters">1</metric>
                <metric name="out_parameters">0</metric>
                <metric name="in_out_parameters">0</metric>
    </unit>
-         <unit name="flagFileSize" kind="function" line="62" col="4">
+         <unit name="flagPathRecursion" kind="function" line="66" col="4">
             <metric name="all_parameters">1</metric>
                <metric name="in_parameters">1</metric>
                <metric name="out_parameters">0</metric>
                <metric name="in_out_parameters">0</metric>
    </unit>
-         <unit name="flagDatePattern" kind="function" line="63" col="4">
+         <unit name="flagFilePattern" kind="function" line="67" col="4">
             <metric name="all_parameters">1</metric>
                <metric name="in_parameters">1</metric>
                <metric name="out_parameters">0</metric>
                <metric name="in_out_parameters">0</metric>
    </unit>
-         <unit name="flagDateRange" kind="function" line="64" col="4">
+         <unit name="flagFileExtensionPattern" kind="function" line="68" col="4">
             <metric name="all_parameters">1</metric>
                <metric name="in_parameters">1</metric>
                <metric name="out_parameters">0</metric>
                <metric name="in_out_parameters">0</metric>
    </unit>
-         <unit name="flagTimePattern" kind="function" line="65" col="4">
+         <unit name="flagFullName" kind="function" line="69" col="4">
             <metric name="all_parameters">1</metric>
                <metric name="in_parameters">1</metric>
                <metric name="out_parameters">0</metric>
                <metric name="in_out_parameters">0</metric>
    </unit>
-         <unit name="flagTimeRange" kind="function" line="66" col="4">
+         <unit name="flagFileSize" kind="function" line="70" col="4">
             <metric name="all_parameters">1</metric>
                <metric name="in_parameters">1</metric>
                <metric name="out_parameters">0</metric>
                <metric name="in_out_parameters">0</metric>
    </unit>
-         <unit name="flagImageSize" kind="function" line="67" col="4">
+         <unit name="flagDatePattern" kind="function" line="71" col="4">
             <metric name="all_parameters">1</metric>
                <metric name="in_parameters">1</metric>
                <metric name="out_parameters">0</metric>
                <metric name="in_out_parameters">0</metric>
    </unit>
-         <unit name="flagHelp" kind="function" line="68" col="4">
+         <unit name="flagDateRange" kind="function" line="72" col="4">
+            <metric name="all_parameters">1</metric>
+               <metric name="in_parameters">1</metric>
+               <metric name="out_parameters">0</metric>
+               <metric name="in_out_parameters">0</metric>
+   </unit>
+         <unit name="flagTimePattern" kind="function" line="73" col="4">
+            <metric name="all_parameters">1</metric>
+               <metric name="in_parameters">1</metric>
+               <metric name="out_parameters">0</metric>
+               <metric name="in_out_parameters">0</metric>
+   </unit>
+         <unit name="flagTimeRange" kind="function" line="74" col="4">
+            <metric name="all_parameters">1</metric>
+               <metric name="in_parameters">1</metric>
+               <metric name="out_parameters">0</metric>
+               <metric name="in_out_parameters">0</metric>
+   </unit>
+         <unit name="flagImageSize" kind="function" line="75" col="4">
+            <metric name="all_parameters">1</metric>
+               <metric name="in_parameters">1</metric>
+               <metric name="out_parameters">0</metric>
+               <metric name="in_out_parameters">0</metric>
+   </unit>
+         <unit name="flagHelp" kind="function" line="76" col="4">
+            <metric name="all_parameters">1</metric>
+               <metric name="in_parameters">1</metric>
+               <metric name="out_parameters">0</metric>
+               <metric name="in_out_parameters">0</metric>
+   </unit>
+         <unit name="flagRename" kind="function" line="77" col="4">
+            <metric name="all_parameters">1</metric>
+               <metric name="in_parameters">1</metric>
+               <metric name="out_parameters">0</metric>
+               <metric name="in_out_parameters">0</metric>
+   </unit>
+         <unit name="flagCSV" kind="function" line="78" col="4">
+            <metric name="all_parameters">1</metric>
+               <metric name="in_parameters">1</metric>
+               <metric name="out_parameters">0</metric>
+               <metric name="in_out_parameters">0</metric>
+   </unit>
+         <unit name="flagCSVseparator" kind="function" line="79" col="4">
+            <metric name="all_parameters">1</metric>
+               <metric name="in_parameters">1</metric>
+               <metric name="out_parameters">0</metric>
+               <metric name="in_out_parameters">0</metric>
+   </unit>
+         <unit name="flagDebug" kind="function" line="80" col="4">
             <metric name="all_parameters">1</metric>
                <metric name="in_parameters">1</metric>
                <metric name="out_parameters">0</metric>
@@ -3035,7 +3689,7 @@
    </unit>
       </unit>
    </file>
-   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\Pictures-JpegPictures.adb">
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\tmp\JpegByDate\src\Pictures-JpegPictures.adb">
       <metric name="all_lines">168</metric>
       <metric name="code_lines">114</metric>
       <metric name="comment_lines">39</metric>
@@ -3159,7 +3813,7 @@
       <metric name="essential_complexity">3.79</metric>
       <metric name="max_loop_nesting">1.00</metric>
    </file>
-   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\Pictures-JpegPictures.ads">
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\tmp\JpegByDate\src\Pictures-JpegPictures.ads">
       <metric name="all_lines">31</metric>
       <metric name="code_lines">16</metric>
       <metric name="comment_lines">8</metric>
@@ -3214,27 +3868,27 @@
    </unit>
       </unit>
    </file>
-   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\Pictures-TiffPictures.adb">
-      <metric name="all_lines">213</metric>
-      <metric name="code_lines">136</metric>
-      <metric name="comment_lines">50</metric>
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\tmp\JpegByDate\src\Pictures-TiffPictures.adb">
+      <metric name="all_lines">240</metric>
+      <metric name="code_lines">160</metric>
+      <metric name="comment_lines">52</metric>
       <metric name="eol_comments">5</metric>
-      <metric name="comment_percentage">29.56</metric>
-      <metric name="blank_lines">27</metric>
+      <metric name="comment_percentage">26.88</metric>
+      <metric name="blank_lines">28</metric>
       <unit name="Pictures.TiffPictures" kind="package body" line="7" col="1">
-         <metric name="all_lines">207</metric>
-         <metric name="code_lines">133</metric>
-         <metric name="comment_lines">48</metric>
+         <metric name="all_lines">234</metric>
+         <metric name="code_lines">157</metric>
+         <metric name="comment_lines">50</metric>
          <metric name="eol_comments">5</metric>
-         <metric name="comment_percentage">29.28</metric>
-         <metric name="blank_lines">26</metric>
-         <metric name="all_types">1</metric>
+         <metric name="comment_percentage">26.57</metric>
+         <metric name="blank_lines">27</metric>
+         <metric name="all_types">2</metric>
          <metric name="all_subprograms">8</metric>
-         <metric name="all_stmts">58</metric>
-         <metric name="all_dcls">39</metric>
+         <metric name="all_stmts">66</metric>
+         <metric name="all_dcls">46</metric>
          <metric name="unit_nesting">1</metric>
          <metric name="construct_nesting">6</metric>
-         <metric name="lsloc">97</metric>
+         <metric name="lsloc">112</metric>
          <unit name="create" kind="function body" line="10" col="4">
             <metric name="all_lines">122</metric>
             <metric name="code_lines">71</metric>
@@ -3332,16 +3986,16 @@
             <metric name="extra_exit_points">1</metric>
          </unit>
          <unit name="createInt" kind="function body" line="171" col="4">
-            <metric name="all_lines">8</metric>
-            <metric name="code_lines">8</metric>
-            <metric name="comment_lines">0</metric>
+            <metric name="all_lines">35</metric>
+            <metric name="code_lines">32</metric>
+            <metric name="comment_lines">2</metric>
             <metric name="eol_comments">0</metric>
-            <metric name="comment_percentage">0.00</metric>
-            <metric name="blank_lines">0</metric>
-            <metric name="all_stmts">3</metric>
-            <metric name="all_dcls">6</metric>
+            <metric name="comment_percentage">5.88</metric>
+            <metric name="blank_lines">1</metric>
+            <metric name="all_stmts">11</metric>
+            <metric name="all_dcls">13</metric>
             <metric name="construct_nesting">2</metric>
-            <metric name="lsloc">9</metric>
+            <metric name="lsloc">24</metric>
             <metric name="statement_complexity">2</metric>
             <metric name="expression_complexity">0</metric>
             <metric name="cyclomatic_complexity">2</metric>
@@ -3349,7 +4003,7 @@
             <metric name="max_loop_nesting">0</metric>
             <metric name="extra_exit_points">1</metric>
          </unit>
-         <unit name="readBinary" kind="function body" line="181" col="4">
+         <unit name="readBinary" kind="function body" line="208" col="4">
             <metric name="all_lines">4</metric>
             <metric name="code_lines">4</metric>
             <metric name="comment_lines">0</metric>
@@ -3367,7 +4021,7 @@
             <metric name="max_loop_nesting">0</metric>
             <metric name="extra_exit_points">0</metric>
          </unit>
-         <unit name="isTiff" kind="function body" line="187" col="4">
+         <unit name="isTiff" kind="function body" line="214" col="4">
             <metric name="all_lines">25</metric>
             <metric name="code_lines">18</metric>
             <metric name="comment_lines">7</metric>
@@ -3392,7 +4046,7 @@
       <metric name="essential_complexity">2.75</metric>
       <metric name="max_loop_nesting">1.00</metric>
    </file>
-   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\Pictures-TiffPictures.ads">
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\tmp\JpegByDate\src\Pictures-TiffPictures.ads">
       <metric name="all_lines">36</metric>
       <metric name="code_lines">19</metric>
       <metric name="comment_lines">9</metric>
@@ -3465,26 +4119,26 @@
    </unit>
       </unit>
    </file>
-   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\Pictures.adb">
-      <metric name="all_lines">50</metric>
-      <metric name="code_lines">26</metric>
-      <metric name="comment_lines">15</metric>
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\tmp\JpegByDate\src\Pictures.adb">
+      <metric name="all_lines">56</metric>
+      <metric name="code_lines">30</metric>
+      <metric name="comment_lines">16</metric>
       <metric name="eol_comments">2</metric>
-      <metric name="comment_percentage">41.46</metric>
-      <metric name="blank_lines">9</metric>
+      <metric name="comment_percentage">39.13</metric>
+      <metric name="blank_lines">10</metric>
       <unit name="Pictures" kind="package body" line="6" col="1">
-         <metric name="all_lines">45</metric>
-         <metric name="code_lines">24</metric>
-         <metric name="comment_lines">13</metric>
+         <metric name="all_lines">51</metric>
+         <metric name="code_lines">28</metric>
+         <metric name="comment_lines">14</metric>
          <metric name="eol_comments">2</metric>
-         <metric name="comment_percentage">40.54</metric>
-         <metric name="blank_lines">8</metric>
-         <metric name="all_subprograms">2</metric>
-         <metric name="all_stmts">8</metric>
-         <metric name="all_dcls">8</metric>
+         <metric name="comment_percentage">38.09</metric>
+         <metric name="blank_lines">9</metric>
+         <metric name="all_subprograms">3</metric>
+         <metric name="all_stmts">9</metric>
+         <metric name="all_dcls">11</metric>
          <metric name="unit_nesting">1</metric>
          <metric name="construct_nesting">3</metric>
-         <metric name="lsloc">16</metric>
+         <metric name="lsloc">20</metric>
          <unit name="create" kind="function body" line="9" col="4">
             <metric name="all_lines">34</metric>
             <metric name="code_lines">18</metric>
@@ -3503,7 +4157,25 @@
             <metric name="max_loop_nesting">0</metric>
             <metric name="extra_exit_points">2</metric>
          </unit>
-         <unit name="getName" kind="function body" line="45" col="4">
+         <unit name="setName" kind="procedure body" line="45" col="4">
+            <metric name="all_lines">4</metric>
+            <metric name="code_lines">4</metric>
+            <metric name="comment_lines">0</metric>
+            <metric name="eol_comments">0</metric>
+            <metric name="comment_percentage">0.00</metric>
+            <metric name="blank_lines">0</metric>
+            <metric name="all_stmts">1</metric>
+            <metric name="all_dcls">3</metric>
+            <metric name="construct_nesting">1</metric>
+            <metric name="lsloc">4</metric>
+            <metric name="statement_complexity">1</metric>
+            <metric name="expression_complexity">0</metric>
+            <metric name="cyclomatic_complexity">1</metric>
+            <metric name="essential_complexity">1</metric>
+            <metric name="max_loop_nesting">0</metric>
+            <metric name="extra_exit_points">0</metric>
+         </unit>
+         <unit name="getName" kind="function body" line="51" col="4">
             <metric name="all_lines">4</metric>
             <metric name="code_lines">4</metric>
             <metric name="comment_lines">0</metric>
@@ -3528,31 +4200,31 @@
       <metric name="essential_complexity">1.00</metric>
       <metric name="max_loop_nesting">0.00</metric>
    </file>
-   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\Pictures.ads">
-      <metric name="all_lines">35</metric>
-      <metric name="code_lines">18</metric>
-      <metric name="comment_lines">9</metric>
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\tmp\JpegByDate\src\Pictures.ads">
+      <metric name="all_lines">39</metric>
+      <metric name="code_lines">19</metric>
+      <metric name="comment_lines">11</metric>
       <metric name="eol_comments">2</metric>
-      <metric name="comment_percentage">40.74</metric>
-      <metric name="blank_lines">8</metric>
+      <metric name="comment_percentage">43.33</metric>
+      <metric name="blank_lines">9</metric>
       <unit name="Pictures" kind="package" line="6" col="1">
-         <metric name="all_lines">30</metric>
-         <metric name="code_lines">16</metric>
-         <metric name="comment_lines">7</metric>
+         <metric name="all_lines">34</metric>
+         <metric name="code_lines">17</metric>
+         <metric name="comment_lines">9</metric>
          <metric name="eol_comments">2</metric>
-         <metric name="comment_percentage">39.13</metric>
-         <metric name="blank_lines">7</metric>
+         <metric name="comment_percentage">42.30</metric>
+         <metric name="blank_lines">8</metric>
          <metric name="public_types">1</metric>
          <metric name="abstract_types">1</metric>
          <metric name="tagged_types">1</metric>
          <metric name="private_types">1</metric>
          <metric name="all_types">1</metric>
-         <metric name="public_subprograms">5</metric>
+         <metric name="public_subprograms">6</metric>
          <metric name="all_stmts">0</metric>
-         <metric name="all_dcls">18</metric>
+         <metric name="all_dcls">21</metric>
          <metric name="unit_nesting">1</metric>
          <metric name="construct_nesting">1</metric>
-         <metric name="lsloc">18</metric>
+         <metric name="lsloc">21</metric>
          <unit name="create" kind="function" line="12" col="4">
             <metric name="all_parameters">2</metric>
                <metric name="in_parameters">2</metric>
@@ -3565,19 +4237,25 @@
                <metric name="out_parameters">0</metric>
                <metric name="in_out_parameters">0</metric>
    </unit>
-         <unit name="getName" kind="function" line="17" col="4">
+         <unit name="setName" kind="procedure" line="17" col="4">
+            <metric name="all_parameters">2</metric>
+               <metric name="in_parameters">2</metric>
+               <metric name="out_parameters">0</metric>
+               <metric name="in_out_parameters">0</metric>
+   </unit>
+         <unit name="getName" kind="function" line="21" col="4">
             <metric name="all_parameters">1</metric>
                <metric name="in_parameters">1</metric>
                <metric name="out_parameters">0</metric>
                <metric name="in_out_parameters">0</metric>
    </unit>
-         <unit name="hasEXIF" kind="function" line="20" col="4">
+         <unit name="hasEXIF" kind="function" line="24" col="4">
             <metric name="all_parameters">1</metric>
                <metric name="in_parameters">1</metric>
                <metric name="out_parameters">0</metric>
                <metric name="in_out_parameters">0</metric>
    </unit>
-         <unit name="getEXIF" kind="function" line="21" col="4">
+         <unit name="getEXIF" kind="function" line="25" col="4">
             <metric name="all_parameters">1</metric>
                <metric name="in_parameters">1</metric>
                <metric name="out_parameters">0</metric>
@@ -3585,7 +4263,7 @@
    </unit>
       </unit>
    </file>
-   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\TimePatternFilters.adb">
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\tmp\JpegByDate\src\TimePatternFilters.adb">
       <metric name="all_lines">57</metric>
       <metric name="code_lines">37</metric>
       <metric name="comment_lines">12</metric>
@@ -3673,7 +4351,7 @@
       <metric name="essential_complexity">1.33</metric>
       <metric name="max_loop_nesting">0.00</metric>
    </file>
-   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\TimePatternFilters.ads">
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\tmp\JpegByDate\src\TimePatternFilters.ads">
       <metric name="all_lines">28</metric>
       <metric name="code_lines">15</metric>
       <metric name="comment_lines">7</metric>
@@ -3716,7 +4394,7 @@
    </unit>
       </unit>
    </file>
-   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\TimeRangeFilters.adb">
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\tmp\JpegByDate\src\TimeRangeFilters.adb">
       <metric name="all_lines">80</metric>
       <metric name="code_lines">56</metric>
       <metric name="comment_lines">15</metric>
@@ -3804,7 +4482,7 @@
       <metric name="essential_complexity">2.33</metric>
       <metric name="max_loop_nesting">0.00</metric>
    </file>
-   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\TimeRangeFilters.ads">
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\tmp\JpegByDate\src\TimeRangeFilters.ads">
       <metric name="all_lines">28</metric>
       <metric name="code_lines">15</metric>
       <metric name="comment_lines">7</metric>
@@ -3847,41 +4525,41 @@
    </unit>
       </unit>
    </file>
-   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\main.adb">
-      <metric name="all_lines">80</metric>
-      <metric name="code_lines">63</metric>
-      <metric name="comment_lines">9</metric>
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\tmp\JpegByDate\src\main.adb">
+      <metric name="all_lines">106</metric>
+      <metric name="code_lines">84</metric>
+      <metric name="comment_lines">13</metric>
       <metric name="eol_comments">0</metric>
-      <metric name="comment_percentage">12.50</metric>
-      <metric name="blank_lines">8</metric>
-      <unit name="Main" kind="procedure body" line="21" col="1">
-         <metric name="all_lines">60</metric>
-         <metric name="code_lines">46</metric>
-         <metric name="comment_lines">7</metric>
+      <metric name="comment_percentage">13.40</metric>
+      <metric name="blank_lines">9</metric>
+      <unit name="Main" kind="procedure body" line="25" col="1">
+         <metric name="all_lines">82</metric>
+         <metric name="code_lines">63</metric>
+         <metric name="comment_lines">11</metric>
          <metric name="eol_comments">0</metric>
-         <metric name="comment_percentage">13.20</metric>
-         <metric name="blank_lines">7</metric>
+         <metric name="comment_percentage">14.86</metric>
+         <metric name="blank_lines">8</metric>
          <metric name="public_subprograms">1</metric>
          <metric name="all_subprograms">1</metric>
-         <metric name="all_stmts">36</metric>
-         <metric name="all_dcls">7</metric>
-         <metric name="construct_nesting">2</metric>
-         <metric name="lsloc">43</metric>
+         <metric name="all_stmts">46</metric>
+         <metric name="all_dcls">9</metric>
+         <metric name="construct_nesting">3</metric>
+         <metric name="lsloc">55</metric>
          <metric name="all_parameters">0</metric>
-         <metric name="statement_complexity">2</metric>
+         <metric name="statement_complexity">4</metric>
          <metric name="expression_complexity">0</metric>
-         <metric name="cyclomatic_complexity">2</metric>
+         <metric name="cyclomatic_complexity">4</metric>
          <metric name="essential_complexity">1</metric>
          <metric name="max_loop_nesting">0</metric>
          <metric name="extra_exit_points">0</metric>
       </unit>
-      <metric name="statement_complexity">2.00</metric>
+      <metric name="statement_complexity">4.00</metric>
       <metric name="expression_complexity">0.00</metric>
-      <metric name="cyclomatic_complexity">2.00</metric>
+      <metric name="cyclomatic_complexity">4.00</metric>
       <metric name="essential_complexity">1.00</metric>
       <metric name="max_loop_nesting">0.00</metric>
    </file>
-   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\EXIFFilters.ads">
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\tmp\JpegByDate\src\EXIFFilters.ads">
       <metric name="all_lines">6</metric>
       <metric name="code_lines">3</metric>
       <metric name="comment_lines">2</metric>
@@ -3901,7 +4579,7 @@
          <metric name="lsloc">1</metric>
       </unit>
    </file>
-   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\FileFilters.ads">
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\tmp\JpegByDate\src\FileFilters.ads">
       <metric name="all_lines">5</metric>
       <metric name="code_lines">2</metric>
       <metric name="comment_lines">2</metric>
@@ -3921,7 +4599,7 @@
          <metric name="lsloc">1</metric>
       </unit>
    </file>
-   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\FileListers.ads">
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\tmp\JpegByDate\src\FileListers.ads">
       <metric name="all_lines">20</metric>
       <metric name="code_lines">9</metric>
       <metric name="comment_lines">7</metric>
@@ -3970,41 +4648,41 @@
    </unit>
       </unit>
    </file>
-   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\globals.ads">
-      <metric name="all_lines">101</metric>
-      <metric name="code_lines">88</metric>
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\tmp\JpegByDate\src\globals.ads">
+      <metric name="all_lines">131</metric>
+      <metric name="code_lines">118</metric>
       <metric name="comment_lines">7</metric>
       <metric name="eol_comments">5</metric>
-      <metric name="comment_percentage">12.63</metric>
+      <metric name="comment_percentage">9.60</metric>
       <metric name="blank_lines">6</metric>
       <unit name="Globals" kind="package" line="5" col="1">
-         <metric name="all_lines">97</metric>
-         <metric name="code_lines">88</metric>
+         <metric name="all_lines">127</metric>
+         <metric name="code_lines">118</metric>
          <metric name="comment_lines">4</metric>
          <metric name="eol_comments">5</metric>
-         <metric name="comment_percentage">9.78</metric>
+         <metric name="comment_percentage">7.37</metric>
          <metric name="blank_lines">5</metric>
          <metric name="public_subprograms">0</metric>
          <metric name="all_stmts">0</metric>
-         <metric name="all_dcls">39</metric>
+         <metric name="all_dcls">62</metric>
          <metric name="unit_nesting">1</metric>
          <metric name="construct_nesting">2</metric>
-         <metric name="lsloc">39</metric>
-         <unit name="exif" kind="package" line="85" col="4">
-            <metric name="all_lines">15</metric>
-            <metric name="code_lines">15</metric>
+         <metric name="lsloc">62</metric>
+         <unit name="exif" kind="package" line="100" col="4">
+            <metric name="all_lines">30</metric>
+            <metric name="code_lines">30</metric>
             <metric name="comment_lines">0</metric>
             <metric name="eol_comments">0</metric>
             <metric name="comment_percentage">0.00</metric>
             <metric name="blank_lines">0</metric>
             <metric name="all_stmts">0</metric>
-            <metric name="all_dcls">14</metric>
+            <metric name="all_dcls">29</metric>
             <metric name="construct_nesting">1</metric>
-            <metric name="lsloc">14</metric>
+            <metric name="lsloc">29</metric>
          </unit>
       </unit>
    </file>
-   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\inputs.ads">
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\tmp\JpegByDate\src\inputs.ads">
       <metric name="all_lines">17</metric>
       <metric name="code_lines">9</metric>
       <metric name="comment_lines">4</metric>
@@ -4049,21 +4727,22 @@
    </unit>
       </unit>
    </file>
-   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\JpegByDate\src\outputs.ads">
-      <metric name="all_lines">15</metric>
+   <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\tmp\JpegByDate\src\outputs.ads">
+      <metric name="all_lines">18</metric>
       <metric name="code_lines">6</metric>
-      <metric name="comment_lines">5</metric>
-      <metric name="eol_comments">0</metric>
-      <metric name="comment_percentage">45.45</metric>
+      <metric name="comment_lines">8</metric>
+      <metric name="eol_comments">1</metric>
+      <metric name="comment_percentage">64.28</metric>
       <metric name="blank_lines">4</metric>
       <unit name="Outputs" kind="package" line="5" col="1">
-         <metric name="all_lines">11</metric>
+         <metric name="all_lines">14</metric>
          <metric name="code_lines">6</metric>
-         <metric name="comment_lines">2</metric>
-         <metric name="eol_comments">0</metric>
-         <metric name="comment_percentage">25.00</metric>
+         <metric name="comment_lines">5</metric>
+         <metric name="eol_comments">1</metric>
+         <metric name="comment_percentage">54.54</metric>
          <metric name="blank_lines">3</metric>
          <metric name="public_types">1</metric>
+         <metric name="tagged_types">1</metric>
          <metric name="all_types">1</metric>
          <metric name="public_subprograms">3</metric>
          <metric name="all_stmts">0</metric>
@@ -4071,16 +4750,16 @@
          <metric name="unit_nesting">1</metric>
          <metric name="construct_nesting">1</metric>
          <metric name="lsloc">8</metric>
-         <unit name="create" kind="function" line="11" col="4">
+         <unit name="create" kind="function" line="14" col="4">
             <metric name="all_parameters">0</metric>
    </unit>
-         <unit name="destroy" kind="procedure" line="12" col="4">
+         <unit name="destroy" kind="procedure" line="15" col="4">
             <metric name="all_parameters">1</metric>
                <metric name="in_parameters">1</metric>
                <metric name="out_parameters">0</metric>
                <metric name="in_out_parameters">0</metric>
    </unit>
-         <unit name="display" kind="procedure" line="13" col="4">
+         <unit name="display" kind="procedure" line="16" col="4">
             <metric name="all_parameters">2</metric>
                <metric name="in_parameters">2</metric>
                <metric name="out_parameters">0</metric>
@@ -4088,19 +4767,321 @@
    </unit>
       </unit>
    </file>
-   <metric name="all_lines">2789</metric>
-   <metric name="code_lines">1870</metric>
-   <metric name="comment_lines">561</metric>
-   <metric name="eol_comments">53</metric>
-   <metric name="comment_percentage">25.25</metric>
-   <metric name="blank_lines">358</metric>
-   <metric name="average_lines_in_bodies">11.17</metric>
-   <metric name="all_stmts">520</metric>
-   <metric name="all_dcls">954</metric>
-   <metric name="lsloc">1474</metric>
-   <metric name="public_subprograms">130</metric>
-   <metric name="all_subprograms">116</metric>
-   <metric name="public_types">22</metric>
-   <metric name="all_types">39</metric>
-   <metric name="average_complexity">2.12</metric>
+   <metric name="all_lines">3449</metric>
+   <metric name="code_lines">2390</metric>
+   <metric name="comment_lines">650</metric>
+   <metric name="eol_comments">65</metric>
+   <metric name="comment_percentage">23.51</metric>
+   <metric name="blank_lines">409</metric>
+   <metric name="average_lines_in_bodies">12.16</metric>
+   <metric name="all_stmts">695</metric>
+   <metric name="all_dcls">1183</metric>
+   <metric name="lsloc">1878</metric>
+   <metric name="public_subprograms">152</metric>
+   <metric name="all_subprograms">142</metric>
+   <metric name="public_types">23</metric>
+   <metric name="all_types">42</metric>
+   <metric name="average_complexity">2.19</metric>
+   <coupling>
+      <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\tmp\JpegByDate\src\CSVOutputs.ads">
+         <unit name="CSVOutputs" line="6" col="1">
+            <metric name="tagged_fan-out_coupling">1</metric>
+            <metric name="hierarchy_fan-out_coupling">1</metric>
+            <metric name="tagged_fan-in_coupling">0</metric>
+            <metric name="hierarchy_fan-in_coupling">0</metric>
+            <metric name="control_fan-out_coupling">1</metric>
+            <metric name="control_fan-in_coupling">1</metric>
+            <metric name="unit_fan-out_coupling">2</metric>
+            <metric name="unit_fan-in_coupling">1</metric>
+         </unit>
+      </file>
+      <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\tmp\JpegByDate\src\outputs.ads">
+         <unit name="Outputs" line="5" col="1">
+            <metric name="tagged_fan-out_coupling">0</metric>
+            <metric name="hierarchy_fan-out_coupling">0</metric>
+            <metric name="tagged_fan-in_coupling">5</metric>
+            <metric name="hierarchy_fan-in_coupling">5</metric>
+            <metric name="control_fan-out_coupling">0</metric>
+            <metric name="control_fan-in_coupling">6</metric>
+            <metric name="unit_fan-out_coupling">0</metric>
+            <metric name="unit_fan-in_coupling">6</metric>
+         </unit>
+      </file>
+      <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\tmp\JpegByDate\src\globals.ads">
+         <unit name="Globals" line="5" col="1">
+            <metric name="control_fan-out_coupling">0</metric>
+            <metric name="unit_fan-out_coupling">0</metric>
+            <metric name="unit_fan-in_coupling">21</metric>
+         </unit>
+      </file>
+      <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\tmp\JpegByDate\src\CommandlineParsers.ads">
+         <unit name="CommandlineParsers" line="7" col="1">
+            <metric name="tagged_fan-out_coupling">3</metric>
+            <metric name="hierarchy_fan-out_coupling">3</metric>
+            <metric name="tagged_fan-in_coupling">0</metric>
+            <metric name="hierarchy_fan-in_coupling">0</metric>
+            <metric name="control_fan-out_coupling">3</metric>
+            <metric name="control_fan-in_coupling">1</metric>
+            <metric name="unit_fan-out_coupling">4</metric>
+            <metric name="unit_fan-in_coupling">1</metric>
+         </unit>
+      </file>
+      <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\tmp\JpegByDate\src\Parameters.ads">
+         <unit name="Parameters" line="6" col="1">
+            <metric name="tagged_fan-out_coupling">0</metric>
+            <metric name="hierarchy_fan-out_coupling">0</metric>
+            <metric name="tagged_fan-in_coupling">16</metric>
+            <metric name="hierarchy_fan-in_coupling">16</metric>
+            <metric name="control_fan-out_coupling">0</metric>
+            <metric name="control_fan-in_coupling">17</metric>
+            <metric name="unit_fan-out_coupling">1</metric>
+            <metric name="unit_fan-in_coupling">17</metric>
+         </unit>
+      </file>
+      <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\tmp\JpegByDate\src\inputs.ads">
+         <unit name="Inputs" line="6" col="1">
+            <metric name="tagged_fan-out_coupling">2</metric>
+            <metric name="hierarchy_fan-out_coupling">2</metric>
+            <metric name="tagged_fan-in_coupling">1</metric>
+            <metric name="hierarchy_fan-in_coupling">1</metric>
+            <metric name="control_fan-out_coupling">2</metric>
+            <metric name="control_fan-in_coupling">2</metric>
+            <metric name="unit_fan-out_coupling">3</metric>
+            <metric name="unit_fan-in_coupling">2</metric>
+         </unit>
+      </file>
+      <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\tmp\JpegByDate\src\ConsoleOutputs.ads">
+         <unit name="ConsoleOutputs" line="5" col="1">
+            <metric name="tagged_fan-out_coupling">1</metric>
+            <metric name="hierarchy_fan-out_coupling">1</metric>
+            <metric name="tagged_fan-in_coupling">0</metric>
+            <metric name="hierarchy_fan-in_coupling">0</metric>
+            <metric name="control_fan-out_coupling">1</metric>
+            <metric name="control_fan-in_coupling">1</metric>
+            <metric name="unit_fan-out_coupling">1</metric>
+            <metric name="unit_fan-in_coupling">1</metric>
+         </unit>
+      </file>
+      <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\tmp\JpegByDate\src\DatePatternFilters.ads">
+         <unit name="DatePatternFilters" line="8" col="1">
+            <metric name="tagged_fan-out_coupling">6</metric>
+            <metric name="hierarchy_fan-out_coupling">6</metric>
+            <metric name="tagged_fan-in_coupling">0</metric>
+            <metric name="hierarchy_fan-in_coupling">0</metric>
+            <metric name="control_fan-out_coupling">3</metric>
+            <metric name="control_fan-in_coupling">1</metric>
+            <metric name="unit_fan-out_coupling">7</metric>
+            <metric name="unit_fan-in_coupling">1</metric>
+         </unit>
+      </file>
+      <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\tmp\JpegByDate\src\EXIFParsers.ads">
+         <unit name="EXIFParsers" line="5" col="1">
+            <metric name="tagged_fan-out_coupling">2</metric>
+            <metric name="hierarchy_fan-out_coupling">2</metric>
+            <metric name="tagged_fan-in_coupling">10</metric>
+            <metric name="hierarchy_fan-in_coupling">10</metric>
+            <metric name="control_fan-out_coupling">2</metric>
+            <metric name="control_fan-in_coupling">11</metric>
+            <metric name="unit_fan-out_coupling">3</metric>
+            <metric name="unit_fan-in_coupling">11</metric>
+         </unit>
+      </file>
+      <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\tmp\JpegByDate\src\Pictures.ads">
+         <unit name="Pictures" line="1" col="1">
+            <metric name="tagged_fan-out_coupling">3</metric>
+            <metric name="hierarchy_fan-out_coupling">1</metric>
+            <metric name="tagged_fan-in_coupling">10</metric>
+            <metric name="hierarchy_fan-in_coupling">8</metric>
+            <metric name="control_fan-out_coupling">3</metric>
+            <metric name="unit_fan-out_coupling">3</metric>
+            <metric name="unit_fan-in_coupling">11</metric>
+         </unit>
+      </file>
+      <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\tmp\JpegByDate\src\Pictures-TiffPictures.ads">
+         <unit name="Pictures.TiffPictures" line="1" col="1">
+            <metric name="tagged_fan-out_coupling">2</metric>
+            <metric name="hierarchy_fan-out_coupling">2</metric>
+            <metric name="tagged_fan-in_coupling">10</metric>
+            <metric name="hierarchy_fan-in_coupling">10</metric>
+            <metric name="control_fan-out_coupling">2</metric>
+            <metric name="unit_fan-out_coupling">3</metric>
+            <metric name="unit_fan-in_coupling">11</metric>
+         </unit>
+      </file>
+      <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\tmp\JpegByDate\src\Filters.ads">
+         <unit name="Filters" line="5" col="1">
+            <metric name="tagged_fan-out_coupling">1</metric>
+            <metric name="hierarchy_fan-out_coupling">1</metric>
+            <metric name="tagged_fan-in_coupling">13</metric>
+            <metric name="hierarchy_fan-in_coupling">13</metric>
+            <metric name="control_fan-out_coupling">1</metric>
+            <metric name="unit_fan-out_coupling">2</metric>
+            <metric name="unit_fan-in_coupling">14</metric>
+         </unit>
+      </file>
+      <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\tmp\JpegByDate\src\EXIFFilters.ads">
+         <unit name="EXIFFilters" line="6" col="1">
+            <metric name="tagged_fan-out_coupling">5</metric>
+            <metric name="hierarchy_fan-out_coupling">5</metric>
+            <metric name="tagged_fan-in_coupling">6</metric>
+            <metric name="hierarchy_fan-in_coupling">6</metric>
+            <metric name="control_fan-out_coupling">2</metric>
+            <metric name="control_fan-in_coupling">7</metric>
+            <metric name="unit_fan-out_coupling">6</metric>
+            <metric name="unit_fan-in_coupling">7</metric>
+         </unit>
+      </file>
+      <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\tmp\JpegByDate\src\DateRangeFilters.ads">
+         <unit name="DateRangeFilters" line="8" col="1">
+            <metric name="tagged_fan-out_coupling">6</metric>
+            <metric name="hierarchy_fan-out_coupling">6</metric>
+            <metric name="tagged_fan-in_coupling">0</metric>
+            <metric name="hierarchy_fan-in_coupling">0</metric>
+            <metric name="control_fan-out_coupling">3</metric>
+            <metric name="control_fan-in_coupling">1</metric>
+            <metric name="unit_fan-out_coupling">7</metric>
+            <metric name="unit_fan-in_coupling">1</metric>
+         </unit>
+      </file>
+      <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\tmp\JpegByDate\src\FileExtensionFilters.ads">
+         <unit name="FileExtensionFilters" line="6" col="1">
+            <metric name="tagged_fan-out_coupling">3</metric>
+            <metric name="hierarchy_fan-out_coupling">3</metric>
+            <metric name="tagged_fan-in_coupling">0</metric>
+            <metric name="hierarchy_fan-in_coupling">0</metric>
+            <metric name="control_fan-out_coupling">2</metric>
+            <metric name="control_fan-in_coupling">1</metric>
+            <metric name="unit_fan-out_coupling">4</metric>
+            <metric name="unit_fan-in_coupling">1</metric>
+         </unit>
+      </file>
+      <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\tmp\JpegByDate\src\FileFilters.ads">
+         <unit name="FileFilters" line="5" col="1">
+            <metric name="tagged_fan-out_coupling">2</metric>
+            <metric name="hierarchy_fan-out_coupling">2</metric>
+            <metric name="tagged_fan-in_coupling">6</metric>
+            <metric name="hierarchy_fan-in_coupling">6</metric>
+            <metric name="control_fan-out_coupling">1</metric>
+            <metric name="control_fan-in_coupling">7</metric>
+            <metric name="unit_fan-out_coupling">3</metric>
+            <metric name="unit_fan-in_coupling">7</metric>
+         </unit>
+      </file>
+      <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\tmp\JpegByDate\src\FileHandlers.ads">
+         <unit name="FileHandlers" line="8" col="1">
+            <metric name="tagged_fan-out_coupling">9</metric>
+            <metric name="hierarchy_fan-out_coupling">9</metric>
+            <metric name="tagged_fan-in_coupling">0</metric>
+            <metric name="hierarchy_fan-in_coupling">0</metric>
+            <metric name="control_fan-out_coupling">7</metric>
+            <metric name="control_fan-in_coupling">1</metric>
+            <metric name="unit_fan-out_coupling">10</metric>
+            <metric name="unit_fan-in_coupling">1</metric>
+         </unit>
+      </file>
+      <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\tmp\JpegByDate\src\FileListers.ads">
+         <unit name="FileListers" line="6" col="1">
+            <metric name="tagged_fan-out_coupling">3</metric>
+            <metric name="hierarchy_fan-out_coupling">3</metric>
+            <metric name="tagged_fan-in_coupling">2</metric>
+            <metric name="hierarchy_fan-in_coupling">2</metric>
+            <metric name="control_fan-out_coupling">2</metric>
+            <metric name="control_fan-in_coupling">3</metric>
+            <metric name="unit_fan-out_coupling">4</metric>
+            <metric name="unit_fan-in_coupling">3</metric>
+         </unit>
+      </file>
+      <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\tmp\JpegByDate\src\FileNameFilters.ads">
+         <unit name="FileNameFilters" line="6" col="1">
+            <metric name="tagged_fan-out_coupling">3</metric>
+            <metric name="hierarchy_fan-out_coupling">3</metric>
+            <metric name="tagged_fan-in_coupling">0</metric>
+            <metric name="hierarchy_fan-in_coupling">0</metric>
+            <metric name="control_fan-out_coupling">2</metric>
+            <metric name="control_fan-in_coupling">1</metric>
+            <metric name="unit_fan-out_coupling">4</metric>
+            <metric name="unit_fan-in_coupling">1</metric>
+         </unit>
+      </file>
+      <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\tmp\JpegByDate\src\FileSizeFilters.ads">
+         <unit name="FileSizeFilters" line="6" col="1">
+            <metric name="tagged_fan-out_coupling">3</metric>
+            <metric name="hierarchy_fan-out_coupling">3</metric>
+            <metric name="tagged_fan-in_coupling">0</metric>
+            <metric name="hierarchy_fan-in_coupling">0</metric>
+            <metric name="control_fan-out_coupling">2</metric>
+            <metric name="control_fan-in_coupling">1</metric>
+            <metric name="unit_fan-out_coupling">4</metric>
+            <metric name="unit_fan-in_coupling">1</metric>
+         </unit>
+      </file>
+      <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\tmp\JpegByDate\src\FilesystemListers.ads">
+         <unit name="FilesystemListers" line="9" col="1">
+            <metric name="tagged_fan-out_coupling">4</metric>
+            <metric name="hierarchy_fan-out_coupling">4</metric>
+            <metric name="tagged_fan-in_coupling">0</metric>
+            <metric name="hierarchy_fan-in_coupling">0</metric>
+            <metric name="control_fan-out_coupling">3</metric>
+            <metric name="control_fan-in_coupling">1</metric>
+            <metric name="unit_fan-out_coupling">5</metric>
+            <metric name="unit_fan-in_coupling">1</metric>
+         </unit>
+      </file>
+      <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\tmp\JpegByDate\src\ImageSizeFilters.ads">
+         <unit name="ImageSizeFilters" line="8" col="1">
+            <metric name="tagged_fan-out_coupling">6</metric>
+            <metric name="hierarchy_fan-out_coupling">6</metric>
+            <metric name="tagged_fan-in_coupling">0</metric>
+            <metric name="hierarchy_fan-in_coupling">0</metric>
+            <metric name="control_fan-out_coupling">3</metric>
+            <metric name="control_fan-in_coupling">1</metric>
+            <metric name="unit_fan-out_coupling">7</metric>
+            <metric name="unit_fan-in_coupling">1</metric>
+         </unit>
+      </file>
+      <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\tmp\JpegByDate\src\Pictures-JpegPictures.ads">
+         <unit name="Pictures.JpegPictures" line="7" col="1">
+            <metric name="tagged_fan-out_coupling">3</metric>
+            <metric name="hierarchy_fan-out_coupling">3</metric>
+            <metric name="tagged_fan-in_coupling">1</metric>
+            <metric name="hierarchy_fan-in_coupling">1</metric>
+            <metric name="control_fan-out_coupling">3</metric>
+            <metric name="control_fan-in_coupling">1</metric>
+            <metric name="unit_fan-out_coupling">3</metric>
+            <metric name="unit_fan-in_coupling">1</metric>
+         </unit>
+      </file>
+      <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\tmp\JpegByDate\src\TimePatternFilters.ads">
+         <unit name="TimePatternFilters" line="8" col="1">
+            <metric name="tagged_fan-out_coupling">6</metric>
+            <metric name="hierarchy_fan-out_coupling">6</metric>
+            <metric name="tagged_fan-in_coupling">0</metric>
+            <metric name="hierarchy_fan-in_coupling">0</metric>
+            <metric name="control_fan-out_coupling">3</metric>
+            <metric name="control_fan-in_coupling">1</metric>
+            <metric name="unit_fan-out_coupling">7</metric>
+            <metric name="unit_fan-in_coupling">1</metric>
+         </unit>
+      </file>
+      <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\tmp\JpegByDate\src\TimeRangeFilters.ads">
+         <unit name="TimeRangeFilters" line="8" col="1">
+            <metric name="tagged_fan-out_coupling">6</metric>
+            <metric name="hierarchy_fan-out_coupling">6</metric>
+            <metric name="tagged_fan-in_coupling">0</metric>
+            <metric name="hierarchy_fan-in_coupling">0</metric>
+            <metric name="control_fan-out_coupling">3</metric>
+            <metric name="control_fan-in_coupling">1</metric>
+            <metric name="unit_fan-out_coupling">7</metric>
+            <metric name="unit_fan-in_coupling">1</metric>
+         </unit>
+      </file>
+      <file name="C:\Users\von_teichman.m-tit14\Documents\GitHub\tmp\JpegByDate\src\main.adb">
+         <unit name="Main" line="25" col="1">
+            <metric name="control_fan-out_coupling">20</metric>
+            <metric name="control_fan-in_coupling">0</metric>
+            <metric name="unit_fan-out_coupling">24</metric>
+            <metric name="unit_fan-in_coupling">0</metric>
+         </unit>
+      </file>
+   </coupling>
 </global>
