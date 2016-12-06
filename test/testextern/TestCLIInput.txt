@@ -1,0 +1,8 @@
+..\..\bin\JpegByDate.exe -r -p ../ --debug -d 2016-11-1?
+
+..\..\bin\JpegByDate.exe -h
+
+..\..\bin\JpegByDate.exe -d ????-??-?? -E export.csv -f * -h -p ../test -r -t ??:??:?? --minSize=1 --maxSize=2147483646 --minWidth=1 --maxWidth=10000 --minHeight=1 --maxHeight=10000 --startDate=2000-01-01 --finDate=2020-01-01 --startTime=16:00:03 --finTime=16:00:02 --fileRegex=.* --rename --debug
+
+..\..\bin\JpegByDate.exe -c -d ????-??-?? -f * -h -p ../test -r -t ??:??:?? --minSize=1 --maxSize=2147483646 --minWidth=1 --maxWidth=10000 --minHeight=1 --maxHeight=10000 --startDate=2000-01-01 --finDate=2020-01-01 --startTime=16:00:03 --finTime=16:00:02 --fileRegex=.* --rename --debug
+
