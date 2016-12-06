@@ -92,3 +92,9 @@ Sprint Planning Meeting (Sprint 5)
 
 2016-12-05
 "Daily Scrum"
+
+2016-12-06
+Sprint Review
+	- Fortschritt: Sprint 5 erfolgreich (alle geplanten Änderungen umgesetzt, abgesprochen mit Kunden)
+	- Finaler Release erfolgreich vorbereitet (inklusive Tests und Metriken)
+	- Problematik: Zeitdruck am Ende, Vorbereitung von Release in letzter Minute
