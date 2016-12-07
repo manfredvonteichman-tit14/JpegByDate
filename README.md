@@ -36,13 +36,13 @@ JpegByDate sucht auf der Festplatte nach Fotos, die an einem bestimmten Datum au
 ###Final Release
 
 * Veröffentlichungsdatum: 2016-12-07
-* Status: In Bearbeitung
-* Link: ~~Release folder~~
-* SHA: ~~n/a~~
+* Status: Veröffentlicht
+* Link: [Release folder](../../tree/master/release/release2016-12-07)
+* SHA: 4f8d6c30ffc583a3e429348d0afbe45166c2b6cd
 
 #### Metriken
 
-* Lines of Code: ~~n/a~~
-* Lines of Comments: ~~n/a~~
-* Module count: ~~n/a~~
-* Lines of Code per Module: ~~n/a~~
+* Lines of Code: 2394
+* Lines of Comments: 651
+* Module count: 20
+* Lines of Code per Module: 119
