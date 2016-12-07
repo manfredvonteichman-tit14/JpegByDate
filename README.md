@@ -3,6 +3,12 @@
 ## Was ist JpegByDate?
 JpegByDate sucht auf der Festplatte nach Fotos, die an einem bestimmten Datum aufgenommen wurden.
 
+## Getting started
+
+__Beispieleingabe:__ JpegByDate.exe -d ????-??-17 -r -f Pictures\*.\* -p c:\tmp -c
+
+Mehr dazu im [Wikieintrag](../../wiki/Getting-Started).
+
 ## Releases
 
 ### Alpha Release
